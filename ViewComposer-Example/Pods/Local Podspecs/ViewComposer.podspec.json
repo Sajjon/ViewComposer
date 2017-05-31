@@ -1,0 +1,22 @@
+{
+  "name": "ViewComposer",
+  "version": "0.1.0",
+  "summary": "Compose views using enums swiftly",
+  "description": "Declare Buttons, Labels, StackViews etc as a list of enums.",
+  "homepage": "https://github.com/sajjon/ViewComposer",
+  "license": "MIT",
+  "authors": {
+    "Alexander Cyon": "alex.cyon@gmail.com"
+  },
+  "social_media_url": "https://twitter.com/Redrum_237",
+  "source": {
+    "http": "https://github.com/sajjon/ViewComposer/releases/download/0.1.0/viewcomposer-0.1.0.zip"
+  },
+  "preserve_paths": "*",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}

@@ -1,0 +1,21 @@
+PODS:
+  - ViewComposer (0.1.0)
+
+DEPENDENCIES:
+  - ViewComposer (from `https://github.com/Sajjon/ViewComposer.git`)
+
+EXTERNAL SOURCES:
+  ViewComposer:
+    :git: https://github.com/Sajjon/ViewComposer.git
+
+CHECKOUT OPTIONS:
+  ViewComposer:
+    :commit: b10beb9ed0aabf211fe3508f1e74702ff524af36
+    :git: https://github.com/Sajjon/ViewComposer.git
+
+SPEC CHECKSUMS:
+  ViewComposer: d21191b1041add2ce68705c2422a8aafed55bb4a
+
+PODFILE CHECKSUM: 8f006e221851459dc1d5590213ccd62b57b27f4f
+
+COCOAPODS: 1.2.1

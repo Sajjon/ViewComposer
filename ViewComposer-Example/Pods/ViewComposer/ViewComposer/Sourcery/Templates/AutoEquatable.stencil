@@ -1,0 +1,88 @@
+// swiftlint:disable file_length
+fileprivate func compareOptionals<T>(lhs: T?, rhs: T?, compare: (_ lhs: T, _ rhs: T) -> Bool) -> Bool {
+	switch (lhs, rhs) {
+		case let (lValue?, rValue?):
+			return compare(lValue, rValue)
+		case (nil, nil):
+			return true
+		default:
+			return false
+	}
+}
+
+fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs: T) -> Bool) -> Bool {
+	guard lhs.count == rhs.count else { return false }
+	for (idx, lhsItem) in lhs.enumerated() {
+		guard compare(lhsItem, rhs[idx]) else { return false }
+	}
+	return true
+}
+
+{% macro compareVariables variables %}
+	{% for variable in variables %}{% if not variable.annotations.skipEquality %}guard {% if not variable.isOptional %}{% if not variable.annotations.arrayEquality %}lhs.{{ variable.name }} == rhs.{{ variable.name }}{% else %}compareArrays(lhs: lhs.{{ variable.name }}, rhs: rhs.{{ variable.name }}, compare: ==){% endif %}{% else %}compareOptionals(lhs: lhs.{{ variable.name }}, rhs: rhs.{{ variable.name }}, compare: ==){% endif %} else { return false }{% endif %}
+	{% endfor %}
+{% endmacro %}
+
+{% macro genericIfNeeded type %}{% if type.isGeneric %}<T>{% endif %}{% endmacro %}
+
+{% macro accessModifierOf type, isPublic %}{% if type.accessLevel == '' %}{% if isPublic == "true" %}public{% else %}internal{% endif %}{% else %}{{ type.accessLevel }}{% endif %}{% endmacro %}
+
+{% macro equatableNonEnum type, isPublic %}
+	// MARK: - {{ type.name }} {% if isPublic == "true" %}AutoEquatablePublic{% else %}AutoEquatable{% endif %}
+	{% if not type.kind == "protocol" %}extension {{ type.name }}: Equatable {} {% endif %}
+		{% if type.supertype.based.Equatable or type.supertype.implements.AutoEquatable %}
+			THIS WONT COMPILE, WE DONT SUPPORT INHERITANCE for AutoEquatable
+		{% endif %}
+		
+		{% call accessModifierOf type, isPublic %} func == {% call genericIfNeeded type %}(lhs: {{ type.name }}{% call genericIfNeeded type %}, rhs: {{ type.name }}{% call genericIfNeeded type %}) -> Bool {
+		
+		{% if not type.kind == "protocol" %}
+			{% call compareVariables type.storedVariables %}
+		{% else %}
+			{% call compareVariables type.computedVariables %}
+		{% endif %}
+		return true
+	}
+{% endmacro %}
+	
+{% macro equatableEnum type, isPublic %}
+	// MARK: - {{ type.name }} {% if isPublic == "true" %}AutoEquatablePublic{% else %}AutoEquatable{% endif %}
+	extension {{ type.name }}: Equatable {}
+	{% call accessModifierOf type, isPublic %} func == (lhs: {{ type.name }}, rhs: {{ type.name }}) -> Bool {
+		switch (lhs, rhs) {
+			{% for case in type.cases %}
+				{% if case.hasAssociatedValue %}
+					case (.{{ case.name }}(let leftAssociated), .{{ case.name }}(let rightAssociated)):
+						{% if case.associatedValues.count == 1 %}
+							return leftAssociated == rightAssociated
+						{% else %}
+							{% for associated in case.associatedValues %}if leftAssociated.{{ associated.externalName }} != rightAssociated.{{ associated.externalName }} { return false }
+							{% endfor %}return true
+						{% endif %}
+				{% else %}
+					case (.{{ case.name }}, .{{ case.name }}):
+						return true
+				{% endif %}
+			{% endfor %}
+			
+			{% if type.cases.count > 1 %}default: return false {% endif %}
+		}
+	}
+{% endmacro %}
+
+{% for type in types.implementing.AutoEquatable|!enum %}
+	{% call equatableNonEnum type, "false" %}
+{% endfor %}
+
+{% for type in types.implementing.AutoEquatablePublic|!enum %}
+	{% call equatableNonEnum type, "true" %}
+{% endfor %}
+
+{% for type in types.implementing.AutoEquatable|enum %}
+	{% call equatableEnum type, "false" %}
+{% endfor %}
+
+{% for type in types.implementing.AutoEquatablePublic|enum %}
+	{% call equatableEnum type, "true" %}
+{% endfor %}
+

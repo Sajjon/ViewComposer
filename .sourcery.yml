@@ -1,0 +1,10 @@
+sources:
+  - ViewComposer/Sourcery/Rules
+  - ViewComposer/Source
+templates:
+  - ViewComposer/Sourcery/Templates
+output: ViewComposer/Sourcery/Generated
+args:
+ --disableCache: true
+ --prune: true
+ --verbose: true
