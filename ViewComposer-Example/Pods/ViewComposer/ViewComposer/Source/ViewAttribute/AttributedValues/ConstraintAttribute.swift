@@ -1,13 +1,13 @@
 //
 //  ConstraintAttribute.swift
-//  Breeze
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
-//  Copyright © 2017 Nordic Choice Hotels. All rights reserved.
+//  Created by Alexander Cyon on 2017-05-31.
+//
 //
 
 import Foundation
 
-enum ConstraintAttribute {
+public enum ConstraintAttribute {
     case height(CGFloat)
 }

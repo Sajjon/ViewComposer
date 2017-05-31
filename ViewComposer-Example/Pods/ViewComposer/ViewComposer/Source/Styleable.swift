@@ -1,21 +1,31 @@
 //
 //  Styleable.swift
-//  Pods
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
+//  Created by Alexander Cyon on 2017-05-31.
 //
 //
 
 import Foundation
 
-public protocol Styleable: ExpressibleByArrayLiteral {
+
+public protocol Styleable {
     associatedtype Style: Attributed
-    var style: Style { get }
-    init(_ style: Style?)
-    associatedtype Element = Style.Element
+    func setup(with style: Style)
 }
 
-public extension Styleable {
+public protocol Makeable: Styleable {
+    associatedtype Styled
+    static func make(_ attributes: [Style.Attribute]) -> Styled
+}
+
+public protocol Composable: Styleable, ExpressibleByArrayLiteral {
+    associatedtype Element = Style.Element
+    init(_ style: Style?)
+
+}
+
+public extension Composable {
     init(arrayLiteral elements: Style.Attribute...) {
         self.init(Style(elements))
     }
@@ -33,20 +43,20 @@ precedencegroup StyleablePrecedence {
 
 infix operator <<- : StyleablePrecedence
 
-func <<- <A: Attributed, S: Styleable>(attributed: A, attributes: [A.Attribute]) -> S where S.Style == A {
+public func <<- <A: Attributed, C: Composable>(attributed: A, attributes: [A.Attribute]) -> C where C.Style == A {
     let style: A = attributed.merge(master: attributes)
-    return S(style)
+    return C(style)
 }
 
 infix operator <- : StyleablePrecedence
 
-func <- <A: Attributed, S: Styleable>(attributed: A, attributes: [A.Attribute]) -> S where S.Style == A {
+public func <- <A: Attributed, C: Composable>(attributed: A, attributes: [A.Attribute]) -> C where C.Style == A {
     let style: A = attributed.merge(slave: attributes)
-    return S(style)
+    return C(style)
 }
 
 
-extension Styleable where Self: UIView {
+public extension Styleable where Self: UIView {
     func setup(with style: ViewStyle) {
         translatesAutoresizingMaskIntoConstraints = false
         style.install(on: self)
@@ -64,7 +74,7 @@ extension Styleable where Self: UIView {
     func customLayoutSubviews(with style: ViewStyle) {}
 }
 
-private extension Styleable where Self: UIView {
+public extension Styleable where Self: UIView {
     func privateLayoutSubviews(with style: ViewStyle) {
         guard let radius: Radius = style.value(.radius) else { return }
         setupRadius(radius)

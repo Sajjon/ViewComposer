@@ -7,13 +7,9 @@
 //
 
 import UIKit
-//import ViewComposer
+import ViewComposer
 
 class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .red
-    }
+    lazy var redButton = UIButton.make([.backgroundColor(.red)])
+    lazy var blueButton: UIButton = .make([.backgroundColor(.blue)])
 }
-

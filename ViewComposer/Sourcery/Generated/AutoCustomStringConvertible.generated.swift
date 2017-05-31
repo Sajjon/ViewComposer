@@ -8,6 +8,8 @@
 			switch self {
 						case .custom(let value):
 							return "custom: \(value)" 
+						case .isHidden(let value):
+							return "isHidden: \(value)" 
 						case .backgroundColor(let value):
 							return "backgroundColor: \(value)" 
 						case .cornerRadius(let value):
@@ -22,12 +24,16 @@
 							return "horizontalHugging: \(value)" 
 						case .horizontalCompression(let value):
 							return "horizontalCompression: \(value)" 
+						case .contentMode(let value):
+							return "contentMode: \(value)" 
 						case .height(let value):
 							return "height: \(value)" 
 						case .width(let value):
 							return "width: \(value)" 
 						case .text(let value):
 							return "text: \(value)" 
+						case .font(let value):
+							return "font: \(value)" 
 						case .textColor(let value):
 							return "textColor: \(value)" 
 						case .`case`(let value):

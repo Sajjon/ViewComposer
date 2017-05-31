@@ -4,7 +4,7 @@
 // MARK: - CustomStringConvertible for Enums
 	// MARK: - ViewAttribute CustomStringConvertible
 	extension ViewAttribute: CustomStringConvertible {
-		var description: String {
+		public var description: String {
 			switch self {
 						case .custom(let value):
 							return "custom: \(value)" 

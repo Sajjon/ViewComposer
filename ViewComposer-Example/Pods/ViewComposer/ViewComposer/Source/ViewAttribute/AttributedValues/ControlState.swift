@@ -1,33 +1,22 @@
 //
 //  ControlState.swift
-//  Breeze
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
-//  Copyright © 2017 Nordic Choice Hotels. All rights reserved.
+//  Created by Alexander Cyon on 2017-05-31.
+//
 //
 
 import UIKit
 
 
-struct State {
-    let title: String
-    let image: UIImage?
+public typealias StateRepresentation = (String?, UIImage?)
+public enum ControlState {
+    case normal(StateRepresentation)
+    case highlighted(StateRepresentation)
+    case disabled(StateRepresentation)
 }
 
-extension State {
-    init(_ title: String, _ image: UIImage?) {
-        self.title = title
-        self.image = image
-    }
-}
-
-enum ControlState {
-    case normal(State)
-    case highlighted(State)
-    case disabled(State)
-}
-
-extension ControlState {
+public extension ControlState {
     var state: UIControlState {
         let state: UIControlState
         switch self {
@@ -41,7 +30,7 @@ extension ControlState {
         return state
     }
     
-    var representation: State {
+    var representation: StateRepresentation {
         switch self {
         case .normal(let representation):
             return representation

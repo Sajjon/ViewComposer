@@ -1,15 +1,15 @@
 //
 //  ViewAttribute.swift
-//  Pods
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
+//  Created by Alexander Cyon on 2017-05-31.
 //
 //
 
 import Foundation
 
-extension ViewAttribute: AutoAssociatedValueStrippable {}
-enum ViewAttribute {
+extension ViewAttribute {}
+public enum ViewAttribute {
     case custom(AnyAttributed)
     
     // View
@@ -52,7 +52,7 @@ enum ViewAttribute {
     case arrangedSubviews([UIView])
 }
 
-extension Array where Element == ViewAttribute {
+public extension Array where Element == ViewAttribute {
     func merge(slave: [ViewAttribute]) -> [ViewAttribute] {
         return ViewStyle(self).merge(slave: ViewStyle(slave)).attributes
     }

@@ -29,12 +29,6 @@ fileprivate func combineHashValues(_ initial: Int, _ other: Int) -> Int {
     return combineHashes([target.hashValue, selector.hashValue, event.hashValue, 0])
         }
     }
-    // MARK: - State AutoHashable
-    extension State: Hashable {
-        public var hashValue: Int {
-    return combineHashes([title.hashValue, image?.hashValue ?? 0, 0])
-        }
-    }
 
     // MARK: - UIControlEvents AutoHashable
     extension UIControlEvents: Hashable {
@@ -45,23 +39,9 @@ fileprivate func combineHashValues(_ initial: Int, _ other: Int) -> Int {
 
 // MARK: - AutoHashable for Enums
 
-    // MARK: - ControlState AutoHashable
-    extension ControlState: Hashable {
-        internal var hashValue: Int {
-            switch self {
-                    case .normal(let data): 
-                                    return 1.hashValue
-                    case .highlighted(let data): 
-                                    return 2.hashValue
-                    case .disabled(let data): 
-                                    return 3.hashValue
-            }
-        }
-    }
-
     // MARK: - Radius AutoHashable
     extension Radius: Hashable {
-        internal var hashValue: Int {
+        public var hashValue: Int {
             switch self {
                      case .rounded: 
                             return 1.hashValue

@@ -8,28 +8,34 @@
 
 import Foundation
 
-open class StackView: UIStackView {
-    open let style: ViewStyle
-    open var backgroundColorView: UIView?
+final class StackView: UIStackView {
+    let style: ViewStyle
+    fileprivate var backgroundColorView: UIView?
     
-    required public init(_ style: ViewStyle? = nil) {
+    init(_ style: ViewStyle? = nil) {
         let style = style.merge(slave: .default)
         self.style = style
         super.init(frame: .zero)
-        compose(with: style)
+        setup(with: style)
     }
     
-    required public init(coder: NSCoder) { requiredInit() }
+    required init(coder: NSCoder) { requiredInit() }
 }
 
-extension StackView: Composable {
-    public func setupSubviews(with style: ViewStyle) {
+//MARK: - ViewStyleable
+extension StackView: Styleable {
+    func customSetup(with style: ViewStyle) {
         setupArrangedSubviews(with: style)
         setupBackgroundView(with: style)
     }
 }
 
-public extension StackView {
+private extension StackView {
+    func setupArrangedSubviews(with style: ViewStyle) {
+        guard let views: [UIView] = style.value(.arrangedSubviews) else { return }
+        views.forEach { addArrangedSubview($0) }
+    }
+    
     func setupBackgroundView(with style: ViewStyle) {
         if let backgroundColor: UIColor = style.value(.backgroundColor) {
             setupBackgroundView(with: backgroundColor)
@@ -37,8 +43,7 @@ public extension StackView {
     }
     
     func setupBackgroundView(with color: UIColor) {
-        let backgroundColorView = UIView()
-        backgroundColorView.backgroundColor = color
+        let backgroundColorView = View([.backgroundColor(color)])
         addSubview(backgroundColorView)
         sendSubview(toBack: backgroundColorView)
         backgroundColorView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true

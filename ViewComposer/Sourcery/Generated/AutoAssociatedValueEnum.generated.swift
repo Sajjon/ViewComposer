@@ -159,6 +159,8 @@ public protocol AssociatedValueStrippable: Equatable {
                 switch self {
                                 case .custom(let custom):
                                     return custom
+                                case .isHidden(let isHidden):
+                                    return isHidden
                                 case .backgroundColor(let backgroundColor):
                                     return backgroundColor
                                 case .cornerRadius(let cornerRadius):
@@ -173,12 +175,16 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return horizontalHugging
                                 case .horizontalCompression(let horizontalCompression):
                                     return horizontalCompression
+                                case .contentMode(let contentMode):
+                                    return contentMode
                                 case .height(let height):
                                     return height
                                 case .width(let width):
                                     return width
                                 case .text(let text):
                                     return text
+                                case .font(let font):
+                                    return font
                                 case .textColor(let textColor):
                                     return textColor
                                 case .`case`(let `case`):
@@ -212,6 +218,14 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .custom(let custom):
                                 return custom
+                            default:
+                                return nil
+                        }
+                    }
+                    var isHidden: Bool? {
+                        switch self {
+                            case .isHidden(let isHidden):
+                                return isHidden
                             default:
                                 return nil
                         }
@@ -272,6 +286,14 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
+                    var contentMode: UIViewContentMode? {
+                        switch self {
+                            case .contentMode(let contentMode):
+                                return contentMode
+                            default:
+                                return nil
+                        }
+                    }
                     var height: CGFloat? {
                         switch self {
                             case .height(let height):
@@ -292,6 +314,14 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .text(let text):
                                 return text
+                            default:
+                                return nil
+                        }
+                    }
+                    var font: UIFont? {
+                        switch self {
+                            case .font(let font):
+                                return font
                             default:
                                 return nil
                         }
@@ -404,6 +434,7 @@ public protocol AssociatedValueStrippable: Equatable {
 
         public enum ViewAttributeStripped: String, StrippedRepresentation {
             case custom
+            case isHidden
             case backgroundColor
             case cornerRadius
             case radius
@@ -411,9 +442,11 @@ public protocol AssociatedValueStrippable: Equatable {
             case verticalCompression
             case horizontalHugging
             case horizontalCompression
+            case contentMode
             case height
             case width
             case text
+            case font
             case textColor
             case `case`
             case textAlignment
@@ -450,6 +483,8 @@ public protocol AssociatedValueStrippable: Equatable {
         		switch self {
         			 case .custom:
         				return .custom
+        			 case .isHidden:
+        				return .isHidden
         			 case .backgroundColor:
         				return .backgroundColor
         			 case .cornerRadius:
@@ -464,12 +499,16 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .horizontalHugging
         			 case .horizontalCompression:
         				return .horizontalCompression
+        			 case .contentMode:
+        				return .contentMode
         			 case .height:
         				return .height
         			 case .width:
         				return .width
         			 case .text:
         				return .text
+        			 case .font:
+        				return .font
         			 case .textColor:
         				return .textColor
         			 case .`case`:

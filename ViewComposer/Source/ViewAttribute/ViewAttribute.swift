@@ -13,26 +13,26 @@ public enum ViewAttribute {
     case custom(AnyAttributed)
     
     // View
+    case isHidden(Bool)
     case backgroundColor(UIColor)
     case cornerRadius(CGFloat) /* might be overridden by: */; case radius(Radius)
     case verticalHugging(LayoutPriority)
     case verticalCompression(LayoutPriority)
     case horizontalHugging(LayoutPriority)
     case horizontalCompression(LayoutPriority)
+    case contentMode(UIViewContentMode)
     case height(CGFloat)
     case width(CGFloat)
     
     // TextHolder
     case text(String)
-//    case l10n(L10n)
-//    case font(Font)
+    case font(UIFont)
     case textColor(UIColor)
     case `case`(Case)
     case textAlignment(NSTextAlignment)
     
     // ImageHolder
     case image(UIImage)
-//    case asset(Asset)
     
     // UIScrollView
     case isScrollEnabled(Bool)

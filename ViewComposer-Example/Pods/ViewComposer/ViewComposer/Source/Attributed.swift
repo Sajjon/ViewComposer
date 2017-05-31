@@ -1,8 +1,8 @@
 //
 //  Attributed.swift
-//  Pods
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
+//  Created by Alexander Cyon on 2017-05-31.
 //
 //
 
@@ -26,7 +26,7 @@ public protocol Attributed: Collection, ExpressibleByArrayLiteral, AnyAttributed
     var startIndex: Int { get }
 }
 
-extension Attributed {
+public extension Attributed {
     typealias Index = Int
     typealias Iterator = IndexingIterator<Self>
     typealias Indices = DefaultIndices<Self>
@@ -48,7 +48,7 @@ extension Attributed {
     }
 }
 
-internal extension Attributed {
+public extension Attributed {
     typealias Stripped = Attribute.Stripped
     var stripped: [Stripped] { return attributes.map { $0.stripped } }
 }
@@ -87,7 +87,7 @@ public extension Attributed {
 }
 
 
-extension Array where Element: AssociatedValueStrippable {
+public extension Array where Element: AssociatedValueStrippable {
     func filter(stripped: [Element.Stripped]) -> [Element] {
         var filtered = [Element]()
         for attribute in self {

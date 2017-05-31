@@ -22,8 +22,81 @@ public protocol AssociatedValueStrippable: Equatable {
     var stripped: Stripped { get }
 }
 
+        extension ControlState: AssociatedValueEnumExtractor {
+            public var associatedValue: Any? {
+                switch self {
+                                case .normal(let normal):
+                                    return normal
+                                case .highlighted(let highlighted):
+                                    return highlighted
+                                case .disabled(let disabled):
+                                    return disabled
+                }
+            }
+
+                    var normal: StateRepresentation? {
+                        switch self {
+                            case .normal(let normal):
+                                return normal
+                            default:
+                                return nil
+                        }
+                    }
+                    var highlighted: StateRepresentation? {
+                        switch self {
+                            case .highlighted(let highlighted):
+                                return highlighted
+                            default:
+                                return nil
+                        }
+                    }
+                    var disabled: StateRepresentation? {
+                        switch self {
+                            case .disabled(let disabled):
+                                return disabled
+                            default:
+                                return nil
+                        }
+                    }
+        }
+
+        public enum ControlStateStripped: String, StrippedRepresentation {
+            case normal
+            case highlighted
+            case disabled
+        } 
+
+        extension ControlStateStripped {
+            public var hashValue: Int {
+                return rawValue.hashValue
+            }
+
+        }
+
+        extension ControlState: Hashable {
+            public var hashValue: Int {
+                return stripped.hashValue
+            }
+        }
+        extension ControlState: AssociatedValueStrippable {
+        	public static func == (lhs: ControlState, rhs: ControlState) -> Bool {
+        	    return lhs.stripped == rhs.stripped
+        	}
+            public typealias Stripped = ControlStateStripped
+            public var stripped: Stripped {
+        		switch self {
+        			 case .normal:
+        				return .normal
+        			 case .highlighted:
+        				return .highlighted
+        			 case .disabled:
+        				return .disabled
+        		}
+        	}
+        }
+
         extension LayoutPriority: AssociatedValueEnumExtractor {
-            var associatedValue: Any? {
+            public var associatedValue: Any? {
                 switch self {
                             case .required: return nil
                             case .low: return nil
@@ -63,11 +136,11 @@ public protocol AssociatedValueStrippable: Equatable {
             }
         }
         extension LayoutPriority: AssociatedValueStrippable {
-        	static func == (lhs: LayoutPriority, rhs: LayoutPriority) -> Bool {
+        	public static func == (lhs: LayoutPriority, rhs: LayoutPriority) -> Bool {
         	    return lhs.stripped == rhs.stripped
         	}
-            typealias Stripped = LayoutPriorityStripped
-            var stripped: Stripped {
+            public typealias Stripped = LayoutPriorityStripped
+            public var stripped: Stripped {
         		switch self {
         			 case .required:
         				return .required
@@ -82,7 +155,7 @@ public protocol AssociatedValueStrippable: Equatable {
         }
 
         extension ViewAttribute: AssociatedValueEnumExtractor {
-            var associatedValue: Any? {
+            public var associatedValue: Any? {
                 switch self {
                                 case .custom(let custom):
                                     return custom
@@ -369,11 +442,11 @@ public protocol AssociatedValueStrippable: Equatable {
             }
         }
         extension ViewAttribute: AssociatedValueStrippable {
-        	static func == (lhs: ViewAttribute, rhs: ViewAttribute) -> Bool {
+        	public static func == (lhs: ViewAttribute, rhs: ViewAttribute) -> Bool {
         	    return lhs.stripped == rhs.stripped
         	}
-            typealias Stripped = ViewAttributeStripped
-            var stripped: Stripped {
+            public typealias Stripped = ViewAttributeStripped
+            public var stripped: Stripped {
         		switch self {
         			 case .custom:
         				return .custom

@@ -1,14 +1,14 @@
 //
 //  TextHolder.swift
-//  Breeze
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
-//  Copyright © 2017 Nordic Choice Hotels. All rights reserved.
+//  Created by Alexander Cyon on 2017-05-31.
+//
 //
 
 import Foundation
 
-protocol TextHolder: class {
+public protocol TextHolder: class {
     var textProxy: String? { get set }
     var textColorProxy: UIColor? { get set }
     var fontProxy: UIFont? { get set }
@@ -21,7 +21,7 @@ protocol TextHolder: class {
     func setCase(_ `case`: Case)
 }
 
-extension TextHolder {
+public extension TextHolder {
     
     func setText(_ text: String?) {
         textProxy = text
@@ -54,88 +54,88 @@ extension TextHolder {
 
 
 extension UILabel: TextHolder {
-    var textAlignmentProxy: NSTextAlignment {
+    public var textAlignmentProxy: NSTextAlignment {
         get { return textAlignment }
         set { textAlignment = newValue }
     }
     
-    var fontProxy: UIFont? {
+    public var fontProxy: UIFont? {
         get { return font }
         set { font = newValue }
     }
     
-    var textProxy: String? {
+    public var textProxy: String? {
         get { return text }
         set { text = newValue }
     }
     
-    var textColorProxy: UIColor? {
+    public var textColorProxy: UIColor? {
         get { return textColor }
         set { textColor = newValue }
     }
 }
 
 extension UITextField: TextHolder {
-    var textAlignmentProxy: NSTextAlignment {
+    public var textAlignmentProxy: NSTextAlignment {
         get { return textAlignment }
         set { textAlignment = newValue }
     }
     
-    var fontProxy: UIFont? {
+    public var fontProxy: UIFont? {
         get { return font }
         set { font = newValue }
     }
     
-    var textProxy: String? {
+    public var textProxy: String? {
         get { return text }
         set { text = newValue }
     }
     
-    var textColorProxy: UIColor? {
+    public var textColorProxy: UIColor? {
         get { return textColor }
         set { textColor = newValue }
     }
 }
 
 extension UITextView: TextHolder {
-    var textAlignmentProxy: NSTextAlignment {
+    public var textAlignmentProxy: NSTextAlignment {
         get { return textAlignment }
         set { textAlignment = newValue }
     }
     
-    var fontProxy: UIFont? {
+    public var fontProxy: UIFont? {
         get { return font }
         set { font = newValue }
     }
     
-    var textProxy: String? {
+    public var textProxy: String? {
         get { return text }
         set { text = newValue }
     }
     
-    var textColorProxy: UIColor? {
+    public var textColorProxy: UIColor? {
         get { return textColor }
         set { textColor = newValue }
     }
 }
 
 extension UIButton: TextHolder {
-    var textAlignmentProxy: NSTextAlignment {
+    public var textAlignmentProxy: NSTextAlignment {
         get { guard let label = titleLabel else { return .left }; return label.textAlignment }
         set { titleLabel?.textAlignment = newValue }
     }
     
-    var fontProxy: UIFont? {
+    public var fontProxy: UIFont? {
         get { return titleLabel?.font }
         set { titleLabel?.font = newValue }
     }
     
-    var textProxy: String? {
+    public var textProxy: String? {
         get { return titleLabel?.text }
         set { setTitle(newValue, for: .normal) }
     }
     
-    var textColorProxy: UIColor? {
+    public var textColorProxy: UIColor? {
         get { return titleLabel?.textColor }
         set { setTitleColor(newValue, for: .normal) }
     }

@@ -8,24 +8,24 @@
 
 import UIKit
 
-struct ViewStyle: Attributed {
-    typealias Attribute = ViewAttribute
-    typealias Element = ViewAttribute
+public struct ViewStyle: Attributed {
+    public typealias Attribute = ViewAttribute
+    public typealias Element = ViewAttribute
 
-    var startIndex: Int = 0
+    public var startIndex: Int = 0
     
-    let attributes: [ViewAttribute]
+    public let attributes: [ViewAttribute]
     
-    init(_ attributes: [ViewAttribute]) {
+    public init(_ attributes: [ViewAttribute]) {
         self.attributes = attributes
     }
     
-    init(arrayLiteral elements: ViewAttribute...) {
+    public init(arrayLiteral elements: ViewAttribute...) {
         self.attributes = elements
     }
 }
 
-extension Attributed {
+public extension Attributed {
     func value<AssociatedValue>(_ stripped: Attribute.Stripped) -> AssociatedValue? {
         return attributes.associatedValue(stripped)
     }
@@ -35,7 +35,7 @@ extension Attributed {
     }
 }
 
-extension ViewStyle {
+public extension ViewStyle {
     func install<S: Styleable>(on styleable: S) {
         guard let view = styleable as? UIView else { fatalError("not a view") }
         if let control = view as? UIControl {

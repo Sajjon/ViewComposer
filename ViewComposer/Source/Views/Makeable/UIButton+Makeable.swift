@@ -10,10 +10,8 @@ import Foundation
 
 extension UIButton: Makeable {
     public typealias Style = ViewStyle
-    public typealias Styled = UIButton
-    public static func make(_ attributes: [Style.Attribute]) -> UIButton {
-        let button = UIButton(frame: .zero)
-        button.setup(with: ViewStyle(attributes))
-        return button
+    public static func createEmpty() -> UIButton {
+        return UIButton(frame: .zero)
+        
     }
 }

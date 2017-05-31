@@ -1,14 +1,14 @@
 //
 //  ImageHolder.swift
-//  Breeze
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
-//  Copyright © 2017 Nordic Choice Hotels. All rights reserved.
+//  Created by Alexander Cyon on 2017-05-31.
+//
 //
 
 import UIKit
 
-protocol ImageHolder: class {
+public protocol ImageHolder: class {
     var imageProxy: UIImage? { get set}
 }
 
@@ -27,14 +27,14 @@ extension ImageHolder {
 }
 
 extension UIImageView: ImageHolder {
-    var imageProxy: UIImage? {
+    public var imageProxy: UIImage? {
         get { return image }
         set { image = newValue }
     }
 }
 
 extension UIButton: ImageHolder {
-    var imageProxy: UIImage? {
+    public var imageProxy: UIImage? {
         get { return self.image(for: .normal) }
         set { setImage(newValue, for: .normal) }
     }

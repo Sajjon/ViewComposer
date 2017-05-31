@@ -1,28 +1,28 @@
 //
 //  Case.swift
-//  Breeze
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
-//  Copyright © 2017 Nordic Choice Hotels. All rights reserved.
+//  Created by Alexander Cyon on 2017-05-31.
+//
 //
 
 import Foundation
 
-enum Case {
+public enum Case {
     case lowerCaseAll
     case upperCaseAll
     case upperCaseFirst
     case lowerCaseFirst
 }
 
-extension Case {
+public extension Case {
     func apply(to text: String?) -> String? {
         guard let text = text else { return nil }
         return translated(from: text)
     }
 }
 
-private extension Case {
+public extension Case {
     func translated(from text: String) -> String {
         switch self {
         case .lowerCaseAll:
@@ -37,7 +37,7 @@ private extension Case {
     }
 }
 
-extension String {
+public extension String {
     func upperCasingFirstLetter() -> String {
         let first = String(characters.prefix(1)).capitalized
         let other = String(characters.dropFirst())

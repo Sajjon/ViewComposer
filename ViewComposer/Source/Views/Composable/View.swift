@@ -8,20 +8,23 @@
 
 import Foundation
 
-class View: UIView {
-    let style: ViewStyle
+open class MyView: UIView, Composable {
+    public func setupSubviews(with style: ViewStyle) {
+        print("remove this")
+    }
 
-    required init(_ style: ViewStyle? = nil) {
+    public typealias Style = ViewStyle
+    open let style: ViewStyle
+
+    required public init(_ style: ViewStyle? = nil) {
         let style = style.merge(slave: .default)
         self.style = style
         super.init(frame: .zero)
-        setup(with: style)
+        compose(with: style)
     }
     
-    required init?(coder: NSCoder) { requiredInit() }
+    required public init?(coder: NSCoder) { requiredInit() }
 }
-
-extension View: Styleable {}
 
 private extension ViewStyle {
     @nonobjc static let `default`: ViewStyle = [.backgroundColor(.clear)]

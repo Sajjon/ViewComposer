@@ -25,19 +25,14 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
 
 
 
+// 
+
 	// MARK: - Actor AutoEquatable
 	extension Actor: Equatable {} 
-		internal func == (lhs: Actor, rhs: Actor) -> Bool {
+		public func == (lhs: Actor, rhs: Actor) -> Bool {
 	guard lhs.target == rhs.target else { return false }
 	guard lhs.selector == rhs.selector else { return false }
 	guard lhs.event == rhs.event else { return false }
-		return true
-	}
-	// MARK: - State AutoEquatable
-	extension State: Equatable {} 
-		internal func == (lhs: State, rhs: State) -> Bool {
-	guard lhs.title == rhs.title else { return false }
-	guard compareOptionals(lhs: lhs.image, rhs: rhs.image, compare: ==) else { return false }
 		return true
 	}
 
@@ -47,22 +42,9 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
 		return true
 	}
 
-	// MARK: - ControlState AutoEquatable
-	extension ControlState: Equatable {}
-	internal func == (lhs: ControlState, rhs: ControlState) -> Bool {
-		switch (lhs, rhs) {
-					case (.normal(let leftAssociated), .normal(let rightAssociated)):
-							return leftAssociated == rightAssociated
-					case (.highlighted(let leftAssociated), .highlighted(let rightAssociated)):
-							return leftAssociated == rightAssociated
-					case (.disabled(let leftAssociated), .disabled(let rightAssociated)):
-							return leftAssociated == rightAssociated
-			default: return false 
-		}
-	}
 	// MARK: - Radius AutoEquatable
 	extension Radius: Equatable {}
-	internal func == (lhs: Radius, rhs: Radius) -> Bool {
+	public func == (lhs: Radius, rhs: Radius) -> Bool {
 		switch (lhs, rhs) {
 					case (.rounded, .rounded):
 						return true

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4816818C1EDD53EE004E3DD0 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481681821EDD53EE004E3DD0 /* ViewComposer.framework */; };
-		481681911EDD53EE004E3DD0 /* ViewComposerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481681901EDD53EE004E3DD0 /* ViewComposerTests.swift */; };
+		481681911EDD53EE004E3DD0 /* MakeableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481681901EDD53EE004E3DD0 /* MakeableTests.swift */; };
 		481681931EDD53EE004E3DD0 /* ViewComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 481681851EDD53EE004E3DD0 /* ViewComposer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		481681A51EDD5450004E3DD0 /* Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816819F1EDD544F004E3DD0 /* Attributed.swift */; };
 		481681A61EDD5450004E3DD0 /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481681A01EDD544F004E3DD0 /* Styleable.swift */; };
@@ -30,14 +30,20 @@
 		481681FD1EDD9664004E3DD0 /* AutoEquatable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481681F81EDD9664004E3DD0 /* AutoEquatable.generated.swift */; };
 		481681FE1EDD9664004E3DD0 /* AutoHashable.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 481681F91EDD9664004E3DD0 /* AutoHashable.generated.swift */; };
 		4816820B1EDDA864004E3DD0 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4816820A1EDDA864004E3DD0 /* Macros.swift */; };
-		48C112931EDECDDD00D17786 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1128C1EDECDDD00D17786 /* Button.swift */; };
-		48C112941EDECDDD00D17786 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1128D1EDECDDD00D17786 /* ImageView.swift */; };
-		48C112951EDECDDD00D17786 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1128E1EDECDDD00D17786 /* Label.swift */; };
-		48C112961EDECDDD00D17786 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1128F1EDECDDD00D17786 /* StackView.swift */; };
-		48C112971EDECDDD00D17786 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C112901EDECDDD00D17786 /* TextView.swift */; };
-		48C112981EDECDDD00D17786 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C112911EDECDDD00D17786 /* View.swift */; };
-		48C1129A1EDECDF300D17786 /* UIButton+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C112991EDECDF300D17786 /* UIButton+Makeable.swift */; };
 		48C1129D1EDED2BE00D17786 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 48C1129C1EDED2BE00D17786 /* Config.xcconfig */; };
+		48FB27561EDF054F008B4ABE /* UIButton+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB27551EDF054F008B4ABE /* UIButton+Makeable.swift */; };
+		48FB275A1EDF0646008B4ABE /* UILabel+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB27571EDF0646008B4ABE /* UILabel+Makeable.swift */; };
+		48FB275B1EDF0646008B4ABE /* UIStackView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB27581EDF0646008B4ABE /* UIStackView+Makeable.swift */; };
+		48FB275E1EDF087D008B4ABE /* BaseXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB275D1EDF087D008B4ABE /* BaseXCTest.swift */; };
+		48FB27661EDF66FD008B4ABE /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1128C1EDECDDD00D17786 /* Button.swift */; };
+		48FB27681EDF66FD008B4ABE /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1128E1EDECDDD00D17786 /* Label.swift */; };
+		48FB27691EDF66FD008B4ABE /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1128F1EDECDDD00D17786 /* StackView.swift */; };
+		48FB276B1EDF67C8008B4ABE /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C1128D1EDECDDD00D17786 /* ImageView.swift */; };
+		48FB276D1EDF685D008B4ABE /* UIImageView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB276C1EDF685D008B4ABE /* UIImageView+Makeable.swift */; };
+		48FB276F1EDF6A14008B4ABE /* UITextField+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB276E1EDF6A14008B4ABE /* UITextField+Makeable.swift */; };
+		48FB27701EDF6A2E008B4ABE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C112901EDECDDD00D17786 /* TextView.swift */; };
+		48FB27721EDF6A59008B4ABE /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB27711EDF6A59008B4ABE /* TextField.swift */; };
+		48FB27741EDF6A7D008B4ABE /* UITextView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB27731EDF6A7D008B4ABE /* UITextView+Makeable.swift */; };
 		58A276593784FDED9DBBB41B /* Pods_ViewComposerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */; };
 		D03D14DF06693096BB6E0E5F /* Pods_ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F34C092F993FD8DECC1E76 /* Pods_ViewComposer.framework */; };
 /* End PBXBuildFile section */
@@ -59,7 +65,7 @@
 		481681851EDD53EE004E3DD0 /* ViewComposer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewComposer.h; sourceTree = "<group>"; };
 		481681861EDD53EE004E3DD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4816818B1EDD53EE004E3DD0 /* ViewComposerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewComposerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		481681901EDD53EE004E3DD0 /* ViewComposerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewComposerTests.swift; sourceTree = "<group>"; };
+		481681901EDD53EE004E3DD0 /* MakeableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeableTests.swift; sourceTree = "<group>"; };
 		481681921EDD53EE004E3DD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4816819F1EDD544F004E3DD0 /* Attributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributed.swift; sourceTree = "<group>"; };
 		481681A01EDD544F004E3DD0 /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
@@ -92,8 +98,15 @@
 		48C1128F1EDECDDD00D17786 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		48C112901EDECDDD00D17786 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		48C112911EDECDDD00D17786 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
-		48C112991EDECDF300D17786 /* UIButton+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Makeable.swift"; sourceTree = "<group>"; };
 		48C1129C1EDED2BE00D17786 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		48FB27551EDF054F008B4ABE /* UIButton+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Makeable.swift"; sourceTree = "<group>"; };
+		48FB27571EDF0646008B4ABE /* UILabel+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Makeable.swift"; sourceTree = "<group>"; };
+		48FB27581EDF0646008B4ABE /* UIStackView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+Makeable.swift"; sourceTree = "<group>"; };
+		48FB275D1EDF087D008B4ABE /* BaseXCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseXCTest.swift; sourceTree = "<group>"; };
+		48FB276C1EDF685D008B4ABE /* UIImageView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Makeable.swift"; sourceTree = "<group>"; };
+		48FB276E1EDF6A14008B4ABE /* UITextField+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Makeable.swift"; sourceTree = "<group>"; };
+		48FB27711EDF6A59008B4ABE /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		48FB27731EDF6A7D008B4ABE /* UITextView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Makeable.swift"; sourceTree = "<group>"; };
 		4C9A5DF6C0FB4A5BB8B1E1DF /* Pods-ViewComposerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests.release.xcconfig"; sourceTree = "<group>"; };
 		6011BAC9BF2B8073FF8CA0E5 /* Pods-ViewComposer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.release.xcconfig"; sourceTree = "<group>"; };
 		642A0EC1FB475445192D78FC /* Pods-ViewComposer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -167,8 +180,9 @@
 		4816818F1EDD53EE004E3DD0 /* ViewComposerTests */ = {
 			isa = PBXGroup;
 			children = (
-				481681901EDD53EE004E3DD0 /* ViewComposerTests.swift */,
+				481681901EDD53EE004E3DD0 /* MakeableTests.swift */,
 				481681921EDD53EE004E3DD0 /* Info.plist */,
+				48FB275D1EDF087D008B4ABE /* BaseXCTest.swift */,
 			);
 			path = ViewComposerTests;
 			sourceTree = "<group>";
@@ -279,6 +293,7 @@
 				48C1128F1EDECDDD00D17786 /* StackView.swift */,
 				48C112901EDECDDD00D17786 /* TextView.swift */,
 				48C112911EDECDDD00D17786 /* View.swift */,
+				48FB27711EDF6A59008B4ABE /* TextField.swift */,
 			);
 			path = Composable;
 			sourceTree = "<group>";
@@ -286,7 +301,12 @@
 		48C112921EDECDDD00D17786 /* Makeable */ = {
 			isa = PBXGroup;
 			children = (
-				48C112991EDECDF300D17786 /* UIButton+Makeable.swift */,
+				48FB276C1EDF685D008B4ABE /* UIImageView+Makeable.swift */,
+				48FB27571EDF0646008B4ABE /* UILabel+Makeable.swift */,
+				48FB27581EDF0646008B4ABE /* UIStackView+Makeable.swift */,
+				48FB27551EDF054F008B4ABE /* UIButton+Makeable.swift */,
+				48FB276E1EDF6A14008B4ABE /* UITextField+Makeable.swift */,
+				48FB27731EDF6A7D008B4ABE /* UITextView+Makeable.swift */,
 			);
 			path = Makeable;
 			sourceTree = "<group>";
@@ -516,31 +536,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48C112981EDECDDD00D17786 /* View.swift in Sources */,
 				481681FD1EDD9664004E3DD0 /* AutoEquatable.generated.swift in Sources */,
 				4816820B1EDDA864004E3DD0 /* Macros.swift in Sources */,
 				481681D61EDD6B0A004E3DD0 /* ControlState.swift in Sources */,
 				481681FC1EDD9664004E3DD0 /* AutoCustomStringConvertible.generated.swift in Sources */,
-				48C112941EDECDDD00D17786 /* ImageView.swift in Sources */,
 				481681A71EDD5450004E3DD0 /* ViewAttribute.swift in Sources */,
 				481681D71EDD6B0A004E3DD0 /* ControlStateHolder.swift in Sources */,
+				48FB276D1EDF685D008B4ABE /* UIImageView+Makeable.swift in Sources */,
 				481681A51EDD5450004E3DD0 /* Attributed.swift in Sources */,
-				48C112931EDECDDD00D17786 /* Button.swift in Sources */,
-				48C1129A1EDECDF300D17786 /* UIButton+Makeable.swift in Sources */,
+				48FB27561EDF054F008B4ABE /* UIButton+Makeable.swift in Sources */,
+				48FB27701EDF6A2E008B4ABE /* TextView.swift in Sources */,
 				481681D31EDD6B0A004E3DD0 /* Actor.swift in Sources */,
 				481681FB1EDD9664004E3DD0 /* AutoComparable.generated.swift in Sources */,
-				48C112961EDECDDD00D17786 /* StackView.swift in Sources */,
-				48C112951EDECDDD00D17786 /* Label.swift in Sources */,
+				48FB275B1EDF0646008B4ABE /* UIStackView+Makeable.swift in Sources */,
 				481681C81EDD6A4B004E3DD0 /* ViewStyle.swift in Sources */,
-				48C112971EDECDDD00D17786 /* TextView.swift in Sources */,
+				48FB275A1EDF0646008B4ABE /* UILabel+Makeable.swift in Sources */,
+				48FB27741EDF6A7D008B4ABE /* UITextView+Makeable.swift in Sources */,
+				48FB27691EDF66FD008B4ABE /* StackView.swift in Sources */,
 				481681DA1EDD6B0A004E3DD0 /* Radius.swift in Sources */,
 				481681FA1EDD9664004E3DD0 /* AutoAssociatedValueEnum.generated.swift in Sources */,
 				481681DB1EDD6B0A004E3DD0 /* TextHolder.swift in Sources */,
 				481681EA1EDD9447004E3DD0 /* SourceryRules.swift in Sources */,
+				48FB27681EDF66FD008B4ABE /* Label.swift in Sources */,
+				48FB27721EDF6A59008B4ABE /* TextField.swift in Sources */,
 				481681D91EDD6B0A004E3DD0 /* LayoutPriority.swift in Sources */,
 				481681D81EDD6B0A004E3DD0 /* ImageHolder.swift in Sources */,
+				48FB27661EDF66FD008B4ABE /* Button.swift in Sources */,
 				481681D51EDD6B0A004E3DD0 /* ConstraintAttribute.swift in Sources */,
+				48FB276F1EDF6A14008B4ABE /* UITextField+Makeable.swift in Sources */,
 				481681D41EDD6B0A004E3DD0 /* Case.swift in Sources */,
+				48FB276B1EDF67C8008B4ABE /* ImageView.swift in Sources */,
 				481681FE1EDD9664004E3DD0 /* AutoHashable.generated.swift in Sources */,
 				481681A61EDD5450004E3DD0 /* Styleable.swift in Sources */,
 			);
@@ -550,7 +575,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				481681911EDD53EE004E3DD0 /* ViewComposerTests.swift in Sources */,
+				481681911EDD53EE004E3DD0 /* MakeableTests.swift in Sources */,
+				48FB275E1EDF087D008B4ABE /* BaseXCTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,28 +8,20 @@
 
 import Foundation
 
-final class ImageView: UIImageView {
+open class ImageView: UIImageView, Composable {
     
-    let style: ViewStyle
+    open let style: ViewStyle
     
-    init(_ style: ViewStyle? = nil) {
+    required public init(_ style: ViewStyle? = nil) {
         let style = style.merge(slave: .default)
         self.style = style
         super.init(frame: .zero)
-        setup(with: style)
+        compose(with: style)
     }
     
-    required init?(coder: NSCoder) { requiredInit() }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layoutSubviews(with: style)
-    }
+    required public init?(coder: NSCoder) { requiredInit() }
 }
-
-extension ImageView: Styleable {}
 
 private extension ViewStyle {
     @nonobjc static let `default`: ViewStyle = []
 }
-

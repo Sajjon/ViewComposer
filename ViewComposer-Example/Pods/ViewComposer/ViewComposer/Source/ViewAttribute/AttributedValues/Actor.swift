@@ -1,20 +1,20 @@
 //
 //  Actor.swift
-//  Breeze
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2017-05-29.
-//  Copyright © 2017 Nordic Choice Hotels. All rights reserved.
+//  Created by Alexander Cyon on 2017-05-31.
+//
 //
 
 import Foundation
 
-struct Actor {
+public struct Actor {
     let target: NSObject
     let selector: Selector
     let event: UIControlEvents
 }
 
-extension NSObject {
+public extension NSObject {
     func target(_ selector: Selector, event: UIControlEvents = .primaryActionTriggered) -> Actor {
         return Actor(target: self, selector: selector, event: event)
     }

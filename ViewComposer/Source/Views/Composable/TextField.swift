@@ -1,14 +1,14 @@
 //
-//  TextView.swift
+//  TextField.swift
 //  ViewComposer
 //
 //  Created by Alexander Cyon on 2017-05-31.
 //
 //
 
-import UIKit
+import Foundation
 
-open class TextView: UITextView, Composable {
+open class TextField: UITextView, Composable {
     
     open let style: ViewStyle
     
@@ -25,4 +25,3 @@ open class TextView: UITextView, Composable {
 private extension ViewStyle {
     @nonobjc static let `default`: ViewStyle = []
 }
-
