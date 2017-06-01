@@ -138,6 +138,19 @@ private extension ImageHolder {
     }
 }
 
+private extension PlaceholderOwner {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .placeholder(let placeholder):
+                setPlaceholder(placeholder)
+            default:
+                break
+            }
+        }
+    }
+}
+
 private extension UIStackView {
     func apply(_ style: ViewStyle) {
         style.attributes.forEach {

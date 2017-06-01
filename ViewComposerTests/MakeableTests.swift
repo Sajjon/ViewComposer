@@ -11,11 +11,6 @@ import XCTest
 
 class ViewComposerTests: XCTestCase {
     
-    let text: String = "foobar"
-    let isHidden = true
-    let color: UIColor = .red
-    let cornerRadius: CGFloat = 3.1415
-    
     func style(includeColor: Bool = true) -> ViewStyle {
         var attributes: [ViewAttribute] = [.isHidden(isHidden), .cornerRadius(cornerRadius), .text(text)]
         
@@ -57,8 +52,6 @@ class ViewComposerTests: XCTestCase {
         assertIs(label.text, is: text)
     }
     
-    let spacing: CGFloat = 42
-    let arrangedSubviews: [UIView] = [UILabel(), UIView(), UIButton()]
     func testStackView() {
         
         let attributes: [ViewAttribute] = [.spacing(spacing), .arrangedSubviews(arrangedSubviews)]
@@ -79,6 +72,15 @@ class ViewComposerTests: XCTestCase {
         assertIs(hiddenLabel.isHidden, is: true)
         let label: Label = style() <<- [.isHidden(false)]
         assertIs(label.isHidden, is: false)
+    }
+    
+    func testComposableButton() {
+        let buttonTitleNormal = "press me"
+        let buttonImageNormal = UIImage()
+        let states: [ControlState] = [.normal(buttonTitleNormal, buttonImageNormal)]
+        let button = Button(style().merge(master: [.states(states)]))
+        assertIs(button.title(for: .normal), is: buttonTitleNormal)
+        assertIs(button.image(for: .normal), is: buttonImageNormal)
     }
     
 }

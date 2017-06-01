@@ -22,79 +22,6 @@ public protocol AssociatedValueStrippable: Equatable {
     var stripped: Stripped { get }
 }
 
-        extension ControlState: AssociatedValueEnumExtractor {
-            public var associatedValue: Any? {
-                switch self {
-                                case .normal(let normal):
-                                    return normal
-                                case .highlighted(let highlighted):
-                                    return highlighted
-                                case .disabled(let disabled):
-                                    return disabled
-                }
-            }
-
-                    var normal: StateRepresentation? {
-                        switch self {
-                            case .normal(let normal):
-                                return normal
-                            default:
-                                return nil
-                        }
-                    }
-                    var highlighted: StateRepresentation? {
-                        switch self {
-                            case .highlighted(let highlighted):
-                                return highlighted
-                            default:
-                                return nil
-                        }
-                    }
-                    var disabled: StateRepresentation? {
-                        switch self {
-                            case .disabled(let disabled):
-                                return disabled
-                            default:
-                                return nil
-                        }
-                    }
-        }
-
-        public enum ControlStateStripped: String, StrippedRepresentation {
-            case normal
-            case highlighted
-            case disabled
-        } 
-
-        extension ControlStateStripped {
-            public var hashValue: Int {
-                return rawValue.hashValue
-            }
-
-        }
-
-        extension ControlState: Hashable {
-            public var hashValue: Int {
-                return stripped.hashValue
-            }
-        }
-        extension ControlState: AssociatedValueStrippable {
-        	public static func == (lhs: ControlState, rhs: ControlState) -> Bool {
-        	    return lhs.stripped == rhs.stripped
-        	}
-            public typealias Stripped = ControlStateStripped
-            public var stripped: Stripped {
-        		switch self {
-        			 case .normal:
-        				return .normal
-        			 case .highlighted:
-        				return .highlighted
-        			 case .disabled:
-        				return .disabled
-        		}
-        	}
-        }
-
         extension LayoutPriority: AssociatedValueEnumExtractor {
             public var associatedValue: Any? {
                 switch self {
@@ -191,6 +118,8 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return `case`
                                 case .textAlignment(let textAlignment):
                                     return textAlignment
+                                case .placeholder(let placeholder):
+                                    return placeholder
                                 case .image(let image):
                                     return image
                                 case .isScrollEnabled(let isScrollEnabled):
@@ -350,6 +279,14 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
+                    var placeholder: String? {
+                        switch self {
+                            case .placeholder(let placeholder):
+                                return placeholder
+                            default:
+                                return nil
+                        }
+                    }
                     var image: UIImage? {
                         switch self {
                             case .image(let image):
@@ -450,6 +387,7 @@ public protocol AssociatedValueStrippable: Equatable {
             case textColor
             case `case`
             case textAlignment
+            case placeholder
             case image
             case isScrollEnabled
             case states
@@ -515,6 +453,8 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .`case`
         			 case .textAlignment:
         				return .textAlignment
+        			 case .placeholder:
+        				return .placeholder
         			 case .image:
         				return .image
         			 case .isScrollEnabled:

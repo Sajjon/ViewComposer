@@ -31,6 +31,9 @@ public enum ViewAttribute {
     case `case`(Case)
     case textAlignment(NSTextAlignment)
     
+    // PlaceholderOwner
+    case placeholder(String)
+    
     // ImageHolder
     case image(UIImage)
     

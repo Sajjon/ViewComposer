@@ -44,6 +44,8 @@
 		48FB27701EDF6A2E008B4ABE /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48C112901EDECDDD00D17786 /* TextView.swift */; };
 		48FB27721EDF6A59008B4ABE /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB27711EDF6A59008B4ABE /* TextField.swift */; };
 		48FB27741EDF6A7D008B4ABE /* UITextView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB27731EDF6A7D008B4ABE /* UITextView+Makeable.swift */; };
+		48FB27791EDFEADA008B4ABE /* PlaceholderOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB27781EDFEADA008B4ABE /* PlaceholderOwner.swift */; };
+		48FB277B1EDFEE9C008B4ABE /* MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FB277A1EDFEE9C008B4ABE /* MergeTests.swift */; };
 		58A276593784FDED9DBBB41B /* Pods_ViewComposerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */; };
 		D03D14DF06693096BB6E0E5F /* Pods_ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F34C092F993FD8DECC1E76 /* Pods_ViewComposer.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,8 @@
 		48FB276E1EDF6A14008B4ABE /* UITextField+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+Makeable.swift"; sourceTree = "<group>"; };
 		48FB27711EDF6A59008B4ABE /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		48FB27731EDF6A7D008B4ABE /* UITextView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Makeable.swift"; sourceTree = "<group>"; };
+		48FB27781EDFEADA008B4ABE /* PlaceholderOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderOwner.swift; sourceTree = "<group>"; };
+		48FB277A1EDFEE9C008B4ABE /* MergeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeTests.swift; sourceTree = "<group>"; };
 		4C9A5DF6C0FB4A5BB8B1E1DF /* Pods-ViewComposerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests.release.xcconfig"; sourceTree = "<group>"; };
 		6011BAC9BF2B8073FF8CA0E5 /* Pods-ViewComposer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.release.xcconfig"; sourceTree = "<group>"; };
 		642A0EC1FB475445192D78FC /* Pods-ViewComposer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -183,6 +187,7 @@
 				481681901EDD53EE004E3DD0 /* MakeableTests.swift */,
 				481681921EDD53EE004E3DD0 /* Info.plist */,
 				48FB275D1EDF087D008B4ABE /* BaseXCTest.swift */,
+				48FB277A1EDFEE9C008B4ABE /* MergeTests.swift */,
 			);
 			path = ViewComposerTests;
 			sourceTree = "<group>";
@@ -229,6 +234,7 @@
 				481681D01EDD6B0A004E3DD0 /* LayoutPriority.swift */,
 				481681D11EDD6B0A004E3DD0 /* Radius.swift */,
 				481681D21EDD6B0A004E3DD0 /* TextHolder.swift */,
+				48FB27781EDFEADA008B4ABE /* PlaceholderOwner.swift */,
 			);
 			path = AttributedValues;
 			sourceTree = "<group>";
@@ -558,6 +564,7 @@
 				481681DB1EDD6B0A004E3DD0 /* TextHolder.swift in Sources */,
 				481681EA1EDD9447004E3DD0 /* SourceryRules.swift in Sources */,
 				48FB27681EDF66FD008B4ABE /* Label.swift in Sources */,
+				48FB27791EDFEADA008B4ABE /* PlaceholderOwner.swift in Sources */,
 				48FB27721EDF6A59008B4ABE /* TextField.swift in Sources */,
 				481681D91EDD6B0A004E3DD0 /* LayoutPriority.swift in Sources */,
 				481681D81EDD6B0A004E3DD0 /* ImageHolder.swift in Sources */,
@@ -575,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48FB277B1EDFEE9C008B4ABE /* MergeTests.swift in Sources */,
 				481681911EDD53EE004E3DD0 /* MakeableTests.swift in Sources */,
 				48FB275E1EDF087D008B4ABE /* BaseXCTest.swift in Sources */,
 			);

@@ -31,8 +31,6 @@ extension Radius: AutoHashable {}
 extension UIControlEvents: AutoEquatablePublic {}
 extension UIControlEvents: AutoHashablePublic {}
 
-extension ControlState: AutoAssociatedValueEnum {}
-
 extension LayoutPriority: AutoAssociatedValueEnum {}
 
 extension ViewAttribute: AutoAssociatedValueEnum {}

@@ -11,9 +11,9 @@ import UIKit
 
 public typealias StateRepresentation = (String?, UIImage?)
 public enum ControlState {
-    case normal(StateRepresentation)
-    case highlighted(StateRepresentation)
-    case disabled(StateRepresentation)
+    case normal(String?, UIImage?)
+    case highlighted(String?, UIImage?)
+    case disabled(String?, UIImage?)
 }
 
 public extension ControlState {

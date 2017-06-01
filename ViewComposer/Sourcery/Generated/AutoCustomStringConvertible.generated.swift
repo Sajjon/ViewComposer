@@ -40,6 +40,8 @@
 							return "`case`: \(value)" 
 						case .textAlignment(let value):
 							return "textAlignment: \(value)" 
+						case .placeholder(let value):
+							return "placeholder: \(value)" 
 						case .image(let value):
 							return "image: \(value)" 
 						case .isScrollEnabled(let value):
