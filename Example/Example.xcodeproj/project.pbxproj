@@ -10,7 +10,6 @@
 		482B89111EE00C4C00C97D42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B890B1EE00C4C00C97D42 /* AppDelegate.swift */; };
 		482B89121EE00C4C00C97D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482B890C1EE00C4C00C97D42 /* Assets.xcassets */; };
 		482B89131EE00C4C00C97D42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482B890D1EE00C4C00C97D42 /* LaunchScreen.storyboard */; };
-		482B89141EE00C4C00C97D42 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 482B890F1EE00C4C00C97D42 /* Info.plist */; };
 		482B89151EE00C4C00C97D42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89101EE00C4C00C97D42 /* ViewController.swift */; };
 		48F4F4031EE01007003005B9 /* Pods_ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4F4021EE01007003005B9 /* Pods_ViewComposer.framework */; };
 		48F4F4041EE0100F003005B9 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4F3FC1EE00FF4003005B9 /* ViewComposer.framework */; };
@@ -247,7 +246,6 @@
 			files = (
 				482B89121EE00C4C00C97D42 /* Assets.xcassets in Resources */,
 				482B89131EE00C4C00C97D42 /* LaunchScreen.storyboard in Resources */,
-				482B89141EE00C4C00C97D42 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
