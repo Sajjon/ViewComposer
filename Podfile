@@ -21,7 +21,7 @@ post_install do |installer|
             puts "Updating #{target.name}"
             target.build_configurations.each do |config|
                 xcconfig_path = config.base_configuration_reference.real_path
-                to_write = "#include \"../../../ViewComposer/Configuration/Config.xcconfig\"\n\n"
+                to_write = "#include \"../../../Source/Configuration/Config.xcconfig\"\n\n"
                 xcconfig_contents = ""
                 File.open(xcconfig_path, 'r') do |fd|
                     xcconfig_contents = to_write << fd.read

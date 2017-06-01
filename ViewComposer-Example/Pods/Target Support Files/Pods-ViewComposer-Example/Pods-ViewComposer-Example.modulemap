@@ -1,6 +1,0 @@
-framework module Pods_ViewComposer_Example {
-  umbrella header "Pods-ViewComposer-Example-umbrella.h"
-
-  export *
-  module * { export * }
-}

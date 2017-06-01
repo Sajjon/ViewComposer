@@ -1,9 +1,9 @@
 sources:
-  - ViewComposer/Sourcery/Rules
-  - ViewComposer/Source
+  - Source/Sourcery/Rules
+  - Source/Classes
 templates:
-  - ViewComposer/Sourcery/Templates
-output: ViewComposer/Sourcery/Generated
+  - Source/Sourcery/Templates
+output: Source/Sourcery/Generated
 args:
  --disableCache: true
  --prune: true
