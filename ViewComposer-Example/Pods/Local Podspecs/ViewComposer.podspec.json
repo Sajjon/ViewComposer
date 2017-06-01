@@ -10,13 +10,14 @@
   },
   "social_media_url": "https://twitter.com/Redrum_237",
   "source": {
-    "http": "https://github.com/sajjon/ViewComposer/releases/download/0.1.0/viewcomposer-0.1.0.zip"
+    "git": "https://github.com/Sajjon/ViewComposer.git",
+    "tag": "0.1.0"
   },
-  "preserve_paths": "*",
+  "source_files": [
+    "ViewComposer/Source/**/*.swift",
+    "ViewComposer/Sourcery/Generated/*.swift"
+  ],
   "platforms": {
-    "osx": null,
-    "ios": null,
-    "tvos": null,
-    "watchos": null
+    "ios": "9.0"
   }
 }

@@ -61,6 +61,18 @@ class ViewComposerTests: XCTestCase {
         assertIs(stackView.arrangedSubviews.count, is: arrangedSubviews.count)
     }
     
+    func testButton() {
+        let button1: UIButton = .make([.states([.normal(text, nil), .highlighted("hej", image)]), .backgroundColor(color)])
+        assertIs(button1.title(for: .normal), is: text)
+        assertIs(button1.backgroundColor, is: color)
+        assertIs(button1.title(for: .highlighted), is: "hej")
+        assertIs(button1.image(for: .highlighted), is: image)
+        
+        let button2: UIButton = .make([.text(text), .backgroundColor(color)])
+        assertIs(button2.title(for: .normal), is: text)
+        assertIs(button2.backgroundColor, is: color)
+    }
+    
     func testComposableStackView() {
         let stackView: StackView = style() <<- [.spacing(spacing), .arrangedSubviews(arrangedSubviews)]
         assertIs(stackView.arrangedSubviews.count, is: arrangedSubviews.count)
@@ -81,6 +93,9 @@ class ViewComposerTests: XCTestCase {
         let button = Button(style().merge(master: [.states(states)]))
         assertIs(button.title(for: .normal), is: buttonTitleNormal)
         assertIs(button.image(for: .normal), is: buttonImageNormal)
+        
+        let button2: Button = [.text(text)]
+        assertIs(button2.title(for: .normal), is: text)
     }
     
 }

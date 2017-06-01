@@ -18,12 +18,6 @@ extension ImageHolder {
         imageProxy = image
         return self
     }
-    
-//    @discardableResult
-//    func setImage(_ image: Asset?) -> Self {
-//        imageProxy = image?.image
-//        return self
-//    }
 }
 
 extension UIImageView: ImageHolder {

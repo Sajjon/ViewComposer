@@ -13,9 +13,8 @@ public protocol TextHolder: class {
     var textColorProxy: UIColor? { get set }
     var fontProxy: UIFont? { get set }
     var textAlignmentProxy: NSTextAlignment { get set }
-//    @discardableResult func setText(_ text: L10n) -> Self
     func setText(_ text: String?)
-//    @discardableResult func setFont(_ font: Font) -> Self
+    func setFont(_ font: UIFont)
     func setTextColor(_ textColor: UIColor)
     func setTextAlignment(_ textAlignment: NSTextAlignment)
     func setCase(_ `case`: Case)
@@ -27,17 +26,9 @@ public extension TextHolder {
         textProxy = text
     }
     
-//    @discardableResult
-//    func setText(_ text: L10n) -> Self {
-//        setText(text.string)
-//        return self
-//    }
-//    
-//    @discardableResult
-//    func setFont(_ font: Font) -> Self {
-//        fontProxy = font.font
-//        return self
-//    }
+    func setFont(_ font: UIFont) {
+        fontProxy = font
+    }
     
     func setTextColor(_ textColor: UIColor) {
         textColorProxy = textColor

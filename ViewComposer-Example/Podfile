@@ -4,5 +4,5 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'ViewComposer-Example' do
-  pod 'ViewComposer'
+  pod 'ViewComposer', :git => 'https://github.com/Sajjon/ViewComposer.git'
 end

@@ -2,11 +2,20 @@ PODS:
   - ViewComposer (0.1.0)
 
 DEPENDENCIES:
-  - ViewComposer
+  - ViewComposer (from `https://github.com/Sajjon/ViewComposer.git`)
+
+EXTERNAL SOURCES:
+  ViewComposer:
+    :git: https://github.com/Sajjon/ViewComposer.git
+
+CHECKOUT OPTIONS:
+  ViewComposer:
+    :commit: e4aa77e850ace2044c021019c917a9c048fbb240
+    :git: https://github.com/Sajjon/ViewComposer.git
 
 SPEC CHECKSUMS:
-  ViewComposer: 8863570a3589f555cfe2bd96e1476615725913ca
+  ViewComposer: de711d4855de139fc7809a414668abad485fbf7b
 
-PODFILE CHECKSUM: b2e8527c6bb2b87fe8e0aced3fa6db6fbb1d54ab
+PODFILE CHECKSUM: 8f006e221851459dc1d5590213ccd62b57b27f4f
 
 COCOAPODS: 1.2.1

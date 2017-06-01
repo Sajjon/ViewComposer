@@ -14,6 +14,7 @@ let isHidden = true
 let color: UIColor = .red
 let cornerRadius: CGFloat = 3.1415
 let spacing: CGFloat = 42
+let image = UIImage()
 let arrangedSubviews: [UIView] = [UILabel(), UIView(), UIButton()]
 
 func assertIs<Value: Equatable>(_ optional: Value?, `is` expected: Value) {
