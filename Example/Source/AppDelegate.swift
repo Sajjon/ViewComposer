@@ -28,7 +28,7 @@ private extension AppDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         window.backgroundColor = UIColor.white
-        window.rootViewController = ViewController(nibName: nil, bundle: nil)
+        window.rootViewController = LabelsViewController(nibName: nil, bundle: nil)
         self.window = window
     }
 }

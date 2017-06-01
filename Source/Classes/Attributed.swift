@@ -20,6 +20,8 @@ public protocol Attributed: Collection, ExpressibleByArrayLiteral, AnyAttributed
     
     func merge(slave: [Attribute]) -> Self
     func merge(master: [Attribute]) -> Self
+    func merge(slave: Attribute) -> Self
+    func merge(master: Attribute) -> Self
     func merge(slave: Self) -> Self
     func merge(master: Self) -> Self
     
@@ -71,8 +73,16 @@ public extension Attributed {
         return merge(slave: Self(slave))
     }
     
+    func merge(slave: Attribute) -> Self {
+        return merge(slave: Self([slave]))
+    }
+    
     func merge(master: [Attribute]) -> Self {
         return Self(master).merge(slave: self)
+    }
+    
+    func merge(master: Attribute) -> Self {
+        return Self([master]).merge(slave: self)
     }
     
     func merge(slave: Self) -> Self {

@@ -70,13 +70,22 @@ precedencegroup StyleablePrecedence {
 }
 
 infix operator <<- : StyleablePrecedence
+public func <<- <A: Attributed, C: Composable>(attributed: A, attribute: A.Attribute) -> C where C.Style == A {
+    let style: A = attributed.merge(master: [attribute])
+    return C(style)
+}
 
 public func <<- <A: Attributed, C: Composable>(attributed: A, attributes: [A.Attribute]) -> C where C.Style == A {
     let style: A = attributed.merge(master: attributes)
     return C(style)
 }
 
+
 infix operator <- : StyleablePrecedence
+public func <- <A: Attributed, C: Composable>(attributed: A, attribute: A.Attribute) -> C where C.Style == A {
+    let style: A = attributed.merge(slave: [attribute])
+    return C(style)
+}
 
 public func <- <A: Attributed, C: Composable>(attributed: A, attributes: [A.Attribute]) -> C where C.Style == A {
     let style: A = attributed.merge(slave: attributes)
