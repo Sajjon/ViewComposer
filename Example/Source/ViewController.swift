@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     private lazy var blueButton: UIButton = .make([.backgroundColor(.blue), .states([.normal("Blue", nil)]), .textColor(.red)])
     private lazy var buttons: UIStackView = .make([.arrangedSubviews([self.redButton, self.blueButton]), .distribution(.fillEqually)])
     
-    private lazy var yellowButton: UIButton = .make([.backgroundColor(.yellow), .height(50), .text("Yellow"), .textColor(.red)])
+    private lazy var yellowButton: UIButton = .make([.backgroundColor(.yellow), .text("Yellow"), .textColor(.red)])
     private lazy var label: UILabel = .make([.text("Hey ViewComposer user"), .textAlignment(.center)])
     
     fileprivate lazy var stackView: StackView = [.arrangedSubviews([self.buttons, self.yellowButton, self.label]), .axis(.vertical), .distribution(.fillEqually)]

@@ -11,7 +11,6 @@
 		482B89121EE00C4C00C97D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482B890C1EE00C4C00C97D42 /* Assets.xcassets */; };
 		482B89131EE00C4C00C97D42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482B890D1EE00C4C00C97D42 /* LaunchScreen.storyboard */; };
 		482B89151EE00C4C00C97D42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89101EE00C4C00C97D42 /* ViewController.swift */; };
-		48F4F4031EE01007003005B9 /* Pods_ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4F4021EE01007003005B9 /* Pods_ViewComposer.framework */; };
 		48F4F4041EE0100F003005B9 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4F3FC1EE00FF4003005B9 /* ViewComposer.framework */; };
 /* End PBXBuildFile section */
 
@@ -37,27 +36,6 @@
 			remoteGlobalIDString = 481681811EDD53EE004E3DD0;
 			remoteInfo = ViewComposer;
 		};
-		48F4F40A1EE0102F003005B9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 48F4F4051EE0102F003005B9 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 420A9D22DA480119DFD458CF10A8BC52;
-			remoteInfo = "Pods-ViewComposer";
-		};
-		48F4F40C1EE0102F003005B9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 48F4F4051EE0102F003005B9 /* Pods.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = E9413233A1BF9013C7B75B196D95C9EA;
-			remoteInfo = "Pods-ViewComposerTests";
-		};
-		48F4F40E1EE01037003005B9 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 48F4F4051EE0102F003005B9 /* Pods.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 7D92A5681E3D97EF1F297DD32011DF87;
-			remoteInfo = "Pods-ViewComposer";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -69,7 +47,6 @@
 		482B89101EE00C4C00C97D42 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		48F4F3F61EE00FF4003005B9 /* ViewComposer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ViewComposer.xcodeproj; path = ../ViewComposer.xcodeproj; sourceTree = "<group>"; };
 		48F4F4021EE01007003005B9 /* Pods_ViewComposer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_ViewComposer.framework; path = "/Users/sajjon/Developer/iOS/ViewComposer/Pods/../build/Debug-iphoneos/Pods_ViewComposer.framework"; sourceTree = "<absolute>"; };
-		48F4F4051EE0102F003005B9 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = ../Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +55,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F4F4041EE0100F003005B9 /* ViewComposer.framework in Frameworks */,
-				48F4F4031EE01007003005B9 /* Pods_ViewComposer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,7 +64,6 @@
 		481681A81EDD54A5004E3DD0 = {
 			isa = PBXGroup;
 			children = (
-				48F4F4051EE0102F003005B9 /* Pods.xcodeproj */,
 				48F4F3F61EE00FF4003005B9 /* ViewComposer.xcodeproj */,
 				482B890A1EE00C4C00C97D42 /* Source */,
 				481681B21EDD54A5004E3DD0 /* Products */,
@@ -133,15 +108,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		48F4F4061EE0102F003005B9 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				48F4F40B1EE0102F003005B9 /* Pods_ViewComposer.framework */,
-				48F4F40D1EE0102F003005B9 /* Pods_ViewComposerTests.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -156,7 +122,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				48F4F40F1EE01037003005B9 /* PBXTargetDependency */,
 				48F4F4001EE00FFF003005B9 /* PBXTargetDependency */,
 			);
 			name = Example;
@@ -193,10 +158,6 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
-					ProductGroup = 48F4F4061EE0102F003005B9 /* Products */;
-					ProjectRef = 48F4F4051EE0102F003005B9 /* Pods.xcodeproj */;
-				},
-				{
 					ProductGroup = 48F4F3F71EE00FF4003005B9 /* Products */;
 					ProjectRef = 48F4F3F61EE00FF4003005B9 /* ViewComposer.xcodeproj */;
 				},
@@ -221,20 +182,6 @@
 			fileType = wrapper.cfbundle;
 			path = ViewComposerTests.xctest;
 			remoteRef = 48F4F3FD1EE00FF4003005B9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		48F4F40B1EE0102F003005B9 /* Pods_ViewComposer.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Pods_ViewComposer.framework;
-			remoteRef = 48F4F40A1EE0102F003005B9 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		48F4F40D1EE0102F003005B9 /* Pods_ViewComposerTests.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Pods_ViewComposerTests.framework;
-			remoteRef = 48F4F40C1EE0102F003005B9 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -268,11 +215,6 @@
 			isa = PBXTargetDependency;
 			name = ViewComposer;
 			targetProxy = 48F4F3FF1EE00FFF003005B9 /* PBXContainerItemProxy */;
-		};
-		48F4F40F1EE01037003005B9 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Pods-ViewComposer";
-			targetProxy = 48F4F40E1EE01037003005B9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
