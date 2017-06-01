@@ -8,51 +8,24 @@
 
 import Foundation
 
+
 public protocol Styleable {
     associatedtype Style: Attributed
     func setup(with style: Style)
 }
 
-public protocol EmptyInitializable {
+public protocol Makeable: Styleable {
     associatedtype Styled
-    static func createEmpty() -> Styled
-}
-
-public protocol Makeable: EmptyInitializable, Styleable {
     static func make(_ attributes: [Style.Attribute]) -> Styled
-    func postMake(_ style: Style)
-}
-
-extension Makeable {
-    
-    public func postMake(_ style: Style) {}
-    
-    public static func make(_ attributes: [Style.Attribute]) -> Styled {
-        let style = Style(attributes)
-        return make(style)
-    }
-    
-    public static func make(_ style: Style) -> Styled {
-        let view: Styled = createEmpty()
-        if let selfStylable = view as? Self {
-            selfStylable.setup(with: style)
-            selfStylable.postMake(style)
-        }
-        return view
-    }
 }
 
 public protocol Composable: Styleable, ExpressibleByArrayLiteral {
+    associatedtype Element = Style.Element
     init(_ style: Style?)
-    func setupSubviews(with style: Style)
-}
 
-extension Composable {
-    public func setupSubviews(with style: Style) {}
 }
 
 public extension Composable {
-    typealias Element = Style.Element
     init(arrayLiteral elements: Style.Attribute...) {
         self.init(Style(elements))
     }
@@ -60,7 +33,6 @@ public extension Composable {
 
 public extension Styleable {
     func setup(with style: Style) {
-        print("`\(self)` is calling func `setup` inside `public extension Styleable`")
         style.install(on: self)
     }
 }
@@ -83,36 +55,32 @@ public func <- <A: Attributed, C: Composable>(attributed: A, attributes: [A.Attr
     return C(style)
 }
 
-public extension Composable where Self: UIView, Style == ViewStyle {
-    func compose(with style: Style) {
-        setup(with: style)
-        setupSubviews(with: style)
-    }
-}
 
-public extension Styleable where Self: UIView, Style == ViewStyle {
-    func setup(with style: Style) {
+public extension Styleable where Self: UIView {
+    func setup(with style: ViewStyle) {
         translatesAutoresizingMaskIntoConstraints = false
         style.install(on: self)
+        customSetup(with: style)
         setupConstraints(with: style)
     }
     
+    func customSetup(with style: ViewStyle) {}
     
-    func layoutSubviews(with style: Style) {
+    func layoutSubviews(with style: ViewStyle) {
         privateLayoutSubviews(with: style)
         customLayoutSubviews(with: style)
     }
     
-    func customLayoutSubviews(with style: Style) {}
+    func customLayoutSubviews(with style: ViewStyle) {}
 }
 
-public extension Styleable where Self: UIView, Style == ViewStyle {
-    func privateLayoutSubviews(with style: Style) {
+public extension Styleable where Self: UIView {
+    func privateLayoutSubviews(with style: ViewStyle) {
         guard let radius: Radius = style.value(.radius) else { return }
         setupRadius(radius)
     }
     
-    func setupConstraints(with style: Style) {
+    func setupConstraints(with style: ViewStyle) {
         if let height: CGFloat = style.value(.height) {
             addConstraint(heightAnchor.constraint(equalToConstant: height))
         }

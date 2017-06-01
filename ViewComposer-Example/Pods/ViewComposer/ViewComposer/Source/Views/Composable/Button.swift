@@ -8,24 +8,26 @@
 
 import UIKit
 
-open class Button: UIButton, Composable {
+final class Button: UIButton {
     
-    open let style: ViewStyle
+    let style: ViewStyle
     
-    required public init(_ style: ViewStyle? = nil) {
+    init(_ style: ViewStyle? = nil) {
         let style = style.merge(slave: .default)
         self.style = style
         super.init(frame: .zero)
         setup(with: style)
     }
     
-    required public init?(coder: NSCoder) { requiredInit() }
+    required init?(coder: NSCoder) { requiredInit() }
     
-    override open func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         layoutSubviews(with: style)
     }
 }
+
+extension Button: Composable {}
 
 private extension ViewStyle {
     @nonobjc static let `default`: ViewStyle = [.radius(.rounded), .verticalHugging(.high), .verticalCompression(.high)]

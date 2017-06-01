@@ -22,6 +22,79 @@ public protocol AssociatedValueStrippable: Equatable {
     var stripped: Stripped { get }
 }
 
+        extension ControlState: AssociatedValueEnumExtractor {
+            public var associatedValue: Any? {
+                switch self {
+                                case .normal(let normal):
+                                    return normal
+                                case .highlighted(let highlighted):
+                                    return highlighted
+                                case .disabled(let disabled):
+                                    return disabled
+                }
+            }
+
+                    var normal: StateRepresentation? {
+                        switch self {
+                            case .normal(let normal):
+                                return normal
+                            default:
+                                return nil
+                        }
+                    }
+                    var highlighted: StateRepresentation? {
+                        switch self {
+                            case .highlighted(let highlighted):
+                                return highlighted
+                            default:
+                                return nil
+                        }
+                    }
+                    var disabled: StateRepresentation? {
+                        switch self {
+                            case .disabled(let disabled):
+                                return disabled
+                            default:
+                                return nil
+                        }
+                    }
+        }
+
+        public enum ControlStateStripped: String, StrippedRepresentation {
+            case normal
+            case highlighted
+            case disabled
+        } 
+
+        extension ControlStateStripped {
+            public var hashValue: Int {
+                return rawValue.hashValue
+            }
+
+        }
+
+        extension ControlState: Hashable {
+            public var hashValue: Int {
+                return stripped.hashValue
+            }
+        }
+        extension ControlState: AssociatedValueStrippable {
+        	public static func == (lhs: ControlState, rhs: ControlState) -> Bool {
+        	    return lhs.stripped == rhs.stripped
+        	}
+            public typealias Stripped = ControlStateStripped
+            public var stripped: Stripped {
+        		switch self {
+        			 case .normal:
+        				return .normal
+        			 case .highlighted:
+        				return .highlighted
+        			 case .disabled:
+        				return .disabled
+        		}
+        	}
+        }
+
         extension LayoutPriority: AssociatedValueEnumExtractor {
             public var associatedValue: Any? {
                 switch self {
@@ -86,8 +159,6 @@ public protocol AssociatedValueStrippable: Equatable {
                 switch self {
                                 case .custom(let custom):
                                     return custom
-                                case .isHidden(let isHidden):
-                                    return isHidden
                                 case .backgroundColor(let backgroundColor):
                                     return backgroundColor
                                 case .cornerRadius(let cornerRadius):
@@ -102,24 +173,18 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return horizontalHugging
                                 case .horizontalCompression(let horizontalCompression):
                                     return horizontalCompression
-                                case .contentMode(let contentMode):
-                                    return contentMode
                                 case .height(let height):
                                     return height
                                 case .width(let width):
                                     return width
                                 case .text(let text):
                                     return text
-                                case .font(let font):
-                                    return font
                                 case .textColor(let textColor):
                                     return textColor
                                 case .`case`(let `case`):
                                     return `case`
                                 case .textAlignment(let textAlignment):
                                     return textAlignment
-                                case .placeholder(let placeholder):
-                                    return placeholder
                                 case .image(let image):
                                     return image
                                 case .isScrollEnabled(let isScrollEnabled):
@@ -147,14 +212,6 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .custom(let custom):
                                 return custom
-                            default:
-                                return nil
-                        }
-                    }
-                    var isHidden: Bool? {
-                        switch self {
-                            case .isHidden(let isHidden):
-                                return isHidden
                             default:
                                 return nil
                         }
@@ -215,14 +272,6 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
-                    var contentMode: UIViewContentMode? {
-                        switch self {
-                            case .contentMode(let contentMode):
-                                return contentMode
-                            default:
-                                return nil
-                        }
-                    }
                     var height: CGFloat? {
                         switch self {
                             case .height(let height):
@@ -247,14 +296,6 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
-                    var font: UIFont? {
-                        switch self {
-                            case .font(let font):
-                                return font
-                            default:
-                                return nil
-                        }
-                    }
                     var textColor: UIColor? {
                         switch self {
                             case .textColor(let textColor):
@@ -275,14 +316,6 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .textAlignment(let textAlignment):
                                 return textAlignment
-                            default:
-                                return nil
-                        }
-                    }
-                    var placeholder: String? {
-                        switch self {
-                            case .placeholder(let placeholder):
-                                return placeholder
                             default:
                                 return nil
                         }
@@ -371,7 +404,6 @@ public protocol AssociatedValueStrippable: Equatable {
 
         public enum ViewAttributeStripped: String, StrippedRepresentation {
             case custom
-            case isHidden
             case backgroundColor
             case cornerRadius
             case radius
@@ -379,15 +411,12 @@ public protocol AssociatedValueStrippable: Equatable {
             case verticalCompression
             case horizontalHugging
             case horizontalCompression
-            case contentMode
             case height
             case width
             case text
-            case font
             case textColor
             case `case`
             case textAlignment
-            case placeholder
             case image
             case isScrollEnabled
             case states
@@ -421,8 +450,6 @@ public protocol AssociatedValueStrippable: Equatable {
         		switch self {
         			 case .custom:
         				return .custom
-        			 case .isHidden:
-        				return .isHidden
         			 case .backgroundColor:
         				return .backgroundColor
         			 case .cornerRadius:
@@ -437,24 +464,18 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .horizontalHugging
         			 case .horizontalCompression:
         				return .horizontalCompression
-        			 case .contentMode:
-        				return .contentMode
         			 case .height:
         				return .height
         			 case .width:
         				return .width
         			 case .text:
         				return .text
-        			 case .font:
-        				return .font
         			 case .textColor:
         				return .textColor
         			 case .`case`:
         				return .`case`
         			 case .textAlignment:
         				return .textAlignment
-        			 case .placeholder:
-        				return .placeholder
         			 case .image:
         				return .image
         			 case .isScrollEnabled:

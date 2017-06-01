@@ -8,19 +8,21 @@
 
 import UIKit
 
-open class TextView: UITextView, Composable {
+final class TextView: UITextView {
     
-    open let style: ViewStyle
+    let style: ViewStyle
     
-    required public init(_ style: ViewStyle? = nil) {
+    init(_ style: ViewStyle? = nil) {
         let style = style.merge(slave: .default)
         self.style = style
         super.init(frame: .zero, textContainer: nil)
-        compose(with: style)
+        setup(with: style)
     }
     
-    required public init?(coder: NSCoder) { requiredInit() }
+    required init?(coder: NSCoder) { requiredInit() }
 }
+
+extension TextView: Styleable {}
 
 private extension ViewStyle {
     @nonobjc static let `default`: ViewStyle = []

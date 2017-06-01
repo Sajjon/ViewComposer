@@ -66,8 +66,6 @@ public extension ViewStyle {
         attributes.forEach {
             switch $0 {
             // All UIViews
-            case .isHidden(let isHidden):
-                view.isHidden = isHidden
             case .backgroundColor(let color):
                 view.backgroundColor = color
             case .cornerRadius(let radius):
@@ -81,8 +79,6 @@ public extension ViewStyle {
                 view.setContentHuggingPriority(prio.value, for: .horizontal)
             case .horizontalCompression(let prio):
                 view.setContentCompressionResistancePriority(prio.value, for: .horizontal)
-            case .contentMode(let contentMode):
-                view.contentMode = contentMode
             default:
                 break
             }
@@ -108,12 +104,14 @@ private extension TextHolder {
     func apply(_ style: ViewStyle) {
         style.attributes.forEach {
             switch $0 {
-            case .font(let font):
-                setFont(font)
+//            case .font(let font):
+//                setFont(font)
             case .textColor(let textColor):
                 setTextColor(textColor)
             case .text(let text):
                 setText(text)
+//            case .l10n(let text):
+//                setText(text)
             case .textAlignment(let textAlignment):
                 setTextAlignment(textAlignment)
             case .case(let `case`):
@@ -131,19 +129,8 @@ private extension ImageHolder {
             switch $0 {
             case .image(let image):
                 setImage(image)
-            default:
-                break
-            }
-        }
-    }
-}
-
-private extension PlaceholderOwner {
-    func apply(_ style: ViewStyle) {
-        style.attributes.forEach {
-            switch $0 {
-            case .placeholder(let placeholder):
-                setPlaceholder(placeholder)
+//            case .asset(let image):
+//                setImage(image)
             default:
                 break
             }
