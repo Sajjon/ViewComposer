@@ -13,7 +13,6 @@ private let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center), 
 class LabelsViewController: UIViewController, StackViewOwner {
     
     private lazy var fooLabel: Label = labelStyle <<- .text("Foo")
-    private lazy var someLabel = Label(labelStyle.merge(master: .text("Hi")))
     private lazy var barLabel: Label = labelStyle <<- [.text("Bar"), .textColor(.blue), .backgroundColor(.red)]
     private lazy var bazLabel: Label = labelStyle <<- [.text("Baz"), .textAlignment(.left), .backgroundColor(.green), .font(.boldSystemFont(ofSize: 45))]
     
