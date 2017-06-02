@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  NestedStackViewsViewController.swift
 //  ViewComposer-Example
 //
 //  Created by Alexander Cyon on 2017-05-30.
@@ -9,7 +9,7 @@
 import UIKit
 import ViewComposer
 
-class ViewController: UIViewController, StackViewOwner {
+class NestedStackViewsViewController: UIViewController, StackViewOwner {
     private lazy var redButton = UIButton.make([.backgroundColor(.red), .text("Red"), .textColor(.blue)])
     private lazy var blueButton: UIButton = .make([.backgroundColor(.blue), .states([.normal("Blue", nil)]), .textColor(.red)])
     private lazy var buttons: UIStackView = .make([.arrangedSubviews([self.redButton, self.blueButton]), .distribution(.fillEqually)])
@@ -18,6 +18,15 @@ class ViewController: UIViewController, StackViewOwner {
     private lazy var label: UILabel = .make([.text("Hey ViewComposer user"), .textAlignment(.center)])
     
     lazy var stackView: UIStackView = .make([.arrangedSubviews([self.buttons, self.yellowButton, self.label]), .axis(.vertical), .distribution(.fillEqually)])
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = .white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

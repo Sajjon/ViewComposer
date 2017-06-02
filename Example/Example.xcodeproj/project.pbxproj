@@ -10,9 +10,11 @@
 		482B89111EE00C4C00C97D42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B890B1EE00C4C00C97D42 /* AppDelegate.swift */; };
 		482B89121EE00C4C00C97D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482B890C1EE00C4C00C97D42 /* Assets.xcassets */; };
 		482B89131EE00C4C00C97D42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482B890D1EE00C4C00C97D42 /* LaunchScreen.storyboard */; };
-		482B89151EE00C4C00C97D42 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89101EE00C4C00C97D42 /* ViewController.swift */; };
-		4846CEB51EE034CB00E84C91 /* VanillaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEB41EE034CB00E84C91 /* VanillaViewController.swift */; };
-		4846CEB81EE034FB00E84C91 /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEB71EE034FB00E84C91 /* LabelsViewController.swift */; };
+		4846CED01EE16B9F00E84C91 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEC91EE16B9F00E84C91 /* TableViewController.swift */; };
+		4846CED11EE16B9F00E84C91 /* VanillaLabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CECB1EE16B9F00E84C91 /* VanillaLabelsViewController.swift */; };
+		4846CED21EE16B9F00E84C91 /* VanillaNestedStackViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CECC1EE16B9F00E84C91 /* VanillaNestedStackViewsViewController.swift */; };
+		4846CED31EE16B9F00E84C91 /* LabelsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CECE1EE16B9F00E84C91 /* LabelsViewController.swift */; };
+		4846CED41EE16B9F00E84C91 /* NestedStackViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CECF1EE16B9F00E84C91 /* NestedStackViewsViewController.swift */; };
 		48F4F4041EE0100F003005B9 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4F3FC1EE00FF4003005B9 /* ViewComposer.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,9 +48,11 @@
 		482B890C1EE00C4C00C97D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482B890E1EE00C4C00C97D42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		482B890F1EE00C4C00C97D42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		482B89101EE00C4C00C97D42 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		4846CEB41EE034CB00E84C91 /* VanillaViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VanillaViewController.swift; sourceTree = "<group>"; };
-		4846CEB71EE034FB00E84C91 /* LabelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
+		4846CEC91EE16B9F00E84C91 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		4846CECB1EE16B9F00E84C91 /* VanillaLabelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VanillaLabelsViewController.swift; sourceTree = "<group>"; };
+		4846CECC1EE16B9F00E84C91 /* VanillaNestedStackViewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VanillaNestedStackViewsViewController.swift; sourceTree = "<group>"; };
+		4846CECE1EE16B9F00E84C91 /* LabelsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelsViewController.swift; sourceTree = "<group>"; };
+		4846CECF1EE16B9F00E84C91 /* NestedStackViewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedStackViewsViewController.swift; sourceTree = "<group>"; };
 		48F4F3F61EE00FF4003005B9 /* ViewComposer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ViewComposer.xcodeproj; path = ../ViewComposer.xcodeproj; sourceTree = "<group>"; };
 		48F4F4021EE01007003005B9 /* Pods_ViewComposer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_ViewComposer.framework; path = "/Users/sajjon/Developer/iOS/ViewComposer/Pods/../build/Debug-iphoneos/Pods_ViewComposer.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -86,15 +90,41 @@
 		482B890A1EE00C4C00C97D42 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				4846CEC81EE16B9F00E84C91 /* ViewControllers */,
 				482B890B1EE00C4C00C97D42 /* AppDelegate.swift */,
 				482B890C1EE00C4C00C97D42 /* Assets.xcassets */,
 				482B890D1EE00C4C00C97D42 /* LaunchScreen.storyboard */,
 				482B890F1EE00C4C00C97D42 /* Info.plist */,
-				482B89101EE00C4C00C97D42 /* ViewController.swift */,
-				4846CEB41EE034CB00E84C91 /* VanillaViewController.swift */,
-				4846CEB71EE034FB00E84C91 /* LabelsViewController.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		4846CEC81EE16B9F00E84C91 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4846CEC91EE16B9F00E84C91 /* TableViewController.swift */,
+				4846CECA1EE16B9F00E84C91 /* Vanilla */,
+				4846CECD1EE16B9F00E84C91 /* ViewComposer */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4846CECA1EE16B9F00E84C91 /* Vanilla */ = {
+			isa = PBXGroup;
+			children = (
+				4846CECB1EE16B9F00E84C91 /* VanillaLabelsViewController.swift */,
+				4846CECC1EE16B9F00E84C91 /* VanillaNestedStackViewsViewController.swift */,
+			);
+			path = Vanilla;
+			sourceTree = "<group>";
+		};
+		4846CECD1EE16B9F00E84C91 /* ViewComposer */ = {
+			isa = PBXGroup;
+			children = (
+				4846CECE1EE16B9F00E84C91 /* LabelsViewController.swift */,
+				4846CECF1EE16B9F00E84C91 /* NestedStackViewsViewController.swift */,
+			);
+			path = ViewComposer;
 			sourceTree = "<group>";
 		};
 		48F4F3F71EE00FF4003005B9 /* Products */ = {
@@ -209,10 +239,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482B89151EE00C4C00C97D42 /* ViewController.swift in Sources */,
-				4846CEB51EE034CB00E84C91 /* VanillaViewController.swift in Sources */,
+				4846CED11EE16B9F00E84C91 /* VanillaLabelsViewController.swift in Sources */,
+				4846CED41EE16B9F00E84C91 /* NestedStackViewsViewController.swift in Sources */,
 				482B89111EE00C4C00C97D42 /* AppDelegate.swift in Sources */,
-				4846CEB81EE034FB00E84C91 /* LabelsViewController.swift in Sources */,
+				4846CED01EE16B9F00E84C91 /* TableViewController.swift in Sources */,
+				4846CED21EE16B9F00E84C91 /* VanillaNestedStackViewsViewController.swift in Sources */,
+				4846CED31EE16B9F00E84C91 /* LabelsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
