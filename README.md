@@ -17,6 +17,15 @@ Or use the subclass `Label`, to declare the view using array literals:
 let label: Label = [.text("Hello World"), .textColor(.red)]
 ```
 
+We are styling our views using an array of the enum type `ViewAttribute` which creates a type called `ViewStyle` which can be used to style our views. **Please note that the order of the attributes (enums) does not matter**:
+
+```swift
+let label: UILabel = .make([.text("Hello World"), .textColor(.red)])
+let label2: UILabel = .make([.textColor(.red), .text("Hello World")]) // identical to `label2` ORDER DOES NOT MATTER.
+```
+
+Even though it might be a good idea to use the same order in your app for consistency.
+
 The strength of styling views like this get especially clear when you look at a `UIViewController` example, and this isn't even a complicated ViewController.
 
 ```swift
@@ -29,7 +38,7 @@ class NestedStackViewsViewController: UIViewController {
     private lazy var yellowButton: UIButton = .make([.backgroundColor(.yellow), .text("Yellow"), .textColor(.red)])
     private lazy var label: UILabel = .make([.text("Hey ViewComposer user"), .textAlignment(.center)])
     
-    lazy var stackView: UIStackView = .make([.arrangedSubviews([self.buttons, self.yellowButton, self.label]), .axis(.vertical), .distribution(.fillEqually)])
+    lazy var stackView: StackView = [.arrangedSubviews([self.buttons, self.yellowButton, self.label]), .axis(.vertical), .distribution(.fillEqually)]
 
     ...
 }
@@ -146,7 +155,7 @@ class LabelsViewController: UIViewController {
     private lazy var barLabel: Label = labelStyle <<- [.text("Bar"), .textColor(.blue), .backgroundColor(.red)]
     private lazy var bazLabel: Label = labelStyle <<- [.text("Baz"), .textAlignment(.left), .backgroundColor(.green), .font(.boldSystemFont(ofSize: 45))]
     
-    lazy var stackView: UIStackView = .make([.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)])
+    lazy var stackView: StackView = .[.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)]
 }
 ```
 
@@ -188,10 +197,11 @@ class LabelsViewControllerVanilla: UIViewController {
     }()
     
     lazy var stackView: UIStackView = {
-        let buttons = UIStackView(arrangedSubviews: [self.fooLabel, self.barLabel, self.bazLabel])
-        buttons.distribution = .fillEqually
-        buttons.axis = .vertical
-        return buttons
+        let stackView = UIStackView(arrangedSubviews: [self.fooLabel, self.barLabel, self.bazLabel])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillEqually
+        stackView.axis = .vertical
+        return stackView
     }()
 }
 ```

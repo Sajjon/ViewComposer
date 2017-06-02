@@ -31,5 +31,6 @@ class NestedStackViewsViewController: UIViewController, StackViewOwner {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        title = "ViewComposer - Nested StackViews"
     }
 }

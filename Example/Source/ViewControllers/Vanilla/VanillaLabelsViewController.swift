@@ -62,5 +62,6 @@ class VanillaLabelsViewController: UIViewController, StackViewOwner {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        title = "Vanilla - Labels"
     }
 }

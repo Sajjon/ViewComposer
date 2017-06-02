@@ -13,7 +13,6 @@
 		482B894F1EE00C6500C97D42 /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B891A1EE00C6500C97D42 /* Styleable.swift */; };
 		482B89501EE00C6500C97D42 /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B891D1EE00C6500C97D42 /* Actor.swift */; };
 		482B89511EE00C6500C97D42 /* Case.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B891E1EE00C6500C97D42 /* Case.swift */; };
-		482B89521EE00C6500C97D42 /* ConstraintAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B891F1EE00C6500C97D42 /* ConstraintAttribute.swift */; };
 		482B89531EE00C6500C97D42 /* ControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89201EE00C6500C97D42 /* ControlState.swift */; };
 		482B89541EE00C6500C97D42 /* ControlStateHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89211EE00C6500C97D42 /* ControlStateHolder.swift */; };
 		482B89551EE00C6500C97D42 /* ImageHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89221EE00C6500C97D42 /* ImageHolder.swift */; };
@@ -28,7 +27,6 @@
 		482B895E1EE00C6500C97D42 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892D1EE00C6500C97D42 /* StackView.swift */; };
 		482B895F1EE00C6500C97D42 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892E1EE00C6500C97D42 /* TextField.swift */; };
 		482B89601EE00C6500C97D42 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892F1EE00C6500C97D42 /* TextView.swift */; };
-		482B89611EE00C6500C97D42 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89301EE00C6500C97D42 /* View.swift */; };
 		482B89621EE00C6500C97D42 /* UIButton+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89321EE00C6500C97D42 /* UIButton+Makeable.swift */; };
 		482B89631EE00C6500C97D42 /* UIImageView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89331EE00C6500C97D42 /* UIImageView+Makeable.swift */; };
 		482B89641EE00C6500C97D42 /* UILabel+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89341EE00C6500C97D42 /* UILabel+Makeable.swift */; };
@@ -52,6 +50,7 @@
 		482B897D1EE00C7100C97D42 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 482B89791EE00C7100C97D42 /* Info.plist */; };
 		482B897E1EE00C7100C97D42 /* MakeableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B897A1EE00C7100C97D42 /* MakeableTests.swift */; };
 		482B897F1EE00C7100C97D42 /* MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B897B1EE00C7100C97D42 /* MergeTests.swift */; };
+		4846CEDE1EE198A900E84C91 /* AnyAttributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEDD1EE198A900E84C91 /* AnyAttributed.swift */; };
 		58A276593784FDED9DBBB41B /* Pods_ViewComposerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */; };
 		D03D14DF06693096BB6E0E5F /* Pods_ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F34C092F993FD8DECC1E76 /* Pods_ViewComposer.framework */; };
 /* End PBXBuildFile section */
@@ -76,7 +75,6 @@
 		482B891A1EE00C6500C97D42 /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
 		482B891D1EE00C6500C97D42 /* Actor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		482B891E1EE00C6500C97D42 /* Case.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Case.swift; sourceTree = "<group>"; };
-		482B891F1EE00C6500C97D42 /* ConstraintAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintAttribute.swift; sourceTree = "<group>"; };
 		482B89201EE00C6500C97D42 /* ControlState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlState.swift; sourceTree = "<group>"; };
 		482B89211EE00C6500C97D42 /* ControlStateHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlStateHolder.swift; sourceTree = "<group>"; };
 		482B89221EE00C6500C97D42 /* ImageHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHolder.swift; sourceTree = "<group>"; };
@@ -91,7 +89,6 @@
 		482B892D1EE00C6500C97D42 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		482B892E1EE00C6500C97D42 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		482B892F1EE00C6500C97D42 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
-		482B89301EE00C6500C97D42 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		482B89321EE00C6500C97D42 /* UIButton+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Makeable.swift"; sourceTree = "<group>"; };
 		482B89331EE00C6500C97D42 /* UIImageView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Makeable.swift"; sourceTree = "<group>"; };
 		482B89341EE00C6500C97D42 /* UILabel+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Makeable.swift"; sourceTree = "<group>"; };
@@ -117,6 +114,7 @@
 		482B89791EE00C7100C97D42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482B897A1EE00C7100C97D42 /* MakeableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableTests.swift; sourceTree = "<group>"; };
 		482B897B1EE00C7100C97D42 /* MergeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeTests.swift; sourceTree = "<group>"; };
+		4846CEDD1EE198A900E84C91 /* AnyAttributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyAttributed.swift; sourceTree = "<group>"; };
 		4C9A5DF6C0FB4A5BB8B1E1DF /* Pods-ViewComposerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests.release.xcconfig"; sourceTree = "<group>"; };
 		6011BAC9BF2B8073FF8CA0E5 /* Pods-ViewComposer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.release.xcconfig"; sourceTree = "<group>"; };
 		642A0EC1FB475445192D78FC /* Pods-ViewComposer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +194,7 @@
 				482B891B1EE00C6500C97D42 /* ViewAttribute */,
 				482B89281EE00C6500C97D42 /* Views */,
 				482B89381EE00C6500C97D42 /* ViewStyle */,
+				4846CEDD1EE198A900E84C91 /* AnyAttributed.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -214,7 +213,6 @@
 			children = (
 				482B891D1EE00C6500C97D42 /* Actor.swift */,
 				482B891E1EE00C6500C97D42 /* Case.swift */,
-				482B891F1EE00C6500C97D42 /* ConstraintAttribute.swift */,
 				482B89201EE00C6500C97D42 /* ControlState.swift */,
 				482B89211EE00C6500C97D42 /* ControlStateHolder.swift */,
 				482B89221EE00C6500C97D42 /* ImageHolder.swift */,
@@ -244,7 +242,6 @@
 				482B892D1EE00C6500C97D42 /* StackView.swift */,
 				482B892E1EE00C6500C97D42 /* TextField.swift */,
 				482B892F1EE00C6500C97D42 /* TextView.swift */,
-				482B89301EE00C6500C97D42 /* View.swift */,
 			);
 			path = Composable;
 			sourceTree = "<group>";
@@ -562,7 +559,6 @@
 				482B894D1EE00C6500C97D42 /* Attributed.swift in Sources */,
 				482B89661EE00C6500C97D42 /* UITextField+Makeable.swift in Sources */,
 				482B89561EE00C6500C97D42 /* LayoutPriority.swift in Sources */,
-				482B89611EE00C6500C97D42 /* View.swift in Sources */,
 				482B895E1EE00C6500C97D42 /* StackView.swift in Sources */,
 				482B89591EE00C6500C97D42 /* TextHolder.swift in Sources */,
 				482B89541EE00C6500C97D42 /* ControlStateHolder.swift in Sources */,
@@ -570,10 +566,10 @@
 				482B89511EE00C6500C97D42 /* Case.swift in Sources */,
 				482B896D1EE00C6500C97D42 /* AutoCustomStringConvertible.generated.swift in Sources */,
 				482B896B1EE00C6500C97D42 /* AutoAssociatedValueEnum.generated.swift in Sources */,
+				4846CEDE1EE198A900E84C91 /* AnyAttributed.swift in Sources */,
 				482B89601EE00C6500C97D42 /* TextView.swift in Sources */,
 				482B895C1EE00C6500C97D42 /* ImageView.swift in Sources */,
 				482B89641EE00C6500C97D42 /* UILabel+Makeable.swift in Sources */,
-				482B89521EE00C6500C97D42 /* ConstraintAttribute.swift in Sources */,
 				482B895F1EE00C6500C97D42 /* TextField.swift in Sources */,
 				482B896F1EE00C6500C97D42 /* AutoHashable.generated.swift in Sources */,
 				482B89681EE00C6500C97D42 /* ViewStyle.swift in Sources */,

@@ -138,12 +138,16 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return spacing
                                 case .margin(let margin):
                                     return margin
+                                case .marginsRelative(let marginsRelative):
+                                    return marginsRelative
+                                case .baselineRelative(let baselineRelative):
+                                    return baselineRelative
                                 case .arrangedSubviews(let arrangedSubviews):
                                     return arrangedSubviews
                 }
             }
 
-                    var custom: AnyAttributed? {
+                    var custom: BaseAttributed? {
                         switch self {
                             case .custom(let custom):
                                 return custom
@@ -359,6 +363,22 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
+                    var marginsRelative: Bool? {
+                        switch self {
+                            case .marginsRelative(let marginsRelative):
+                                return marginsRelative
+                            default:
+                                return nil
+                        }
+                    }
+                    var baselineRelative: Bool? {
+                        switch self {
+                            case .baselineRelative(let baselineRelative):
+                                return baselineRelative
+                            default:
+                                return nil
+                        }
+                    }
                     var arrangedSubviews: [UIView]? {
                         switch self {
                             case .arrangedSubviews(let arrangedSubviews):
@@ -397,6 +417,8 @@ public protocol AssociatedValueStrippable: Equatable {
             case alignment
             case spacing
             case margin
+            case marginsRelative
+            case baselineRelative
             case arrangedSubviews
         } 
 
@@ -473,6 +495,10 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .spacing
         			 case .margin:
         				return .margin
+        			 case .marginsRelative:
+        				return .marginsRelative
+        			 case .baselineRelative:
+        				return .baselineRelative
         			 case .arrangedSubviews:
         				return .arrangedSubviews
         		}

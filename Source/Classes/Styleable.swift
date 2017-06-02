@@ -60,7 +60,6 @@ public extension Composable {
 
 public extension Styleable {
     func setup(with style: Style) {
-        print("`\(self)` is calling func `setup` inside `public extension Styleable`")
         style.install(on: self)
     }
 }
@@ -105,7 +104,6 @@ public extension Styleable where Self: UIView, Style == ViewStyle {
         style.install(on: self)
         setupConstraints(with: style)
     }
-    
     
     func layoutSubviews(with style: Style) {
         privateLayoutSubviews(with: style)

@@ -8,9 +8,27 @@
 
 import Foundation
 
-extension ViewAttribute {}
+public struct SomeStripped: StrippedRepresentation {
+    public typealias RawValue = String
+    public init(rawValue: String) { fatalError() }
+    public var rawValue: String { return "foo" }
+}
+
+extension SomeStripped: Equatable {
+    public static func == (lhs: SomeStripped, rhs: SomeStripped) -> Bool {
+        return lhs.rawValue == rhs.rawValue
+    }
+}
+
+extension SomeStripped: Hashable {
+    public var hashValue: Int {
+        return rawValue.hashValue
+    }
+}
+
 public enum ViewAttribute {
-    case custom(AnyAttributed)
+//    case customAttributed(AnyAttributed<Attribute>)// this would force `ViewAttribute` to be generic which creates a lot o problems
+    case custom(BaseAttributed)
     
     // View
     case isHidden(Bool)
@@ -52,8 +70,36 @@ public enum ViewAttribute {
     case alignment(UIStackViewAlignment)
     case spacing(CGFloat)
     case margin(CGFloat)
+    case marginsRelative(Bool)
+    case baselineRelative(Bool)
     case arrangedSubviews([UIView])
 }
+
+public extension Attributed where Attribute == ViewAttribute {
+    func merge(slave: Self) -> Self {
+        
+        if let custom: AnyAttributed<ViewAttribute> = self.value(.custom) {
+//            if let customAttributed = custom as? AnyAttributed<AnyStrippable<ViewAttributeStripped>> {
+//                print("custom is attributed: '\(customAttributed)'")
+//            } else {
+                print("found custom: `\(custom)`")
+//            }
+        }
+
+        let unionSet = Set(stripped).union(Set(slave.stripped))
+        let unionAttributes = (attributes + slave.attributes).filter(stripped: Array(unionSet))
+        return Self(unionAttributes)
+    }
+}
+
+//func cyon(_ sajjon: AnyAttributed) {
+//    print("such fail")
+//}
+//
+//func cyon(_ sajjon: Attributed) {
+//    print("epic win")
+//}
+
 
 public extension Array where Element == ViewAttribute {
     func merge(slave: [ViewAttribute]) -> [ViewAttribute] {

@@ -60,6 +60,10 @@
 							return "spacing: \(value)" 
 						case .margin(let value):
 							return "margin: \(value)" 
+						case .marginsRelative(let value):
+							return "marginsRelative: \(value)" 
+						case .baselineRelative(let value):
+							return "baselineRelative: \(value)" 
 						case .arrangedSubviews(let value):
 							return "arrangedSubviews: \(value)" 
 			}

@@ -30,5 +30,6 @@ class LabelsViewController: UIViewController, StackViewOwner {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        title = "ViewComposer - Labels"
     }
 }

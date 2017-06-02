@@ -8,22 +8,22 @@
 
 import Foundation
 
-public protocol AnyAttributed {
-    func install<S: Styleable>(on styleable: S)
+public protocol BaseAttributed {
+    func install(on styleable: Any)
 }
 
-public protocol Attributed: Collection, ExpressibleByArrayLiteral, AnyAttributed {
+public protocol Attributed: Collection, ExpressibleByArrayLiteral, BaseAttributed {
     associatedtype Attribute: AssociatedValueStrippable, AssociatedValueEnumExtractor
     var attributes: [Attribute] { get }
     init(_ attributes: [Attribute])
     associatedtype Element = Attribute
     
-    func merge(slave: [Attribute]) -> Self
-    func merge(master: [Attribute]) -> Self
-    func merge(slave: Attribute) -> Self
-    func merge(master: Attribute) -> Self
     func merge(slave: Self) -> Self
     func merge(master: Self) -> Self
+    func merge(slave: [Attribute]) -> Self
+    func merge(slave: Attribute) -> Self
+    func merge(master: [Attribute]) -> Self
+    func merge(master: Attribute) -> Self
     
     var startIndex: Int { get }
 }
@@ -55,6 +55,16 @@ public extension Attributed {
     var stripped: [Stripped] { return attributes.map { $0.stripped } }
 }
 
+public extension Attributed {
+    func value<AssociatedValue>(_ stripped: Attribute.Stripped) -> AssociatedValue? {
+        return attributes.associatedValue(stripped)
+    }
+
+    func contains(_ attribute: Attribute.Stripped) -> Bool {
+        return stripped.contains(attribute)
+    }
+}
+
 public extension Optional where Wrapped: Attributed {
     func merge(slave: Wrapped) -> Wrapped {
         guard let `self` = self else { return slave }
@@ -68,6 +78,16 @@ public extension Optional where Wrapped: Attributed {
 }
 
 public extension Attributed {
+    
+    func merge(slave: Self) -> Self {
+        let unionSet = Set(stripped).union(Set(slave.stripped))
+        let unionAttributes = (attributes + slave.attributes).filter(stripped: Array(unionSet))
+        return Self(unionAttributes)
+    }
+    
+    func merge(master: Self) -> Self {
+        return master.merge(slave: self)
+    }
     
     func merge(slave: [Attribute]) -> Self {
         return merge(slave: Self(slave))
@@ -85,17 +105,8 @@ public extension Attributed {
         return Self([master]).merge(slave: self)
     }
     
-    func merge(slave: Self) -> Self {
-        let unionSet = Set(stripped).union(Set(slave.stripped))
-        let unionAttributes = (attributes + slave.attributes).filter(stripped: Array(unionSet))
-        return Self(unionAttributes)
-    }
-    
-    func merge(master: Self) -> Self {
-        return master.merge(slave: self)
-    }
-}
 
+}
 
 public extension Array where Element: AssociatedValueStrippable {
     func filter(stripped: [Element.Stripped]) -> [Element] {

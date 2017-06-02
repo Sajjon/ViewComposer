@@ -16,7 +16,7 @@ open class Button: UIButton, Composable {
         let style = style.merge(slave: .default)
         self.style = style
         super.init(frame: .zero)
-        setup(with: style)
+        compose(with: style)
     }
     
     required public init?(coder: NSCoder) { requiredInit() }

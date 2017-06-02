@@ -20,7 +20,7 @@ final class TableViewController: UITableViewController {
 extension TableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,42 +44,34 @@ private extension TableViewController {
     }
     
     func didSelectRow(at indexPath: IndexPath) {
-        let alert = UIAlertController()
-        alert.addAction(actionForRow(at: indexPath, vanilla: true))
-        alert.addAction(actionForRow(at: indexPath, vanilla: false))
-        navigationController?.present(alert, animated: true, completion: nil)
+        let router = self.routerForRow(at: indexPath)
+        router.push(onto: navigationController)
     }
-    
-    func actionForRow(at indexPath: IndexPath, vanilla: Bool) -> UIAlertAction {
-        let title = vanilla ? "Vanilla" : "ViewComposer"
-        let action = UIAlertAction(title: title, style: .default) { _ in
-            let router = self.routerForRow(at: indexPath, vanilla: vanilla)
-            router.push(onto: self.navigationController)
-        }
-        return action
-    }
-    
-    func routerForRow(at indexPath: IndexPath, vanilla: Bool) -> NavigationRouter {
+
+    func routerForRow(at indexPath: IndexPath) -> NavigationRouter {
         let row = indexPath.row
-        let viewControllerType: UIViewController.Type
         switch row {
         case 0:
-            viewControllerType = vanilla ? VanillaNestedStackViewsViewController.self : NestedStackViewsViewController.self
+            return NavigationRouter(NestedStackViewsViewController.self, vanilla: VanillaNestedStackViewsViewController.self)
         case 1:
-            viewControllerType = vanilla ? VanillaLabelsViewController.self : LabelsViewController.self
+            return NavigationRouter(LabelsViewController.self, vanilla: VanillaLabelsViewController.self)
+        case 2:
+            return NavigationRouter(TriangleViewController.self)
         default:
             fatalError("oh no")
         }
-        return NavigationRouter(viewControllerType: viewControllerType)
+        
     }
     
     func titleForRow(at indexPath: IndexPath) -> String {
         let row = indexPath.row
         switch row {
         case 0:
-            return "Buttons"
+            return "Nested Stackviews"
         case 1:
             return "Labels"
+        case 2:
+            return "TriangleView (ViewComposer only)"
         default:
             fatalError("oh no")
         }
@@ -88,11 +80,34 @@ private extension TableViewController {
 
 struct NavigationRouter {
     
-    let viewControllerType: UIViewController.Type
+    let vanillaViewControllerType: UIViewController.Type?
+    let viewComposerViewControllerType: UIViewController.Type
+    
+    init(_ viewComposer: UIViewController.Type, vanilla: UIViewController.Type? = nil) {
+        self.viewComposerViewControllerType = viewComposer
+        self.vanillaViewControllerType = vanilla
+    }
     
     func push(onto navigationController: UINavigationController?) {
         guard let navigationController = navigationController else { return }
-        let viewController = viewControllerType.init()
-        navigationController.pushViewController(viewController, animated: true)
+        let viewComposerViewController = viewComposerViewControllerType.init()
+        if let vanilla = vanillaViewControllerType {
+            let alert = UIAlertController()
+            alert.addAction(actionForVanilla(true, viewController: vanilla.init(), navigationController: navigationController))
+            alert.addAction(actionForVanilla(false, viewController: viewComposerViewController, navigationController: navigationController))
+            navigationController.present(alert, animated: true, completion: nil)
+        } else {
+            navigationController.pushViewController(viewComposerViewController, animated: true)
+        }
     }
+    
+    
+    func actionForVanilla(_ vanilla: Bool, viewController: UIViewController, navigationController: UINavigationController) -> UIAlertAction {
+        let title = vanilla ? "Vanilla" : "ViewComposer"
+        let action = UIAlertAction(title: title, style: .default) { _ in
+            navigationController.pushViewController(viewController, animated: true)
+        }
+        return action
+    }
+    
 }

@@ -25,18 +25,8 @@ public struct ViewStyle: Attributed {
     }
 }
 
-public extension Attributed {
-    func value<AssociatedValue>(_ stripped: Attribute.Stripped) -> AssociatedValue? {
-        return attributes.associatedValue(stripped)
-    }
-    
-    func contains(_ attribute: Attribute.Stripped) -> Bool {
-        return stripped.contains(attribute)
-    }
-}
-
 public extension ViewStyle {
-    func install<S: Styleable>(on styleable: S) {
+    func install(on styleable: Any) {
         guard let view = styleable as? UIView else { fatalError("not a view") }
         if let control = view as? UIControl {
             control.apply(self)
@@ -66,6 +56,8 @@ public extension ViewStyle {
         attributes.forEach {
             switch $0 {
             // All UIViews
+            case .custom(let attributed):
+                attributed.install(on: styleable)
             case .isHidden(let isHidden):
                 view.isHidden = isHidden
             case .backgroundColor(let color):
@@ -165,7 +157,10 @@ private extension UIStackView {
                 self.distribution = distribution
             case .margin(let margin):
                 layoutMargins = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-                isLayoutMarginsRelativeArrangement = true
+            case .baselineRelative(let isBaselineRelativeArrangement):
+                self.isBaselineRelativeArrangement = isBaselineRelativeArrangement
+            case .marginsRelative(let isLayoutMarginsRelativeArrangement):
+                self.isLayoutMarginsRelativeArrangement = isLayoutMarginsRelativeArrangement
             default:
                 break
             }
