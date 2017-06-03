@@ -258,9 +258,95 @@ public enum ViewAttribute {
 }
 ```
 
-### Custom attribute
+## Custom attribute
 
 One of the attributes is called `custom` taking a `BaseAttributed` type. This is practical if you want to create a view taking some custom attributes.
 
+In the [example app](https://github.com/Sajjon/ViewComposer/tree/master/Example) you will find two cases of using the `custom` attribute, one simple and one advanced. 
 
+### Creating a simple custom attribute
 
+Let's say that you create the custom attribute `FooAttribute`:
+
+#### Step 1: Create attribute enum
+
+```swift
+enum FooAttribute {
+    case foo(String)
+}
+```
+
+#### Step 2 (optional): Protocol for types using custom attribute
+
+Let us then create a shared protocol for all types that what to by styled using the `FooAttribute`, let's call this protocol `FooProtocol`:
+
+```swift
+protocol FooProtocol {
+    var foo: String? { get set }
+}
+```
+
+#### Step 3 (final): Create style holding list of custom attributes
+In this example we only declared one attribute (`case`) inside `FooAttribute` but you can of course have multiple. The list of these should be contained in a type conforming to `BaseAttributed`, which requires the `func install(on styleable: Any)`. In this function we style the type with the attributes. Now it becomes clear that it is convenient to not skip **step 2**, and use a protocol bridging all types that can use `FooAttribute` together.
+
+```swift
+
+struct FooStyle: BaseAttributed {
+    let attributes: [FooAttribute]
+
+    init(_ attributes: [FooAttribute]) {
+        self.attributes = attributes
+    }
+
+    func install(on styleable: Any) {
+        guard var foobar = styleable as? FooProtocol else { return }
+        attributes.forEach {
+            switch $0 {
+            case .foo(let foo):
+                foobar.foo = foo
+            }
+        }
+    }
+}
+```
+
+#### Usage of `FooAttribute`
+
+We can now create some simple view conforming to `FooProtocol` that we can style using the custom `FooAttribute`. This might be a weird example, since why not just subclass `UILabel` directly? But that would make the code too short and simple, since `UILabel` already conforms to `Styleable`. So it would be misleading and cheating. That is why have this example, since `UIView` does not conform to `Styleable`.
+
+```swift
+final class FooLabel: UIView, FooProtocol {
+    typealias Style = ViewStyle
+    var foo: String? { didSet { label.text = foo } } //
+    let label: Label
+    
+    init(_ style: ViewStyle? = nil) {
+        let style = style.merge(slave: [.textAlignment(.center)])//default attributes
+        label = Label(style)
+        super.init(frame: .zero)
+        compose(with: style) // setting up this view and calls `setupSubviews` below
+    }
+}
+
+extension FooLabel: Composable {
+    func setupSubviews(with style: ViewStyle) {
+        addSubview(label) // and add constraints...
+    }
+}
+```
+
+Now we can create and style `FooLabel` with our "standard" `ViewAttribute`s but also pass along `FooAttribute` using `custom`, like this:
+
+```swift
+let fooLabel: FooLabel = [.custom(FooStyle([.foo("Foobar")])), .textColor(.red), .backgroundColor(.cyan)]
+```
+
+Here we create the `FooLabel` and styling it with our custom `FooStyle` (container for `FooAttribute`) while also styling it with `textColor` and `backgroundColor`. This way you can combine custom attributes with "standard" ones. 
+
+Whole code can be [here in the example app](https://github.com/Sajjon/ViewComposer/blob/master/Example/Source/Views/FooLabel.swift)
+
+**Please note that you cannot merging of custom attributes does not happen automatically**. See next section.
+
+### Merging custom attributes
+
+Check out [TriangleView.swift](https://github.com/Sajjon/ViewComposer/blob/master/Example/Source/Views/TriangleView.swift) for example of advanced usage of custom attributes.
