@@ -1,42 +1,18 @@
-#
-# Be sure to run `pod lib lint ViewComposer.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
-  s.name             = 'ViewComposer'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of ViewComposer.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.name         = "ViewComposer"
+  s.version      = "0.1.3"
+  s.summary      = "Compose views using enums swiftly"
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description  = <<-DESC
+                  Declare Buttons, Labels, StackViews etc as a list of enums.
+                   DESC
 
-  s.homepage         = 'https://github.com/sajjon/ViewComposer'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'sajjon' => 'alex.cyon@gmail.com' }
-  s.source           = { :git => 'https://github.com/sajjon/ViewComposer.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.ios.deployment_target = '8.0'
-
-  s.source_files = 'ViewComposer/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'ViewComposer' => ['ViewComposer/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.homepage     = "https://github.com/sajjon/ViewComposer"
+  s.license      = 'MIT'
+  s.author       = { "Alexander Cyon" => "alex.cyon@gmail.com" }
+  s.social_media_url = "https://twitter.com/Redrum_237"
+  s.source = { :git => 'https://github.com/Sajjon/ViewComposer.git', :tag => s.version }
+  s.source_files = 'Source/Classes/**/*.swift', 'Source/Sourcery/Generated/*.swift'
+  s.ios.deployment_target = '9.0'
 end
