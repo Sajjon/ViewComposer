@@ -86,20 +86,31 @@ private extension TriangleView {
     }
 }
 
-private extension ViewStyle {
-    static let `default`: ViewStyle = [.backgroundColor(.red)]
+extension ViewStyle: CustomAttributeMerger {
+    public typealias CustomAttribute = TriangleViewStyle
 }
 
-enum TriangleViewAttribute {
+private extension Optional where Wrapped == ViewStyle, Wrapped: CustomAttributeMerger {
+    func merge(slave: Wrapped) -> Wrapped {
+        guard let `self` = self else { return slave }
+        return self.customMerge(slave: slave, into: self)
+    }
+}
+
+private extension ViewStyle {
+    static let `default`: ViewStyle = [.custom(TriangleViewStyle([.fillColor(.red), .fillStyle(.upperAcute)])), .backgroundColor(.blue)]
+}
+
+public enum TriangleViewAttribute {
     case fillStyle(TriangleFillStyle)
     case fillColor(UIColor)
 }
 
-enum TriangleFillStyle {
+public enum TriangleFillStyle {
     case lowerAcute, lowerGrave, upperAcute, upperGrave
 }
 
-struct TriangleViewStyle: Attributed {
+public struct TriangleViewStyle: Attributed {
     public var startIndex: Int = 0
     public let attributes: [TriangleViewAttribute]
     
@@ -111,7 +122,7 @@ struct TriangleViewStyle: Attributed {
         self.attributes = elements
     }
     
-    func install(on styleable: Any) {
+    public func install(on styleable: Any) {
         guard let triangleView = styleable as? TriangleView else { return }
         triangleView.apply(self)
     }
@@ -131,15 +142,15 @@ private extension TriangleView {
     }
 }
 
-//MARK: Making TriangleViewAttribute AssociatedValueStrippable
+//MARK: Making TriangleViewAttribute AssociatedValueStrippable, typically we want to automate this using Sourcery...
 extension TriangleViewAttribute: Equatable {
-    static func == (lhs: TriangleViewAttribute, rhs: TriangleViewAttribute) -> Bool {
+    public static func == (lhs: TriangleViewAttribute, rhs: TriangleViewAttribute) -> Bool {
         return lhs.stripped == rhs.stripped
     }
 }
 
 extension TriangleViewAttribute: AssociatedValueEnumExtractor {
-    var associatedValue: Any? {
+    public var associatedValue: Any? {
         switch self {
         case .fillColor(let fillColor):
             return fillColor
@@ -150,8 +161,8 @@ extension TriangleViewAttribute: AssociatedValueEnumExtractor {
 }
 
 extension TriangleViewAttribute: AssociatedValueStrippable {
-    typealias Stripped = TriangleViewAttributeStripped
-    var stripped: Stripped {
+    public typealias Stripped = TriangleViewAttributeStripped
+    public var stripped: Stripped {
         let stripped: Stripped
         switch self {
         case .fillColor:
@@ -163,6 +174,6 @@ extension TriangleViewAttribute: AssociatedValueStrippable {
     }
 }
 
-enum TriangleViewAttributeStripped: String, StrippedRepresentation {
+public enum TriangleViewAttributeStripped: String, StrippedRepresentation {
     case fillStyle, fillColor
 }

@@ -65,6 +65,24 @@ public extension Attributed {
     }
 }
 
+public protocol CustomAttributeMerger {
+    associatedtype CustomAttribute: Attributed
+    associatedtype Style: Attributed
+    func customMerge(slave: Style, into master: Style) -> Style
+}
+
+extension CustomAttributeMerger where Self: Attributed, Self.Attribute == ViewAttribute {
+    public func customMerge(slave: ViewStyle, into master: ViewStyle) -> ViewStyle {
+        let merged = master.merge(slave: slave)
+        if let customStyle: CustomAttribute = master.value(.custom), let slaveCustomStyle: CustomAttribute = slave.value(.custom) {
+            let customMerge = customStyle.merge(slave: slaveCustomStyle)
+            return ViewStyle([.custom(customMerge)]).merge(slave: merged)
+        } else {
+            return merged
+        }
+    }
+}
+
 public extension Optional where Wrapped: Attributed {
     func merge(slave: Wrapped) -> Wrapped {
         guard let `self` = self else { return slave }
@@ -104,8 +122,6 @@ public extension Attributed {
     func merge(master: Attribute) -> Self {
         return Self([master]).merge(slave: self)
     }
-    
-
 }
 
 public extension Array where Element: AssociatedValueStrippable {

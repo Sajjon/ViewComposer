@@ -207,11 +207,60 @@ class LabelsViewControllerVanilla: UIViewController {
 ```
 
 
+## ViewAttribute
+Here are some of the attributes (this list gets updated manually...), take a look at the [full list here](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/ViewAttribute/ViewAttribute.swift)
 
+```swift
+public enum ViewAttribute {
+    case custom(BaseAttributed)
+    
+    // View
+    case isHidden(Bool)
+    case backgroundColor(UIColor)
+    case cornerRadius(CGFloat) /* might be overridden by: */; case radius(Radius)
+    case verticalHugging(LayoutPriority)
+    case verticalCompression(LayoutPriority)
+    case horizontalHugging(LayoutPriority)
+    case horizontalCompression(LayoutPriority)
+    case contentMode(UIViewContentMode)
+    case height(CGFloat)
+    case width(CGFloat)
+    
+    // TextHolder
+    case text(String)
+    case font(UIFont)
+    case textColor(UIColor)
+    case `case`(Case)
+    case textAlignment(NSTextAlignment)
+    
+    // PlaceholderOwner
+    case placeholder(String)
+    
+    // ImageHolder
+    case image(UIImage)
+    
+    // UIScrollView
+    case isScrollEnabled(Bool)
+    
+    // ControlState
+    case states([ControlState])
+    
+    // UIControl
+    case target(Actor)
+    
+    // UIStackView
+    case axis(UILayoutConstraintAxis)
+    case distribution(UIStackViewDistribution)
+    case alignment(UIStackViewAlignment)
+    case spacing(CGFloat)
+    case margin(CGFloat)
+    case arrangedSubviews([UIView])
+}
+```
 
+### Custom attribute
 
-
-
+One of the attributes is called `custom` taking a `BaseAttributed` type. This is practical if you want to create a view taking some custom attributes.
 
 
 

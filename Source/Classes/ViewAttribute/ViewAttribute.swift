@@ -75,32 +75,6 @@ public enum ViewAttribute {
     case arrangedSubviews([UIView])
 }
 
-public extension Attributed where Attribute == ViewAttribute {
-    func merge(slave: Self) -> Self {
-        
-        if let custom: AnyAttributed<ViewAttribute> = self.value(.custom) {
-//            if let customAttributed = custom as? AnyAttributed<AnyStrippable<ViewAttributeStripped>> {
-//                print("custom is attributed: '\(customAttributed)'")
-//            } else {
-                print("found custom: `\(custom)`")
-//            }
-        }
-
-        let unionSet = Set(stripped).union(Set(slave.stripped))
-        let unionAttributes = (attributes + slave.attributes).filter(stripped: Array(unionSet))
-        return Self(unionAttributes)
-    }
-}
-
-//func cyon(_ sajjon: AnyAttributed) {
-//    print("such fail")
-//}
-//
-//func cyon(_ sajjon: Attributed) {
-//    print("epic win")
-//}
-
-
 public extension Array where Element == ViewAttribute {
     func merge(slave: [ViewAttribute]) -> [ViewAttribute] {
         return ViewStyle(self).merge(slave: ViewStyle(slave)).attributes

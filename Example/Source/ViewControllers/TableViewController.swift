@@ -20,7 +20,7 @@ final class TableViewController: UITableViewController {
 extension TableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 4
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,6 +56,8 @@ private extension TableViewController {
         case 1:
             return NavigationRouter(LabelsViewController.self, vanilla: VanillaLabelsViewController.self)
         case 2:
+            return NavigationRouter(SimpleCustomAttributeViewController.self)
+        case 3:
             return NavigationRouter(TriangleViewController.self)
         default:
             fatalError("oh no")
@@ -71,7 +73,9 @@ private extension TableViewController {
         case 1:
             return "Labels"
         case 2:
-            return "TriangleView (ViewComposer only)"
+            return "Custom attribute: FooLabel (simple)"
+        case 3:
+            return "Custom attribute: TriangleView (advanced)"
         default:
             fatalError("oh no")
         }

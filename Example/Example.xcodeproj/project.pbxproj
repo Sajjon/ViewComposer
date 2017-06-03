@@ -17,6 +17,8 @@
 		4846CED41EE16B9F00E84C91 /* NestedStackViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CECF1EE16B9F00E84C91 /* NestedStackViewsViewController.swift */; };
 		4846CED61EE16F8D00E84C91 /* TriangleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CED51EE16F8D00E84C91 /* TriangleViewController.swift */; };
 		4846CED91EE172C000E84C91 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CED81EE172C000E84C91 /* TriangleView.swift */; };
+		4846CEE01EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEDF1EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift */; };
+		4846CEE21EE2C3DF00E84C91 /* FooLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEE11EE2C3DF00E84C91 /* FooLabel.swift */; };
 		48F4F4041EE0100F003005B9 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4F3FC1EE00FF4003005B9 /* ViewComposer.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +59,8 @@
 		4846CECF1EE16B9F00E84C91 /* NestedStackViewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NestedStackViewsViewController.swift; sourceTree = "<group>"; };
 		4846CED51EE16F8D00E84C91 /* TriangleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleViewController.swift; sourceTree = "<group>"; };
 		4846CED81EE172C000E84C91 /* TriangleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleView.swift; sourceTree = "<group>"; };
+		4846CEDF1EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCustomAttributeViewController.swift; sourceTree = "<group>"; };
+		4846CEE11EE2C3DF00E84C91 /* FooLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooLabel.swift; sourceTree = "<group>"; };
 		48F4F3F61EE00FF4003005B9 /* ViewComposer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ViewComposer.xcodeproj; path = ../ViewComposer.xcodeproj; sourceTree = "<group>"; };
 		48F4F4021EE01007003005B9 /* Pods_ViewComposer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_ViewComposer.framework; path = "/Users/sajjon/Developer/iOS/ViewComposer/Pods/../build/Debug-iphoneos/Pods_ViewComposer.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -129,6 +133,7 @@
 				4846CECE1EE16B9F00E84C91 /* LabelsViewController.swift */,
 				4846CECF1EE16B9F00E84C91 /* NestedStackViewsViewController.swift */,
 				4846CED51EE16F8D00E84C91 /* TriangleViewController.swift */,
+				4846CEDF1EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift */,
 			);
 			path = ViewComposer;
 			sourceTree = "<group>";
@@ -137,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				4846CED81EE172C000E84C91 /* TriangleView.swift */,
+				4846CEE11EE2C3DF00E84C91 /* FooLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -254,7 +260,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4846CED11EE16B9F00E84C91 /* VanillaLabelsViewController.swift in Sources */,
+				4846CEE01EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift in Sources */,
 				4846CED41EE16B9F00E84C91 /* NestedStackViewsViewController.swift in Sources */,
+				4846CEE21EE2C3DF00E84C91 /* FooLabel.swift in Sources */,
 				482B89111EE00C4C00C97D42 /* AppDelegate.swift in Sources */,
 				4846CED01EE16B9F00E84C91 /* TableViewController.swift in Sources */,
 				4846CED21EE16B9F00E84C91 /* VanillaNestedStackViewsViewController.swift in Sources */,
