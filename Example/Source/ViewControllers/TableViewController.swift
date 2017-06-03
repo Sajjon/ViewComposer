@@ -19,8 +19,12 @@ final class TableViewController: UITableViewController {
 
 extension TableViewController {
     
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return 2
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -33,8 +37,17 @@ extension TableViewController {
         didSelectRow(at: indexPath)
     }
     
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Comparisson"
+        case 1:
+            return "ViewComposer only"
+        default:
+            return nil
+        }
+    }
 }
-
 
 private extension TableViewController {
     func setupViews() {
@@ -49,33 +62,50 @@ private extension TableViewController {
     }
 
     func routerForRow(at indexPath: IndexPath) -> NavigationRouter {
-        let row = indexPath.row
-        switch row {
+        switch indexPath.section {
         case 0:
-            return NavigationRouter(NestedStackViewsViewController.self, vanilla: VanillaNestedStackViewsViewController.self)
+            switch indexPath.row {
+            case 0:
+                return NavigationRouter(NestedStackViewsViewController.self, vanilla: VanillaNestedStackViewsViewController.self)
+            case 1:
+                return NavigationRouter(LabelsViewController.self, vanilla: VanillaLabelsViewController.self)
+            default:
+                fatalError("oh no")
+            }
         case 1:
-            return NavigationRouter(LabelsViewController.self, vanilla: VanillaLabelsViewController.self)
-        case 2:
-            return NavigationRouter(SimpleCustomAttributeViewController.self)
-        case 3:
-            return NavigationRouter(TriangleViewController.self)
+            switch indexPath.row {
+            case 0:
+                return NavigationRouter(SimpleCustomAttributeViewController.self)
+            case 1:
+                return NavigationRouter(TriangleViewController.self)
+            default:
+                fatalError("oh no")
+            }
         default:
             fatalError("oh no")
         }
-        
     }
     
     func titleForRow(at indexPath: IndexPath) -> String {
-        let row = indexPath.row
-        switch row {
+        switch indexPath.section {
         case 0:
-            return "Nested Stackviews"
+            switch indexPath.row {
+            case 0:
+                return "Nested Stackviews"
+            case 1:
+                return "Labels"
+            default:
+                fatalError("oh no")
+            }
         case 1:
-            return "Labels"
-        case 2:
-            return "Custom attribute: FooLabel (simple)"
-        case 3:
-            return "Custom attribute: TriangleView (advanced)"
+            switch indexPath.row {
+            case 0:
+                return "Custom attribute: FooLabel (simple)"
+            case 1:
+                return "Custom attribute: TriangleView (advanced)"
+            default:
+                fatalError("oh no")
+            }
         default:
             fatalError("oh no")
         }

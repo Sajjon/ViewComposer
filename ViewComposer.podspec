@@ -13,6 +13,6 @@ Pod::Spec.new do |s|
   s.author       = { "Alexander Cyon" => "alex.cyon@gmail.com" }
   s.social_media_url = "https://twitter.com/Redrum_237"
   s.source = { :git => 'https://github.com/Sajjon/ViewComposer.git', :tag => s.version }
-  s.source_files = 'ViewComposer/Source/**/*.swift', 'ViewComposer/Sourcery/Generated/*.swift'
+  s.source_files = 'Source/Classes/**/*.swift', 'Source/Sourcery/Generated/*.swift'
   s.ios.deployment_target = '9.0'
 end
