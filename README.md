@@ -318,7 +318,7 @@ It is possible to have an array of attributes containing duplicate values. But u
 ```swift
     let foobar: [ViewAttribute] = [.text("foo"), .text("bar")] //contains both, since array may contain duplicates
     let label: UILabel = .make(foobar) // func `make` calls `let style = attributes.merge(slave: [])` removing duplicates.
-    print(label.text!) // prints "foo", since duplicate value `.text("bar")` is ignored.
+    print(label.text!) // prints "foo", since duplicate value `.text("bar")` has been removed by call to `make`
 ```
 
 Thus it is **strongly** disencouraged to instantiate arrays with duplicate values. But the scenarios where you are merging types with duplicates is handled, since you chose which attribute you wanna keep using either `merge:master` or `merge:slave`.
