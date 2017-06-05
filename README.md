@@ -32,8 +32,8 @@ The strength of styling views like this get especially clear when you look at a 
 class NestedStackViewsViewController: UIViewController {
 
     private lazy var redButton: UIButton = make(.backgroundColor(.red), .text("Red"), .textColor(.blue)) //using array literals
-    private lazy var blueButton = UIButton.make([.backgroundColor(.blue), .states([.normal("Blue", nil)]), .textColor(.red)]) // not using array literals, thus "[" and "]"
-    private lazy var buttons: UIStackView = make(.arrangedSubviews([self.redButton, self.blueButton]), .distribution(.fillEqually)) // can place type to left of "="
+    private lazy var blueButton: UIButton = make([.backgroundColor(.blue), .states([.normal("Blue", nil)]), .textColor(.red)]) // not using array literals, thus "[" and "]"
+    private lazy var buttons: UIStackView = make(.arrangedSubviews([self.redButton, self.blueButton]), .distribution(.fillEqually))
     
     private lazy var yellowButton: UIButton = make(.backgroundColor(.yellow), .text("Yellow"), .textColor(.red))
     private lazy var label: UILabel = make(.text("Hey ViewComposer user"), .textAlignment(.center))
