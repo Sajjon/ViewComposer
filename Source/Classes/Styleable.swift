@@ -27,6 +27,11 @@ extension Makeable {
     
     public func postMake(_ style: Style) {}
     
+    // Using ArrayLiterals
+    public static func make(_ elements: Style.Attribute...) -> Styled {
+        return make(elements)
+    }
+    
     public static func make(_ attributes: [Style.Attribute]) -> Styled {
         let style: Style = attributes.merge(slave: []) // do not allow duplicates
         return make(style)
@@ -42,12 +47,19 @@ extension Makeable {
     }
 }
 
+// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
+public func make<M: Makeable>(_ attributes: [M.Style.Attribute]) -> M where M.Styled == M {
+    return M.make(attributes)
+}
 
+// Array literals support
+public func make<M: Makeable>(_ attributes: M.Style.Attribute...) -> M where M.Styled == M {
+    return make(attributes)
+}
 
 public protocol Composable: Styleable, ExpressibleByArrayLiteral {
     init(_ style: Style?)
     func setupSubviews(with style: Style)
-    
 }
 
 extension Composable {
@@ -69,6 +81,7 @@ public extension Styleable {
 
 precedencegroup StyleablePrecedence {
     higherThan: CastingPrecedence
+    associativity: left
 }
 
 infix operator <- : StyleablePrecedence // merge operator returning `Styleable`

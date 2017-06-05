@@ -9,7 +9,7 @@
 
 Style views using an enum array with its attributes:
 ```swift
-let label: UILabel = .make([.text("Hello World"), .textColor(.red)])
+let label: UILabel = make(.text("Hello World"), .textColor(.red))
 ```
 
 Or use the subclass `Label`, to declare the view using array literals:
@@ -20,8 +20,8 @@ let label: Label = [.text("Hello World"), .textColor(.red)]
 We are styling our views using an array of the enum type `ViewAttribute` which creates a type called `ViewStyle` which can be used to style our views. **Please note that the order of the attributes (enums) does not matter**:
 
 ```swift
-let label: UILabel = .make([.text("Hello World"), .textColor(.red)])
-let label2: UILabel = .make([.textColor(.red), .text("Hello World")]) // identical to `label2` ORDER DOES NOT MATTER.
+let label: UILabel = make(.text("Hello World"), .textColor(.red))
+let same: UILabel = make(.textColor(.red), .text("Hello World")) // identical to `label2` ORDER DOES NOT MATTER.
 ```
 
 Even though it might be a good idea to use the same order in your app for consistency.
@@ -31,14 +31,14 @@ The strength of styling views like this get especially clear when you look at a 
 ```swift
 class NestedStackViewsViewController: UIViewController {
 
-    private lazy var redButton = UIButton.make([.backgroundColor(.red), .text("Red"), .textColor(.blue)])
-    private lazy var blueButton: UIButton = .make([.backgroundColor(.blue), .states([.normal("Blue", nil)]), .textColor(.red)])
-    private lazy var buttons: UIStackView = .make([.arrangedSubviews([self.redButton, self.blueButton]), .distribution(.fillEqually)])
+    private lazy var redButton: UIButton = make(.backgroundColor(.red), .text("Red"), .textColor(.blue)) //using array literals
+    private lazy var blueButton = UIButton.make([.backgroundColor(.blue), .states([.normal("Blue", nil)]), .textColor(.red)]) // not using array literals, thus "[" and "]"
+    private lazy var buttons: UIStackView = make(.arrangedSubviews([self.redButton, self.blueButton]), .distribution(.fillEqually)) // can place type to left of "="
     
-    private lazy var yellowButton: UIButton = .make([.backgroundColor(.yellow), .text("Yellow"), .textColor(.red)])
-    private lazy var label: UILabel = .make([.text("Hey ViewComposer user"), .textAlignment(.center)])
+    private lazy var yellowButton: UIButton = make(.backgroundColor(.yellow), .text("Yellow"), .textColor(.red))
+    private lazy var label: UILabel = make(.text("Hey ViewComposer user"), .textAlignment(.center))
     
-    lazy var stackView: StackView = [.arrangedSubviews([self.buttons, self.yellowButton, self.label]), .axis(.vertical), .distribution(.fillEqually)]
+    lazy var stackView: UIStackView = make(.arrangedSubviews([self.buttons, self.yellowButton, self.label]), .axis(.vertical), .distribution(.fillEqually))
 
     ...
 }
@@ -106,7 +106,7 @@ class VanillaNestedStackViewsViewController: UIViewController {
 ## Non-intrusive - standard UIKit views
 As we saw in the ViewComposer example above:
 ```swift
-    private lazy var redButton = UIButton.make([.backgroundColor(.red), .text("Red"), .textColor(.blue)])
+private lazy var redButton: UIButton = make(.backgroundColor(.red), .text("Red"), .textColor(.blue))
 ```
 
 We are using standard `UIKit` class `UIButton`, with a static method called `make`, taking an array of `ViewAttribute` enums. This is neat if you dislike using subclasses.
@@ -126,25 +126,42 @@ There are two different merge functions, `merge:master` and `merge:slave`, since
 ### Examples
 Merge between `[ViewAttribute]` arrays with a duplicate value using `merge:slave` and `merge:master`
 ```swift
-    let foo: [ViewAttribute] = [.text("foo")]
-    let bar: [ViewAttribute] = [.text("bar"), .backgroundColor(.red)]
+let foo: [ViewAttribute] = [.text("foo")]
+let bar: [ViewAttribute] = [.text("bar"), .backgroundColor(.red)]
 
-    // The merged results are of type `ViewStyle`
-    let fooMerged = foo.merge(slave: bar) // [.text("foo"), backgroundColor(.red)]
-    let barMerged = foo.merge(master: bar) // [.text("bar"), backgroundColor(.red)]
+// The merged results are of type `ViewStyle`
+let fooMerged = foo.merge(slave: bar) // [.text("foo"), backgroundColor(.red)]
+let barMerged = foo.merge(master: bar) // [.text("bar"), backgroundColor(.red)]
 ```
 
 As mentioned above, you can merge single attributes as well
 
 ```swift
-    let foo: ViewAttribute = .text("foo") 
-    let style: ViewStyle = [.text("bar"), .backgroundColor(.red)]
+let foo: ViewAttribute = .text("foo") 
+let style: ViewStyle = [.text("bar"), .backgroundColor(.red)]
 
-    // The merged results are of type `ViewStyle`
-    let mergeSingleAttribute = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
+// The merged results are of type `ViewStyle`
+let mergeSingleAttribute = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
 
-    let array: [ViewAttriubte] = [.text("foo")]
-    let mergeArray = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
+let array: [ViewAttriubte] = [.text("foo")]
+let mergeArray = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
+```
+
+#### Optional styles
+You can also merge optional `ViewStyle`, which is convenient for you initializers
+
+```swift
+final class MyViewDefaultingToRed: UIView {
+    init(_ style: ViewStyle? = nil) {
+        let style = style.merge(slave: .default)
+        self.style = style
+        super.init(frame: .zero)
+        setup(with: style) // setup the view using the style..
+    }
+}
+private extension ViewStyle {
+    static let `default`: ViewStyle = [.backgroundColor(.red)]
+}
 ```
 
 ### Merge operators `<-` and `<<-`
@@ -152,15 +169,50 @@ As mentioned above, you can merge single attributes as well
 Instead of writing `foo.merge(slave: bar)` we can write `foo <- bar` and instead of writing `foo.merge(master: bar` we can write `foo <<- bar`.
 
 ```swift
-    let foo: [ViewAttribute] = [.text("foo")]
-    let bar: [ViewAttribute] = [.text("bar"), .backgroundColor(.red)]
+let foo: [ViewAttribute] = [.text("foo")]
+let bar: [ViewAttribute] = [.text("bar"), .backgroundColor(.red)]
 
-    // The merged results are of type `ViewStyle`
-    let fooMerged = foo <- bar // [.text("foo"), backgroundColor(.red)]
-    let barMerged = foo <<- bar // [.text("bar"), backgroundColor(.red)]
+// The merged results are of type `ViewStyle`
+let fooMerged = foo <- bar // [.text("foo"), backgroundColor(.red)]
+let barMerged = foo <<- bar // [.text("bar"), backgroundColor(.red)]
 ```
 
 Of course the operator `<-` and `<<-` works between `ViewStyle`s, `ViewAttribute` and `[ViewAttriubte]` interchangably.
+
+The operators also works with optional `ViewStyle`. Thus we can rewrite the merge in the initializer of `MyViewDefaultingToRed` using the `merge:slave` operator if we want to:
+
+```swift
+final class MyViewDefaultingToRed: UIView {
+    init(_ style: ViewStyle? = nil) {
+        let style = style <- .default
+    ...
+```
+
+#### Operator Associativity when chained
+
+Of course it is possible to chain merges. **Disregarding of left or right associativity** these three examples gets the same result:
+```swift
+let foo: [ViewAttribute] = [.text("foo")]
+let bar: [ViewAttribute] = [.text("bar")]
+
+foo <<- bar <<- .text("baz") // result: `[.text(.baz)]`
+foo <- bar <- .text("baz") // result: `[.text(.foo)]`
+foo <<- bar <- .text("baz") // result: `[.text(.bar)]`
+```
+
+But having a look at this example, **associativity matters!**:
+```swift
+let foo: [ViewAttribute] = [.text("foo")]
+let bar: [ViewAttribute] = [.text("bar")]
+
+// `right` associative
+foo <- bar <<- .text("baz") // result: `[.text(.foo)]`
+
+// `left` associative
+foo <- bar <<- .text("baz") // result: `[.text(.baz)]`
+```
+
+`ViewComposer` is using **right** for both the `<-` as well as the `<<-` operator. This means that you should read *from right to left* when values of chained merge operators.
 
 ## Composables and predefined styles
 
@@ -309,16 +361,16 @@ public enum ViewAttribute {
 As of now it is possible to create an attributes array with duplicate values, e.g.
 
 ```swift
-    // NEVER DO THIS!
-    let foobar: [ViewAttribute] = [.text("bar"), .text("foo")]
+// NEVER DO THIS!
+let foobar: [ViewAttribute] = [.text("bar"), .text("foo")]
 ```
 
 It is possible to have an array of attributes containing duplicate values. But using it to instantiate a view, e.g. a `UILabel` will infact ignore the duplicate value.
 
 ```swift
-    let foobar: [ViewAttribute] = [.text("foo"), .text("bar")] //contains both, since array may contain duplicates
-    let label: UILabel = .make(foobar) // func `make` calls `let style = attributes.merge(slave: [])` removing duplicates.
-    print(label.text!) // prints "foo", since duplicate value `.text("bar")` has been removed by call to `make`
+let foobar: [ViewAttribute] = [.text("foo"), .text("bar")] //contains both, since array may contain duplicates
+let label: UILabel = make(foobar) // func `make` calls `let style = attributes.merge(slave: [])` removing duplicates.
+print(label.text!) // prints "foo", since duplicate value `.text("bar")` has been removed by call to `make`
 ```
 
 Thus it is **strongly** disencouraged to instantiate arrays with duplicate values. But the scenarios where you are merging types with duplicates is handled, since you chose which attribute you wanna keep using either `merge:master` or `merge:slave`.
@@ -386,7 +438,7 @@ final class FooLabel: UIView, FooProtocol {
     let label: Label
     
     init(_ style: ViewStyle? = nil) {
-        let style = style.merge(slave: [.textAlignment(.center)])//default attributes
+        let style = style <- .textAlignment(.center)]//default attribute
         label = Label(style)
         super.init(frame: .zero)
         compose(with: style) // setting up this view and calls `setupSubviews` below

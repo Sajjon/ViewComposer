@@ -22,9 +22,25 @@ public func <<- <A: Attributed>(lhs: A, rhs: A) -> A {
     return lhs.merge(master: rhs)
 }
 
+public func <<- <A: Attributed>(lhs: A?, rhs: A) -> A {
+    return lhs.merge(master: rhs)
+}
+
+public func <<- <A: Attributed>(lhs: A, rhs: A?) -> A {
+    return rhs.merge(slave: lhs)
+}
+
 // RHS SLAVE
 public func <- <A: Attributed>(lhs: A, rhs: A) -> A {
     return lhs.merge(slave: rhs)
+}
+
+public func <- <A: Attributed>(lhs: A?, rhs: A) -> A {
+    return lhs.merge(slave: rhs)
+}
+
+public func <- <A: Attributed>(lhs: A, rhs: A?) -> A {
+    return rhs.merge(master: lhs)
 }
 
 //MARK: RHS `[Attributed.Attribute]`
