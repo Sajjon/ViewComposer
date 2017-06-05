@@ -1,5 +1,5 @@
 //
-//  ViewComposerTests.swift
+//  MakeableTests.swift
 //  ViewComposerTests
 //
 //  Created by Alexander Cyon on 2017-05-30.
@@ -9,7 +9,7 @@
 import XCTest
 @testable import ViewComposer
 
-class ViewComposerTests: XCTestCase {
+class MakeableTests: XCTestCase {
     
     func style(includeColor: Bool = true) -> ViewStyle {
         var attributes: [ViewAttribute] = [.isHidden(isHidden), .cornerRadius(cornerRadius), .text(text)]
