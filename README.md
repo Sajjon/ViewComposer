@@ -98,7 +98,7 @@ As we saw in the ViewComposer example above:
 let button: UIButton = [.backgroundColor(.red), .text("Red"), .textColor(.blue)]
 ```
 
-We are using standard `UIKit` class `UIButton` taking an array of `ViewAttribute` enums.
+**NO SUBCLASSES NEEDED 🙌**
 
 ## Mergeable
 
