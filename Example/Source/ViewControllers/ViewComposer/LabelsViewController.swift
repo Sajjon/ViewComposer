@@ -16,7 +16,7 @@ class LabelsViewController: UIViewController, StackViewOwner {
     private lazy var barLabel: UILabel = labelStyle <<- [.text("Bar"), .textColor(.blue), .backgroundColor(.red)]
     private lazy var bazLabel: UILabel = labelStyle <<- [.text("Baz"), .textAlignment(.left), .backgroundColor(.green), .font(.boldSystemFont(ofSize: 45))]
     
-    lazy var stackView: UIStackView = make([.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)])
+    lazy var stackView: UIStackView = [.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)]
     
     init() {
         super.init(nibName: nil, bundle: nil)

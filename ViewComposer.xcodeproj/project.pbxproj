@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		4816818C1EDD53EE004E3DD0 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481681821EDD53EE004E3DD0 /* ViewComposer.framework */; };
+		48298B4E1EE5F28E00AB3724 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B481EE5F27C00AB3724 /* Button.swift */; };
+		48298B4F1EE5F28E00AB3724 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B491EE5F27C00AB3724 /* ImageView.swift */; };
+		48298B501EE5F28E00AB3724 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B4A1EE5F27C00AB3724 /* Label.swift */; };
+		48298B511EE5F28E00AB3724 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B4B1EE5F27C00AB3724 /* StackView.swift */; };
+		48298B521EE5F28E00AB3724 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B4C1EE5F27C00AB3724 /* TextField.swift */; };
+		48298B531EE5F28E00AB3724 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B4D1EE5F27C00AB3724 /* TextView.swift */; };
 		482B894D1EE00C6500C97D42 /* Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89181EE00C6500C97D42 /* Attributed.swift */; };
 		482B894E1EE00C6500C97D42 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89191EE00C6500C97D42 /* Macros.swift */; };
 		482B894F1EE00C6500C97D42 /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B891A1EE00C6500C97D42 /* Styleable.swift */; };
@@ -21,12 +27,6 @@
 		482B89581EE00C6500C97D42 /* Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89251EE00C6500C97D42 /* Radius.swift */; };
 		482B89591EE00C6500C97D42 /* TextHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89261EE00C6500C97D42 /* TextHolder.swift */; };
 		482B895A1EE00C6500C97D42 /* ViewAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89271EE00C6500C97D42 /* ViewAttribute.swift */; };
-		482B895B1EE00C6500C97D42 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892A1EE00C6500C97D42 /* Button.swift */; };
-		482B895C1EE00C6500C97D42 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892B1EE00C6500C97D42 /* ImageView.swift */; };
-		482B895D1EE00C6500C97D42 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892C1EE00C6500C97D42 /* Label.swift */; };
-		482B895E1EE00C6500C97D42 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892D1EE00C6500C97D42 /* StackView.swift */; };
-		482B895F1EE00C6500C97D42 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892E1EE00C6500C97D42 /* TextField.swift */; };
-		482B89601EE00C6500C97D42 /* TextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B892F1EE00C6500C97D42 /* TextView.swift */; };
 		482B89621EE00C6500C97D42 /* UIButton+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89321EE00C6500C97D42 /* UIButton+Makeable.swift */; };
 		482B89631EE00C6500C97D42 /* UIImageView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89331EE00C6500C97D42 /* UIImageView+Makeable.swift */; };
 		482B89641EE00C6500C97D42 /* UILabel+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89341EE00C6500C97D42 /* UILabel+Makeable.swift */; };
@@ -74,6 +74,12 @@
 		379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewComposerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		481681821EDD53EE004E3DD0 /* ViewComposer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewComposer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4816818B1EDD53EE004E3DD0 /* ViewComposerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewComposerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		48298B481EE5F27C00AB3724 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
+		48298B491EE5F27C00AB3724 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
+		48298B4A1EE5F27C00AB3724 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		48298B4B1EE5F27C00AB3724 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
+		48298B4C1EE5F27C00AB3724 /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		48298B4D1EE5F27C00AB3724 /* TextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		482B89181EE00C6500C97D42 /* Attributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Attributed.swift; sourceTree = "<group>"; };
 		482B89191EE00C6500C97D42 /* Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		482B891A1EE00C6500C97D42 /* Styleable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styleable.swift; sourceTree = "<group>"; };
@@ -87,12 +93,6 @@
 		482B89251EE00C6500C97D42 /* Radius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radius.swift; sourceTree = "<group>"; };
 		482B89261EE00C6500C97D42 /* TextHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextHolder.swift; sourceTree = "<group>"; };
 		482B89271EE00C6500C97D42 /* ViewAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAttribute.swift; sourceTree = "<group>"; };
-		482B892A1EE00C6500C97D42 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		482B892B1EE00C6500C97D42 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
-		482B892C1EE00C6500C97D42 /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
-		482B892D1EE00C6500C97D42 /* StackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
-		482B892E1EE00C6500C97D42 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
-		482B892F1EE00C6500C97D42 /* TextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextView.swift; sourceTree = "<group>"; };
 		482B89321EE00C6500C97D42 /* UIButton+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Makeable.swift"; sourceTree = "<group>"; };
 		482B89331EE00C6500C97D42 /* UIImageView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Makeable.swift"; sourceTree = "<group>"; };
 		482B89341EE00C6500C97D42 /* UILabel+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Makeable.swift"; sourceTree = "<group>"; };
@@ -182,9 +182,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		48298B471EE5F27C00AB3724 /* Composables */ = {
+			isa = PBXGroup;
+			children = (
+				48298B481EE5F27C00AB3724 /* Button.swift */,
+				48298B491EE5F27C00AB3724 /* ImageView.swift */,
+				48298B4A1EE5F27C00AB3724 /* Label.swift */,
+				48298B4B1EE5F27C00AB3724 /* StackView.swift */,
+				48298B4C1EE5F27C00AB3724 /* TextField.swift */,
+				48298B4D1EE5F27C00AB3724 /* TextView.swift */,
+			);
+			path = Composables;
+			sourceTree = "<group>";
+		};
 		482B89161EE00C6500C97D42 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				48298B471EE5F27C00AB3724 /* Composables */,
 				482B89171EE00C6500C97D42 /* Classes */,
 				482B893A1EE00C6500C97D42 /* Configuration */,
 				482B893C1EE00C6500C97D42 /* Info.plist */,
@@ -237,23 +251,9 @@
 		482B89281EE00C6500C97D42 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				482B89291EE00C6500C97D42 /* Composable */,
 				482B89311EE00C6500C97D42 /* Makeable */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		482B89291EE00C6500C97D42 /* Composable */ = {
-			isa = PBXGroup;
-			children = (
-				482B892A1EE00C6500C97D42 /* Button.swift */,
-				482B892B1EE00C6500C97D42 /* ImageView.swift */,
-				482B892C1EE00C6500C97D42 /* Label.swift */,
-				482B892D1EE00C6500C97D42 /* StackView.swift */,
-				482B892E1EE00C6500C97D42 /* TextField.swift */,
-				482B892F1EE00C6500C97D42 /* TextView.swift */,
-			);
-			path = Composable;
 			sourceTree = "<group>";
 		};
 		482B89311EE00C6500C97D42 /* Makeable */ = {
@@ -574,37 +574,37 @@
 				482B89671EE00C6500C97D42 /* UITextView+Makeable.swift in Sources */,
 				48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */,
 				482B89571EE00C6500C97D42 /* PlaceholderOwner.swift in Sources */,
+				48298B521EE5F28E00AB3724 /* TextField.swift in Sources */,
 				482B896E1EE00C6500C97D42 /* AutoEquatable.generated.swift in Sources */,
 				48D7F3CC1EE4988900BC7012 /* ViewAttribute+Operators.swift in Sources */,
+				48298B4E1EE5F28E00AB3724 /* Button.swift in Sources */,
 				482B89531EE00C6500C97D42 /* ControlState.swift in Sources */,
 				482B894E1EE00C6500C97D42 /* Macros.swift in Sources */,
+				48298B4F1EE5F28E00AB3724 /* ImageView.swift in Sources */,
 				482B89651EE00C6500C97D42 /* UIStackView+Makeable.swift in Sources */,
 				482B894D1EE00C6500C97D42 /* Attributed.swift in Sources */,
 				48748A801EE5C31500E937E0 /* MergeOperatorReturningMakable.swift in Sources */,
 				482B89661EE00C6500C97D42 /* UITextField+Makeable.swift in Sources */,
+				48298B511EE5F28E00AB3724 /* StackView.swift in Sources */,
 				482B89561EE00C6500C97D42 /* LayoutPriority.swift in Sources */,
 				48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */,
-				482B895E1EE00C6500C97D42 /* StackView.swift in Sources */,
 				482B89591EE00C6500C97D42 /* TextHolder.swift in Sources */,
 				482B89541EE00C6500C97D42 /* ControlStateHolder.swift in Sources */,
 				482B89701EE00C6500C97D42 /* SourceryRules.swift in Sources */,
 				482B89511EE00C6500C97D42 /* Case.swift in Sources */,
 				482B896D1EE00C6500C97D42 /* AutoCustomStringConvertible.generated.swift in Sources */,
 				482B896B1EE00C6500C97D42 /* AutoAssociatedValueEnum.generated.swift in Sources */,
-				482B89601EE00C6500C97D42 /* TextView.swift in Sources */,
-				482B895C1EE00C6500C97D42 /* ImageView.swift in Sources */,
 				482B89641EE00C6500C97D42 /* UILabel+Makeable.swift in Sources */,
-				482B895F1EE00C6500C97D42 /* TextField.swift in Sources */,
 				482B896F1EE00C6500C97D42 /* AutoHashable.generated.swift in Sources */,
 				482B89681EE00C6500C97D42 /* ViewStyle.swift in Sources */,
 				482B894F1EE00C6500C97D42 /* Styleable.swift in Sources */,
 				482B89621EE00C6500C97D42 /* UIButton+Makeable.swift in Sources */,
-				482B895B1EE00C6500C97D42 /* Button.swift in Sources */,
+				48298B501EE5F28E00AB3724 /* Label.swift in Sources */,
 				482B89501EE00C6500C97D42 /* Actor.swift in Sources */,
 				482B895A1EE00C6500C97D42 /* ViewAttribute.swift in Sources */,
-				482B895D1EE00C6500C97D42 /* Label.swift in Sources */,
 				482B89551EE00C6500C97D42 /* ImageHolder.swift in Sources */,
 				482B89631EE00C6500C97D42 /* UIImageView+Makeable.swift in Sources */,
+				48298B531EE5F28E00AB3724 /* TextView.swift in Sources */,
 				482B89581EE00C6500C97D42 /* Radius.swift in Sources */,
 				482B896C1EE00C6500C97D42 /* AutoComparable.generated.swift in Sources */,
 			);

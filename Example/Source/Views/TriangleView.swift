@@ -142,7 +142,7 @@ private extension TriangleView {
     }
 }
 
-//MARK: Making TriangleViewAttribute AssociatedValueStrippable, typically we want to automate this using Sourcery...
+//MARK: Making TriangleViewAttribute AssociatedValueStrippable, typically we want to automate this using `Sourcery`...
 extension TriangleViewAttribute: Equatable {
     public static func == (lhs: TriangleViewAttribute, rhs: TriangleViewAttribute) -> Bool {
         return lhs.stripped == rhs.stripped

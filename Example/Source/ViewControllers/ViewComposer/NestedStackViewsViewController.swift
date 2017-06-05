@@ -10,14 +10,14 @@ import UIKit
 import ViewComposer
 
 class NestedStackViewsViewController: UIViewController, StackViewOwner {
-    private lazy var redButton = UIButton.make(.backgroundColor(.red), .text("Red"), .textColor(.blue))
-    private lazy var blueButton: UIButton = make(.backgroundColor(.blue), .states([.normal("Blue", nil)]), .textColor(.red))
-    private lazy var buttons: UIStackView = make(.arrangedSubviews([self.redButton, self.blueButton]), .distribution(.fillEqually))
     
-    private lazy var yellowButton: UIButton = make(.backgroundColor(.yellow), .text("Yellow"), .textColor(.red))
-    private lazy var label: UILabel = make(.text("Hey ViewComposer user"), .textAlignment(.center))
+    lazy var fooLabel: UILabel = [.text("Foo"), .textColor(.blue), .backgroundColor(.red), .textAlignment(.center)]
+    lazy var barLabel: UILabel =  [.text("Bar"), .textColor(.red), .backgroundColor(.green), .textAlignment(.center)]
+    lazy var labels: UIStackView = [.arrangedSubviews([self.fooLabel, self.barLabel]), .distribution(.fillEqually)]
     
-    lazy var stackView: UIStackView = make(.arrangedSubviews([self.buttons, self.yellowButton, self.label]), .axis(.vertical), .distribution(.fillEqually))
+    lazy var button: UIButton = [.text("Baz"), .backgroundColor(.cyan), .textColor(.red)]
+    
+    lazy var stackView: UIStackView = [.arrangedSubviews([self.labels, self.button]), .axis(.vertical), .distribution(.fillEqually)]
     
     init() {
         super.init(nibName: nil, bundle: nil)

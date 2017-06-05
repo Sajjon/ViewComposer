@@ -18,9 +18,16 @@ public protocol EmptyInitializable {
     static func createEmpty() -> Styled
 }
 
-public protocol Makeable: EmptyInitializable, Styleable {
+public protocol Makeable: EmptyInitializable, Styleable, ExpressibleByArrayLiteral {
     static func make(_ attributes: [Style.Attribute]) -> Styled
     func postMake(_ style: Style)
+    associatedtype Element = Style.Attribute
+}
+
+public extension Makeable where Self.Styled == Self, Self.Style.Attribute == Element {
+    init(arrayLiteral elements: Self.Element...) {
+        self = Self.make(elements)
+    }
 }
 
 extension Makeable {

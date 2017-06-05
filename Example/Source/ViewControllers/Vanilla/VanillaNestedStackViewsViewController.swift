@@ -10,50 +10,44 @@ import UIKit
 
 class VanillaNestedStackViewsViewController: UIViewController, StackViewOwner {
     
-    private lazy var redButton: UIButton = {
-        let redButton = UIButton()
-        redButton.translatesAutoresizingMaskIntoConstraints = false
-        redButton.backgroundColor = .red
-        redButton.setTitle("Red", for: .normal)
-        redButton.setTitleColor(.blue, for: .normal)
-        return redButton
+    lazy var fooLabel: UILabel = {
+        let fooLabel = UILabel()
+        fooLabel.translatesAutoresizingMaskIntoConstraints = false
+        fooLabel.text = "Foo"
+        fooLabel.textColor = .blue
+        fooLabel.backgroundColor = .red
+        fooLabel.textAlignment = .center
+        return fooLabel
     }()
     
-    private lazy var blueButton: UIButton = {
-        let blueButton = UIButton()
-        blueButton.translatesAutoresizingMaskIntoConstraints = false
-        blueButton.backgroundColor = .blue
-        blueButton.setTitle("Blue", for: .normal)
-        blueButton.setTitleColor(.red, for: .normal)
-        return blueButton
+    lazy var barLabel: UILabel = {
+        let barLabel = UILabel()
+        barLabel.translatesAutoresizingMaskIntoConstraints = false
+        barLabel.text = "Bar"
+        barLabel.textColor = .red
+        barLabel.backgroundColor = .green
+        barLabel.textAlignment = .center
+        return barLabel
     }()
     
-    private lazy var buttons: UIStackView = {
-        let buttons = UIStackView(arrangedSubviews: [self.redButton, self.blueButton])
-        buttons.translatesAutoresizingMaskIntoConstraints = false
-        buttons.distribution = .fillEqually
-        return buttons
+    lazy var labels: UIStackView = {
+        let labels = UIStackView(arrangedSubviews: [self.fooLabel, self.barLabel])
+        labels.translatesAutoresizingMaskIntoConstraints = false
+        labels.distribution = .fillEqually
+        return labels
     }()
     
-    private lazy var yellowButton: UIButton = {
-        let yellowButton = UIButton()
-        yellowButton.translatesAutoresizingMaskIntoConstraints = false
-        yellowButton.backgroundColor = .yellow
-        yellowButton.setTitle("Yellow", for: .normal)
-        yellowButton.setTitleColor(.red, for: .normal)
-        return yellowButton
-    }()
-    
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Hey ViewComposer user"
-        label.textAlignment = .center
-        return label
+    lazy var button: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .cyan
+        button.setTitle("Baz", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        return button
     }()
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [self.buttons, self.yellowButton, self.label])
+        let stackView = UIStackView(arrangedSubviews: [self.labels, self.button, self.button])
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical

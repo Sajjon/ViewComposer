@@ -9,90 +9,79 @@
 
 Style views using an enum array with its attributes:
 ```swift
-let label: UILabel = make(.text("Hello World"), .textColor(.red))
-```
-
-Or use the subclass `Label`, to declare the view using array literals:
-```swift
-let label: Label = [.text("Hello World"), .textColor(.red)]
+let label: UILabel = [.text("Hello World"), .textColor(.red)]
 ```
 
 We are styling our views using an array of the enum type `ViewAttribute` which creates a type called `ViewStyle` which can be used to style our views. **Please note that the order of the attributes (enums) does not matter**:
 
 ```swift
-let label: UILabel = make(.text("Hello World"), .textColor(.red))
-let same: UILabel = make(.textColor(.red), .text("Hello World")) // identical to `label2` ORDER DOES NOT MATTER.
+let label: UILabel = [.text("Hello World"), .textColor(.red)]
+let same: UILabel = [.textColor(.red), .text("Hello World")] // order does not matter
 ```
 
-Even though it might be a good idea to use the same order in your app for consistency.
+(*Even though it might be a good idea to use the same order in your app for consistency.*)
 
 The strength of styling views like this get especially clear when you look at a `UIViewController` example, and this isn't even a complicated ViewController.
 
 ```swift
 class NestedStackViewsViewController: UIViewController {
 
-    private lazy var redButton: UIButton = make(.backgroundColor(.red), .text("Red"), .textColor(.blue)) //using array literals
-    private lazy var blueButton: UIButton = make([.backgroundColor(.blue), .states([.normal("Blue", nil)]), .textColor(.red)]) // not using array literals, thus "[" and "]"
-    private lazy var buttons: UIStackView = make(.arrangedSubviews([self.redButton, self.blueButton]), .distribution(.fillEqually))
+    lazy var fooLabel: UILabel = [.text("Foo"), .textColor(.blue), .backgroundColor(.red), .textAlignment(.center)]
+    lazy var barLabel: UILabel =  [.text("Bar"), .textColor(.red), .backgroundColor(.green), .textAlignment(.center)]
+    lazy var labels: UIStackView = [.arrangedSubviews([self.fooLabel, self.barLabel]), .distribution(.fillEqually)]
     
-    private lazy var yellowButton: UIButton = make(.backgroundColor(.yellow), .text("Yellow"), .textColor(.red))
-    private lazy var label: UILabel = make(.text("Hey ViewComposer user"), .textAlignment(.center))
+    lazy var button: UIButton = [.text("Baz"), .backgroundColor(.cyan), .textColor(.red)]
     
-    lazy var stackView: UIStackView = make(.arrangedSubviews([self.buttons, self.yellowButton, self.label]), .axis(.vertical), .distribution(.fillEqually))
+    lazy var stackView: UIStackView = [.arrangedSubviews([self.labels, self.button]), .axis(.vertical), .distribution(.fillEqually)]
+    
 
     ...
 }
 ```
 
-Compared to vanilla:
+**Compared to vanilla:**
 
 ```swift
 class VanillaNestedStackViewsViewController: UIViewController {
-
-    private lazy var redButton: UIButton = {
-        let redButton = UIButton()
-        redButton.translatesAutoresizingMaskIntoConstraints = false
-        redButton.backgroundColor = .red
-        redButton.setTitle("Red", for: .normal)
-        redButton.setTitleColor(.blue, for: .normal)
-        return redButton
+    
+    lazy var fooLabel: UILabel = {
+        let fooLabel = UILabel()
+        fooLabel.translatesAutoresizingMaskIntoConstraints = false
+        fooLabel.text = "Foo"
+        fooLabel.textColor = .blue
+        fooLabel.backgroundColor = .red
+        fooLabel.textAlignment = .center
+        return fooLabel
     }()
     
-    private lazy var blueButton: UIButton = {
-        let blueButton = UIButton()
-        blueButton.translatesAutoresizingMaskIntoConstraints = false
-        blueButton.backgroundColor = .blue
-        blueButton.setTitle("Blue", for: .normal)
-        blueButton.setTitleColor(.red, for: .normal)
-        return blueButton
+    lazy var barLabel: UILabel = {
+        let barLabel = UILabel()
+        barLabel.translatesAutoresizingMaskIntoConstraints = false
+        barLabel.text = "Bar"
+        barLabel.textColor = .red
+        barLabel.backgroundColor = .green
+        barLabel.textAlignment = .center
+        return barLabel
     }()
     
-    private lazy var buttons: UIStackView = {
-        let buttons = UIStackView(arrangedSubviews: [self.redButton, self.blueButton])
-        buttons.translatesAutoresizingMaskIntoConstraints = false
-        buttons.distribution = .fillEqually
-        return buttons
+    lazy var labels: UIStackView = {
+        let labels = UIStackView(arrangedSubviews: [self.fooLabel, self.barLabel])
+        labels.translatesAutoresizingMaskIntoConstraints = false
+        labels.distribution = .fillEqually
+        return labels
     }()
     
-    private lazy var yellowButton: UIButton = {
-        let yellowButton = UIButton()
-        yellowButton.translatesAutoresizingMaskIntoConstraints = false
-        yellowButton.backgroundColor = .yellow
-        yellowButton.setTitle("Yellow", for: .normal)
-        yellowButton.setTitleColor(.red, for: .normal)
-        return yellowButton
-    }()
-    
-    private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Hey ViewComposer user"
-        label.textAlignment = .center
-        return label
+    lazy var button: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .cyan
+        button.setTitle("Baz", for: .normal)
+        button.setTitleColor(.red, for: .normal)
+        return button
     }()
     
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [self.buttons, self.yellowButton, self.label])
+        let stackView = UIStackView(arrangedSubviews: [self.labels, self.button, self.button])
         stackView.distribution = .fillEqually
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -110,8 +99,6 @@ private lazy var redButton: UIButton = make(.backgroundColor(.red), .text("Red")
 ```
 
 We are using standard `UIKit` class `UIButton`, with a static method called `make`, taking an array of `ViewAttribute` enums. This is neat if you dislike using subclasses.
-
-An alternative to this, if you want to make use of some even more sugary syntax is to use the subclasses conforming to the type `Composable`.
 
 ## Mergeable
 
@@ -214,26 +201,14 @@ foo <- bar <<- .text("baz") // result: `[.text(.baz)]`
 
 `ViewComposer` is using **right** for both the `<-` as well as the `<<-` operator. This means that you should read *from right to left* when values of chained merge operators.
 
-## Composables and predefined styles
+## Predefined styles
 
-You can compose views using the subclasses `Button`, `Label`, `StackView`, as we saw earlier:
-
-```swift
-let label: Label = [.text("Hello World"), .textColor(.red)]
-```
-
-These view subclasses are conforming to the protocol `Composable`. The `Composable` types offers initialization using array literals, since they conform to the protocol `ExpressibleByArrayLiteral`. 
-
-This makes it possible to declare the array of `ViewAttribute`s without calling any function.
-
-You can also declare some standard style, e.g. font, textcolor, text alignment and upper/case strings that you wanna use for all of your `UILabel`s. Since `ViewStyle` are **mergeable** it makes it convenient to share style between labels and merge custom values into the shared style and creating the label from this merged style.
+You can also declare some standard style, e.g. `font`, `textColor`, `textAlignment` and upper/case strings that you wanna use for all of your `UILabel`s. Since `ViewStyle` are **mergeable** it makes it convenient to share style between labels and merge custom values into the shared style and creating the label from this merged style.
 
 ```swift
-let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center)]
-let fooLabel = Label(labelStyle.merge(master: .text("Foo")))
+let style: ViewStyle = [.textColor(.red), .textAlignment(.center)]
+let fooLabel UILabel = labelStyle.merge(master: .text("Foo")))
 ```
-
-The real strength of using `Composable` types is that they can be created from a merge **inline**.
 
 Take another look at the same example as above, but here making use of the `merge(master:`  operator `<<-`:
 
@@ -242,9 +217,9 @@ let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center)]
 let fooLabel: Label = labelStyle <<- .text("Foo")
 ```
 
-Here the operator `<<-` actually creates a `Label` direcly, instead of having to first create a `ViewStyle`. 
+Here the operator `<<-` actually creates a `UILabel` directly, instead of having to first create a `ViewStyle`. 
 
-Let's look at a ViewController example, making use of `Composable`s and the strength of a default style and the `<<-` operator:
+Let's look at a ViewController example, making use of the strength of predefined styles and the `<<-` operator:
 
 ```swift
 private let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center), .font(.boldSystemFont(ofSize: 30))]
@@ -258,7 +233,7 @@ class LabelsViewController: UIViewController {
 }
 ```
 
-Compared to vanilla:
+**Compared to vanilla**:
 
 ```swift
 class LabelsViewControllerVanilla: UIViewController {
@@ -365,7 +340,7 @@ As of now it is possible to create an attributes array with duplicate values, e.
 let foobar: [ViewAttribute] = [.text("bar"), .text("foo")]
 ```
 
-It is possible to have an array of attributes containing duplicate values. But using it to instantiate a view, e.g. a `UILabel` will infact ignore the duplicate value.
+It is possible to have an array of attributes containing duplicate values. But using it to instantiate a view, e.g. a `UILabel` will in fact ignore the duplicate value.
 
 ```swift
 let foobar: [ViewAttribute] = [.text("foo"), .text("bar")] //contains both, since array may contain duplicates
@@ -373,7 +348,17 @@ let label: UILabel = make(foobar) // func `make` calls `let style = attributes.m
 print(label.text!) // prints "foo", since duplicate value `.text("bar")` has been removed by call to `make`
 ```
 
-Thus it is **strongly** disencouraged to instantiate arrays with duplicate values. But the scenarios where you are merging types with duplicates is handled, since you chose which attribute you wanna keep using either `merge:master` or `merge:slave`.
+Thus it is **strongly** discouraged to instantiate arrays with duplicate values. But the scenarios where you are merging types with duplicates is handled, since you chose which attribute you wanna keep using either `merge:master` or `merge:slave`.
+
+## Composables
+An alternative to this, if you want to make use of some even more sugary syntax is to use the subclasses conforming to the type `Composable`. You can find some [examples (Label, Button, StackView etc) here](https://github.com/Sajjon/ViewComposer/tree/master/Source/Composables). In the current release of ViewComposer **you cannot use array literal** instantiation for your `Composable` types subclassing `UIKit` classes.
+```swift
+final class Label: UILabel, Composable { ... }
+...
+let label: Label = [.text("foo")] // results in error "`UILabel` is not convertible to `Label`"
+```
+
+But this will hopefully be fixed soon!
 
 ## Custom attribute
 
@@ -435,11 +420,11 @@ We can now create some simple view conforming to `FooProtocol` that we can style
 final class FooLabel: UIView, FooProtocol {
     typealias Style = ViewStyle
     var foo: String? { didSet { label.text = foo } } //
-    let label: Label
+    let label: UILabel
     
     init(_ style: ViewStyle? = nil) {
         let style = style <- .textAlignment(.center)]//default attribute
-        label = Label(style)
+        label = style <- [.textColor(.red)] //default textColor
         super.init(frame: .zero)
         compose(with: style) // setting up this view and calls `setupSubviews` below
     }
