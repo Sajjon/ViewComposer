@@ -20,9 +20,11 @@ public protocol Attributed: Collection, ExpressibleByArrayLiteral, BaseAttribute
     
     func merge(slave: Self) -> Self
     func merge(master: Self) -> Self
+    
     func merge(slave: [Attribute]) -> Self
-    func merge(slave: Attribute) -> Self
     func merge(master: [Attribute]) -> Self
+    
+    func merge(slave: Attribute) -> Self
     func merge(master: Attribute) -> Self
     
     var startIndex: Int { get }
@@ -103,20 +105,20 @@ public extension Attributed {
         return Self(unionAttributes)
     }
     
-    func merge(master: Self) -> Self {
-        return master.merge(slave: self)
-    }
-    
     func merge(slave: [Attribute]) -> Self {
         return merge(slave: Self(slave))
+    }
+    
+    func merge(master: [Attribute]) -> Self {
+        return Self(master).merge(slave: self)
     }
     
     func merge(slave: Attribute) -> Self {
         return merge(slave: Self([slave]))
     }
     
-    func merge(master: [Attribute]) -> Self {
-        return Self(master).merge(slave: self)
+    func merge(master: Self) -> Self {
+        return master.merge(slave: self)
     }
     
     func merge(master: Attribute) -> Self {
@@ -132,5 +134,13 @@ public extension Array where Element: AssociatedValueStrippable {
             filtered.append(attribute)
         }
         return filtered
+    }
+    
+    func merge<A: Attributed>(slave: A) -> A where A.Attribute == Element {
+        return A(self).merge(slave: slave)
+    }
+    
+    func merge<A: Attributed>(master: A) -> A where A.Attribute == Element {
+        return A(self).merge(master: master)
     }
 }

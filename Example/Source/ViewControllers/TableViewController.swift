@@ -40,7 +40,7 @@ extension TableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "Comparisson"
+            return "Comparison"
         case 1:
             return "ViewComposer only"
         default:

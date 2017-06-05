@@ -47,10 +47,12 @@
 		482B89751EE00C6500C97D42 /* AutoHashable.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 482B894B1EE00C6500C97D42 /* AutoHashable.stencil */; };
 		482B89761EE00C6500C97D42 /* ViewComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 482B894C1EE00C6500C97D42 /* ViewComposer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		482B897C1EE00C7100C97D42 /* BaseXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89781EE00C7100C97D42 /* BaseXCTest.swift */; };
-		482B897D1EE00C7100C97D42 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 482B89791EE00C7100C97D42 /* Info.plist */; };
 		482B897E1EE00C7100C97D42 /* MakeableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B897A1EE00C7100C97D42 /* MakeableTests.swift */; };
-		482B897F1EE00C7100C97D42 /* MergeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B897B1EE00C7100C97D42 /* MergeTests.swift */; };
-		4846CEDE1EE198A900E84C91 /* AnyAttributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEDD1EE198A900E84C91 /* AnyAttributed.swift */; };
+		482B897F1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B897B1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift */; };
+		48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3C61EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift */; };
+		48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */; };
+		48D7F3CC1EE4988900BC7012 /* ViewAttribute+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */; };
+		48D7F3CF1EE5444000BC7012 /* MergingViewStyleWithArraysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */; };
 		58A276593784FDED9DBBB41B /* Pods_ViewComposerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */; };
 		D03D14DF06693096BB6E0E5F /* Pods_ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F34C092F993FD8DECC1E76 /* Pods_ViewComposer.framework */; };
 /* End PBXBuildFile section */
@@ -113,8 +115,11 @@
 		482B89781EE00C7100C97D42 /* BaseXCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseXCTest.swift; sourceTree = "<group>"; };
 		482B89791EE00C7100C97D42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482B897A1EE00C7100C97D42 /* MakeableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableTests.swift; sourceTree = "<group>"; };
-		482B897B1EE00C7100C97D42 /* MergeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeTests.swift; sourceTree = "<group>"; };
-		4846CEDD1EE198A900E84C91 /* AnyAttributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyAttributed.swift; sourceTree = "<group>"; };
+		482B897B1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergingViewAttributeArraysTests.swift; sourceTree = "<group>"; };
+		48D7F3C61EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningAttributed.swift; sourceTree = "<group>"; };
+		48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningComposable.swift; sourceTree = "<group>"; };
+		48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewAttribute+Operators.swift"; sourceTree = "<group>"; };
+		48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergingViewStyleWithArraysTests.swift; sourceTree = "<group>"; };
 		4C9A5DF6C0FB4A5BB8B1E1DF /* Pods-ViewComposerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests.release.xcconfig"; sourceTree = "<group>"; };
 		6011BAC9BF2B8073FF8CA0E5 /* Pods-ViewComposer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.release.xcconfig"; sourceTree = "<group>"; };
 		642A0EC1FB475445192D78FC /* Pods-ViewComposer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -156,11 +161,11 @@
 		481681781EDD53EE004E3DD0 = {
 			isa = PBXGroup;
 			children = (
-				482B89771EE00C7100C97D42 /* Tests */,
-				482B89161EE00C6500C97D42 /* Source */,
-				481681831EDD53EE004E3DD0 /* Products */,
-				4494D55EE032982E5CC7C07C /* Pods */,
 				514CE5D1EF5020419B5C0CC8 /* Frameworks */,
+				4494D55EE032982E5CC7C07C /* Pods */,
+				481681831EDD53EE004E3DD0 /* Products */,
+				482B89161EE00C6500C97D42 /* Source */,
+				482B89771EE00C7100C97D42 /* Tests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -188,13 +193,13 @@
 		482B89171EE00C6500C97D42 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				48D7F3C41EE4659B00BC7012 /* MergeOperators */,
 				482B89181EE00C6500C97D42 /* Attributed.swift */,
 				482B89191EE00C6500C97D42 /* Macros.swift */,
 				482B891A1EE00C6500C97D42 /* Styleable.swift */,
 				482B891B1EE00C6500C97D42 /* ViewAttribute */,
 				482B89281EE00C6500C97D42 /* Views */,
 				482B89381EE00C6500C97D42 /* ViewStyle */,
-				4846CEDD1EE198A900E84C91 /* AnyAttributed.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -204,6 +209,7 @@
 			children = (
 				482B891C1EE00C6500C97D42 /* AttributedValues */,
 				482B89271EE00C6500C97D42 /* ViewAttribute.swift */,
+				48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */,
 			);
 			path = ViewAttribute;
 			sourceTree = "<group>";
@@ -323,9 +329,19 @@
 				482B89781EE00C7100C97D42 /* BaseXCTest.swift */,
 				482B89791EE00C7100C97D42 /* Info.plist */,
 				482B897A1EE00C7100C97D42 /* MakeableTests.swift */,
-				482B897B1EE00C7100C97D42 /* MergeTests.swift */,
+				482B897B1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift */,
+				48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		48D7F3C41EE4659B00BC7012 /* MergeOperators */ = {
+			isa = PBXGroup;
+			children = (
+				48D7F3C61EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift */,
+				48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */,
+			);
+			path = MergeOperators;
 			sourceTree = "<group>";
 		};
 		514CE5D1EF5020419B5C0CC8 /* Frameworks */ = {
@@ -447,7 +463,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482B897D1EE00C7100C97D42 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -551,14 +566,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				482B89671EE00C6500C97D42 /* UITextView+Makeable.swift in Sources */,
+				48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */,
 				482B89571EE00C6500C97D42 /* PlaceholderOwner.swift in Sources */,
 				482B896E1EE00C6500C97D42 /* AutoEquatable.generated.swift in Sources */,
+				48D7F3CC1EE4988900BC7012 /* ViewAttribute+Operators.swift in Sources */,
 				482B89531EE00C6500C97D42 /* ControlState.swift in Sources */,
 				482B894E1EE00C6500C97D42 /* Macros.swift in Sources */,
 				482B89651EE00C6500C97D42 /* UIStackView+Makeable.swift in Sources */,
 				482B894D1EE00C6500C97D42 /* Attributed.swift in Sources */,
 				482B89661EE00C6500C97D42 /* UITextField+Makeable.swift in Sources */,
 				482B89561EE00C6500C97D42 /* LayoutPriority.swift in Sources */,
+				48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */,
 				482B895E1EE00C6500C97D42 /* StackView.swift in Sources */,
 				482B89591EE00C6500C97D42 /* TextHolder.swift in Sources */,
 				482B89541EE00C6500C97D42 /* ControlStateHolder.swift in Sources */,
@@ -566,7 +584,6 @@
 				482B89511EE00C6500C97D42 /* Case.swift in Sources */,
 				482B896D1EE00C6500C97D42 /* AutoCustomStringConvertible.generated.swift in Sources */,
 				482B896B1EE00C6500C97D42 /* AutoAssociatedValueEnum.generated.swift in Sources */,
-				4846CEDE1EE198A900E84C91 /* AnyAttributed.swift in Sources */,
 				482B89601EE00C6500C97D42 /* TextView.swift in Sources */,
 				482B895C1EE00C6500C97D42 /* ImageView.swift in Sources */,
 				482B89641EE00C6500C97D42 /* UILabel+Makeable.swift in Sources */,
@@ -590,8 +607,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482B897F1EE00C7100C97D42 /* MergeTests.swift in Sources */,
+				482B897F1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift in Sources */,
 				482B897C1EE00C7100C97D42 /* BaseXCTest.swift in Sources */,
+				48D7F3CF1EE5444000BC7012 /* MergingViewStyleWithArraysTests.swift in Sources */,
 				482B897E1EE00C7100C97D42 /* MakeableTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

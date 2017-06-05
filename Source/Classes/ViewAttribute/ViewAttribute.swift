@@ -8,26 +8,7 @@
 
 import Foundation
 
-public struct SomeStripped: StrippedRepresentation {
-    public typealias RawValue = String
-    public init(rawValue: String) { fatalError() }
-    public var rawValue: String { return "foo" }
-}
-
-extension SomeStripped: Equatable {
-    public static func == (lhs: SomeStripped, rhs: SomeStripped) -> Bool {
-        return lhs.rawValue == rhs.rawValue
-    }
-}
-
-extension SomeStripped: Hashable {
-    public var hashValue: Int {
-        return rawValue.hashValue
-    }
-}
-
 public enum ViewAttribute {
-//    case customAttributed(AnyAttributed<Attribute>)// this would force `ViewAttribute` to be generic which creates a lot o problems
     case custom(BaseAttributed)
     
     // View
@@ -76,12 +57,47 @@ public enum ViewAttribute {
 }
 
 public extension Array where Element == ViewAttribute {
-    func merge(slave: [ViewAttribute]) -> [ViewAttribute] {
-        return ViewStyle(self).merge(slave: ViewStyle(slave)).attributes
+    func merge(master: [ViewAttribute]) -> ViewStyle {
+        return ViewStyle(self).merge(master: master)
     }
     
-    func merge(master: [ViewAttribute]) -> [ViewAttribute] {
-        return ViewStyle(self).merge(master: ViewStyle(master)).attributes
+    func merge(master: ViewAttribute) -> ViewStyle {
+        return merge(master: [master])
+    }
+    
+    func merge(slave: [ViewAttribute]) -> ViewStyle {
+        return ViewStyle(self).merge(slave: slave)
+    }
+    
+    func merge(slave: ViewAttribute) -> ViewStyle {
+        return merge(slave: [slave])
+    }
+    
+}
+
+extension ViewAttribute {
+    func merge(master: ViewStyle) -> ViewStyle {
+        return self <<- master
+    }
+    
+    func merge(master: [ViewAttribute]) -> ViewStyle {
+        return self <<- master
+    }
+    
+    func merge(master: ViewAttribute) -> ViewStyle {
+        return self <<- master
+    }
+
+    func merge(slave: ViewStyle) -> ViewStyle {
+        return self <- slave
+    }
+    
+    func merge(slave: [ViewAttribute]) -> ViewStyle {
+        return self <- slave
+    }
+    
+    func merge(slave: ViewAttribute) -> ViewStyle {
+        return self <- slave
     }
 }
 

@@ -28,7 +28,7 @@ extension Makeable {
     public func postMake(_ style: Style) {}
     
     public static func make(_ attributes: [Style.Attribute]) -> Styled {
-        let style = Style(attributes)
+        let style: Style = attributes.merge(slave: []) // do not allow duplicates
         return make(style)
     }
     
@@ -71,28 +71,8 @@ precedencegroup StyleablePrecedence {
     higherThan: CastingPrecedence
 }
 
-infix operator <<- : StyleablePrecedence
-public func <<- <A: Attributed, C: Composable>(attributed: A, attribute: A.Attribute) -> C where C.Style == A {
-    let style: A = attributed.merge(master: [attribute])
-    return C(style)
-}
-
-public func <<- <A: Attributed, C: Composable>(attributed: A, attributes: [A.Attribute]) -> C where C.Style == A {
-    let style: A = attributed.merge(master: attributes)
-    return C(style)
-}
-
-
-infix operator <- : StyleablePrecedence
-public func <- <A: Attributed, C: Composable>(attributed: A, attribute: A.Attribute) -> C where C.Style == A {
-    let style: A = attributed.merge(slave: [attribute])
-    return C(style)
-}
-
-public func <- <A: Attributed, C: Composable>(attributed: A, attributes: [A.Attribute]) -> C where C.Style == A {
-    let style: A = attributed.merge(slave: attributes)
-    return C(style)
-}
+infix operator <- : StyleablePrecedence // merge operator returning `Styleable`
+infix operator <<- : StyleablePrecedence // force merge operator returning `Styleable`
 
 public extension Composable where Self: UIView, Style == ViewStyle {
     func compose(with style: Style) {

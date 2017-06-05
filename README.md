@@ -113,6 +113,54 @@ We are using standard `UIKit` class `UIButton`, with a static method called `mak
 
 An alternative to this, if you want to make use of some even more sugary syntax is to use the subclasses conforming to the type `Composable`.
 
+## Mergeable
+
+The attributes enum array `[ViewAttribute]` creates a `ViewStyle` (wrapper that can create views). 
+
+An array `[ViewAttribute]` can be merged with another array or a single attribute. Such an array can also be merged with a `ViewStyle`. A `ViewStyle` can be merged with a single `ViewAttribute` as well. An array of attributes can also be merged with a single attribute. Any type can be on the left handside or right handside in the merge. 
+
+The result of the merge is always a `ViewStyle`, since this is the most refined type.
+
+There are two different merge functions, `merge:master` and `merge:slave`, since the two types you are merging may contain the same attribute, i.e. there is a duplicate, you need to decide which value to keep.
+
+### Examples
+Merge between `[ViewAttribute]` arrays with a duplicate value using `merge:slave` and `merge:master`
+```swift
+    let foo: [ViewAttribute] = [.text("foo")]
+    let bar: [ViewAttribute] = [.text("bar"), .backgroundColor(.red)]
+
+    // The merged results are of type `ViewStyle`
+    let fooMerged = foo.merge(slave: bar) // [.text("foo"), backgroundColor(.red)]
+    let barMerged = foo.merge(master: bar) // [.text("bar"), backgroundColor(.red)]
+```
+
+As mentioned above, you can merge single attributes as well
+
+```swift
+    let foo: ViewAttribute = .text("foo") 
+    let style: ViewStyle = [.text("bar"), .backgroundColor(.red)]
+
+    let mergeSingleAttribute = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
+
+    let array: [ViewAttriubte] = [.text("foo")]
+    let mergeArray =
+```
+
+### Merge operators `<-` and `<<-`
+
+Instead of writing `foo.merge(slave: bar)` we can write `foo <- bar` and instead of writing `foo.merge(master: bar` we can write `foo <<- bar`.
+
+```swift
+    let foo: [ViewAttribute] = [.text("foo")]
+    let bar: [ViewAttribute] = [.text("bar"), .backgroundColor(.red)]
+
+    // The merged results are of type `ViewStyle`
+    let fooMerged = foo <- bar // [.text("foo"), backgroundColor(.red)]
+    let barMerged = foo <<- bar // [.text("bar"), backgroundColor(.red)]
+```
+
+Of course the operator `<-` and `<<-` works between `ViewStyle`s, `ViewAttribute` and `[ViewAttriubte]` interchangably.
+
 ## Composables and predefined styles
 
 You can compose views using the subclasses `Button`, `Label`, `StackView`, as we saw earlier:
@@ -125,15 +173,12 @@ These view subclasses are conforming to the protocol `Composable`. The `Composab
 
 This makes it possible to declare the array of `ViewAttribute`s without calling any function.
 
-You can also declare some standard style, e.g. font, textcolor, text alignment and upper/case strings that you wanna use for all of your `UILabel`s. The style is stored in a type called `ViewStyle`. `ViewStyle`s are are **mergeable**. Which makes it conveinent to share style between labels and merge custom values into the shared style and creating the label from this merged style.
+You can also declare some standard style, e.g. font, textcolor, text alignment and upper/case strings that you wanna use for all of your `UILabel`s. Since `ViewStyle` are **mergeable** it makes it convenient to share style between labels and merge custom values into the shared style and creating the label from this merged style.
 
 ```swift
 let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center)]
 let fooLabel = Label(labelStyle.merge(master: .text("Foo")))
 ```
-
-
-In the call to function `merge` above, you can see the *argument label* `master:`, which indicates that if the `ViewAttribute` *text* would already exist in the `ViewStyle` *labelStyle*, then it would be **overridden** by with the value *"Foo"* - thus acting as *master* (as opposed to the function `merge(slave:` which also exists). 
 
 The real strength of using `Composable` types is that they can be created from a merge **inline**.
 
@@ -144,8 +189,9 @@ let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center)]
 let fooLabel: Label = labelStyle <<- .text("Foo")
 ```
 
-Let's look at a ViewController example, making use of `Composable`s and the strength of a default style and the `<<-` operator:
+Here the operator `<<-` actually creates a `Label` direcly, instead of having to first create a `ViewStyle`. 
 
+Let's look at a ViewController example, making use of `Composable`s and the strength of a default style and the `<<-` operator:
 
 ```swift
 private let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center), .font(.boldSystemFont(ofSize: 30))]
@@ -155,7 +201,7 @@ class LabelsViewController: UIViewController {
     private lazy var barLabel: Label = labelStyle <<- [.text("Bar"), .textColor(.blue), .backgroundColor(.red)]
     private lazy var bazLabel: Label = labelStyle <<- [.text("Baz"), .textAlignment(.left), .backgroundColor(.green), .font(.boldSystemFont(ofSize: 45))]
     
-    lazy var stackView: StackView = .[.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)]
+    lazy var stackView: StackView = [.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)]
 }
 ```
 
@@ -257,6 +303,24 @@ public enum ViewAttribute {
     case arrangedSubviews([UIView])
 }
 ```
+
+## CAUTION: Avoid arrays with duplicate values.
+As of now it is possible to create an attributes array with duplicate values, e.g.
+
+```swift
+    // NEVER DO THIS!
+    let foobar: [ViewAttribute] = [.text("bar"), .text("foo")]
+```
+
+It is possible to have an array of attributes containing duplicate values. But using it to instantiate a view, e.g. a `UILabel` will infact ignore the duplicate value.
+
+```swift
+    let foobar: [ViewAttribute] = [.text("foo"), .text("bar")] //contains both, since array may contain duplicates
+    let label: UILabel = .make(foobar) // func `make` calls `let style = attributes.merge(slave: [])` removing duplicates.
+    print(label.text!) // prints "foo", since duplicate value `.text("bar")` is ignored.
+```
+
+Thus it is **strongly** disencouraged to instantiate arrays with duplicate values. But the scenarios where you are merging types with duplicates is handled, since you chose which attribute you wanna keep using either `merge:master` or `merge:slave`.
 
 ## Custom attribute
 

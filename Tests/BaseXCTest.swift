@@ -10,9 +10,13 @@ import Foundation
 import XCTest
 
 let text: String = "foobar"
+let foo: String = "foo"
+let bar: String = "bar"
 let isHidden = true
 let color: UIColor = .red
 let cornerRadius: CGFloat = 3.1415
+let fooRadius: CGFloat = 42
+let barRadius: CGFloat = 237
 let spacing: CGFloat = 42
 let image = UIImage()
 let arrangedSubviews: [UIView] = [UILabel(), UIView(), UIButton()]
