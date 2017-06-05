@@ -140,10 +140,11 @@ As mentioned above, you can merge single attributes as well
     let foo: ViewAttribute = .text("foo") 
     let style: ViewStyle = [.text("bar"), .backgroundColor(.red)]
 
+    // The merged results are of type `ViewStyle`
     let mergeSingleAttribute = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
 
     let array: [ViewAttriubte] = [.text("foo")]
-    let mergeArray =
+    let mergeArray = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
 ```
 
 ### Merge operators `<-` and `<<-`
