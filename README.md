@@ -95,10 +95,10 @@ class VanillaNestedStackViewsViewController: UIViewController {
 ## Non-intrusive - standard UIKit views
 As we saw in the ViewComposer example above:
 ```swift
-private lazy var redButton: UIButton = make(.backgroundColor(.red), .text("Red"), .textColor(.blue))
+let button: UIButton = [.backgroundColor(.red), .text("Red"), .textColor(.blue)]
 ```
 
-We are using standard `UIKit` class `UIButton`, with a static method called `make`, taking an array of `ViewAttribute` enums. This is neat if you dislike using subclasses.
+We are using standard `UIKit` class `UIButton` taking an array of `ViewAttribute` enums.
 
 ## Mergeable
 
