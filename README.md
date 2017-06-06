@@ -113,8 +113,8 @@ There are two different merge functions, `merge:master` and `merge:slave`, since
 ### Examples
 Merge between `[ViewAttribute]` arrays with a duplicate value using `merge:slave` and `merge:master`
 ```swift
-let foo: [ViewAttribute] = [.text("foo")]
-let bar: [ViewAttribute] = [.text("bar"), .backgroundColor(.red)]
+let foo: [ViewAttribute] = [.text("foo")] // can use `ViewStyle` as `bar`
+let bar: ViewStyle = [.text("bar"), .backgroundColor(.red)] // prefer `ViewStyle`
 
 // The merged results are of type `ViewStyle`
 let fooMerged = foo.merge(slave: bar) // [.text("foo"), backgroundColor(.red)]
@@ -156,8 +156,8 @@ private extension ViewStyle {
 Instead of writing `foo.merge(slave: bar)` we can write `foo <- bar` and instead of writing `foo.merge(master: bar` we can write `foo <<- bar`.
 
 ```swift
-let foo: [ViewAttribute] = [.text("foo")]
-let bar: [ViewAttribute] = [.text("bar"), .backgroundColor(.red)]
+let foo: ViewStyle = [.text("foo")]
+let bar: ViewStyle = [.text("bar"), .backgroundColor(.red)]
 
 // The merged results are of type `ViewStyle`
 let fooMerged = foo <- bar // [.text("foo"), backgroundColor(.red)]
@@ -179,8 +179,8 @@ final class MyViewDefaultingToRed: UIView {
 
 Of course it is possible to chain merges. **Disregarding of left or right associativity** these three examples gets the same result:
 ```swift
-let foo: [ViewAttribute] = [.text("foo")]
-let bar: [ViewAttribute] = [.text("bar")]
+let foo: ViewStyle = [.text("foo")]
+let bar: ViewStyle = [.text("bar")]
 
 foo <<- bar <<- .text("baz") // result: `[.text(.baz)]`
 foo <- bar <- .text("baz") // result: `[.text(.foo)]`
@@ -189,8 +189,8 @@ foo <<- bar <- .text("baz") // result: `[.text(.bar)]`
 
 But having a look at this example, **associativity matters!**:
 ```swift
-let foo: [ViewAttribute] = [.text("foo")]
-let bar: [ViewAttribute] = [.text("bar")]
+let foo: ViewStyle = [.text("foo")]
+let bar: ViewStyle = [.text("bar")]
 
 // `right` associative
 foo <- bar <<- .text("baz") // result: `[.text(.foo)]`
@@ -338,6 +338,13 @@ As of now it is possible to create an attributes array with duplicate values, e.
 ```swift
 // NEVER DO THIS!
 let foobar: [ViewAttribute] = [.text("bar"), .text("foo")]
+// NOR THIS
+let foofoo: [ViewAttribute] = [.text("foo"), .text("foo")]
+
+//NOR using style
+let foobarStyle: Style = [.text("bar"), .text("foo")] // confusing!
+// NOR this
+let foofooStyle: Style = [.text("foo"), .text("foo")] // confusing!
 ```
 
 It is possible to have an array of attributes containing duplicate values. But using it to instantiate a view, e.g. a `UILabel` will in fact ignore the duplicate value.
