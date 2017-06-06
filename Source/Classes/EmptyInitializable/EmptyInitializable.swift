@@ -8,7 +8,7 @@
 
 import Foundation
 
-/// Protocol for creating instances views without having to pass any arguments.
+/// Protocol for creating instances without having to pass any arguments.
 ///
 /// Actually we just want a protocol with this empty initializer `init()`
 ///

@@ -10,7 +10,7 @@ import Foundation
 
 public extension Composable where Self: UIView, Style == ViewStyle {
     func compose(with style: Style) {
-        setup(with: style)
-        setupSubviews(with: style)
+        setup(with: style) /* Calling `setup` method in `Styleable` protocl */
+        setupSubviews(with: style) /* Calling "optional" method in `Composable` */
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Makes it possible to instantiate and style `Makeable` from array literal like this: `let label: UILabel = [.text("foo")]`
 public extension Styleable where Self: Makeable, Self.Styled == Self, Self.Style.Attribute == Element {
     init(arrayLiteral elements: Self.Element...) {
         self = Self.make(elements)
