@@ -11,24 +11,24 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 ```
 
 ## Table of Contents
-<!-- MarkdownTOC -->
+<!-- MarkdownTOC autolink="true" -->
 
-- Style views using enums swiftly
-- Non-intrusive - standard UIKit views
-- Mergeable
-    - Examples
-    - Merge operators `<-` and `<<-`
-- Predefined styles
-- Supported attributes
-- CAUTION: Avoid arrays with duplicate values.
-- Composables
-- Custom attribute
-    - Creating a simple custom attribute
-    - Merging custom attributes
-- Roadmap
-    - Architecture/implementation
-    - Supported UIKit views
-    - Supported attributes
+- [Style views using enums swiftly][style-views-using-enums-swiftly]
+- [Non-intrusive - standard UIKit views][non-intrusive---standard-uikit-views]
+- [Mergeable][mergeable]
+    - [Examples][examples]
+    - [Merge operators `<-` and `<<-`][merge-operators---and--]
+- [Predefined styles][predefined-styles]
+- [Supported attributes][supported-attributes]
+- [CAUTION: Avoid arrays with duplicate values.][caution-avoid-arrays-with-duplicate-values]
+- [Composables][composables]
+- [Custom attribute][custom-attribute]
+    - [Creating a simple custom attribute][creating-a-simple-custom-attribute]
+    - [Merging custom attributes][merging-custom-attributes]
+- [Roadmap][roadmap]
+    - [Architecture/implementation][architectureimplementation]
+    - [Supported UIKit views][supported-uikit-views]
+    - [Supported attributes][supported-attributes-1]
 
 <!-- /MarkdownTOC -->
 
