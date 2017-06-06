@@ -3,14 +3,37 @@
 [![Platform](https://img.shields.io/cocoapods/p/ViewComposer.svg?style=flat)](http://cocoapods.org/pods/ViewComposer)
 
 
-## ViewComposer
-
-### Style views using enums swiftly
+# ViewComposer
 
 Style views using an enum array with its attributes:
 ```swift
 let label: UILabel = [.text("Hello World"), .textColor(.red)]
 ```
+
+## Table of Contents
+<!-- MarkdownTOC -->
+
+- Style views using enums swiftly
+- Non-intrusive - standard UIKit views
+- Mergeable
+    - Examples
+    - Merge operators `<-` and `<<-`
+- Predefined styles
+- Supported attributes
+- CAUTION: Avoid arrays with duplicate values.
+- Composables
+- Custom attribute
+    - Creating a simple custom attribute
+    - Merging custom attributes
+- Roadmap
+    - Architecture/implementation
+    - Supported UIKit views
+    - Supported attributes
+
+<!-- /MarkdownTOC -->
+
+
+## Style views using enums swiftly
 
 We are styling our views using an array of the enum type `ViewAttribute` which creates a type called `ViewStyle` which can be used to style our views. **Please note that the order of the attributes (enums) does not matter**:
 
@@ -99,6 +122,17 @@ let button: UIButton = [.backgroundColor(.red), .text("Red"), .textColor(.blue)]
 ```
 
 **NO SUBCLASSES NEEDED 🙌**
+
+Of course you can always change you var to be lazy (recommended) and set attributes on the view which are not yet supported by ViewComposer, like this:
+
+```swift
+lazy var button: UIButton = {
+    let button: UIButton = [.backgroundColor(.red), .text("Red"), .textColor(.blue)]
+    // setup attributes not yet supported by ViewComposer
+    button.layer.isDoubleSided = false // `isDoubleSided` is not yet supported
+    return button
+}()
+```
 
 ## Mergeable
 
@@ -281,7 +315,7 @@ class LabelsViewControllerVanilla: UIViewController {
 ```
 
 
-## ViewAttribute
+## Supported attributes
 Here are some of the attributes (this list gets updated manually...), take a look at the [full list here](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/ViewAttribute/ViewAttribute.swift)
 
 ```swift
@@ -459,3 +493,17 @@ Whole code can be found [here in the example app](https://github.com/Sajjon/View
 ### Merging custom attributes
 
 Check out [TriangleView.swift](https://github.com/Sajjon/ViewComposer/blob/master/Example/Source/Views/TriangleView.swift) for example of advanced usage of custom attributes.
+
+## Roadmap
+### Architecture/implementation
+- [ ] Change implementation to use Codable/Encodable (Swift 4)?
+- [ ] Fix bug where classes conforming to `Composable` and inheriting from superclass conforming to `Makeable` cannot be instantiated using array literals. 
+
+### Supported UIKit views
+- [ ] Support UITableView
+- [ ] Support UICollectionView
+
+### Supported attributes
+- [ ] Support most layer attributes, such as `borderWidth`, `masksToBounds` etc..
+- [ ] Add attribute for delegates such as `UITextViewDelegate`
+
