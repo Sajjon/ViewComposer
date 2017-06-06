@@ -17,10 +17,6 @@ extension Makeable {
     
     public func postMake(_ style: Style) {}
     
-    // Using ArrayLiterals
-    public static func make(_ elements: Style.Attribute...) -> Styled {
-        return make(elements)
-    }
     
     public static func make(_ attributes: [Style.Attribute]) -> Styled {
         let style: Style = attributes.merge(slave: []) // do not allow duplicates
