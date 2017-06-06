@@ -8,9 +8,10 @@
 
 import Foundation
 
-public protocol Styleable {
+public protocol Styleable: ExpressibleByArrayLiteral {
     associatedtype Style: Attributed
     func setup(with style: Style)
+    associatedtype Element = Style.Attribute
 }
 
 public protocol EmptyInitializable {
@@ -18,15 +19,20 @@ public protocol EmptyInitializable {
     static func createEmpty() -> Styled
 }
 
-public protocol Makeable: EmptyInitializable, Styleable, ExpressibleByArrayLiteral {
+public protocol Makeable: EmptyInitializable, Styleable {
     static func make(_ attributes: [Style.Attribute]) -> Styled
     func postMake(_ style: Style)
-    associatedtype Element = Style.Attribute
 }
 
-public extension Makeable where Self.Styled == Self, Self.Style.Attribute == Element {
+public extension Styleable where Self: Makeable, Self.Styled == Self, Self.Style.Attribute == Element {
     init(arrayLiteral elements: Self.Element...) {
         self = Self.make(elements)
+    }
+}
+
+public extension Styleable where Self: Composable, Self.Style.Attribute == Element {
+    init(arrayLiteral elements: Style.Attribute...) {
+        self.init(Style(elements))
     }
 }
 
@@ -71,13 +77,6 @@ public protocol Composable: Styleable, ExpressibleByArrayLiteral {
 
 extension Composable {
     public func setupSubviews(with style: Style) {}
-}
-
-public extension Composable {
-    typealias Element = Style.Element
-    init(arrayLiteral elements: Style.Attribute...) {
-        self.init(Style(elements))
-    }
 }
 
 public extension Styleable {
