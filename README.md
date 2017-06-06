@@ -13,6 +13,11 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 ## Table of Contents
 <!-- MarkdownTOC autolink="true" bracket="round" -->
 
+- [Installation](#installation)
+    - [CocoaPods](#cocoapods)
+    - [Carthage](#carthage)
+    - [Swift Package Manager](#swift-package-manager)
+    - [Manually](#manually)
 - [Style views using enums swiftly](#style-views-using-enums-swiftly)
 - [Non-intrusive - standard UIKit views](#non-intrusive---standard-uikit-views)
 - [Mergeable](#mergeable)
@@ -32,6 +37,67 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 
 <!-- /MarkdownTOC -->
 
+## Installation
+
+### CocoaPods
+
+[CocoaPods](http://cocoapods.org) is a dependency manager for Cocoa projects. You can install it with the following command:
+
+```bash
+$ gem install cocoapods
+```
+
+To integrate ViewComposer into your Xcode project using CocoaPods, specify it in your `Podfile`:
+
+```ruby
+source 'https://github.com/CocoaPods/Specs.git'
+platform :ios, '10.0'
+use_frameworks!
+
+target '<Your Target Name>' do
+    pod 'ViewComposer', '~> 0.1.9'
+end
+```
+
+Then, run the following command:
+
+```bash
+$ pod install
+```
+
+### Carthage
+
+[Carthage](https://github.com/Carthage/Carthage) is a decentralized dependency manager that builds your dependencies and provides you with binary frameworks.
+
+You can install Carthage with [Homebrew](http://brew.sh/) using the following command:
+
+```bash
+$ brew update
+$ brew install carthage
+```
+
+To integrate ViewComposer into your Xcode project using Carthage, specify it in your `Cartfile`:
+
+```ogdl
+github "ViewComposer" ~> 0.1.9
+```
+
+Run `carthage update` to build the framework and drag the built `ViewComposer.framework` into your Xcode project.
+
+### Swift Package Manager
+
+The [Swift Package Manager](https://swift.org/package-manager/) is a tool for automating the distribution of Swift code and is integrated into the `swift` compiler. It is in early development, but ViewComposer does support its use on supported platforms. 
+
+Once you have your Swift package set up, adding ViewComposer as a dependency is as easy as adding it to the `dependencies` value of your `Package.swift`.
+
+```swift
+dependencies: [
+    .Package(url: "https://github.com/Sajjon/ViewComposer.git", majorVersion: 0)
+]
+```
+
+### Manually
+Refer to famous open source framwork [Alamofire's instructions on how to manually integrate a framework](https://github.com/Alamofire/Alamofire/blob/master/README.md#manually) in order to install ViewComposer in your project manually.
 
 ## Style views using enums swiftly
 
