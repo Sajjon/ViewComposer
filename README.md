@@ -15,10 +15,6 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 <!-- MarkdownTOC autolink="true" bracket="round" -->
 
 - [Installation](#installation)
-    - [CocoaPods](#cocoapods)
-    - [Carthage](#carthage)
-    - [Swift Package Manager](#swift-package-manager)
-    - [Manually](#manually)
 - [Style views using enums swiftly](#style-views-using-enums-swiftly)
 - [Non-intrusive - standard UIKit views](#non-intrusive---standard-uikit-views)
 - [Mergeable](#mergeable)
@@ -40,19 +36,19 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 
 ## Installation
 
-### [CocoaPods](http://cocoapods.org) 
+#### [CocoaPods](http://cocoapods.org) 
 
 ```ruby
 pod 'ViewComposer', '~> 0.1.9'
 ```
 
-### [Carthage](https://github.com/Carthage/Carthage)
+#### [Carthage](https://github.com/Carthage/Carthage)
 
 ```ogdl
 github "ViewComposer" ~> 0.1.9
 ```
 
-### [Swift Package Manager](https://swift.org/package-manager/) 
+#### [Swift Package Manager](https://swift.org/package-manager/) 
 
 ```swift
 dependencies: [
@@ -60,7 +56,7 @@ dependencies: [
 ]
 ```
 
-### Manually
+#### Manually
 Refer to famous open source framwork [Alamofire's instructions on how to manually integrate a framework](https://github.com/Alamofire/Alamofire/blob/master/README.md#manually) in order to install ViewComposer in your project manually.
 
 ## Style views using enums swiftly
