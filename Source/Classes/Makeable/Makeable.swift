@@ -63,6 +63,11 @@ public func make<M: Makeable>(_ attributes: [M.Style.Attribute]) -> M where M.St
     return M.make(attributes)
 }
 
+/// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
+public func make<M: Makeable>(_ style: M.Style) -> M where M.Styled == M {
+    return M.make(style)
+}
+
 // Array literals support
 public func make<M: Makeable>(_ attributes: M.Style.Attribute...) -> M where M.Styled == M {
     return make(attributes)

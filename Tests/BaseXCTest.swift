@@ -18,8 +18,8 @@ let cornerRadius: CGFloat = 3.1415
 let fooRadius: CGFloat = 42
 let barRadius: CGFloat = 237
 let spacing: CGFloat = 42
-let image = UIImage()
-let arrangedSubviews: [UIView] = [UILabel(), UIView(), UIButton()]
+var image: UIImage { return UIImage() }
+var arrangedSubviews: [UIView] { return [UILabel(), UIView(), UIButton()] }
 
 func assertIs<Value: Equatable>(_ optional: Value?, `is` expected: Value) {
     guard let actual = optional else {

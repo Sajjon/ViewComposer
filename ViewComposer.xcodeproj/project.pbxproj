@@ -69,6 +69,7 @@
 		4841F8ED1EE9975C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841F8EB1EE9971C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift */; };
 		48748A801EE5C31500E937E0 /* MergeOperatorReturningMakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */; };
 		48748A821EE5C4A600E937E0 /* MakeableFromStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48748A811EE5C4A600E937E0 /* MakeableFromStyleTests.swift */; };
+		48956DA51EEAC55600C6079D /* Makeable+Mergeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48956DA41EEAC55600C6079D /* Makeable+Mergeable.swift */; };
 		48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3C61EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift */; };
 		48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */; };
 		48D7F3CC1EE4988900BC7012 /* ViewAttribute+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */; };
@@ -156,6 +157,7 @@
 		4841F8EB1EE9971C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOfOptionalsUsingOperatorsTests.swift; sourceTree = "<group>"; };
 		48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningMakable.swift; sourceTree = "<group>"; };
 		48748A811EE5C4A600E937E0 /* MakeableFromStyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableFromStyleTests.swift; sourceTree = "<group>"; };
+		48956DA41EEAC55600C6079D /* Makeable+Mergeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Makeable+Mergeable.swift"; sourceTree = "<group>"; };
 		48D7F3C61EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningAttributed.swift; sourceTree = "<group>"; };
 		48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningComposable.swift; sourceTree = "<group>"; };
 		48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewAttribute+Operators.swift"; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 			children = (
 				48298B5A1EE6B1AA00AB3724 /* Makeable.swift */,
 				48298B681EE6B32400AB3724 /* Makeable+Styleable.swift */,
+				48956DA41EEAC55600C6079D /* Makeable+Mergeable.swift */,
 			);
 			path = Makeable;
 			sourceTree = "<group>";
@@ -713,6 +716,7 @@
 				482B89641EE00C6500C97D42 /* UILabel+Makeable.swift in Sources */,
 				482B896F1EE00C6500C97D42 /* AutoHashable.generated.swift in Sources */,
 				482B89681EE00C6500C97D42 /* ViewStyle.swift in Sources */,
+				48956DA51EEAC55600C6079D /* Makeable+Mergeable.swift in Sources */,
 				482B89621EE00C6500C97D42 /* UIButton+Makeable.swift in Sources */,
 				48298B501EE5F28E00AB3724 /* Label.swift in Sources */,
 				48298B731EE6C1E700AB3724 /* Attributed+Optional.swift in Sources */,
