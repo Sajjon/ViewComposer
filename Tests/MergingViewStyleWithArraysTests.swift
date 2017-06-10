@@ -14,7 +14,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
     
     func testMergeCountMasterArray() {
         let attr1: ViewStyle = [.text(text), .backgroundColor(color)]
-        let attr2: [ViewAttribute] = [.isHidden(isHidden)]
+        let attr2: [ViewAttribute] = [.hidden(isHidden)]
         let mergeMaster2 = attr1.merge(master: attr2)
         XCTAssert(mergeMaster2.count == 3)
         let mergeMaster1 = attr2.merge(master: attr1)
@@ -23,7 +23,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
 
     func testMergeCountSlaveArray() {
         let attr1: ViewStyle = [.text(text), .backgroundColor(color)]
-        let attr2: [ViewAttribute] = [.isHidden(isHidden)]
+        let attr2: [ViewAttribute] = [.hidden(isHidden)]
         let mergeSlave2 = attr1.merge(slave: attr2)
         XCTAssert(mergeSlave2.count == 3)
         let mergeSlave1 = attr2.merge(slave: attr1)
@@ -32,7 +32,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
     
     func testMergeOperatorCountMasterArray() {
         let style: ViewStyle = [.text(text), .backgroundColor(color)]
-        let attr2: [ViewAttribute] = [.isHidden(isHidden)]
+        let attr2: [ViewAttribute] = [.hidden(isHidden)]
         let mergeMaster2 = style <<- attr2
         XCTAssert(mergeMaster2.count == 3)
         let mergeMaster1 = attr2 <<- style
@@ -41,7 +41,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
     
     func testMergeOperatorCountSlaveArray() {
         let attr1: ViewStyle = [.text(text), .backgroundColor(color)]
-        let attr2: [ViewAttribute] = [.isHidden(isHidden)]
+        let attr2: [ViewAttribute] = [.hidden(isHidden)]
         let mergeSlave2 = attr1 <- attr2
         XCTAssert(mergeSlave2.count == 3)
         let mergeSlave1 = attr2 <- attr1
@@ -51,7 +51,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
 
     func testMergeStyleWithArray() {
         let fooStyle: ViewStyle = [.text(foo), .backgroundColor(color)]
-        let barAttr: [ViewAttribute] = [.text(bar), .isHidden(isHidden)]
+        let barAttr: [ViewAttribute] = [.text(bar), .hidden(isHidden)]
         let fooMasterUsingSlave = fooStyle.merge(slave: barAttr)
         let fooMasterUsingMaster = barAttr.merge(master: fooStyle)
         let barMasterUsingSlave = barAttr.merge(slave: fooStyle)
@@ -60,7 +60,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
         for attributes in attrs {
             XCTAssert(attributes.count == 3)
             XCTAssert(attributes.contains(.backgroundColor))
-            XCTAssert(attributes.contains(.isHidden))
+            XCTAssert(attributes.contains(.hidden))
             XCTAssert(attributes.contains(.text))
         }
         XCTAssert(fooMasterUsingSlave.associatedValue(.text) == foo)
@@ -71,7 +71,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
     
     func testMergeStyleWithArrayOperators() {
         let fooStyle: ViewStyle = [.text(foo), .backgroundColor(color)]
-        let barAttr: [ViewAttribute] = [.text(bar), .isHidden(isHidden)]
+        let barAttr: [ViewAttribute] = [.text(bar), .hidden(isHidden)]
         let fooMasterUsingSlave = fooStyle <- barAttr
         let fooMasterUsingMaster = barAttr <<- fooStyle
         let barMasterUsingSlave = barAttr <- fooStyle
@@ -80,7 +80,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
         for attributes in attrs {
             XCTAssert(attributes.count == 3)
             XCTAssert(attributes.contains(.backgroundColor))
-            XCTAssert(attributes.contains(.isHidden))
+            XCTAssert(attributes.contains(.hidden))
             XCTAssert(attributes.contains(.text))
         }
         XCTAssert(fooMasterUsingSlave.associatedValue(.text) == foo)

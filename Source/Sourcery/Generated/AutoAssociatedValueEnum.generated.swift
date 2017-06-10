@@ -86,14 +86,10 @@ public protocol AssociatedValueStrippable: Equatable {
                 switch self {
                                 case .custom(let custom):
                                     return custom
-                                case .isHidden(let isHidden):
-                                    return isHidden
+                                case .hidden(let hidden):
+                                    return hidden
                                 case .backgroundColor(let backgroundColor):
                                     return backgroundColor
-                                case .cornerRadius(let cornerRadius):
-                                    return cornerRadius
-                                case .radius(let radius):
-                                    return radius
                                 case .verticalHugging(let verticalHugging):
                                     return verticalHugging
                                 case .verticalCompression(let verticalCompression):
@@ -108,6 +104,32 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return height
                                 case .width(let width):
                                     return width
+                                case .layoutMargins(let layoutMargins):
+                                    return layoutMargins
+                                case .userInteractable(let userInteractable):
+                                    return userInteractable
+                                case .tintColor(let tintColor):
+                                    return tintColor
+                                case .clipsToBounds(let clipsToBounds):
+                                    return clipsToBounds
+                                case .alpha(let alpha):
+                                    return alpha
+                                case .opaque(let opaque):
+                                    return opaque
+                                case .exclusiveTouch(let exclusiveTouch):
+                                    return exclusiveTouch
+                                case .multipleTouchEnabled(let multipleTouchEnabled):
+                                    return multipleTouchEnabled
+                                case .clearsContextBeforeDrawing(let clearsContextBeforeDrawing):
+                                    return clearsContextBeforeDrawing
+                                case .cornerRadius(let cornerRadius):
+                                    return cornerRadius
+                                case .radius(let radius):
+                                    return radius
+                                case .borderWidth(let borderWidth):
+                                    return borderWidth
+                                case .borderColor(let borderColor):
+                                    return borderColor
                                 case .text(let text):
                                     return text
                                 case .font(let font):
@@ -118,16 +140,100 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return `case`
                                 case .textAlignment(let textAlignment):
                                     return textAlignment
+                                case .adjustsFontSizeToFitWidth(let adjustsFontSizeToFitWidth):
+                                    return adjustsFontSizeToFitWidth
                                 case .placeholder(let placeholder):
                                     return placeholder
+                                case .editable(let editable):
+                                    return editable
+                                case .clearsOnInsertion(let clearsOnInsertion):
+                                    return clearsOnInsertion
+                                case .clearsOnBeginEditing(let clearsOnBeginEditing):
+                                    return clearsOnBeginEditing
+                                case .numberOfLines(let numberOfLines):
+                                    return numberOfLines
+                                case .highlightedTextColor(let highlightedTextColor):
+                                    return highlightedTextColor
+                                case .minimumScaleFactor(let minimumScaleFactor):
+                                    return minimumScaleFactor
+                                case .baselineAdjustment(let baselineAdjustment):
+                                    return baselineAdjustment
+                                case .shadowColor(let shadowColor):
+                                    return shadowColor
+                                case .shadowOffset(let shadowOffset):
+                                    return shadowOffset
+                                case .clearButtonMode(let clearButtonMode):
+                                    return clearButtonMode
+                                case .borderStyle(let borderStyle):
+                                    return borderStyle
+                                case .selectedRange(let selectedRange):
+                                    return selectedRange
                                 case .image(let image):
                                     return image
-                                case .isScrollEnabled(let isScrollEnabled):
-                                    return isScrollEnabled
+                                case .scrollEnabled(let scrollEnabled):
+                                    return scrollEnabled
+                                case .contentSize(let contentSize):
+                                    return contentSize
+                                case .contentInset(let contentInset):
+                                    return contentInset
+                                case .bounces(let bounces):
+                                    return bounces
+                                case .alwaysBounceVertical(let alwaysBounceVertical):
+                                    return alwaysBounceVertical
+                                case .alwaysBounceHorizontal(let alwaysBounceHorizontal):
+                                    return alwaysBounceHorizontal
+                                case .pagingEnabled(let pagingEnabled):
+                                    return pagingEnabled
+                                case .showsHorizontalScrollIndicator(let showsHorizontalScrollIndicator):
+                                    return showsHorizontalScrollIndicator
+                                case .showsVerticalScrollIndicator(let showsVerticalScrollIndicator):
+                                    return showsVerticalScrollIndicator
+                                case .scrollIndicatorInsets(let scrollIndicatorInsets):
+                                    return scrollIndicatorInsets
+                                case .indicatorStyle(let indicatorStyle):
+                                    return indicatorStyle
+                                case .decelerationRate(let decelerationRate):
+                                    return decelerationRate
+                                case .delaysContentTouches(let delaysContentTouches):
+                                    return delaysContentTouches
+                                case .canCancelContentTouches(let canCancelContentTouches):
+                                    return canCancelContentTouches
+                                case .minimumZoomScale(let minimumZoomScale):
+                                    return minimumZoomScale
+                                case .maximumZoomScale(let maximumZoomScale):
+                                    return maximumZoomScale
+                                case .zoomScale(let zoomScale):
+                                    return zoomScale
+                                case .bouncesZoom(let bouncesZoom):
+                                    return bouncesZoom
+                                case .scrollsToTop(let scrollsToTop):
+                                    return scrollsToTop
+                                case .keyboardDismissMode(let keyboardDismissMode):
+                                    return keyboardDismissMode
                                 case .states(let states):
                                     return states
                                 case .target(let target):
                                     return target
+                                case .enabled(let enabled):
+                                    return enabled
+                                case .selected(let selected):
+                                    return selected
+                                case .highlighted(let highlighted):
+                                    return highlighted
+                                case .contentEdgeInsets(let contentEdgeInsets):
+                                    return contentEdgeInsets
+                                case .titleEdgeInsets(let titleEdgeInsets):
+                                    return titleEdgeInsets
+                                case .reversesTitleShadowWhenHighlighted(let reversesTitleShadowWhenHighlighted):
+                                    return reversesTitleShadowWhenHighlighted
+                                case .imageEdgeInsets(let imageEdgeInsets):
+                                    return imageEdgeInsets
+                                case .adjustsImageWhenHighlighted(let adjustsImageWhenHighlighted):
+                                    return adjustsImageWhenHighlighted
+                                case .adjustsImageWhenDisabled(let adjustsImageWhenDisabled):
+                                    return adjustsImageWhenDisabled
+                                case .showsTouchWhenHighlighted(let showsTouchWhenHighlighted):
+                                    return showsTouchWhenHighlighted
                                 case .axis(let axis):
                                     return axis
                                 case .distribution(let distribution):
@@ -155,10 +261,10 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
-                    var isHidden: Bool? {
+                    var hidden: Bool? {
                         switch self {
-                            case .isHidden(let isHidden):
-                                return isHidden
+                            case .hidden(let hidden):
+                                return hidden
                             default:
                                 return nil
                         }
@@ -167,22 +273,6 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .backgroundColor(let backgroundColor):
                                 return backgroundColor
-                            default:
-                                return nil
-                        }
-                    }
-                    var cornerRadius: CGFloat? {
-                        switch self {
-                            case .cornerRadius(let cornerRadius):
-                                return cornerRadius
-                            default:
-                                return nil
-                        }
-                    }
-                    var radius: Radius? {
-                        switch self {
-                            case .radius(let radius):
-                                return radius
                             default:
                                 return nil
                         }
@@ -243,6 +333,110 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
+                    var layoutMargins: CGFloat? {
+                        switch self {
+                            case .layoutMargins(let layoutMargins):
+                                return layoutMargins
+                            default:
+                                return nil
+                        }
+                    }
+                    var userInteractable: Bool? {
+                        switch self {
+                            case .userInteractable(let userInteractable):
+                                return userInteractable
+                            default:
+                                return nil
+                        }
+                    }
+                    var tintColor: UIColor? {
+                        switch self {
+                            case .tintColor(let tintColor):
+                                return tintColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var clipsToBounds: Bool? {
+                        switch self {
+                            case .clipsToBounds(let clipsToBounds):
+                                return clipsToBounds
+                            default:
+                                return nil
+                        }
+                    }
+                    var alpha: CGFloat? {
+                        switch self {
+                            case .alpha(let alpha):
+                                return alpha
+                            default:
+                                return nil
+                        }
+                    }
+                    var opaque: Bool? {
+                        switch self {
+                            case .opaque(let opaque):
+                                return opaque
+                            default:
+                                return nil
+                        }
+                    }
+                    var exclusiveTouch: Bool? {
+                        switch self {
+                            case .exclusiveTouch(let exclusiveTouch):
+                                return exclusiveTouch
+                            default:
+                                return nil
+                        }
+                    }
+                    var multipleTouchEnabled: Bool? {
+                        switch self {
+                            case .multipleTouchEnabled(let multipleTouchEnabled):
+                                return multipleTouchEnabled
+                            default:
+                                return nil
+                        }
+                    }
+                    var clearsContextBeforeDrawing: Bool? {
+                        switch self {
+                            case .clearsContextBeforeDrawing(let clearsContextBeforeDrawing):
+                                return clearsContextBeforeDrawing
+                            default:
+                                return nil
+                        }
+                    }
+                    var cornerRadius: CGFloat? {
+                        switch self {
+                            case .cornerRadius(let cornerRadius):
+                                return cornerRadius
+                            default:
+                                return nil
+                        }
+                    }
+                    var radius: Radius? {
+                        switch self {
+                            case .radius(let radius):
+                                return radius
+                            default:
+                                return nil
+                        }
+                    }
+                    var borderWidth: CGFloat? {
+                        switch self {
+                            case .borderWidth(let borderWidth):
+                                return borderWidth
+                            default:
+                                return nil
+                        }
+                    }
+                    var borderColor: UIColor? {
+                        switch self {
+                            case .borderColor(let borderColor):
+                                return borderColor
+                            default:
+                                return nil
+                        }
+                    }
                     var text: String? {
                         switch self {
                             case .text(let text):
@@ -283,10 +477,114 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
+                    var adjustsFontSizeToFitWidth: Bool? {
+                        switch self {
+                            case .adjustsFontSizeToFitWidth(let adjustsFontSizeToFitWidth):
+                                return adjustsFontSizeToFitWidth
+                            default:
+                                return nil
+                        }
+                    }
                     var placeholder: String? {
                         switch self {
                             case .placeholder(let placeholder):
                                 return placeholder
+                            default:
+                                return nil
+                        }
+                    }
+                    var editable: Bool? {
+                        switch self {
+                            case .editable(let editable):
+                                return editable
+                            default:
+                                return nil
+                        }
+                    }
+                    var clearsOnInsertion: Bool? {
+                        switch self {
+                            case .clearsOnInsertion(let clearsOnInsertion):
+                                return clearsOnInsertion
+                            default:
+                                return nil
+                        }
+                    }
+                    var clearsOnBeginEditing: Bool? {
+                        switch self {
+                            case .clearsOnBeginEditing(let clearsOnBeginEditing):
+                                return clearsOnBeginEditing
+                            default:
+                                return nil
+                        }
+                    }
+                    var numberOfLines: Int? {
+                        switch self {
+                            case .numberOfLines(let numberOfLines):
+                                return numberOfLines
+                            default:
+                                return nil
+                        }
+                    }
+                    var highlightedTextColor: UIColor? {
+                        switch self {
+                            case .highlightedTextColor(let highlightedTextColor):
+                                return highlightedTextColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var minimumScaleFactor: CGFloat? {
+                        switch self {
+                            case .minimumScaleFactor(let minimumScaleFactor):
+                                return minimumScaleFactor
+                            default:
+                                return nil
+                        }
+                    }
+                    var baselineAdjustment: UIBaselineAdjustment? {
+                        switch self {
+                            case .baselineAdjustment(let baselineAdjustment):
+                                return baselineAdjustment
+                            default:
+                                return nil
+                        }
+                    }
+                    var shadowColor: UIColor? {
+                        switch self {
+                            case .shadowColor(let shadowColor):
+                                return shadowColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var shadowOffset: CGSize? {
+                        switch self {
+                            case .shadowOffset(let shadowOffset):
+                                return shadowOffset
+                            default:
+                                return nil
+                        }
+                    }
+                    var clearButtonMode: UITextFieldViewMode? {
+                        switch self {
+                            case .clearButtonMode(let clearButtonMode):
+                                return clearButtonMode
+                            default:
+                                return nil
+                        }
+                    }
+                    var borderStyle: UITextBorderStyle? {
+                        switch self {
+                            case .borderStyle(let borderStyle):
+                                return borderStyle
+                            default:
+                                return nil
+                        }
+                    }
+                    var selectedRange: NSRange? {
+                        switch self {
+                            case .selectedRange(let selectedRange):
+                                return selectedRange
                             default:
                                 return nil
                         }
@@ -299,10 +597,162 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
-                    var isScrollEnabled: Bool? {
+                    var scrollEnabled: Bool? {
                         switch self {
-                            case .isScrollEnabled(let isScrollEnabled):
-                                return isScrollEnabled
+                            case .scrollEnabled(let scrollEnabled):
+                                return scrollEnabled
+                            default:
+                                return nil
+                        }
+                    }
+                    var contentSize: CGSize? {
+                        switch self {
+                            case .contentSize(let contentSize):
+                                return contentSize
+                            default:
+                                return nil
+                        }
+                    }
+                    var contentInset: UIEdgeInsets? {
+                        switch self {
+                            case .contentInset(let contentInset):
+                                return contentInset
+                            default:
+                                return nil
+                        }
+                    }
+                    var bounces: Bool? {
+                        switch self {
+                            case .bounces(let bounces):
+                                return bounces
+                            default:
+                                return nil
+                        }
+                    }
+                    var alwaysBounceVertical: Bool? {
+                        switch self {
+                            case .alwaysBounceVertical(let alwaysBounceVertical):
+                                return alwaysBounceVertical
+                            default:
+                                return nil
+                        }
+                    }
+                    var alwaysBounceHorizontal: Bool? {
+                        switch self {
+                            case .alwaysBounceHorizontal(let alwaysBounceHorizontal):
+                                return alwaysBounceHorizontal
+                            default:
+                                return nil
+                        }
+                    }
+                    var pagingEnabled: Bool? {
+                        switch self {
+                            case .pagingEnabled(let pagingEnabled):
+                                return pagingEnabled
+                            default:
+                                return nil
+                        }
+                    }
+                    var showsHorizontalScrollIndicator: Bool? {
+                        switch self {
+                            case .showsHorizontalScrollIndicator(let showsHorizontalScrollIndicator):
+                                return showsHorizontalScrollIndicator
+                            default:
+                                return nil
+                        }
+                    }
+                    var showsVerticalScrollIndicator: Bool? {
+                        switch self {
+                            case .showsVerticalScrollIndicator(let showsVerticalScrollIndicator):
+                                return showsVerticalScrollIndicator
+                            default:
+                                return nil
+                        }
+                    }
+                    var scrollIndicatorInsets: UIEdgeInsets? {
+                        switch self {
+                            case .scrollIndicatorInsets(let scrollIndicatorInsets):
+                                return scrollIndicatorInsets
+                            default:
+                                return nil
+                        }
+                    }
+                    var indicatorStyle: UIScrollViewIndicatorStyle? {
+                        switch self {
+                            case .indicatorStyle(let indicatorStyle):
+                                return indicatorStyle
+                            default:
+                                return nil
+                        }
+                    }
+                    var decelerationRate: CGFloat? {
+                        switch self {
+                            case .decelerationRate(let decelerationRate):
+                                return decelerationRate
+                            default:
+                                return nil
+                        }
+                    }
+                    var delaysContentTouches: Bool? {
+                        switch self {
+                            case .delaysContentTouches(let delaysContentTouches):
+                                return delaysContentTouches
+                            default:
+                                return nil
+                        }
+                    }
+                    var canCancelContentTouches: Bool? {
+                        switch self {
+                            case .canCancelContentTouches(let canCancelContentTouches):
+                                return canCancelContentTouches
+                            default:
+                                return nil
+                        }
+                    }
+                    var minimumZoomScale: CGFloat? {
+                        switch self {
+                            case .minimumZoomScale(let minimumZoomScale):
+                                return minimumZoomScale
+                            default:
+                                return nil
+                        }
+                    }
+                    var maximumZoomScale: CGFloat? {
+                        switch self {
+                            case .maximumZoomScale(let maximumZoomScale):
+                                return maximumZoomScale
+                            default:
+                                return nil
+                        }
+                    }
+                    var zoomScale: CGFloat? {
+                        switch self {
+                            case .zoomScale(let zoomScale):
+                                return zoomScale
+                            default:
+                                return nil
+                        }
+                    }
+                    var bouncesZoom: Bool? {
+                        switch self {
+                            case .bouncesZoom(let bouncesZoom):
+                                return bouncesZoom
+                            default:
+                                return nil
+                        }
+                    }
+                    var scrollsToTop: Bool? {
+                        switch self {
+                            case .scrollsToTop(let scrollsToTop):
+                                return scrollsToTop
+                            default:
+                                return nil
+                        }
+                    }
+                    var keyboardDismissMode: UIScrollViewKeyboardDismissMode? {
+                        switch self {
+                            case .keyboardDismissMode(let keyboardDismissMode):
+                                return keyboardDismissMode
                             default:
                                 return nil
                         }
@@ -319,6 +769,86 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .target(let target):
                                 return target
+                            default:
+                                return nil
+                        }
+                    }
+                    var enabled: Bool? {
+                        switch self {
+                            case .enabled(let enabled):
+                                return enabled
+                            default:
+                                return nil
+                        }
+                    }
+                    var selected: Bool? {
+                        switch self {
+                            case .selected(let selected):
+                                return selected
+                            default:
+                                return nil
+                        }
+                    }
+                    var highlighted: Bool? {
+                        switch self {
+                            case .highlighted(let highlighted):
+                                return highlighted
+                            default:
+                                return nil
+                        }
+                    }
+                    var contentEdgeInsets: UIEdgeInsets? {
+                        switch self {
+                            case .contentEdgeInsets(let contentEdgeInsets):
+                                return contentEdgeInsets
+                            default:
+                                return nil
+                        }
+                    }
+                    var titleEdgeInsets: UIEdgeInsets? {
+                        switch self {
+                            case .titleEdgeInsets(let titleEdgeInsets):
+                                return titleEdgeInsets
+                            default:
+                                return nil
+                        }
+                    }
+                    var reversesTitleShadowWhenHighlighted: Bool? {
+                        switch self {
+                            case .reversesTitleShadowWhenHighlighted(let reversesTitleShadowWhenHighlighted):
+                                return reversesTitleShadowWhenHighlighted
+                            default:
+                                return nil
+                        }
+                    }
+                    var imageEdgeInsets: UIEdgeInsets? {
+                        switch self {
+                            case .imageEdgeInsets(let imageEdgeInsets):
+                                return imageEdgeInsets
+                            default:
+                                return nil
+                        }
+                    }
+                    var adjustsImageWhenHighlighted: Bool? {
+                        switch self {
+                            case .adjustsImageWhenHighlighted(let adjustsImageWhenHighlighted):
+                                return adjustsImageWhenHighlighted
+                            default:
+                                return nil
+                        }
+                    }
+                    var adjustsImageWhenDisabled: Bool? {
+                        switch self {
+                            case .adjustsImageWhenDisabled(let adjustsImageWhenDisabled):
+                                return adjustsImageWhenDisabled
+                            default:
+                                return nil
+                        }
+                    }
+                    var showsTouchWhenHighlighted: Bool? {
+                        switch self {
+                            case .showsTouchWhenHighlighted(let showsTouchWhenHighlighted):
+                                return showsTouchWhenHighlighted
                             default:
                                 return nil
                         }
@@ -391,10 +921,8 @@ public protocol AssociatedValueStrippable: Equatable {
 
         public enum ViewAttributeStripped: String, StrippedRepresentation {
             case custom
-            case isHidden
+            case hidden
             case backgroundColor
-            case cornerRadius
-            case radius
             case verticalHugging
             case verticalCompression
             case horizontalHugging
@@ -402,16 +930,71 @@ public protocol AssociatedValueStrippable: Equatable {
             case contentMode
             case height
             case width
+            case layoutMargins
+            case userInteractable
+            case tintColor
+            case clipsToBounds
+            case alpha
+            case opaque
+            case exclusiveTouch
+            case multipleTouchEnabled
+            case clearsContextBeforeDrawing
+            case cornerRadius
+            case radius
+            case borderWidth
+            case borderColor
             case text
             case font
             case textColor
             case `case`
             case textAlignment
+            case adjustsFontSizeToFitWidth
             case placeholder
+            case editable
+            case clearsOnInsertion
+            case clearsOnBeginEditing
+            case numberOfLines
+            case highlightedTextColor
+            case minimumScaleFactor
+            case baselineAdjustment
+            case shadowColor
+            case shadowOffset
+            case clearButtonMode
+            case borderStyle
+            case selectedRange
             case image
-            case isScrollEnabled
+            case scrollEnabled
+            case contentSize
+            case contentInset
+            case bounces
+            case alwaysBounceVertical
+            case alwaysBounceHorizontal
+            case pagingEnabled
+            case showsHorizontalScrollIndicator
+            case showsVerticalScrollIndicator
+            case scrollIndicatorInsets
+            case indicatorStyle
+            case decelerationRate
+            case delaysContentTouches
+            case canCancelContentTouches
+            case minimumZoomScale
+            case maximumZoomScale
+            case zoomScale
+            case bouncesZoom
+            case scrollsToTop
+            case keyboardDismissMode
             case states
             case target
+            case enabled
+            case selected
+            case highlighted
+            case contentEdgeInsets
+            case titleEdgeInsets
+            case reversesTitleShadowWhenHighlighted
+            case imageEdgeInsets
+            case adjustsImageWhenHighlighted
+            case adjustsImageWhenDisabled
+            case showsTouchWhenHighlighted
             case axis
             case distribution
             case alignment
@@ -443,14 +1026,10 @@ public protocol AssociatedValueStrippable: Equatable {
         		switch self {
         			 case .custom:
         				return .custom
-        			 case .isHidden:
-        				return .isHidden
+        			 case .hidden:
+        				return .hidden
         			 case .backgroundColor:
         				return .backgroundColor
-        			 case .cornerRadius:
-        				return .cornerRadius
-        			 case .radius:
-        				return .radius
         			 case .verticalHugging:
         				return .verticalHugging
         			 case .verticalCompression:
@@ -465,6 +1044,32 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .height
         			 case .width:
         				return .width
+        			 case .layoutMargins:
+        				return .layoutMargins
+        			 case .userInteractable:
+        				return .userInteractable
+        			 case .tintColor:
+        				return .tintColor
+        			 case .clipsToBounds:
+        				return .clipsToBounds
+        			 case .alpha:
+        				return .alpha
+        			 case .opaque:
+        				return .opaque
+        			 case .exclusiveTouch:
+        				return .exclusiveTouch
+        			 case .multipleTouchEnabled:
+        				return .multipleTouchEnabled
+        			 case .clearsContextBeforeDrawing:
+        				return .clearsContextBeforeDrawing
+        			 case .cornerRadius:
+        				return .cornerRadius
+        			 case .radius:
+        				return .radius
+        			 case .borderWidth:
+        				return .borderWidth
+        			 case .borderColor:
+        				return .borderColor
         			 case .text:
         				return .text
         			 case .font:
@@ -475,16 +1080,100 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .`case`
         			 case .textAlignment:
         				return .textAlignment
+        			 case .adjustsFontSizeToFitWidth:
+        				return .adjustsFontSizeToFitWidth
         			 case .placeholder:
         				return .placeholder
+        			 case .editable:
+        				return .editable
+        			 case .clearsOnInsertion:
+        				return .clearsOnInsertion
+        			 case .clearsOnBeginEditing:
+        				return .clearsOnBeginEditing
+        			 case .numberOfLines:
+        				return .numberOfLines
+        			 case .highlightedTextColor:
+        				return .highlightedTextColor
+        			 case .minimumScaleFactor:
+        				return .minimumScaleFactor
+        			 case .baselineAdjustment:
+        				return .baselineAdjustment
+        			 case .shadowColor:
+        				return .shadowColor
+        			 case .shadowOffset:
+        				return .shadowOffset
+        			 case .clearButtonMode:
+        				return .clearButtonMode
+        			 case .borderStyle:
+        				return .borderStyle
+        			 case .selectedRange:
+        				return .selectedRange
         			 case .image:
         				return .image
-        			 case .isScrollEnabled:
-        				return .isScrollEnabled
+        			 case .scrollEnabled:
+        				return .scrollEnabled
+        			 case .contentSize:
+        				return .contentSize
+        			 case .contentInset:
+        				return .contentInset
+        			 case .bounces:
+        				return .bounces
+        			 case .alwaysBounceVertical:
+        				return .alwaysBounceVertical
+        			 case .alwaysBounceHorizontal:
+        				return .alwaysBounceHorizontal
+        			 case .pagingEnabled:
+        				return .pagingEnabled
+        			 case .showsHorizontalScrollIndicator:
+        				return .showsHorizontalScrollIndicator
+        			 case .showsVerticalScrollIndicator:
+        				return .showsVerticalScrollIndicator
+        			 case .scrollIndicatorInsets:
+        				return .scrollIndicatorInsets
+        			 case .indicatorStyle:
+        				return .indicatorStyle
+        			 case .decelerationRate:
+        				return .decelerationRate
+        			 case .delaysContentTouches:
+        				return .delaysContentTouches
+        			 case .canCancelContentTouches:
+        				return .canCancelContentTouches
+        			 case .minimumZoomScale:
+        				return .minimumZoomScale
+        			 case .maximumZoomScale:
+        				return .maximumZoomScale
+        			 case .zoomScale:
+        				return .zoomScale
+        			 case .bouncesZoom:
+        				return .bouncesZoom
+        			 case .scrollsToTop:
+        				return .scrollsToTop
+        			 case .keyboardDismissMode:
+        				return .keyboardDismissMode
         			 case .states:
         				return .states
         			 case .target:
         				return .target
+        			 case .enabled:
+        				return .enabled
+        			 case .selected:
+        				return .selected
+        			 case .highlighted:
+        				return .highlighted
+        			 case .contentEdgeInsets:
+        				return .contentEdgeInsets
+        			 case .titleEdgeInsets:
+        				return .titleEdgeInsets
+        			 case .reversesTitleShadowWhenHighlighted:
+        				return .reversesTitleShadowWhenHighlighted
+        			 case .imageEdgeInsets:
+        				return .imageEdgeInsets
+        			 case .adjustsImageWhenHighlighted:
+        				return .adjustsImageWhenHighlighted
+        			 case .adjustsImageWhenDisabled:
+        				return .adjustsImageWhenDisabled
+        			 case .showsTouchWhenHighlighted:
+        				return .showsTouchWhenHighlighted
         			 case .axis:
         				return .axis
         			 case .distribution:

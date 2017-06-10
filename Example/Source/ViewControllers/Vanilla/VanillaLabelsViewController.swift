@@ -15,6 +15,7 @@ class VanillaLabelsViewController: UIViewController, StackViewOwner {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Foo"
         label.textColor = .red
+        label.backgroundColor = .yellow
         label.textAlignment = .center
         label.font = .boldSystemFont(ofSize: 30)
         return label
@@ -47,12 +48,16 @@ class VanillaLabelsViewController: UIViewController, StackViewOwner {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
+        stackView.spacing = 50
+        let margin: CGFloat = 40
+        stackView.layoutMargins = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+        stackView.self.isLayoutMarginsRelativeArrangement = true
         return stackView
     }()
     
     init() {
         super.init(nibName: nil, bundle: nil)
-        view.backgroundColor = .white
+        view.backgroundColor = .blue
     }
     
     required init?(coder aDecoder: NSCoder) {

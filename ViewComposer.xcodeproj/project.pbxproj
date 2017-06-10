@@ -65,6 +65,11 @@
 		482B897C1EE00C7100C97D42 /* BaseXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89781EE00C7100C97D42 /* BaseXCTest.swift */; };
 		482B897E1EE00C7100C97D42 /* MakeableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B897A1EE00C7100C97D42 /* MakeableTests.swift */; };
 		482B897F1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B897B1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift */; };
+		484110151EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484110141EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift */; };
+		484110191EEC1E000016620B /* ViewAttribute+Mergeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484110181EEC1E000016620B /* ViewAttribute+Mergeable.swift */; };
+		4841101B1EEC315D0016620B /* FontSizeAdjusting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841101A1EEC315D0016620B /* FontSizeAdjusting.swift */; };
+		4841101D1EEC32690016620B /* TextInputting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841101C1EEC32690016620B /* TextInputting.swift */; };
+		4841101F1EEC36B20016620B /* Targetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841101E1EEC36B20016620B /* Targetable.swift */; };
 		4841F8EA1EE995CD00D80898 /* ViewStyle+Optional+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841F8E91EE995CD00D80898 /* ViewStyle+Optional+Operators.swift */; };
 		4841F8ED1EE9975C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841F8EB1EE9971C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift */; };
 		48748A801EE5C31500E937E0 /* MergeOperatorReturningMakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */; };
@@ -153,6 +158,11 @@
 		482B89791EE00C7100C97D42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482B897A1EE00C7100C97D42 /* MakeableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableTests.swift; sourceTree = "<group>"; };
 		482B897B1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergingViewAttributeArraysTests.swift; sourceTree = "<group>"; };
+		484110141EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewAttribute+Mergeable+Array.swift"; sourceTree = "<group>"; };
+		484110181EEC1E000016620B /* ViewAttribute+Mergeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewAttribute+Mergeable.swift"; sourceTree = "<group>"; };
+		4841101A1EEC315D0016620B /* FontSizeAdjusting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontSizeAdjusting.swift; sourceTree = "<group>"; };
+		4841101C1EEC32690016620B /* TextInputting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputting.swift; sourceTree = "<group>"; };
+		4841101E1EEC36B20016620B /* Targetable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Targetable.swift; sourceTree = "<group>"; };
 		4841F8E91EE995CD00D80898 /* ViewStyle+Optional+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewStyle+Optional+Operators.swift"; sourceTree = "<group>"; };
 		4841F8EB1EE9971C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOfOptionalsUsingOperatorsTests.swift; sourceTree = "<group>"; };
 		48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningMakable.swift; sourceTree = "<group>"; };
@@ -329,6 +339,8 @@
 			children = (
 				482B891C1EE00C6500C97D42 /* AttributedValues */,
 				482B89271EE00C6500C97D42 /* ViewAttribute.swift */,
+				484110181EEC1E000016620B /* ViewAttribute+Mergeable.swift */,
+				484110141EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift */,
 				48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */,
 			);
 			path = ViewAttribute;
@@ -346,6 +358,9 @@
 				482B89241EE00C6500C97D42 /* PlaceholderOwner.swift */,
 				482B89251EE00C6500C97D42 /* Radius.swift */,
 				482B89261EE00C6500C97D42 /* TextHolder.swift */,
+				4841101A1EEC315D0016620B /* FontSizeAdjusting.swift */,
+				4841101C1EEC32690016620B /* TextInputting.swift */,
+				4841101E1EEC36B20016620B /* Targetable.swift */,
 			);
 			path = AttributedValues;
 			sourceTree = "<group>";
@@ -689,6 +704,7 @@
 				48D7F3CC1EE4988900BC7012 /* ViewAttribute+Operators.swift in Sources */,
 				48298B651EE6B2A500AB3724 /* Styleable+UIView+ViewStyle.swift in Sources */,
 				48298B4E1EE5F28E00AB3724 /* Button.swift in Sources */,
+				4841101F1EEC36B20016620B /* Targetable.swift in Sources */,
 				482B89531EE00C6500C97D42 /* ControlState.swift in Sources */,
 				482B894E1EE00C6500C97D42 /* Macros.swift in Sources */,
 				48298B4F1EE5F28E00AB3724 /* ImageView.swift in Sources */,
@@ -698,6 +714,7 @@
 				48748A801EE5C31500E937E0 /* MergeOperatorReturningMakable.swift in Sources */,
 				482B89661EE00C6500C97D42 /* UITextField+Makeable.swift in Sources */,
 				48298B511EE5F28E00AB3724 /* StackView.swift in Sources */,
+				484110191EEC1E000016620B /* ViewAttribute+Mergeable.swift in Sources */,
 				48298B791EE6C2AC00AB3724 /* Attributed+Collection.swift in Sources */,
 				482B89561EE00C6500C97D42 /* LayoutPriority.swift in Sources */,
 				48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */,
@@ -708,6 +725,7 @@
 				48298B6B1EE6B33900AB3724 /* Composable+Styleable.swift in Sources */,
 				4841F8EA1EE995CD00D80898 /* ViewStyle+Optional+Operators.swift in Sources */,
 				482B89511EE00C6500C97D42 /* Case.swift in Sources */,
+				484110151EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift in Sources */,
 				48298B7F1EE6C5D700AB3724 /* Attributed+Mergeable.swift in Sources */,
 				482B896D1EE00C6500C97D42 /* AutoCustomStringConvertible.generated.swift in Sources */,
 				48298B7B1EE6C34B00AB3724 /* Attributed+AssociatedValueStrippable.swift in Sources */,
@@ -722,6 +740,7 @@
 				48298B731EE6C1E700AB3724 /* Attributed+Optional.swift in Sources */,
 				482B89501EE00C6500C97D42 /* Actor.swift in Sources */,
 				48298B751EE6C20A00AB3724 /* Attributed+Array+Mergeable.swift in Sources */,
+				4841101B1EEC315D0016620B /* FontSizeAdjusting.swift in Sources */,
 				48298B611EE6B25D00AB3724 /* Composable.swift in Sources */,
 				482B895A1EE00C6500C97D42 /* ViewAttribute.swift in Sources */,
 				482B89551EE00C6500C97D42 /* ImageHolder.swift in Sources */,
@@ -730,6 +749,7 @@
 				48298B531EE5F28E00AB3724 /* TextView.swift in Sources */,
 				482B89581EE00C6500C97D42 /* Radius.swift in Sources */,
 				482B896C1EE00C6500C97D42 /* AutoComparable.generated.swift in Sources */,
+				4841101D1EEC32690016620B /* TextInputting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

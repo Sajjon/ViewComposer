@@ -12,7 +12,7 @@ import XCTest
 class MakeableTests: XCTestCase {
     
     func makeStyle(includeColor: Bool = true) -> ViewStyle {
-        var attributes: [ViewAttribute] = [.isHidden(isHidden), .cornerRadius(cornerRadius), .text(text)]
+        var attributes: [ViewAttribute] = [.hidden(isHidden), .cornerRadius(cornerRadius), .text(text)]
         
         if includeColor {
             attributes.append(.backgroundColor(color))
@@ -69,7 +69,7 @@ class MakeableTests: XCTestCase {
     
     func testButton() {
         let buttonImage = UIImage()
-        let button1: UIButton = .make([.states([.normal(text, nil), .highlighted("hi", buttonImage)]), .backgroundColor(color)])
+        let button1: UIButton = [.states([Normal(text), Highlighted("hi", buttonImage)]), .backgroundColor(color)]
         assertIs(button1.title(for: .normal), is: text)
         assertIs(button1.backgroundColor, is: color)
         assertIs(button1.title(for: .highlighted), is: "hi")
@@ -95,7 +95,6 @@ class MakeableTests: XCTestCase {
         }
     }
     
-    
     func testComposableStackViewUsingMerge() {
         let stackView = StackView(style.merge(master: [.spacing(spacing), .arrangedSubviews(arrangedSubviews)]))
         assertIs(stackView.arrangedSubviews.count, is: arrangedSubviews.count)
@@ -112,7 +111,7 @@ class MakeableTests: XCTestCase {
     func testComposableLabel() {
         let hiddenLabel = Label(style)
         assertIs(hiddenLabel.isHidden, is: true)
-        let label: Label = style <<- [.isHidden(false)]
+        let label: Label = style <<- [.hidden(false)]
         assertIs(label.isHidden, is: false)
     }
     

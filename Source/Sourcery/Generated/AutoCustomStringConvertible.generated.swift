@@ -8,14 +8,10 @@
 			switch self {
 						case .custom(let value):
 							return "custom: \(value)" 
-						case .isHidden(let value):
-							return "isHidden: \(value)" 
+						case .hidden(let value):
+							return "hidden: \(value)" 
 						case .backgroundColor(let value):
 							return "backgroundColor: \(value)" 
-						case .cornerRadius(let value):
-							return "cornerRadius: \(value)" 
-						case .radius(let value):
-							return "radius: \(value)" 
 						case .verticalHugging(let value):
 							return "verticalHugging: \(value)" 
 						case .verticalCompression(let value):
@@ -30,6 +26,32 @@
 							return "height: \(value)" 
 						case .width(let value):
 							return "width: \(value)" 
+						case .layoutMargins(let value):
+							return "layoutMargins: \(value)" 
+						case .userInteractable(let value):
+							return "userInteractable: \(value)" 
+						case .tintColor(let value):
+							return "tintColor: \(value)" 
+						case .clipsToBounds(let value):
+							return "clipsToBounds: \(value)" 
+						case .alpha(let value):
+							return "alpha: \(value)" 
+						case .opaque(let value):
+							return "opaque: \(value)" 
+						case .exclusiveTouch(let value):
+							return "exclusiveTouch: \(value)" 
+						case .multipleTouchEnabled(let value):
+							return "multipleTouchEnabled: \(value)" 
+						case .clearsContextBeforeDrawing(let value):
+							return "clearsContextBeforeDrawing: \(value)" 
+						case .cornerRadius(let value):
+							return "cornerRadius: \(value)" 
+						case .radius(let value):
+							return "radius: \(value)" 
+						case .borderWidth(let value):
+							return "borderWidth: \(value)" 
+						case .borderColor(let value):
+							return "borderColor: \(value)" 
 						case .text(let value):
 							return "text: \(value)" 
 						case .font(let value):
@@ -40,16 +62,100 @@
 							return "`case`: \(value)" 
 						case .textAlignment(let value):
 							return "textAlignment: \(value)" 
+						case .adjustsFontSizeToFitWidth(let value):
+							return "adjustsFontSizeToFitWidth: \(value)" 
 						case .placeholder(let value):
 							return "placeholder: \(value)" 
+						case .editable(let value):
+							return "editable: \(value)" 
+						case .clearsOnInsertion(let value):
+							return "clearsOnInsertion: \(value)" 
+						case .clearsOnBeginEditing(let value):
+							return "clearsOnBeginEditing: \(value)" 
+						case .numberOfLines(let value):
+							return "numberOfLines: \(value)" 
+						case .highlightedTextColor(let value):
+							return "highlightedTextColor: \(value)" 
+						case .minimumScaleFactor(let value):
+							return "minimumScaleFactor: \(value)" 
+						case .baselineAdjustment(let value):
+							return "baselineAdjustment: \(value)" 
+						case .shadowColor(let value):
+							return "shadowColor: \(value)" 
+						case .shadowOffset(let value):
+							return "shadowOffset: \(value)" 
+						case .clearButtonMode(let value):
+							return "clearButtonMode: \(value)" 
+						case .borderStyle(let value):
+							return "borderStyle: \(value)" 
+						case .selectedRange(let value):
+							return "selectedRange: \(value)" 
 						case .image(let value):
 							return "image: \(value)" 
-						case .isScrollEnabled(let value):
-							return "isScrollEnabled: \(value)" 
+						case .scrollEnabled(let value):
+							return "scrollEnabled: \(value)" 
+						case .contentSize(let value):
+							return "contentSize: \(value)" 
+						case .contentInset(let value):
+							return "contentInset: \(value)" 
+						case .bounces(let value):
+							return "bounces: \(value)" 
+						case .alwaysBounceVertical(let value):
+							return "alwaysBounceVertical: \(value)" 
+						case .alwaysBounceHorizontal(let value):
+							return "alwaysBounceHorizontal: \(value)" 
+						case .pagingEnabled(let value):
+							return "pagingEnabled: \(value)" 
+						case .showsHorizontalScrollIndicator(let value):
+							return "showsHorizontalScrollIndicator: \(value)" 
+						case .showsVerticalScrollIndicator(let value):
+							return "showsVerticalScrollIndicator: \(value)" 
+						case .scrollIndicatorInsets(let value):
+							return "scrollIndicatorInsets: \(value)" 
+						case .indicatorStyle(let value):
+							return "indicatorStyle: \(value)" 
+						case .decelerationRate(let value):
+							return "decelerationRate: \(value)" 
+						case .delaysContentTouches(let value):
+							return "delaysContentTouches: \(value)" 
+						case .canCancelContentTouches(let value):
+							return "canCancelContentTouches: \(value)" 
+						case .minimumZoomScale(let value):
+							return "minimumZoomScale: \(value)" 
+						case .maximumZoomScale(let value):
+							return "maximumZoomScale: \(value)" 
+						case .zoomScale(let value):
+							return "zoomScale: \(value)" 
+						case .bouncesZoom(let value):
+							return "bouncesZoom: \(value)" 
+						case .scrollsToTop(let value):
+							return "scrollsToTop: \(value)" 
+						case .keyboardDismissMode(let value):
+							return "keyboardDismissMode: \(value)" 
 						case .states(let value):
 							return "states: \(value)" 
 						case .target(let value):
 							return "target: \(value)" 
+						case .enabled(let value):
+							return "enabled: \(value)" 
+						case .selected(let value):
+							return "selected: \(value)" 
+						case .highlighted(let value):
+							return "highlighted: \(value)" 
+						case .contentEdgeInsets(let value):
+							return "contentEdgeInsets: \(value)" 
+						case .titleEdgeInsets(let value):
+							return "titleEdgeInsets: \(value)" 
+						case .reversesTitleShadowWhenHighlighted(let value):
+							return "reversesTitleShadowWhenHighlighted: \(value)" 
+						case .imageEdgeInsets(let value):
+							return "imageEdgeInsets: \(value)" 
+						case .adjustsImageWhenHighlighted(let value):
+							return "adjustsImageWhenHighlighted: \(value)" 
+						case .adjustsImageWhenDisabled(let value):
+							return "adjustsImageWhenDisabled: \(value)" 
+						case .showsTouchWhenHighlighted(let value):
+							return "showsTouchWhenHighlighted: \(value)" 
 						case .axis(let value):
 							return "axis: \(value)" 
 						case .distribution(let value):

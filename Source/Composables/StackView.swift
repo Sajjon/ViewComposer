@@ -38,13 +38,14 @@ public extension StackView {
     
     func setupBackgroundView(with color: UIColor) {
         let backgroundColorView = UIView()
+        backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
         backgroundColorView.backgroundColor = color
         addSubview(backgroundColorView)
         sendSubview(toBack: backgroundColorView)
-        backgroundColorView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        backgroundColorView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-        backgroundColorView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        backgroundColorView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+        addConstraint(backgroundColorView.topAnchor.constraint(equalTo: self.topAnchor))
+        addConstraint(backgroundColorView.leadingAnchor.constraint(equalTo: self.leadingAnchor))
+        addConstraint(backgroundColorView.trailingAnchor.constraint(equalTo: self.trailingAnchor))
+        addConstraint(backgroundColorView.bottomAnchor.constraint(equalTo: self.bottomAnchor))
         self.backgroundColorView = backgroundColorView
     }
 }

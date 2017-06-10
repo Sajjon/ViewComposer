@@ -9,14 +9,14 @@
 import UIKit
 import ViewComposer
 
-private let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center), .font(.boldSystemFont(ofSize: 30))]
+private let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center), .font(.boldSystemFont(ofSize: 30)), .backgroundColor(.yellow)]
 class LabelsViewController: UIViewController, StackViewOwner {
     
     private lazy var fooLabel: UILabel = labelStyle <<- .text("Foo")
     private lazy var barLabel: UILabel = labelStyle <<- [.text("Bar"), .textColor(.blue), .backgroundColor(.red)]
     private lazy var bazLabel: UILabel = labelStyle <<- [.text("Baz"), .textAlignment(.left), .backgroundColor(.green), .font(.boldSystemFont(ofSize: 45))]
     
-    lazy var stackView: UIStackView = [.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)]
+    lazy var stackView: UIStackView = StackView([.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .distribution(.fillEqually), .backgroundColor(.blue), .spacing(50), .layoutMargins(all: 40), .marginsRelative(true)])
     
     init() {
         super.init(nibName: nil, bundle: nil)

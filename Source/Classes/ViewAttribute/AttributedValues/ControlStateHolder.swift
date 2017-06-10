@@ -16,13 +16,14 @@ extension UIButton: ControlStateHolder {
     @discardableResult
     @nonobjc public func setControlStates(_ states: [ControlState]) -> Self {
         states.forEach {
-            configureControlState(state: $0.state, with: $0.representation)
+            configureControlState($0)
         }
         return self
     }
     
-    func configureControlState(state: UIControlState, with representation: StateRepresentation) {
-        setTitle(representation.0, for: state)
-        setImage(representation.1, for: state)
+    func configureControlState(_ state: ControlState) {
+        setTitle(state.title, for: state.state)
+        setImage(state.image, for: state.state)
+        setTitleColor(state.titleColor, for: state.state)
     }
 }
