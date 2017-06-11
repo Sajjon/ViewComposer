@@ -150,7 +150,7 @@ let button: UIButton = [.backgroundColor(.red), .text("Red"), .textColor(.blue)]
 
 **NO SUBCLASSES NEEDED 🙌**
 
-Of course you can always change you var to be lazy (recommended) and set attributes on the view which are not yet supported by ViewComposer, like this:
+Of course you can always change your `var` to be `lazy` (recommended) and set attributes on the view which are not yet supported by ViewComposer, like this:
 
 ```swift
 lazy var button: UIButton = {
