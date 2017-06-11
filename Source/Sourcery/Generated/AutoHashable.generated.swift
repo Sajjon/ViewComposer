@@ -23,30 +23,8 @@ fileprivate func combineHashValues(_ initial: Int, _ other: Int) -> Int {
 
 
 // MARK: - AutoHashable for classes, protocols, structs
-    // MARK: - Actor AutoHashable
-    extension Actor: Hashable {
-        public var hashValue: Int {
-    return combineHashes([target.hashValue, selector.hashValue, event.hashValue, 0])
-        }
-    }
 
-    // MARK: - UIControlEvents AutoHashable
-    extension UIControlEvents: Hashable {
-        public var hashValue: Int {
-    return combineHashes([0])
-        }
-    }
 
 // MARK: - AutoHashable for Enums
-
-    // MARK: - Radius AutoHashable
-    extension Radius: Hashable {
-        public var hashValue: Int {
-            switch self {
-                     case .rounded: 
-                            return 1.hashValue
-            }
-        }
-    }
 
 // MARK: -

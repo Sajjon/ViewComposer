@@ -22,9 +22,7 @@ final class LoginViewController: UIViewController, StackViewOwner {
             .states([Normal("Login", .blue), Highlighted("Logging in...", .red)]) <-
             .target(self.target(#selector(loginButtonPressed))) <-
             [.backgroundColor(.green), .cornerRadius(height/2)]
-    
-    lazy var loginButton2: UIButton = style <<- [.states([Normal("Login", .blue), Highlighted("Logging in...", .red)]), .target(self.target(#selector(loginButtonPressed))), .backgroundColor(.green), .cornerRadius(height/2)]
-    
+        
     lazy var stackView: UIStackView = .axis(.vertical) <-
             .arrangedSubviews([self.emailField, self.passwordField, self.loginButton]) <-
             [.spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]

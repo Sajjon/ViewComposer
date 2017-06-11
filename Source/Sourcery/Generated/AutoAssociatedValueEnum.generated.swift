@@ -22,65 +22,6 @@ public protocol AssociatedValueStrippable: Equatable {
     var stripped: Stripped { get }
 }
 
-        extension LayoutPriority: AssociatedValueEnumExtractor {
-            public var associatedValue: Any? {
-                switch self {
-                            case .required: return nil
-                            case .low: return nil
-                            case .high: return nil
-                                case .custom(let custom):
-                                    return custom
-                }
-            }
-
-                    var custom: Float? {
-                        switch self {
-                            case .custom(let custom):
-                                return custom
-                            default:
-                                return nil
-                        }
-                    }
-        }
-
-        public enum LayoutPriorityStripped: String, StrippedRepresentation {
-            case required
-            case low
-            case high
-            case custom
-        } 
-
-        extension LayoutPriorityStripped {
-            public var hashValue: Int {
-                return rawValue.hashValue
-            }
-
-        }
-
-        extension LayoutPriority: Hashable {
-            public var hashValue: Int {
-                return stripped.hashValue
-            }
-        }
-        extension LayoutPriority: AssociatedValueStrippable {
-        	public static func == (lhs: LayoutPriority, rhs: LayoutPriority) -> Bool {
-        	    return lhs.stripped == rhs.stripped
-        	}
-            public typealias Stripped = LayoutPriorityStripped
-            public var stripped: Stripped {
-        		switch self {
-        			 case .required:
-        				return .required
-        			 case .low:
-        				return .low
-        			 case .high:
-        				return .high
-        			 case .custom:
-        				return .custom
-        		}
-        	}
-        }
-
         extension ViewAttribute: AssociatedValueEnumExtractor {
             public var associatedValue: Any? {
                 switch self {

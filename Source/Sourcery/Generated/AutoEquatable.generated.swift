@@ -27,28 +27,7 @@ fileprivate func compareArrays<T>(lhs: [T], rhs: [T], compare: (_ lhs: T, _ rhs:
 
 // 
 
-	// MARK: - Actor AutoEquatable
-	extension Actor: Equatable {} 
-		public func == (lhs: Actor, rhs: Actor) -> Bool {
-	guard lhs.target == rhs.target else { return false }
-	guard lhs.selector == rhs.selector else { return false }
-	guard lhs.event == rhs.event else { return false }
-		return true
-	}
 
-	// MARK: - UIControlEvents AutoEquatablePublic
-	extension UIControlEvents: Equatable {} 
-		public func == (lhs: UIControlEvents, rhs: UIControlEvents) -> Bool {
-		return true
-	}
 
-	// MARK: - Radius AutoEquatable
-	extension Radius: Equatable {}
-	public func == (lhs: Radius, rhs: Radius) -> Bool {
-		switch (lhs, rhs) {
-					case (.rounded, .rounded):
-						return true
-		}
-	}
 
 
