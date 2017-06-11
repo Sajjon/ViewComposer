@@ -10,6 +10,9 @@ import Foundation
 
 public enum ViewAttribute {
     case custom(BaseAttributed)
+    case delegate(NSObjectProtocol)
+    case dataSource(NSObjectProtocol)
+    case dataSourceDelegate(NSObjectProtocol)
     
     //MARK: - View
     case hidden(Bool)
@@ -122,4 +125,34 @@ public enum ViewAttribute {
     case marginsRelative(Bool)
     case baselineRelative(Bool)
     case arrangedSubviews([UIView])
+    
+    //MARK: - CellRegisterable
+    case registerCells([RegisterableCell])
+    
+    //MARK: - UITableView
+//    case tableViewStyle(UITableViewStyle) //not possible to set `style` propery on TableView
+    
+    //MARK: - UICollectionView
+    case collectionViewLayout(UICollectionViewLayout)
+    case itemSize(CGSize)
+    
+    //MARK: - UISearchBar
+    case prompt(String)
+    case searchBarStyle(UISearchBarStyle)
+    
+    //MARK: - UISegmentedControl
+    case segments([Segment])
+    
+    //MARK: ThumbTintColorOwner (UISwitch and UISlider)
+    case thumbTintColor(UIColor?)
+    
+    //MARK: - UISwitch
+    case on(Bool)
+    case onTintColor(UIColor?)
+    case onImage(UIImage?)
+    case offImge(UIImage?)
+    
+    //MARK: - UISlider
+    case sliderValue(Double)
+    case sliderRange(Range<Double>)
 }

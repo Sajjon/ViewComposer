@@ -34,4 +34,3 @@ extension UITextField: FontSizeAdjusting {
         set { adjustsFontSizeToFitWidth = newValue }
     }
 }
-

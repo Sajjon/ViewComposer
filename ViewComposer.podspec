@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "ViewComposer"
-  s.version      = "0.1.11"
+  s.version      = "0.2.0"
   s.summary      = "Compose views using enums swiftly"
 
   s.description  = <<-DESC

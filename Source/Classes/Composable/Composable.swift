@@ -25,3 +25,15 @@ extension Composable {
     public func setupSubviews(with style: Style) {}
 }
 
+postfix operator ^
+
+/// This is a bit "hacky", this enables us to write `let sv: StackView = [.backgroundColor(.red)]^`
+/// notice the use of the caret symbol. This code would not compile otherwise since the composable
+// class `StackView` inherits from the superclass `UIStackView` which already is made `Makeable` by
+// this framework. Since `StackView`s superclass `UIStackView` is `Makeable` it is ExpressibleByArrayLiteral
+// but Swift is unable to instantiate the subclass. But using the caret operator we can express that 
+// we want an instance of the composable sublcass `StackView`.
+public postfix func ^<C: Composable>(attributes: [C.Style.Attribute]) -> C {
+    let style = C.Style(attributes)
+    return C(style)
+}

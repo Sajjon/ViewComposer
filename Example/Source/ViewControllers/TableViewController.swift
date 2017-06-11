@@ -10,7 +10,7 @@ import UIKit
 
 private let cellIdentifier = "cell"
 final class TableViewController: UITableViewController {
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -24,7 +24,14 @@ extension TableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        switch section {
+        case 0:
+            return 3
+        case 1:
+            return 5
+        default:
+            return 0
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -69,6 +76,8 @@ private extension TableViewController {
                 return NavigationRouter(NestedStackViewsViewController.self, vanilla: VanillaNestedStackViewsViewController.self)
             case 1:
                 return NavigationRouter(LabelsViewController.self, vanilla: VanillaLabelsViewController.self)
+            case 2:
+                return NavigationRouter(LoginViewController.self, vanilla: VanillaLoginViewController.self)
             default:
                 fatalError("oh no")
             }
@@ -78,6 +87,12 @@ private extension TableViewController {
                 return NavigationRouter(SimpleCustomAttributeViewController.self)
             case 1:
                 return NavigationRouter(TriangleViewController.self)
+            case 2:
+                return NavigationRouter(MixedViewsViewController.self)
+            case 3:
+                return NavigationRouter(MakeableTableViewController.self)
+            case 4:
+                return NavigationRouter(MakeableCollectionViewController.self)
             default:
                 fatalError("oh no")
             }
@@ -94,6 +109,8 @@ private extension TableViewController {
                 return "Nested Stackviews"
             case 1:
                 return "Labels"
+            case 2:
+                return "LoginViewController"
             default:
                 fatalError("oh no")
             }
@@ -103,6 +120,12 @@ private extension TableViewController {
                 return "Custom attribute: FooLabel (simple)"
             case 1:
                 return "Custom attribute: TriangleView (advanced)"
+            case 2:
+                return "Mixed Views"
+            case 3:
+                return "TableView"
+            case 4:
+                return "CollectionView"
             default:
                 fatalError("oh no")
             }

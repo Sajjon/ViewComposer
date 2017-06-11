@@ -8,6 +8,12 @@
 			switch self {
 						case .custom(let value):
 							return "custom: \(value)" 
+						case .delegate(let value):
+							return "delegate: \(value)" 
+						case .dataSource(let value):
+							return "dataSource: \(value)" 
+						case .dataSourceDelegate(let value):
+							return "dataSourceDelegate: \(value)" 
 						case .hidden(let value):
 							return "hidden: \(value)" 
 						case .backgroundColor(let value):
@@ -172,6 +178,32 @@
 							return "baselineRelative: \(value)" 
 						case .arrangedSubviews(let value):
 							return "arrangedSubviews: \(value)" 
+						case .registerCells(let value):
+							return "registerCells: \(value)" 
+						case .collectionViewLayout(let value):
+							return "collectionViewLayout: \(value)" 
+						case .itemSize(let value):
+							return "itemSize: \(value)" 
+						case .prompt(let value):
+							return "prompt: \(value)" 
+						case .searchBarStyle(let value):
+							return "searchBarStyle: \(value)" 
+						case .segments(let value):
+							return "segments: \(value)" 
+						case .thumbTintColor(let value):
+							return "thumbTintColor: \(value)" 
+						case .on(let value):
+							return "on: \(value)" 
+						case .onTintColor(let value):
+							return "onTintColor: \(value)" 
+						case .onImage(let value):
+							return "onImage: \(value)" 
+						case .offImge(let value):
+							return "offImge: \(value)" 
+						case .sliderValue(let value):
+							return "sliderValue: \(value)" 
+						case .sliderRange(let value):
+							return "sliderRange: \(value)" 
 			}
 		}
 	}

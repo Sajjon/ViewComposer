@@ -21,6 +21,7 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
     - [Examples](#examples)
     - [Merge operators `<-` and `<<-`](#merge-operators---and--)
 - [Predefined styles](#predefined-styles)
+    - [Passing delegates](#passing-delegates)
 - [Supported attributes](#supported-attributes)
 - [CAUTION: Avoid arrays with duplicate values.](#caution-avoid-arrays-with-duplicate-values)
 - [Composables](#composables)
@@ -340,6 +341,116 @@ class LabelsViewControllerVanilla: UIViewController {
 }
 ```
 
+### Passing delegates
+
+```swift
+private let height: CGFloat = 50
+private let style: ViewStyle = [.font(.big), .height(height)]
+private let fieldStyle = style <<- .borderWidth(2)
+
+final class LoginViewController: UIViewController {
+    
+    lazy var emailField: UITextField = fieldStyle <<- [.placeholder("Email"), .delegate(self)]
+    lazy var passwordField: UITextField = fieldStyle <<- [.placeholder("Password"), .delegate(self)]
+    
+    // can line break merge
+    lazy var loginButton: UIButton = style <<-
+            .states([Normal("Login", .blue), Highlighted("Logging in...", .red)]) <-
+            .target(self.target(#selector(loginButtonPressed))) <-
+            [.backgroundColor(.green), .cornerRadius(height/2)]
+    
+    lazy var stackView: UIStackView = .axis(.vertical) <-
+            .arrangedSubviews([self.emailField, self.passwordField, self.loginButton]) <-
+            [.spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
+    
+    ...
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.validate()
+    }
+}
+
+private extension LoginViewController {
+    @objc func loginButtonPressed() {
+        print("should login")
+    }
+}
+```
+
+Note how we pass in `self` as `associated value` to the attribute named `.delegate`, setting the `LoginViewController` class itself as `UITextViewDelegate`. 
+
+**Compare to vanilla:**
+
+```swift
+private let height: CGFloat = 50
+final class VanillaLoginViewController: UIViewController {
+    
+    lazy var emailField: UITextField = {
+        let field = UITextField()
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.placeholder = "Email"
+        field.layer.borderWidth = 2
+        field.font = .big
+        field.delegate = self
+        field.addConstraint(field.heightAnchor.constraint(equalToConstant: height))
+        return field
+    }()
+    
+    lazy var passwordField: UITextField = {
+        let field = UITextField()
+        field.translatesAutoresizingMaskIntoConstraints = false
+        field.placeholder = "Password"
+        field.layer.borderWidth = 2
+        field.font = .big
+        field.delegate = self
+        field.addConstraint(field.heightAnchor.constraint(equalToConstant: height))
+        return field
+    }()
+    
+    lazy var loginButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.cornerRadius = height/2
+        button.addConstraint(button.heightAnchor.constraint(equalToConstant: height))
+        button.setTitle("Login", for: .normal)
+        button.setTitle("Logging in..", for: .highlighted)
+        button.setTitleColor(.blue, for: .normal)
+        button.setTitleColor(.red, for: .highlighted)
+        button.backgroundColor = .green
+        button.addTarget(self, action: #selector(loginButtonPressed), for: .primaryActionTriggered)
+        return button
+    }()
+    
+    lazy var stackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [self.emailField, self.passwordField, self.loginButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        let margins: CGFloat = 20
+        stackView.layoutMargins = UIEdgeInsets(top: margins, left: margins, bottom: margins, right: margins)
+        stackView.isLayoutMarginsRelativeArrangement = true
+        return stackView
+    }()
+    
+    ...
+}
+
+extension VanillaLoginViewController: UITextFieldDelegate {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.validate()
+    }
+}
+
+private extension VanillaLoginViewController {
+    @objc func loginButtonPressed() {
+        print("should login")
+    }
+}
+```
+
+We can also use the `.delegates` attribute for `UITextViewDelegate` and more delegate types are coming.
 
 ## Supported attributes
 Here are some of the attributes (this list gets updated manually...), take a look at the [full list here](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/ViewAttribute/ViewAttribute.swift)
@@ -347,6 +458,9 @@ Here are some of the attributes (this list gets updated manually...), take a loo
 ```swift
 public enum ViewAttribute {
     case custom(BaseAttributed)
+    case delegate(NSObjectProtocol)
+    case dataSource(NSObjectProtocol)
+    case dataSourceDelegate(NSObjectProtocol)
     
     //MARK: - View
     case hidden(Bool)
@@ -359,6 +473,7 @@ public enum ViewAttribute {
     case height(CGFloat)
     case width(CGFloat)
     case layoutMargins(all: CGFloat)
+    
     case userInteractable(Bool)
     case tintColor(UIColor)
     case clipsToBounds(Bool)
@@ -458,6 +573,33 @@ public enum ViewAttribute {
     case marginsRelative(Bool)
     case baselineRelative(Bool)
     case arrangedSubviews([UIView])
+    
+    //MARK: - CellRegisterable
+    case registerCells([RegisterableCell])
+        
+    //MARK: - UICollectionView
+    case collectionViewLayout(UICollectionViewLayout)
+    case itemSize(CGSize)
+    
+    //MARK: - UISearchBar
+    case prompt(String)
+    case searchBarStyle(UISearchBarStyle)
+    
+    //MARK: - UISegmentedControl
+    case segments([Segment])
+    
+    //MARK: ThumbTintColorOwner (UISwitch and UISlider)
+    case thumbTintColor(UIColor?)
+    
+    //MARK: - UISwitch
+    case on(Bool)
+    case onTintColor(UIColor?)
+    case onImage(UIImage?)
+    case offImge(UIImage?)
+    
+    //MARK: - UISlider
+    case sliderValue(Double)
+    case sliderRange(Range<Double>)
 }
 ```
 
@@ -487,14 +629,16 @@ print(label.text!) // prints "foo", since duplicate value `.text("bar")` has bee
 Thus it is **strongly** discouraged to instantiate arrays with duplicate values. But the scenarios where you are merging types with duplicates is handled, since you chose which attribute you wanna keep using either `merge:master` or `merge:slave`.
 
 ## Composables
-An alternative to this, if you want to make use of some even more sugary syntax is to use the subclasses conforming to the type `Composable`. You can find some [examples (Label, Button, StackView etc) here](https://github.com/Sajjon/ViewComposer/tree/master/Source/Composables). In the current release of ViewComposer **you cannot use array literal** instantiation for your `Composable` types subclassing `UIKit` classes.
+An alternative to this, if you want to make use of some even more sugary syntax is to use the subclasses conforming to the type `Composable`. You can find some [examples (Label, Button, StackView etc) here](https://github.com/Sajjon/ViewComposer/tree/master/Source/Composables). 
+
+In the current release of ViewComposer in order to use array literal, use must use the caret postfix operator `^` to create your `Composable` types subclassing `UIKit` classes.
+
 ```swift
 final class Label: UILabel, Composable { ... }
 ...
-let label: Label = [.text("foo")] // results in error "`UILabel` is not convertible to `Label`"
+let label: Label = [.text("foo")]^ // requires use of `ˆ`
 ```
 
-But this will hopefully be fixed soon!
 
 ## Custom attribute
 
@@ -592,13 +736,25 @@ Check out [TriangleView.swift](https://github.com/Sajjon/ViewComposer/blob/maste
 ## Roadmap
 ### Architecture/implementation
 - [ ] Change implementation to use Codable/Encodable (Swift 4)?
-- [ ] Fix bug where classes conforming to `Composable` and inheriting from superclass conforming to `Makeable` cannot be instantiated using array literals. 
+- [x] Fix bug where classes conforming to `Composable` and inheriting from superclass conforming to `Makeable` cannot be instantiated using array literals. (requires ues of caret postfix operator `^`)
 
 ### Supported UIKit views
-- [ ] Support UITableView
-- [ ] Support UICollectionView
+- [x] UIButton
+- [x] UICollectionView
+- [x] UIImageView
+- [x] UILabel
+- [x] UIPickerImageView
+- [ ] UIScrollView
+- [x] UISearchBar
+- [x] UISegmentedControl
+- [x] UISlider
+- [x] UIStackView
+- [x] UISwitch
+- [x] UITableView
+- [x] UITextField
+- [x] UITextView
 
 ### Supported attributes
-- [ ] Support most layer attributes, such as `borderWidth`, `masksToBounds` etc..
-- [ ] Add attribute for delegates such as `UITextViewDelegate`
+- [x] Support most layer attributes, such as `borderWidth`, `masksToBounds` etc..
+- [x] Add attribute for delegates such as `UITextViewDelegate`, `UITableView`
 

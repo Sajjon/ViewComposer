@@ -48,6 +48,10 @@ public extension ViewStyle {
             imageHolder.apply(self)
         }
         
+        if let placeholder = view as? PlaceholderOwner {
+            placeholder.apply(self)
+        }
+        
         if let stackView = view as? UIStackView {
             stackView.apply(self)
         }
@@ -56,8 +60,20 @@ public extension ViewStyle {
             scrollView.applyToSuperclass(self)
         }
         
+        if let collectionView = view as? UICollectionView {
+            collectionView.apply(self)
+        }
+        
         if let label = view as? UILabel {
             label.apply(self)
+        }
+        
+        if let bar = view as? UISearchBar {
+            bar.apply(self)
+        }
+        
+        if let segmentedControl = view as? UISegmentedControl {
+            segmentedControl.apply(self)
         }
         
         if let button = view as? UIButton {
@@ -66,6 +82,32 @@ public extension ViewStyle {
         
         if let stateHolder = view as? ControlStateHolder {
             stateHolder.apply(self)
+        }
+        
+        // Also handling case `dataSourceDelegate`
+        if let delegateOwner = view as? DelegatesOwner {
+            delegateOwner.apply(self)
+        }
+        
+        // Also handling case `dataSourceDelegate`
+        if let delegateOwner = view as? DataSourceOwner {
+            delegateOwner.apply(self)
+        }
+        
+        if let thumbTintColorOwner = view as? ThumbTintColorOwner {
+            thumbTintColorOwner.apply(self)
+        }
+        
+        if let slider = view as? UISlider {
+            slider.apply(self)
+        }
+        
+        if let `switch` = view as? UISwitch {
+            `switch`.apply(self)
+        }
+        
+        if let cellRegisterable = view as? CellRegisterable {
+            cellRegisterable.apply(self)
         }
         
         // Shared
@@ -115,6 +157,36 @@ public extension ViewStyle {
                 view.layer.borderWidth = borderWidth
             case .borderColor(let borderColor):
                 view.layer.borderColor = borderColor.cgColor
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension DelegatesOwner {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .delegate(let delegate):
+                setDelegate(delegate)
+            case .dataSourceDelegate(let delegate):
+                setDelegate(delegate)
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension DataSourceOwner {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .dataSource(let dataSource):
+                setDataSource(dataSource)
+            case .dataSourceDelegate(let dataSource):
+                setDataSource(dataSource)
             default:
                 break
             }
@@ -269,6 +341,20 @@ private extension UIStackView {
     }
 }
 
+private extension UICollectionView {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .itemSize(let itemSize):
+                guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { break }
+                flowLayout.itemSize = itemSize
+            default:
+                break
+            }
+        }
+    }
+}
+
 private extension UIScrollView {
     func applyToSuperclass(_ style: ViewStyle) {
         style.attributes.forEach {
@@ -339,6 +425,94 @@ private extension UILabel {
     }
 }
 
+private extension UISearchBar {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .prompt(let prompt):
+                self.prompt = prompt
+            case .searchBarStyle(let style):
+                self.searchBarStyle = style
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension UISegmentedControl {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .segments(let segments):
+                segments.add(to: self)
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension ThumbTintColorOwner {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .thumbTintColor(let color):
+                setThumbTintColor(color)
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension UISlider {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .sliderValue(let value):
+                self.value = Float(value)
+            case .sliderRange(let range):
+                self.minimumValue = Float(range.lowerBound)
+                self.maximumValue = Float(range.upperBound)
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension UISwitch {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .on(let isOn):
+                self.isOn = isOn
+            case .onTintColor(let color):
+                self.onTintColor = color
+            case .onImage(let image):
+                self.onImage = image
+            case .offImge(let image):
+                self.offImage = image
+            default:
+                break
+            }
+        }
+    }
+}
+
+private extension CellRegisterable {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .registerCells(let cells):
+                registerCells(cells)
+            default:
+                break
+            }
+        }
+    }
+}
 
 private extension UIButton {
     func apply(_ style: ViewStyle) {

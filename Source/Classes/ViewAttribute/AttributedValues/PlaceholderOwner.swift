@@ -19,14 +19,14 @@ public extension PlaceholderOwner {
     }
 }
 
-extension UITextField {
+extension UITextField: PlaceholderOwner {
     public var placeholderProxy: String? {
         get { return placeholder }
         set { placeholder = newValue }
     }
 }
 
-extension UISearchBar {
+extension UISearchBar: PlaceholderOwner {
     public var placeholderProxy: String? {
         get { return placeholder }
         set { placeholder = newValue }

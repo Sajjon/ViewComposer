@@ -69,19 +69,3 @@ class VanillaNestedStackViewsViewController: UIViewController, StackViewOwner {
         title = "Vanilla - Nested StackViews"
     }
 }
-
-protocol StackViewOwner {
-    var stackView: UIStackView { get set }
-}
-
-extension StackViewOwner where Self: UIViewController {
-    func setupViews() {
-        edgesForExtendedLayout = []
-        automaticallyAdjustsScrollViewInsets = false
-        view.addSubview(stackView)
-        view.addConstraint(stackView.topAnchor.constraint(equalTo: view.topAnchor))
-        view.addConstraint(stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor))
-        view.addConstraint(stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor))
-        view.addConstraint(stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor))
-    }
-}

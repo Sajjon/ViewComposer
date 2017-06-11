@@ -86,6 +86,12 @@ public protocol AssociatedValueStrippable: Equatable {
                 switch self {
                                 case .custom(let custom):
                                     return custom
+                                case .delegate(let delegate):
+                                    return delegate
+                                case .dataSource(let dataSource):
+                                    return dataSource
+                                case .dataSourceDelegate(let dataSourceDelegate):
+                                    return dataSourceDelegate
                                 case .hidden(let hidden):
                                     return hidden
                                 case .backgroundColor(let backgroundColor):
@@ -250,6 +256,32 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return baselineRelative
                                 case .arrangedSubviews(let arrangedSubviews):
                                     return arrangedSubviews
+                                case .registerCells(let registerCells):
+                                    return registerCells
+                                case .collectionViewLayout(let collectionViewLayout):
+                                    return collectionViewLayout
+                                case .itemSize(let itemSize):
+                                    return itemSize
+                                case .prompt(let prompt):
+                                    return prompt
+                                case .searchBarStyle(let searchBarStyle):
+                                    return searchBarStyle
+                                case .segments(let segments):
+                                    return segments
+                                case .thumbTintColor(let thumbTintColor):
+                                    return thumbTintColor
+                                case .on(let on):
+                                    return on
+                                case .onTintColor(let onTintColor):
+                                    return onTintColor
+                                case .onImage(let onImage):
+                                    return onImage
+                                case .offImge(let offImge):
+                                    return offImge
+                                case .sliderValue(let sliderValue):
+                                    return sliderValue
+                                case .sliderRange(let sliderRange):
+                                    return sliderRange
                 }
             }
 
@@ -257,6 +289,30 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .custom(let custom):
                                 return custom
+                            default:
+                                return nil
+                        }
+                    }
+                    var delegate: NSObjectProtocol? {
+                        switch self {
+                            case .delegate(let delegate):
+                                return delegate
+                            default:
+                                return nil
+                        }
+                    }
+                    var dataSource: NSObjectProtocol? {
+                        switch self {
+                            case .dataSource(let dataSource):
+                                return dataSource
+                            default:
+                                return nil
+                        }
+                    }
+                    var dataSourceDelegate: NSObjectProtocol? {
+                        switch self {
+                            case .dataSourceDelegate(let dataSourceDelegate):
+                                return dataSourceDelegate
                             default:
                                 return nil
                         }
@@ -917,10 +973,117 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
+                    var registerCells: [RegisterableCell]? {
+                        switch self {
+                            case .registerCells(let registerCells):
+                                return registerCells
+                            default:
+                                return nil
+                        }
+                    }
+                    var collectionViewLayout: UICollectionViewLayout? {
+                        switch self {
+                            case .collectionViewLayout(let collectionViewLayout):
+                                return collectionViewLayout
+                            default:
+                                return nil
+                        }
+                    }
+                    var itemSize: CGSize? {
+                        switch self {
+                            case .itemSize(let itemSize):
+                                return itemSize
+                            default:
+                                return nil
+                        }
+                    }
+                    var prompt: String? {
+                        switch self {
+                            case .prompt(let prompt):
+                                return prompt
+                            default:
+                                return nil
+                        }
+                    }
+                    var searchBarStyle: UISearchBarStyle? {
+                        switch self {
+                            case .searchBarStyle(let searchBarStyle):
+                                return searchBarStyle
+                            default:
+                                return nil
+                        }
+                    }
+                    var segments: [Segment]? {
+                        switch self {
+                            case .segments(let segments):
+                                return segments
+                            default:
+                                return nil
+                        }
+                    }
+                    var thumbTintColor: UIColor? {
+                        switch self {
+                            case .thumbTintColor(let thumbTintColor):
+                                return thumbTintColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var on: Bool? {
+                        switch self {
+                            case .on(let on):
+                                return on
+                            default:
+                                return nil
+                        }
+                    }
+                    var onTintColor: UIColor? {
+                        switch self {
+                            case .onTintColor(let onTintColor):
+                                return onTintColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var onImage: UIImage? {
+                        switch self {
+                            case .onImage(let onImage):
+                                return onImage
+                            default:
+                                return nil
+                        }
+                    }
+                    var offImge: UIImage? {
+                        switch self {
+                            case .offImge(let offImge):
+                                return offImge
+                            default:
+                                return nil
+                        }
+                    }
+                    var sliderValue: Double? {
+                        switch self {
+                            case .sliderValue(let sliderValue):
+                                return sliderValue
+                            default:
+                                return nil
+                        }
+                    }
+                    var sliderRange: Range<Double>? {
+                        switch self {
+                            case .sliderRange(let sliderRange):
+                                return sliderRange
+                            default:
+                                return nil
+                        }
+                    }
         }
 
         public enum ViewAttributeStripped: String, StrippedRepresentation {
             case custom
+            case delegate
+            case dataSource
+            case dataSourceDelegate
             case hidden
             case backgroundColor
             case verticalHugging
@@ -1003,6 +1166,19 @@ public protocol AssociatedValueStrippable: Equatable {
             case marginsRelative
             case baselineRelative
             case arrangedSubviews
+            case registerCells
+            case collectionViewLayout
+            case itemSize
+            case prompt
+            case searchBarStyle
+            case segments
+            case thumbTintColor
+            case on
+            case onTintColor
+            case onImage
+            case offImge
+            case sliderValue
+            case sliderRange
         } 
 
         extension ViewAttributeStripped {
@@ -1026,6 +1202,12 @@ public protocol AssociatedValueStrippable: Equatable {
         		switch self {
         			 case .custom:
         				return .custom
+        			 case .delegate:
+        				return .delegate
+        			 case .dataSource:
+        				return .dataSource
+        			 case .dataSourceDelegate:
+        				return .dataSourceDelegate
         			 case .hidden:
         				return .hidden
         			 case .backgroundColor:
@@ -1190,6 +1372,32 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .baselineRelative
         			 case .arrangedSubviews:
         				return .arrangedSubviews
+        			 case .registerCells:
+        				return .registerCells
+        			 case .collectionViewLayout:
+        				return .collectionViewLayout
+        			 case .itemSize:
+        				return .itemSize
+        			 case .prompt:
+        				return .prompt
+        			 case .searchBarStyle:
+        				return .searchBarStyle
+        			 case .segments:
+        				return .segments
+        			 case .thumbTintColor:
+        				return .thumbTintColor
+        			 case .on:
+        				return .on
+        			 case .onTintColor:
+        				return .onTintColor
+        			 case .onImage:
+        				return .onImage
+        			 case .offImge:
+        				return .offImge
+        			 case .sliderValue:
+        				return .sliderValue
+        			 case .sliderRange:
+        				return .sliderRange
         		}
         	}
         }

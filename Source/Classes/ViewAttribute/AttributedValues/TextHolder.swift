@@ -131,3 +131,25 @@ extension UIButton: TextHolder {
         set { setTitleColor(newValue, for: .normal) }
     }
 }
+
+extension UISearchBar: TextHolder {
+    public var textAlignmentProxy: NSTextAlignment {
+        get { return UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textAlignment }
+        set { /* nothing to do */ }
+    }
+    
+    public var fontProxy: UIFont? {
+        get { return UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).font }
+        set { /* nothing to do */ }
+    }
+    
+    public var textProxy: String? {
+        get { return text }
+        set { text = newValue }
+    }
+    
+    public var textColorProxy: UIColor? {
+        get { return UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor }
+        set { /* nothing to do */ }
+    }
+}
