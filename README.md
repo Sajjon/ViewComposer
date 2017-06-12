@@ -40,13 +40,13 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 #### [CocoaPods](http://cocoapods.org) 
 
 ```ruby
-pod 'ViewComposer', '~> 0.1.9'
+pod 'ViewComposer', '~> 0.2'
 ```
 
 #### [Carthage](https://github.com/Carthage/Carthage)
 
 ```ogdl
-github "ViewComposer" ~> 0.1.9
+github "ViewComposer" ~> 0.2
 ```
 
 #### [Swift Package Manager](https://swift.org/package-manager/) 
