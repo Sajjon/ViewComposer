@@ -13,7 +13,7 @@ private let labelStyle: ViewStyle = [.textAlignment(.center)]
 final class MyCollectionViewCell: UICollectionViewCell {
     lazy var sectionLabel: UILabel = labelStyle <<- [.backgroundColor(.blue), .textColor(.red)]
     lazy var rowLabel: UILabel = labelStyle <<-  [.backgroundColor(.red), .textColor(.blue)]
-    lazy var stackView: StackView = [.arrangedSubviews([self.sectionLabel, self.rowLabel]), .axis(.vertical)]^
+    lazy var stackView: StackView = [.views([self.sectionLabel, self.rowLabel]), .axis(.vertical)]^
     required init(coder: NSCoder) { fatalError("required init") }
     
     override init(frame: CGRect) {

@@ -13,7 +13,7 @@ protocol DataSourceOwner: class {
 }
 
 extension DataSourceOwner {
-    func setDataSource(_ dataSource: NSObjectProtocol) {
+    func setDataSource(_ dataSource: NSObjectProtocol?) {
         dataSourceProxy = dataSource
     }
 }

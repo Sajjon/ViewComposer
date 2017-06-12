@@ -13,7 +13,7 @@ protocol DelegatesOwner: class {
 }
 
 extension DelegatesOwner {
-    func setDelegate(_ delegate: NSObjectProtocol) {
+    func setDelegate(_ delegate: NSObjectProtocol?) {
         delegateProxy = delegate
     }
 }

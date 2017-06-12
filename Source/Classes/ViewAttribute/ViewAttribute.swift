@@ -10,9 +10,9 @@ import Foundation
 
 public enum ViewAttribute {
     case custom(BaseAttributed)
-    case delegate(NSObjectProtocol)
-    case dataSource(NSObjectProtocol)
-    case dataSourceDelegate(NSObjectProtocol)
+    case delegate(NSObjectProtocol?)
+    case dataSource(NSObjectProtocol?)
+    case dataSourceDelegate(NSObjectProtocol?)
     
     //MARK: - View
     case hidden(Bool)
@@ -41,7 +41,7 @@ public enum ViewAttribute {
     case borderColor(UIColor)
     
     //MARK: - TextHolder
-    case text(String)
+    case text(String?)
     case font(UIFont)
     case textColor(UIColor)
     case `case`(Case)
@@ -74,7 +74,7 @@ public enum ViewAttribute {
     case selectedRange(NSRange)
     
     //MARK: - ImageHolder
-    case image(UIImage)
+    case image(UIImage?)
     
     //MARK: - UIScrollView
     case scrollEnabled(Bool)
@@ -124,7 +124,7 @@ public enum ViewAttribute {
     case margin(CGFloat)
     case marginsRelative(Bool)
     case baselineRelative(Bool)
-    case arrangedSubviews([UIView])
+    case views([UIView?])
     
     //MARK: - CellRegisterable
     case registerCells([RegisterableCell])

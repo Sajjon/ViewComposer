@@ -24,7 +24,7 @@ final class LoginViewController: UIViewController, StackViewOwner {
             [.backgroundColor(.green), .cornerRadius(height/2)]
         
     lazy var stackView: UIStackView = .axis(.vertical) <-
-            .arrangedSubviews([self.emailField, self.passwordField, self.loginButton]) <-
+            .views([self.emailField, self.passwordField, self.loginButton]) <-
             [.spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
     
     override func viewDidLoad() {

@@ -78,11 +78,11 @@ class NestedStackViewsViewController: UIViewController {
 
     lazy var fooLabel: UILabel = [.text("Foo"), .textColor(.blue), .backgroundColor(.red), .textAlignment(.center)]
     lazy var barLabel: UILabel =  [.text("Bar"), .textColor(.red), .backgroundColor(.green), .textAlignment(.center)]
-    lazy var labels: UIStackView = [.arrangedSubviews([self.fooLabel, self.barLabel]), .distribution(.fillEqually)]
+    lazy var labels: UIStackView = [.views([self.fooLabel, self.barLabel]), .distribution(.fillEqually)]
     
     lazy var button: UIButton = [.text("Baz"), .backgroundColor(.cyan), .textColor(.red)]
     
-    lazy var stackView: UIStackView = [.arrangedSubviews([self.labels, self.button]), .axis(.vertical), .distribution(.fillEqually)]
+    lazy var stackView: UIStackView = [.views([self.labels, self.button]), .axis(.vertical), .distribution(.fillEqually)]
     
 
     ...
@@ -268,7 +268,7 @@ You can also declare some standard style, e.g. `font`, `textColor`, `textAlignme
 
 ```swift
 let style: ViewStyle = [.textColor(.red), .textAlignment(.center)]
-let fooLabel UILabel = labelStyle.merge(master: .text("Foo")))
+let fooLabel: UILabel = labelStyle.merge(master: .text("Foo")))
 ```
 
 Take another look at the same example as above, but here making use of the `merge(master:`  operator `<<-`:
@@ -290,7 +290,7 @@ class LabelsViewController: UIViewController {
     private lazy var barLabel: UILabel = labelStyle <<- [.text("Bar"), .textColor(.blue), .backgroundColor(.red)]
     private lazy var bazLabel: UILabel = labelStyle <<- [.text("Baz"), .textAlignment(.left), .backgroundColor(.green), .font(.boldSystemFont(ofSize: 45))]
     
-    lazy var stackView: UIStackView = [.arrangedSubviews([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)]
+    lazy var stackView: UIStackView = [.views([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)]
 }
 ```
 
@@ -360,7 +360,7 @@ final class LoginViewController: UIViewController {
             [.backgroundColor(.green), .cornerRadius(height/2)]
     
     lazy var stackView: UIStackView = .axis(.vertical) <-
-            .arrangedSubviews([self.emailField, self.passwordField, self.loginButton]) <-
+            .views([self.emailField, self.passwordField, self.loginButton]) <-
             [.spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
     
     ...
@@ -572,7 +572,7 @@ public enum ViewAttribute {
     case margin(CGFloat)
     case marginsRelative(Bool)
     case baselineRelative(Bool)
-    case arrangedSubviews([UIView])
+    case views([UIView])
     
     //MARK: - CellRegisterable
     case registerCells([RegisterableCell])

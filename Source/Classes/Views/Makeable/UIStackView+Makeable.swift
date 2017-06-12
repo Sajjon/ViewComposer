@@ -21,7 +21,27 @@ extension UIStackView: Makeable {
 
 extension UIStackView {
     func setupArrangedSubviews(with style: ViewStyle) {
-        guard let views: [UIView] = style.value(.arrangedSubviews) else { return }
+        guard let optionalViews: [UIView?] = style.value(.views) else { return }
+        let views: [UIView] = optionalViews.removeNils()
         views.forEach { addArrangedSubview($0) }
+    }
+}
+
+protocol OptionalType {
+    associatedtype Wrapped
+    func map<U>(_ f: (Wrapped) throws -> U) rethrows -> U?
+}
+
+extension Optional: OptionalType {}
+
+extension Sequence where Iterator.Element: OptionalType {
+    func removeNils() -> [Iterator.Element.Wrapped] {
+        var result: [Iterator.Element.Wrapped] = []
+        for element in self {
+            if let element = element.map({ $0 }) {
+                result.append(element)
+            }
+        }
+        return result
     }
 }

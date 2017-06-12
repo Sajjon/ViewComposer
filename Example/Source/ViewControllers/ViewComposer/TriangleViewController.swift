@@ -15,7 +15,7 @@ class TriangleViewController: UIViewController, StackViewOwner {
     private lazy var triangleViewC: TriangleView = [.custom(TriangleViewStyle([.fillColor(.yellow)])), .backgroundColor(.orange)]
     private lazy var triangleViewD = TriangleView([]) //using `default` ViewStyle in TriangleView
     
-    lazy var stackView: UIStackView = [.arrangedSubviews([self.triangleViewA, self.triangleViewB, self.triangleViewC, self.triangleViewD]), .axis(.vertical), .distribution(.fillEqually)]
+    lazy var stackView: UIStackView = [.views([self.triangleViewA, self.triangleViewB, self.triangleViewC, self.triangleViewD]), .axis(.vertical), .distribution(.fillEqually)]
     
     init() {
         super.init(nibName: nil, bundle: nil)

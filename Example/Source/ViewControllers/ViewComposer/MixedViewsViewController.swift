@@ -20,7 +20,7 @@ final class MixedViewsViewController: UIViewController, StackViewOwner {
     lazy var pickerView: UIPickerView = [.dataSourceDelegate(self)]
     
     private var views: [UIView] { return [slider, `switch`, segmentedControl, searchBar, pickerView] }
-    lazy var stackView: UIStackView = [.arrangedSubviews(self.views), .axis(.vertical), .distribution(.fill), .spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
+    lazy var stackView: UIStackView = [.views(self.views), .axis(.vertical), .distribution(.fill), .spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
 
     init() {
         super.init(nibName: nil, bundle: nil)

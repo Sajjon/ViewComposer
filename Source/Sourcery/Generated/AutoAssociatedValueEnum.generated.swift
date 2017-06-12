@@ -195,8 +195,8 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return marginsRelative
                                 case .baselineRelative(let baselineRelative):
                                     return baselineRelative
-                                case .arrangedSubviews(let arrangedSubviews):
-                                    return arrangedSubviews
+                                case .views(let views):
+                                    return views
                                 case .registerCells(let registerCells):
                                     return registerCells
                                 case .collectionViewLayout(let collectionViewLayout):
@@ -906,10 +906,10 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
-                    var arrangedSubviews: [UIView]? {
+                    var views: [UIView?]? {
                         switch self {
-                            case .arrangedSubviews(let arrangedSubviews):
-                                return arrangedSubviews
+                            case .views(let views):
+                                return views
                             default:
                                 return nil
                         }
@@ -1106,7 +1106,7 @@ public protocol AssociatedValueStrippable: Equatable {
             case margin
             case marginsRelative
             case baselineRelative
-            case arrangedSubviews
+            case views
             case registerCells
             case collectionViewLayout
             case itemSize
@@ -1311,8 +1311,8 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .marginsRelative
         			 case .baselineRelative:
         				return .baselineRelative
-        			 case .arrangedSubviews:
-        				return .arrangedSubviews
+        			 case .views:
+        				return .views
         			 case .registerCells:
         				return .registerCells
         			 case .collectionViewLayout:
