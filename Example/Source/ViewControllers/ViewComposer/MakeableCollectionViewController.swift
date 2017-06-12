@@ -13,7 +13,7 @@ import ViewComposer
 private let cellId = "cellIdentifier"
 final class MakeableCollectionViewController: UIViewController {
     
-    lazy var collectionView: UICollectionView = [.dataSourceDelegate(self), .registerCells([CellClass(MyCollectionViewCell.self, cellId)]), .itemSize(CGSize(width: 80, height: 100)), .backgroundColor(.white)]
+    lazy var collectionView: UICollectionView = [.dataSourceDelegate(self), .registerCells([CellClass(MyCollectionViewCell.self, cellId)]), .itemSize(CGSize(width: 80, height: 100)), .color(.white)]
     
     override func viewDidLoad() {
         super.viewDidLoad()

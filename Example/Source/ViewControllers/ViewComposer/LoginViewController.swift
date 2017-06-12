@@ -21,7 +21,7 @@ final class LoginViewController: UIViewController, StackViewOwner {
     lazy var loginButton: UIButton = style <<-
             .states([Normal("Login", .blue), Highlighted("Logging in...", .red)]) <-
             .target(self.target(#selector(loginButtonPressed))) <-
-            [.backgroundColor(.green), .cornerRadius(height/2)]
+            [.color(.green), .cornerRadius(height/2)]
         
     lazy var stackView: UIStackView = .axis(.vertical) <-
             .views([self.emailField, self.passwordField, self.loginButton]) <-

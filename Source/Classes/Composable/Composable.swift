@@ -27,7 +27,7 @@ extension Composable {
 
 postfix operator ^
 
-/// This is a bit "hacky", this enables us to write `let sv: StackView = [.backgroundColor(.red)]^`
+/// This is a bit "hacky", this enables us to write `let sv: StackView = [.color(.red)]^`
 /// notice the use of the caret symbol. This code would not compile otherwise since the composable
 // class `StackView` inherits from the superclass `UIStackView` which already is made `Makeable` by
 // this framework. Since `StackView`s superclass `UIStackView` is `Makeable` it is ExpressibleByArrayLiteral

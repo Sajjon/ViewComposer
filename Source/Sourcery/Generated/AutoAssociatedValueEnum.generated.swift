@@ -35,8 +35,8 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return dataSourceDelegate
                                 case .hidden(let hidden):
                                     return hidden
-                                case .backgroundColor(let backgroundColor):
-                                    return backgroundColor
+                                case .color(let color):
+                                    return color
                                 case .verticalHugging(let verticalHugging):
                                     return verticalHugging
                                 case .verticalCompression(let verticalCompression):
@@ -266,10 +266,10 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
-                    var backgroundColor: UIColor? {
+                    var color: UIColor? {
                         switch self {
-                            case .backgroundColor(let backgroundColor):
-                                return backgroundColor
+                            case .color(let color):
+                                return color
                             default:
                                 return nil
                         }
@@ -1026,7 +1026,7 @@ public protocol AssociatedValueStrippable: Equatable {
             case dataSource
             case dataSourceDelegate
             case hidden
-            case backgroundColor
+            case color
             case verticalHugging
             case verticalCompression
             case horizontalHugging
@@ -1151,8 +1151,8 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .dataSourceDelegate
         			 case .hidden:
         				return .hidden
-        			 case .backgroundColor:
-        				return .backgroundColor
+        			 case .color:
+        				return .color
         			 case .verticalHugging:
         				return .verticalHugging
         			 case .verticalCompression:

@@ -13,7 +13,7 @@ import ViewComposer
 private let cellId = "cellIdentifier"
 final class MakeableTableViewController: UIViewController {
     
-    lazy var tableView: UITableView = [.backgroundColor(.red), .dataSourceDelegate(self), .registerCells([CellClass(UITableViewCell.self, cellId)])]
+    lazy var tableView: UITableView = [.color(.red), .dataSourceDelegate(self), .registerCells([CellClass(UITableViewCell.self, cellId)])]
 
     override func viewDidLoad() {
         super.viewDidLoad()

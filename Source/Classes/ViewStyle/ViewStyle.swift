@@ -120,7 +120,7 @@ public extension ViewStyle {
                 view.isHidden = isHidden
             case .layoutMargins(let margin):
                 view.layoutMargins = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-            case .backgroundColor(let color):
+            case .color(let color):
                 view.backgroundColor = color
             case .verticalHugging(let prio):
                 view.setContentHuggingPriority(prio.value, for: .vertical)

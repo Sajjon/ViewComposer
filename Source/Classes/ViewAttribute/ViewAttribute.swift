@@ -16,7 +16,7 @@ public enum ViewAttribute {
     
     //MARK: - View
     case hidden(Bool)
-    case backgroundColor(UIColor)
+    case color(UIColor)
     case verticalHugging(LayoutPriority)
     case verticalCompression(LayoutPriority)
     case horizontalHugging(LayoutPriority)

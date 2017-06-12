@@ -31,7 +31,7 @@ extension StackView: Composable {
 
 public extension StackView {
     func setupBackgroundView(with style: ViewStyle) {
-        if let backgroundColor: UIColor = style.value(.backgroundColor) {
+        if let backgroundColor: UIColor = style.value(.color) {
             setupBackgroundView(with: backgroundColor)
         }
     }

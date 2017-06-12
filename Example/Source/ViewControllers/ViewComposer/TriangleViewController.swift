@@ -10,9 +10,9 @@ import UIKit
 import ViewComposer
 
 class TriangleViewController: UIViewController, StackViewOwner {
-    private lazy var triangleViewA: TriangleView = [.custom(TriangleViewStyle([.fillColor(.green), .fillStyle(.lowerAcute)])), .backgroundColor(.red)]
+    private lazy var triangleViewA: TriangleView = [.custom(TriangleViewStyle([.fillColor(.green), .fillStyle(.lowerAcute)])), .color(.red)]
     private lazy var triangleViewB: TriangleView = [.custom(TriangleViewStyle([.fillColor(.green), .fillStyle(.lowerGrave)]))]
-    private lazy var triangleViewC: TriangleView = [.custom(TriangleViewStyle([.fillColor(.yellow)])), .backgroundColor(.orange)]
+    private lazy var triangleViewC: TriangleView = [.custom(TriangleViewStyle([.fillColor(.yellow)])), .color(.orange)]
     private lazy var triangleViewD = TriangleView([]) //using `default` ViewStyle in TriangleView
     
     lazy var stackView: UIStackView = [.views([self.triangleViewA, self.triangleViewB, self.triangleViewC, self.triangleViewD]), .axis(.vertical), .distribution(.fillEqually)]

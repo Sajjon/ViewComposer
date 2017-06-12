@@ -11,11 +11,11 @@ import ViewComposer
 
 class NestedStackViewsViewController: UIViewController, StackViewOwner {
     
-    lazy var fooLabel: UILabel = [.text("Foo"), .textColor(.blue), .backgroundColor(.red), .textAlignment(.center)]
-    lazy var barLabel: UILabel =  [.text("Bar"), .textColor(.red), .backgroundColor(.green), .textAlignment(.center)]
+    lazy var fooLabel: UILabel = [.text("Foo"), .textColor(.blue), .color(.red), .textAlignment(.center)]
+    lazy var barLabel: UILabel =  [.text("Bar"), .textColor(.red), .color(.green), .textAlignment(.center)]
     lazy var labels: UIStackView = [.views([self.fooLabel, self.barLabel]), .distribution(.fillEqually)]
     
-    lazy var button: UIButton = [.text("Baz"), .backgroundColor(.cyan), .textColor(.red)]
+    lazy var button: UIButton = [.text("Baz"), .color(.cyan), .textColor(.red)]
     
     lazy var stackView: UIStackView = [.views([self.labels, self.button]), .axis(.vertical), .distribution(.fillEqually)]
     

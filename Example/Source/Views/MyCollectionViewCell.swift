@@ -11,8 +11,8 @@ import ViewComposer
 
 private let labelStyle: ViewStyle = [.textAlignment(.center)]
 final class MyCollectionViewCell: UICollectionViewCell {
-    lazy var sectionLabel: UILabel = labelStyle <<- [.backgroundColor(.blue), .textColor(.red)]
-    lazy var rowLabel: UILabel = labelStyle <<-  [.backgroundColor(.red), .textColor(.blue)]
+    lazy var sectionLabel: UILabel = labelStyle <<- [.color(.blue), .textColor(.red)]
+    lazy var rowLabel: UILabel = labelStyle <<-  [.color(.red), .textColor(.blue)]
     lazy var stackView: StackView = [.views([self.sectionLabel, self.rowLabel]), .axis(.vertical)]^
     required init(coder: NSCoder) { fatalError("required init") }
     

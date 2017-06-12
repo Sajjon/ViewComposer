@@ -12,7 +12,7 @@ import ViewComposer
 
 final class SimpleCustomAttributeViewController: UIViewController, StackViewOwner {
     
-    private lazy var fooLabel: FooLabel = [.custom(FooStyle([.foo("Foobar")])), .textColor(.red), .backgroundColor(.cyan)]
+    private lazy var fooLabel: FooLabel = [.custom(FooStyle([.foo("Foobar")])), .textColor(.red), .color(.cyan)]
     lazy var stackView: UIStackView = [.views([self.fooLabel])]
     
     init() {

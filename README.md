@@ -76,11 +76,11 @@ The strength of styling views like this get especially clear when you look at a 
 ```swift
 class NestedStackViewsViewController: UIViewController {
 
-    lazy var fooLabel: UILabel = [.text("Foo"), .textColor(.blue), .backgroundColor(.red), .textAlignment(.center)]
-    lazy var barLabel: UILabel =  [.text("Bar"), .textColor(.red), .backgroundColor(.green), .textAlignment(.center)]
+    lazy var fooLabel: UILabel = [.text("Foo"), .textColor(.blue), .color(.red), .textAlignment(.center)]
+    lazy var barLabel: UILabel =  [.text("Bar"), .textColor(.red), .color(.green), .textAlignment(.center)]
     lazy var labels: UIStackView = [.views([self.fooLabel, self.barLabel]), .distribution(.fillEqually)]
     
-    lazy var button: UIButton = [.text("Baz"), .backgroundColor(.cyan), .textColor(.red)]
+    lazy var button: UIButton = [.text("Baz"), .color(.cyan), .textColor(.red)]
     
     lazy var stackView: UIStackView = [.views([self.labels, self.button]), .axis(.vertical), .distribution(.fillEqually)]
     
@@ -145,7 +145,7 @@ class VanillaNestedStackViewsViewController: UIViewController {
 ## Non-intrusive - standard UIKit views
 As we saw in the ViewComposer example above:
 ```swift
-let button: UIButton = [.backgroundColor(.red), .text("Red"), .textColor(.blue)]
+let button: UIButton = [.color(.red), .text("Red"), .textColor(.blue)]
 ```
 
 **NO SUBCLASSES NEEDED 🙌**
@@ -154,7 +154,7 @@ Of course you can always change your `var` to be `lazy` (recommended) and set at
 
 ```swift
 lazy var button: UIButton = {
-    let button: UIButton = [.backgroundColor(.red), .text("Red"), .textColor(.blue)]
+    let button: UIButton = [.color(.red), .text("Red"), .textColor(.blue)]
     // setup attributes not yet supported by ViewComposer
     button.layer.isDoubleSided = false // `isDoubleSided` is not yet supported
     return button
@@ -175,24 +175,24 @@ There are two different merge functions, `merge:master` and `merge:slave`, since
 Merge between `[ViewAttribute]` arrays with a duplicate value using `merge:slave` and `merge:master`
 ```swift
 let foo: [ViewAttribute] = [.text("foo")] // can use `ViewStyle` as `bar`
-let bar: ViewStyle = [.text("bar"), .backgroundColor(.red)] // prefer `ViewStyle`
+let bar: ViewStyle = [.text("bar"), .color(.red)] // prefer `ViewStyle`
 
 // The merged results are of type `ViewStyle`
-let fooMerged = foo.merge(slave: bar) // [.text("foo"), backgroundColor(.red)]
-let barMerged = foo.merge(master: bar) // [.text("bar"), backgroundColor(.red)]
+let fooMerged = foo.merge(slave: bar) // [.text("foo"), .color(.red)]
+let barMerged = foo.merge(master: bar) // [.text("bar"), .color(.red)]
 ```
 
 As mentioned above, you can merge single attributes as well
 
 ```swift
 let foo: ViewAttribute = .text("foo") 
-let style: ViewStyle = [.text("bar"), .backgroundColor(.red)]
+let style: ViewStyle = [.text("bar"), .color(.red)]
 
 // The merged results are of type `ViewStyle`
-let mergeSingleAttribute = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
+let mergeSingleAttribute = style.merge(master: foo) // [.text("foo"), .color(.red)]
 
 let array: [ViewAttriubte] = [.text("foo")]
-let mergeArray = style.merge(master: foo) // [.text("foo"), backgroundColor(.red)]
+let mergeArray = style.merge(master: foo) // [.text("foo"), .color(.red)]
 ```
 
 #### Optional styles
@@ -208,7 +208,7 @@ final class MyViewDefaultingToRed: UIView {
     }
 }
 private extension ViewStyle {
-    static let `default`: ViewStyle = [.backgroundColor(.red)]
+    static let `default`: ViewStyle = [.color(.red)]
 }
 ```
 
@@ -218,11 +218,11 @@ Instead of writing `foo.merge(slave: bar)` we can write `foo <- bar` and instead
 
 ```swift
 let foo: ViewStyle = [.text("foo")]
-let bar: ViewStyle = [.text("bar"), .backgroundColor(.red)]
+let bar: ViewStyle = [.text("bar"), .color(.red)]
 
 // The merged results are of type `ViewStyle`
-let fooMerged = foo <- bar // [.text("foo"), backgroundColor(.red)]
-let barMerged = foo <<- bar // [.text("bar"), backgroundColor(.red)]
+let fooMerged = foo <- bar // [.text("foo"), .color(.red)]
+let barMerged = foo <<- bar // [.text("bar"), .color(.red)]
 ```
 
 Of course the operator `<-` and `<<-` works between `ViewStyle`s, `ViewAttribute` and `[ViewAttriubte]` interchangably.
@@ -287,8 +287,8 @@ private let labelStyle: ViewStyle = [.textColor(.red), .textAlignment(.center), 
 class LabelsViewController: UIViewController {
     
     private lazy var fooLabel: UILabel = labelStyle <<- .text("Foo")
-    private lazy var barLabel: UILabel = labelStyle <<- [.text("Bar"), .textColor(.blue), .backgroundColor(.red)]
-    private lazy var bazLabel: UILabel = labelStyle <<- [.text("Baz"), .textAlignment(.left), .backgroundColor(.green), .font(.boldSystemFont(ofSize: 45))]
+    private lazy var barLabel: UILabel = labelStyle <<- [.text("Bar"), .textColor(.blue), .color(.red)]
+    private lazy var bazLabel: UILabel = labelStyle <<- [.text("Baz"), .textAlignment(.left), .color(.green), .font(.boldSystemFont(ofSize: 45))]
     
     lazy var stackView: UIStackView = [.views([self.fooLabel, self.barLabel, self.bazLabel]), .axis(.vertical), .distribution(.fillEqually)]
 }
@@ -357,7 +357,7 @@ final class LoginViewController: UIViewController {
     lazy var loginButton: UIButton = style <<-
             .states([Normal("Login", .blue), Highlighted("Logging in...", .red)]) <-
             .target(self.target(#selector(loginButtonPressed))) <-
-            [.backgroundColor(.green), .cornerRadius(height/2)]
+            [.color(.green), .cornerRadius(height/2)]
     
     lazy var stackView: UIStackView = .axis(.vertical) <-
             .views([self.emailField, self.passwordField, self.loginButton]) <-
@@ -464,7 +464,7 @@ public enum ViewAttribute {
     
     //MARK: - View
     case hidden(Bool)
-    case backgroundColor(UIColor)
+    case color(UIColor)
     case verticalHugging(LayoutPriority)
     case verticalCompression(LayoutPriority)
     case horizontalHugging(LayoutPriority)
@@ -720,7 +720,7 @@ extension FooLabel: Composable {
 Now we can create and style `FooLabel` with our "standard" `ViewAttribute`s but also pass along `FooAttribute` using `custom`, like this:
 
 ```swift
-let fooLabel: FooLabel = [.custom(FooStyle([.foo("Foobar")])), .textColor(.red), .backgroundColor(.cyan)]
+let fooLabel: FooLabel = [.custom(FooStyle([.foo("Foobar")])), .textColor(.red), .color(.cyan)]
 ```
 
 Here we create the `FooLabel` and styling it with our custom `FooStyle` (container for `FooAttribute`) while also styling it with `textColor` and `backgroundColor`. This way you can combine custom attributes with "standard" ones. 

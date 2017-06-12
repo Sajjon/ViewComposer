@@ -15,7 +15,7 @@ class MakeableTests: XCTestCase {
         var attributes: [ViewAttribute] = [.hidden(isHidden), .cornerRadius(cornerRadius), .text(text)]
         
         if includeColor {
-            attributes.append(.backgroundColor(color))
+            attributes.append(.color(color))
         }
         return ViewStyle(attributes)
     }
@@ -55,10 +55,10 @@ class MakeableTests: XCTestCase {
     }
     
     func testStackView() {
-        let s1 = UIStackView.make(style.merge(master: .arrangedSubviews(arrangedSubviews)))
-        let s2: UIStackView = .make(style.merge(master: .arrangedSubviews(arrangedSubviews)))
-        let s3: UIStackView = make(style.merge(master: .arrangedSubviews(arrangedSubviews)))
-        let s4: UIStackView = style <<- .arrangedSubviews(arrangedSubviews)
+        let s1 = UIStackView.make(style.merge(master: .views(arrangedSubviews)))
+        let s2: UIStackView = .make(style.merge(master: .views(arrangedSubviews)))
+        let s3: UIStackView = make(style.merge(master: .views(arrangedSubviews)))
+        let s4: UIStackView = style <<- .views(arrangedSubviews)
         let stackViews = [s1, s2, s3, s4]
         for stackView in stackViews {
             assertIs(stackView.layer.cornerRadius, is: cornerRadius)
@@ -69,24 +69,24 @@ class MakeableTests: XCTestCase {
     
     func testButton() {
         let buttonImage = UIImage()
-        let button1: UIButton = [.states([Normal(text), Highlighted("hi", buttonImage)]), .backgroundColor(color)]
+        let button1: UIButton = [.states([Normal(text), Highlighted("hi", buttonImage)]), .color(color)]
         assertIs(button1.title(for: .normal), is: text)
         assertIs(button1.backgroundColor, is: color)
         assertIs(button1.title(for: .highlighted), is: "hi")
         assertIs(button1.image(for: .highlighted), is: buttonImage)
         
-        let button2: UIButton = [.text(text), .backgroundColor(color)]
+        let button2: UIButton = [.text(text), .color(color)]
         assertIs(button2.title(for: .normal), is: text)
         assertIs(button2.backgroundColor, is: color)
     }
     
     func testStackViewUsingMergeGeneric() {
-        let s1: UIStackView = style.merge(master: [.spacing(spacing), .arrangedSubviews(arrangedSubviews)])
-        let s2: UIStackView = style.merge(slave: [.spacing(spacing), .arrangedSubviews(arrangedSubviews)])
-        let s3: UIStackView = style.merge(master: ViewStyle([.spacing(spacing), .arrangedSubviews(arrangedSubviews)]))
-        let s4: UIStackView = style.merge(slave: ViewStyle([.spacing(spacing), .arrangedSubviews(arrangedSubviews)]))
-        let s5: UIStackView = style.merge(master: .arrangedSubviews(arrangedSubviews))
-        let s6: UIStackView = style.merge(slave: .arrangedSubviews(arrangedSubviews))
+        let s1: UIStackView = style.merge(master: [.spacing(spacing), .views(arrangedSubviews)])
+        let s2: UIStackView = style.merge(slave: [.spacing(spacing), .views(arrangedSubviews)])
+        let s3: UIStackView = style.merge(master: ViewStyle([.spacing(spacing), .views(arrangedSubviews)]))
+        let s4: UIStackView = style.merge(slave: ViewStyle([.spacing(spacing), .views(arrangedSubviews)]))
+        let s5: UIStackView = style.merge(master: .views(arrangedSubviews))
+        let s6: UIStackView = style.merge(slave: .views(arrangedSubviews))
         let stackViews = [s1, s2, s3, s4, s5, s6]
         for stackView in stackViews {
             assertIs(stackView.layer.cornerRadius, is: cornerRadius)
@@ -96,14 +96,14 @@ class MakeableTests: XCTestCase {
     }
     
     func testComposableStackViewUsingMerge() {
-        let stackView = StackView(style.merge(master: [.spacing(spacing), .arrangedSubviews(arrangedSubviews)]))
+        let stackView = StackView(style.merge(master: [.spacing(spacing), .views(arrangedSubviews)]))
         assertIs(stackView.arrangedSubviews.count, is: arrangedSubviews.count)
         assertIs(stackView.backgroundColorView?.backgroundColor, is: color)
     }
     
     
     func testComposableStackViewUsingMergeOperator() {
-        let stackView: StackView = style <<- [.spacing(spacing), .arrangedSubviews(arrangedSubviews)]
+        let stackView: StackView = style <<- [.spacing(spacing), .views(arrangedSubviews)]
         assertIs(stackView.arrangedSubviews.count, is: arrangedSubviews.count)
         assertIs(stackView.backgroundColorView?.backgroundColor, is: color)
     }

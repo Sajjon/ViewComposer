@@ -98,7 +98,7 @@ private extension Optional where Wrapped == ViewStyle, Wrapped: CustomAttributeM
 }
 
 private extension ViewStyle {
-    static let `default`: ViewStyle = [.custom(TriangleViewStyle([.fillColor(.red), .fillStyle(.upperAcute)])), .backgroundColor(.blue)]
+    static let `default`: ViewStyle = [.custom(TriangleViewStyle([.fillColor(.red), .fillStyle(.upperAcute)])), .color(.blue)]
 }
 
 public enum TriangleViewAttribute {
