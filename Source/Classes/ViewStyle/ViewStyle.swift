@@ -110,6 +110,22 @@ public extension ViewStyle {
             cellRegisterable.apply(self)
         }
         
+        if let webView = view as? WebView {
+            webView.apply(self)
+        }
+        
+        if let pageControl = view as? UIPageControl {
+            pageControl.apply(self)
+        }
+        
+        if let activityIndicatorView = view as? UIActivityIndicatorView {
+            activityIndicatorView.apply(self)
+        }
+        
+        if let progressView = view as? UIProgressView {
+            progressView.apply(self)
+        }
+        
         // Shared
         attributes.forEach {
             switch $0 {

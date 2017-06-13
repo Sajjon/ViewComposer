@@ -16,3 +16,17 @@ extension UIView {
         view.addConstraint(self.bottomAnchor.constraint(equalTo: view.bottomAnchor))
     }
 }
+
+
+extension UIView {
+    static var spacer: UIView { return spacer(.clear) }
+    static func spacer(_ color: UIColor) -> UIView {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .vertical)
+        view.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        view.backgroundColor = color
+        return view
+    }
+}
+

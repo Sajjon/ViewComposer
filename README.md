@@ -31,7 +31,6 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 - [Roadmap](#roadmap)
     - [Architecture/implementation](#architectureimplementation)
     - [Supported UIKit views](#supported-uikit-views)
-    - [Supported attributes](#supported-attributes-1)
 
 <!-- /MarkdownTOC -->
 
@@ -453,155 +452,7 @@ private extension VanillaLoginViewController {
 We can also use the `.delegates` attribute for `UITextViewDelegate` and more delegate types are coming.
 
 ## Supported attributes
-Here are some of the attributes (this list gets updated manually...), take a look at the [full list here](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/ViewAttribute/ViewAttribute.swift)
-
-```swift
-public enum ViewAttribute {
-    case custom(BaseAttributed)
-    case delegate(NSObjectProtocol)
-    case dataSource(NSObjectProtocol)
-    case dataSourceDelegate(NSObjectProtocol)
-    
-    //MARK: - View
-    case hidden(Bool)
-    case color(UIColor)
-    case verticalHugging(LayoutPriority)
-    case verticalCompression(LayoutPriority)
-    case horizontalHugging(LayoutPriority)
-    case horizontalCompression(LayoutPriority)
-    case contentMode(UIViewContentMode)
-    case height(CGFloat)
-    case width(CGFloat)
-    case layoutMargins(all: CGFloat)
-    
-    case userInteractable(Bool)
-    case tintColor(UIColor)
-    case clipsToBounds(Bool)
-    case alpha(CGFloat)
-    case opaque(Bool)
-    case exclusiveTouch(Bool)
-    case multipleTouchEnabled(Bool)
-    case clearsContextBeforeDrawing(Bool)
-    
-    //MARK: - UIView: Layer
-    case cornerRadius(CGFloat) /* might be overridden by: */; case radius(Radius)
-    case borderWidth(CGFloat)
-    case borderColor(UIColor)
-    
-    //MARK: - TextHolder
-    case text(String)
-    case font(UIFont)
-    case textColor(UIColor)
-    case `case`(Case)
-    case textAlignment(NSTextAlignment)
-    
-    //MAKR: - FontSizeAdjusting (UILabel + UITextField)
-    case adjustsFontSizeToFitWidth(Bool)
-    
-    //MARK: - PlaceholderOwner
-    case placeholder(String)
-    
-    //MARK: - TextInputting (UITextField + UITextView)
-    case editable(Bool)
-    case clearsOnInsertion(Bool)
-    case clearsOnBeginEditing(Bool)
-    
-    //MARK: - UILabel
-    case numberOfLines(Int)
-    case highlightedTextColor(UIColor)
-    case minimumScaleFactor(CGFloat)
-    case baselineAdjustment(UIBaselineAdjustment)
-    case shadowColor(UIColor)
-    case shadowOffset(CGSize)
-    
-    //MARK: - UITextField
-    case clearButtonMode(UITextFieldViewMode)
-    case borderStyle(UITextBorderStyle)
-    
-    //MARK: - UITextView
-    case selectedRange(NSRange)
-    
-    //MARK: - ImageHolder
-    case image(UIImage)
-    
-    //MARK: - UIScrollView
-    case scrollEnabled(Bool)
-    case contentSize(CGSize)
-    case contentInset(UIEdgeInsets)
-    case bounces(Bool)
-    case alwaysBounceVertical(Bool)
-    case alwaysBounceHorizontal(Bool)
-    case pagingEnabled(Bool)
-    case showsHorizontalScrollIndicator(Bool)
-    case showsVerticalScrollIndicator(Bool)
-    case scrollIndicatorInsets(UIEdgeInsets)
-    case indicatorStyle(UIScrollViewIndicatorStyle)
-    case decelerationRate(CGFloat)
-    case delaysContentTouches(Bool)
-    case canCancelContentTouches(Bool)
-    case minimumZoomScale(CGFloat)
-    case maximumZoomScale(CGFloat)
-    case zoomScale(CGFloat)
-    case bouncesZoom(Bool)
-    case scrollsToTop(Bool)
-    case keyboardDismissMode(UIScrollViewKeyboardDismissMode)
-    
-    //MARK: - ControlState
-    case states([ControlState])
-
-    //MARK: - Targetable
-    case target(Actor)
-    case enabled(Bool)
-    case selected(Bool)
-    case highlighted(Bool)
-    
-    //MARK: - UIButton
-    case contentEdgeInsets(UIEdgeInsets)
-    case titleEdgeInsets(UIEdgeInsets)
-    case reversesTitleShadowWhenHighlighted(Bool)
-    case imageEdgeInsets(UIEdgeInsets)
-    case adjustsImageWhenHighlighted(Bool)
-    case adjustsImageWhenDisabled(Bool)
-    case showsTouchWhenHighlighted(Bool)
-    
-    //MARK: - UIStackView
-    case axis(UILayoutConstraintAxis)
-    case distribution(UIStackViewDistribution)
-    case alignment(UIStackViewAlignment)
-    case spacing(CGFloat)
-    case margin(CGFloat)
-    case marginsRelative(Bool)
-    case baselineRelative(Bool)
-    case views([UIView])
-    
-    //MARK: - CellRegisterable
-    case registerCells([RegisterableCell])
-        
-    //MARK: - UICollectionView
-    case collectionViewLayout(UICollectionViewLayout)
-    case itemSize(CGSize)
-    
-    //MARK: - UISearchBar
-    case prompt(String)
-    case searchBarStyle(UISearchBarStyle)
-    
-    //MARK: - UISegmentedControl
-    case segments([Segment])
-    
-    //MARK: ThumbTintColorOwner (UISwitch and UISlider)
-    case thumbTintColor(UIColor?)
-    
-    //MARK: - UISwitch
-    case on(Bool)
-    case onTintColor(UIColor?)
-    case onImage(UIImage?)
-    case offImge(UIImage?)
-    
-    //MARK: - UISlider
-    case sliderValue(Double)
-    case sliderRange(Range<Double>)
-}
-```
+View the [full of supported attributes list here](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/ViewAttribute/ViewAttribute.swift).
 
 ## CAUTION: Avoid arrays with duplicate values.
 As of now it is possible to create an attributes array with duplicate values, e.g.
@@ -723,7 +574,7 @@ Now we can create and style `FooLabel` with our "standard" `ViewAttribute`s but 
 let fooLabel: FooLabel = [.custom(FooStyle([.foo("Foobar")])), .textColor(.red), .color(.cyan)]
 ```
 
-Here we create the `FooLabel` and styling it with our custom `FooStyle` (container for `FooAttribute`) while also styling it with `textColor` and `backgroundColor`. This way you can combine custom attributes with "standard" ones. 
+Here we create the `FooLabel` and styling it with our custom `FooStyle` (container for `FooAttribute`) while also styling it with `textColor` and `color`. This way you can combine custom attributes with "standard" ones. 
 
 Whole code can be found [here in the example app](https://github.com/Sajjon/ViewComposer/blob/master/Example/Source/Views/FooLabel.swift)
 
@@ -739,23 +590,27 @@ Check out [TriangleView.swift](https://github.com/Sajjon/ViewComposer/blob/maste
 - [x] Fix bug where classes conforming to `Composable` and inheriting from superclass conforming to `Makeable` cannot be instantiated using array literals. (requires ues of caret postfix operator `^`)
 
 ### Supported UIKit views
+- [x] UIActivityIndicatorView
 - [x] UIButton
 - [x] UICollectionView
+- [ ] UIDatePicker
 - [x] UIImageView
 - [x] UILabel
-- [x] UIPickerImageView
-- [ ] UIScrollView
+- [x] UIPageControl
+- [x] UIPickerView
+- [x] UIProgressView
+- [ ] UIScrollView (Tricky due to inheritance (TableView))
 - [x] UISearchBar
 - [x] UISegmentedControl
 - [x] UISlider
 - [x] UIStackView
 - [x] UISwitch
+- [ ] UITabBar
 - [x] UITableView
 - [x] UITextField
 - [x] UITextView
-- [ ] UIWebView/WKWebView
+- [ ] UIToolbar
+- [x] UIWebView
+- [x] WKWebView
 
-### Supported attributes
-- [x] Support most layer attributes, such as `borderWidth`, `masksToBounds` etc..
-- [x] Add attribute for delegates such as `UITextViewDelegate`, `UITableView`
 

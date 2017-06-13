@@ -76,6 +76,15 @@
 		484110571EEDA12E0016620B /* CellRegisterable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484110561EEDA12E0016620B /* CellRegisterable.swift */; };
 		4841F8EA1EE995CD00D80898 /* ViewStyle+Optional+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841F8E91EE995CD00D80898 /* ViewStyle+Optional+Operators.swift */; };
 		4841F8ED1EE9975C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841F8EB1EE9971C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift */; };
+		485524C31EF074C80002C5D6 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485524C21EF074C80002C5D6 /* WebView.swift */; };
+		485524C61EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485524C51EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift */; };
+		485524C81EF078080002C5D6 /* UIProgressView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485524C71EF078080002C5D6 /* UIProgressView+ViewStyle.swift */; };
+		485524CA1EF079010002C5D6 /* UIPageControl+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 485524C91EF079010002C5D6 /* UIPageControl+ViewStyle.swift */; };
+		48594C2E1EF061550058594B /* UIWebView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C2D1EF061550058594B /* UIWebView+Makeable.swift */; };
+		48594C301EF061820058594B /* WKWebView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C2F1EF061820058594B /* WKWebView+Makeable.swift */; };
+		48594C401EF06F8F0058594B /* UIProgressView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C3F1EF06F8F0058594B /* UIProgressView+Makeable.swift */; };
+		48594C421EF072770058594B /* UIPageControl+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C411EF072770058594B /* UIPageControl+Makeable.swift */; };
+		48594C441EF072880058594B /* UIActivityIndicatorView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C431EF072880058594B /* UIActivityIndicatorView+Makeable.swift */; };
 		48748A801EE5C31500E937E0 /* MergeOperatorReturningMakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */; };
 		48748A821EE5C4A600E937E0 /* MakeableFromStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48748A811EE5C4A600E937E0 /* MakeableFromStyleTests.swift */; };
 		48956DA51EEAC55600C6079D /* Makeable+Mergeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48956DA41EEAC55600C6079D /* Makeable+Mergeable.swift */; };
@@ -173,6 +182,15 @@
 		484110561EEDA12E0016620B /* CellRegisterable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellRegisterable.swift; sourceTree = "<group>"; };
 		4841F8E91EE995CD00D80898 /* ViewStyle+Optional+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewStyle+Optional+Operators.swift"; sourceTree = "<group>"; };
 		4841F8EB1EE9971C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOfOptionalsUsingOperatorsTests.swift; sourceTree = "<group>"; };
+		485524C21EF074C80002C5D6 /* WebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		485524C51EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+ViewStyle.swift"; sourceTree = "<group>"; };
+		485524C71EF078080002C5D6 /* UIProgressView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIProgressView+ViewStyle.swift"; sourceTree = "<group>"; };
+		485524C91EF079010002C5D6 /* UIPageControl+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageControl+ViewStyle.swift"; sourceTree = "<group>"; };
+		48594C2D1EF061550058594B /* UIWebView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWebView+Makeable.swift"; sourceTree = "<group>"; };
+		48594C2F1EF061820058594B /* WKWebView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "WKWebView+Makeable.swift"; sourceTree = "<group>"; };
+		48594C3F1EF06F8F0058594B /* UIProgressView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIProgressView+Makeable.swift"; sourceTree = "<group>"; };
+		48594C411EF072770058594B /* UIPageControl+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageControl+Makeable.swift"; sourceTree = "<group>"; };
+		48594C431EF072880058594B /* UIActivityIndicatorView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Makeable.swift"; sourceTree = "<group>"; };
 		48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningMakable.swift; sourceTree = "<group>"; };
 		48748A811EE5C4A600E937E0 /* MakeableFromStyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableFromStyleTests.swift; sourceTree = "<group>"; };
 		48956DA41EEAC55600C6079D /* Makeable+Mergeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Makeable+Mergeable.swift"; sourceTree = "<group>"; };
@@ -374,6 +392,7 @@
 				4841104A1EED82740016620B /* Segment.swift */,
 				4841104C1EED891D0016620B /* ThumbTintColorOwner.swift */,
 				484110561EEDA12E0016620B /* CellRegisterable.swift */,
+				485524C21EF074C80002C5D6 /* WebView.swift */,
 			);
 			path = AttributedValues;
 			sourceTree = "<group>";
@@ -389,11 +408,14 @@
 		482B89311EE00C6500C97D42 /* Makeable */ = {
 			isa = PBXGroup;
 			children = (
+				48594C431EF072880058594B /* UIActivityIndicatorView+Makeable.swift */,
 				482B89321EE00C6500C97D42 /* UIButton+Makeable.swift */,
 				484110421EED7BE60016620B /* UICollectionView+Makeable.swift */,
 				482B89331EE00C6500C97D42 /* UIImageView+Makeable.swift */,
 				482B89341EE00C6500C97D42 /* UILabel+Makeable.swift */,
+				48594C411EF072770058594B /* UIPageControl+Makeable.swift */,
 				484110461EED7C320016620B /* UIPickerView+Makeable.swift */,
+				48594C3F1EF06F8F0058594B /* UIProgressView+Makeable.swift */,
 				484110341EED7B8D0016620B /* UISearchBar+Makeable.swift */,
 				484110441EED7C030016620B /* UISegmentedControl+Makeable.swift */,
 				484110501EED8ED20016620B /* UISlider+Makeable.swift */,
@@ -402,6 +424,8 @@
 				4841103E1EED7BCE0016620B /* UITableView+Makeable.swift */,
 				482B89361EE00C6500C97D42 /* UITextField+Makeable.swift */,
 				482B89371EE00C6500C97D42 /* UITextView+Makeable.swift */,
+				48594C2D1EF061550058594B /* UIWebView+Makeable.swift */,
+				48594C2F1EF061820058594B /* WKWebView+Makeable.swift */,
 			);
 			path = Makeable;
 			sourceTree = "<group>";
@@ -409,6 +433,7 @@
 		482B89381EE00C6500C97D42 /* ViewStyle */ = {
 			isa = PBXGroup;
 			children = (
+				485524C41EF075F00002C5D6 /* UIView+ViewStyle */,
 				482B89391EE00C6500C97D42 /* ViewStyle.swift */,
 				4841F8E91EE995CD00D80898 /* ViewStyle+Optional+Operators.swift */,
 			);
@@ -469,6 +494,16 @@
 				4841F8EB1EE9971C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		485524C41EF075F00002C5D6 /* UIView+ViewStyle */ = {
+			isa = PBXGroup;
+			children = (
+				485524C51EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift */,
+				485524C71EF078080002C5D6 /* UIProgressView+ViewStyle.swift */,
+				485524C91EF079010002C5D6 /* UIPageControl+ViewStyle.swift */,
+			);
+			path = "UIView+ViewStyle";
 			sourceTree = "<group>";
 		};
 		48D7F3C41EE4659B00BC7012 /* MergeOperators */ = {
@@ -699,6 +734,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				485524C31EF074C80002C5D6 /* WebView.swift in Sources */,
 				482B89671EE00C6500C97D42 /* UITextView+Makeable.swift in Sources */,
 				48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */,
 				48298B771EE6C28100AB3724 /* Attributed+CustomAttributeMerger.swift in Sources */,
@@ -715,8 +751,10 @@
 				4841101F1EEC36B20016620B /* Targetable.swift in Sources */,
 				482B89531EE00C6500C97D42 /* ControlState.swift in Sources */,
 				482B894E1EE00C6500C97D42 /* Macros.swift in Sources */,
+				48594C421EF072770058594B /* UIPageControl+Makeable.swift in Sources */,
 				48298B4F1EE5F28E00AB3724 /* ImageView.swift in Sources */,
 				482B89651EE00C6500C97D42 /* UIStackView+Makeable.swift in Sources */,
+				48594C441EF072880058594B /* UIActivityIndicatorView+Makeable.swift in Sources */,
 				48298B5B1EE6B1AA00AB3724 /* Makeable.swift in Sources */,
 				4841103F1EED7BCE0016620B /* UITableView+Makeable.swift in Sources */,
 				48298B821EE6C61900AB3724 /* BaseAttributed.swift in Sources */,
@@ -727,12 +765,15 @@
 				484110191EEC1E000016620B /* ViewAttribute+Mergeable.swift in Sources */,
 				48298B791EE6C2AC00AB3724 /* Attributed+Collection.swift in Sources */,
 				482B89561EE00C6500C97D42 /* LayoutPriority.swift in Sources */,
+				485524C81EF078080002C5D6 /* UIProgressView+ViewStyle.swift in Sources */,
 				48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */,
 				48298B631EE6B28300AB3724 /* Composable+UIView.swift in Sources */,
 				484110491EED7F220016620B /* DataSourceOwner.swift in Sources */,
 				482B89591EE00C6500C97D42 /* TextHolder.swift in Sources */,
 				482B89541EE00C6500C97D42 /* ControlStateHolder.swift in Sources */,
+				48594C401EF06F8F0058594B /* UIProgressView+Makeable.swift in Sources */,
 				482B89701EE00C6500C97D42 /* SourceryRules.swift in Sources */,
+				485524C61EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift in Sources */,
 				48298B6B1EE6B33900AB3724 /* Composable+Styleable.swift in Sources */,
 				4841F8EA1EE995CD00D80898 /* ViewStyle+Optional+Operators.swift in Sources */,
 				482B89511EE00C6500C97D42 /* Case.swift in Sources */,
@@ -748,6 +789,8 @@
 				482B89681EE00C6500C97D42 /* ViewStyle.swift in Sources */,
 				48956DA51EEAC55600C6079D /* Makeable+Mergeable.swift in Sources */,
 				482B89621EE00C6500C97D42 /* UIButton+Makeable.swift in Sources */,
+				485524CA1EF079010002C5D6 /* UIPageControl+ViewStyle.swift in Sources */,
+				48594C2E1EF061550058594B /* UIWebView+Makeable.swift in Sources */,
 				48298B501EE5F28E00AB3724 /* Label.swift in Sources */,
 				48298B731EE6C1E700AB3724 /* Attributed+Optional.swift in Sources */,
 				482B89501EE00C6500C97D42 /* Actor.swift in Sources */,
@@ -764,6 +807,7 @@
 				482B89581EE00C6500C97D42 /* CornerRounding.swift in Sources */,
 				4841104D1EED891D0016620B /* ThumbTintColorOwner.swift in Sources */,
 				484110511EED8ED20016620B /* UISlider+Makeable.swift in Sources */,
+				48594C301EF061820058594B /* WKWebView+Makeable.swift in Sources */,
 				484110431EED7BE60016620B /* UICollectionView+Makeable.swift in Sources */,
 				4841101D1EEC32690016620B /* TextInputting.swift in Sources */,
 			);

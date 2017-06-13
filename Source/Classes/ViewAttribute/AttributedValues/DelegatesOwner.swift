@@ -6,7 +6,8 @@
 //
 //
 
-import Foundation
+import UIKit
+import WebKit
 
 protocol DelegatesOwner: class {
     var delegateProxy: NSObjectProtocol? { get set }
@@ -77,3 +78,25 @@ extension UISearchBar: DelegatesOwner {
         }
     }
 }
+
+extension UIWebView: DelegatesOwner {
+    var delegateProxy: NSObjectProtocol? {
+        get { return self.delegate }
+        set {
+            guard let specificDelegate = newValue as? UIWebViewDelegate else { return }
+            self.delegate = specificDelegate
+        }
+    }
+}
+
+extension WKWebView: DelegatesOwner {
+    var delegateProxy: NSObjectProtocol? {
+        get { return self.navigationDelegate }
+        set {
+            guard let specificDelegate = newValue as? WKNavigationDelegate else { return }
+            self.navigationDelegate = specificDelegate
+        }
+    }
+}
+
+

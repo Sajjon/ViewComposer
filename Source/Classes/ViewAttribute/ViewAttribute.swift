@@ -152,7 +152,31 @@ public enum ViewAttribute {
     case onImage(UIImage?)
     case offImge(UIImage?)
     
+    //MARK: WebView
+    case webPage(URLRequest)
+
     //MARK: - UISlider
     case sliderValue(Double)
     case sliderRange(Range<Double>)
+    
+    //MARK: - UIActivityIndicatorView
+    case spin(Bool)
+    case hidesWhenStopped(Bool)
+    case spinnerStyle(UIActivityIndicatorViewStyle)
+    case spinnerScale(CGFloat)
+    
+    //MARK: - UIProgressView
+    case progressViewStyle(UIProgressViewStyle)
+    case progress(Float)
+    case progressTintColor(UIColor?)
+    case progressImage(UIImage?)
+    case trackTintColor(UIColor?)
+    case trackImage(UIImage?)
+    
+    //MARK: - UIPageControl
+    case currentPage(Int)
+    case numberOfPages(Int)
+    case hidesForSinglePage(Bool)
+    case pageIndicatorTintColor(UIColor)
+    case currentPageIndicatorTintColor(UIColor)
 }

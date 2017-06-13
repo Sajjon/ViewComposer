@@ -219,10 +219,42 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return onImage
                                 case .offImge(let offImge):
                                     return offImge
+                                case .webPage(let webPage):
+                                    return webPage
                                 case .sliderValue(let sliderValue):
                                     return sliderValue
                                 case .sliderRange(let sliderRange):
                                     return sliderRange
+                                case .spin(let spin):
+                                    return spin
+                                case .hidesWhenStopped(let hidesWhenStopped):
+                                    return hidesWhenStopped
+                                case .spinnerStyle(let spinnerStyle):
+                                    return spinnerStyle
+                                case .spinnerScale(let spinnerScale):
+                                    return spinnerScale
+                                case .progressViewStyle(let progressViewStyle):
+                                    return progressViewStyle
+                                case .progress(let progress):
+                                    return progress
+                                case .progressTintColor(let progressTintColor):
+                                    return progressTintColor
+                                case .progressImage(let progressImage):
+                                    return progressImage
+                                case .trackTintColor(let trackTintColor):
+                                    return trackTintColor
+                                case .trackImage(let trackImage):
+                                    return trackImage
+                                case .currentPage(let currentPage):
+                                    return currentPage
+                                case .numberOfPages(let numberOfPages):
+                                    return numberOfPages
+                                case .hidesForSinglePage(let hidesForSinglePage):
+                                    return hidesForSinglePage
+                                case .pageIndicatorTintColor(let pageIndicatorTintColor):
+                                    return pageIndicatorTintColor
+                                case .currentPageIndicatorTintColor(let currentPageIndicatorTintColor):
+                                    return currentPageIndicatorTintColor
                 }
             }
 
@@ -1002,6 +1034,14 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
+                    var webPage: URLRequest? {
+                        switch self {
+                            case .webPage(let webPage):
+                                return webPage
+                            default:
+                                return nil
+                        }
+                    }
                     var sliderValue: Double? {
                         switch self {
                             case .sliderValue(let sliderValue):
@@ -1014,6 +1054,126 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .sliderRange(let sliderRange):
                                 return sliderRange
+                            default:
+                                return nil
+                        }
+                    }
+                    var spin: Bool? {
+                        switch self {
+                            case .spin(let spin):
+                                return spin
+                            default:
+                                return nil
+                        }
+                    }
+                    var hidesWhenStopped: Bool? {
+                        switch self {
+                            case .hidesWhenStopped(let hidesWhenStopped):
+                                return hidesWhenStopped
+                            default:
+                                return nil
+                        }
+                    }
+                    var spinnerStyle: UIActivityIndicatorViewStyle? {
+                        switch self {
+                            case .spinnerStyle(let spinnerStyle):
+                                return spinnerStyle
+                            default:
+                                return nil
+                        }
+                    }
+                    var spinnerScale: CGFloat? {
+                        switch self {
+                            case .spinnerScale(let spinnerScale):
+                                return spinnerScale
+                            default:
+                                return nil
+                        }
+                    }
+                    var progressViewStyle: UIProgressViewStyle? {
+                        switch self {
+                            case .progressViewStyle(let progressViewStyle):
+                                return progressViewStyle
+                            default:
+                                return nil
+                        }
+                    }
+                    var progress: Float? {
+                        switch self {
+                            case .progress(let progress):
+                                return progress
+                            default:
+                                return nil
+                        }
+                    }
+                    var progressTintColor: UIColor? {
+                        switch self {
+                            case .progressTintColor(let progressTintColor):
+                                return progressTintColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var progressImage: UIImage? {
+                        switch self {
+                            case .progressImage(let progressImage):
+                                return progressImage
+                            default:
+                                return nil
+                        }
+                    }
+                    var trackTintColor: UIColor? {
+                        switch self {
+                            case .trackTintColor(let trackTintColor):
+                                return trackTintColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var trackImage: UIImage? {
+                        switch self {
+                            case .trackImage(let trackImage):
+                                return trackImage
+                            default:
+                                return nil
+                        }
+                    }
+                    var currentPage: Int? {
+                        switch self {
+                            case .currentPage(let currentPage):
+                                return currentPage
+                            default:
+                                return nil
+                        }
+                    }
+                    var numberOfPages: Int? {
+                        switch self {
+                            case .numberOfPages(let numberOfPages):
+                                return numberOfPages
+                            default:
+                                return nil
+                        }
+                    }
+                    var hidesForSinglePage: Bool? {
+                        switch self {
+                            case .hidesForSinglePage(let hidesForSinglePage):
+                                return hidesForSinglePage
+                            default:
+                                return nil
+                        }
+                    }
+                    var pageIndicatorTintColor: UIColor? {
+                        switch self {
+                            case .pageIndicatorTintColor(let pageIndicatorTintColor):
+                                return pageIndicatorTintColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var currentPageIndicatorTintColor: UIColor? {
+                        switch self {
+                            case .currentPageIndicatorTintColor(let currentPageIndicatorTintColor):
+                                return currentPageIndicatorTintColor
                             default:
                                 return nil
                         }
@@ -1118,8 +1278,24 @@ public protocol AssociatedValueStrippable: Equatable {
             case onTintColor
             case onImage
             case offImge
+            case webPage
             case sliderValue
             case sliderRange
+            case spin
+            case hidesWhenStopped
+            case spinnerStyle
+            case spinnerScale
+            case progressViewStyle
+            case progress
+            case progressTintColor
+            case progressImage
+            case trackTintColor
+            case trackImage
+            case currentPage
+            case numberOfPages
+            case hidesForSinglePage
+            case pageIndicatorTintColor
+            case currentPageIndicatorTintColor
         } 
 
         extension ViewAttributeStripped {
@@ -1335,10 +1511,42 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .onImage
         			 case .offImge:
         				return .offImge
+        			 case .webPage:
+        				return .webPage
         			 case .sliderValue:
         				return .sliderValue
         			 case .sliderRange:
         				return .sliderRange
+        			 case .spin:
+        				return .spin
+        			 case .hidesWhenStopped:
+        				return .hidesWhenStopped
+        			 case .spinnerStyle:
+        				return .spinnerStyle
+        			 case .spinnerScale:
+        				return .spinnerScale
+        			 case .progressViewStyle:
+        				return .progressViewStyle
+        			 case .progress:
+        				return .progress
+        			 case .progressTintColor:
+        				return .progressTintColor
+        			 case .progressImage:
+        				return .progressImage
+        			 case .trackTintColor:
+        				return .trackTintColor
+        			 case .trackImage:
+        				return .trackImage
+        			 case .currentPage:
+        				return .currentPage
+        			 case .numberOfPages:
+        				return .numberOfPages
+        			 case .hidesForSinglePage:
+        				return .hidesForSinglePage
+        			 case .pageIndicatorTintColor:
+        				return .pageIndicatorTintColor
+        			 case .currentPageIndicatorTintColor:
+        				return .currentPageIndicatorTintColor
         		}
         	}
         }

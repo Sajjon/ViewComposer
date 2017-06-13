@@ -11,11 +11,9 @@
 		482B89121EE00C4C00C97D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482B890C1EE00C4C00C97D42 /* Assets.xcassets */; };
 		482B89131EE00C4C00C97D42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482B890D1EE00C4C00C97D42 /* LaunchScreen.storyboard */; };
 		484110251EEC44F10016620B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484110241EEC44F10016620B /* LoginViewController.swift */; };
-		4841102D1EED5E2C0016620B /* StackViewOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841102C1EED5E2C0016620B /* StackViewOwner.swift */; };
 		4841102F1EED701C0016620B /* Validating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841102E1EED701C0016620B /* Validating.swift */; };
 		484110311EED76150016620B /* VanillaLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484110301EED76150016620B /* VanillaLoginViewController.swift */; };
 		4841104F1EED8DE80016620B /* MixedViewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841104E1EED8DE80016620B /* MixedViewsViewController.swift */; };
-		484110531EED9CA60016620B /* MakeableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484110521EED9CA60016620B /* MakeableTableViewController.swift */; };
 		484110551EED9F1F0016620B /* UIView_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484110541EED9F1F0016620B /* UIView_Extension.swift */; };
 		4841105F1EEDAE160016620B /* MakeableCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841105E1EEDAE160016620B /* MakeableCollectionViewController.swift */; };
 		4846CED01EE16B9F00E84C91 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEC91EE16B9F00E84C91 /* TableViewController.swift */; };
@@ -27,6 +25,11 @@
 		4846CED91EE172C000E84C91 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CED81EE172C000E84C91 /* TriangleView.swift */; };
 		4846CEE01EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEDF1EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift */; };
 		4846CEE21EE2C3DF00E84C91 /* FooLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEE11EE2C3DF00E84C91 /* FooLabel.swift */; };
+		48594C321EF0642A0058594B /* MakeableWKWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C311EF0642A0058594B /* MakeableWKWebViewViewController.swift */; };
+		48594C381EF067430058594B /* SingleSubviewOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C371EF067430058594B /* SingleSubviewOwner.swift */; };
+		48594C3A1EF0674C0058594B /* StackViewOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C391EF0674C0058594B /* StackViewOwner.swift */; };
+		48594C3C1EF06B370058594B /* TableViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C3B1EF06B370058594B /* TableViewControllerModel.swift */; };
+		48594C3E1EF06EA80058594B /* MakeableUIWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C3D1EF06EA80058594B /* MakeableUIWebViewViewController.swift */; };
 		4887BA2B1EEDB4CC00FAB210 /* MyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4887BA2A1EEDB4CC00FAB210 /* MyCollectionViewCell.swift */; };
 		48F4F4041EE0100F003005B9 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4F3FC1EE00FF4003005B9 /* ViewComposer.framework */; };
 /* End PBXBuildFile section */
@@ -76,11 +79,9 @@
 		482B890E1EE00C4C00C97D42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		482B890F1EE00C4C00C97D42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		484110241EEC44F10016620B /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		4841102C1EED5E2C0016620B /* StackViewOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewOwner.swift; sourceTree = "<group>"; };
 		4841102E1EED701C0016620B /* Validating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Validating.swift; sourceTree = "<group>"; };
 		484110301EED76150016620B /* VanillaLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VanillaLoginViewController.swift; sourceTree = "<group>"; };
 		4841104E1EED8DE80016620B /* MixedViewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixedViewsViewController.swift; sourceTree = "<group>"; };
-		484110521EED9CA60016620B /* MakeableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableTableViewController.swift; sourceTree = "<group>"; };
 		484110541EED9F1F0016620B /* UIView_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView_Extension.swift; sourceTree = "<group>"; };
 		4841105E1EEDAE160016620B /* MakeableCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableCollectionViewController.swift; sourceTree = "<group>"; };
 		4846CEC91EE16B9F00E84C91 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +94,11 @@
 		4846CEDF1EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCustomAttributeViewController.swift; sourceTree = "<group>"; };
 		4846CEE11EE2C3DF00E84C91 /* FooLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooLabel.swift; sourceTree = "<group>"; };
 		4846CEE41EE2DBB500E84C91 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = ../Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		48594C311EF0642A0058594B /* MakeableWKWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableWKWebViewViewController.swift; sourceTree = "<group>"; };
+		48594C371EF067430058594B /* SingleSubviewOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleSubviewOwner.swift; sourceTree = "<group>"; };
+		48594C391EF0674C0058594B /* StackViewOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewOwner.swift; sourceTree = "<group>"; };
+		48594C3B1EF06B370058594B /* TableViewControllerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewControllerModel.swift; sourceTree = "<group>"; };
+		48594C3D1EF06EA80058594B /* MakeableUIWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableUIWebViewViewController.swift; sourceTree = "<group>"; };
 		4887BA2A1EEDB4CC00FAB210 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		48F4F3F61EE00FF4003005B9 /* ViewComposer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ViewComposer.xcodeproj; path = ../ViewComposer.xcodeproj; sourceTree = "<group>"; };
 		48F4F4021EE01007003005B9 /* Pods_ViewComposer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_ViewComposer.framework; path = "/Users/sajjon/Developer/iOS/ViewComposer/Pods/../build/Debug-iphoneos/Pods_ViewComposer.framework"; sourceTree = "<absolute>"; };
@@ -148,7 +154,7 @@
 				4846CEC91EE16B9F00E84C91 /* TableViewController.swift */,
 				4846CECA1EE16B9F00E84C91 /* Vanilla */,
 				4846CECD1EE16B9F00E84C91 /* ViewComposer */,
-				4841102C1EED5E2C0016620B /* StackViewOwner.swift */,
+				48594C3B1EF06B370058594B /* TableViewControllerModel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -172,8 +178,9 @@
 				4846CEDF1EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift */,
 				484110241EEC44F10016620B /* LoginViewController.swift */,
 				4841104E1EED8DE80016620B /* MixedViewsViewController.swift */,
-				484110521EED9CA60016620B /* MakeableTableViewController.swift */,
 				4841105E1EEDAE160016620B /* MakeableCollectionViewController.swift */,
+				48594C311EF0642A0058594B /* MakeableWKWebViewViewController.swift */,
+				48594C3D1EF06EA80058594B /* MakeableUIWebViewViewController.swift */,
 			);
 			path = ViewComposer;
 			sourceTree = "<group>";
@@ -181,6 +188,7 @@
 		4846CED71EE172B800E84C91 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				48594C361EF067430058594B /* Protocols */,
 				4846CED81EE172C000E84C91 /* TriangleView.swift */,
 				4846CEE11EE2C3DF00E84C91 /* FooLabel.swift */,
 				4841102E1EED701C0016620B /* Validating.swift */,
@@ -197,6 +205,15 @@
 				4846CEEC1EE2DBB500E84C91 /* Pods_ViewComposerTests.framework */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		48594C361EF067430058594B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				48594C371EF067430058594B /* SingleSubviewOwner.swift */,
+				48594C391EF0674C0058594B /* StackViewOwner.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		48F4F3F71EE00FF4003005B9 /* Products */ = {
@@ -330,23 +347,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				4846CED11EE16B9F00E84C91 /* VanillaLabelsViewController.swift in Sources */,
+				48594C3A1EF0674C0058594B /* StackViewOwner.swift in Sources */,
 				4846CEE01EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift in Sources */,
 				4846CED41EE16B9F00E84C91 /* NestedStackViewsViewController.swift in Sources */,
 				4846CEE21EE2C3DF00E84C91 /* FooLabel.swift in Sources */,
 				482B89111EE00C4C00C97D42 /* AppDelegate.swift in Sources */,
+				48594C381EF067430058594B /* SingleSubviewOwner.swift in Sources */,
 				4846CED01EE16B9F00E84C91 /* TableViewController.swift in Sources */,
 				4846CED21EE16B9F00E84C91 /* VanillaNestedStackViewsViewController.swift in Sources */,
-				4841102D1EED5E2C0016620B /* StackViewOwner.swift in Sources */,
 				4846CED61EE16F8D00E84C91 /* TriangleViewController.swift in Sources */,
+				48594C3E1EF06EA80058594B /* MakeableUIWebViewViewController.swift in Sources */,
 				4841102F1EED701C0016620B /* Validating.swift in Sources */,
 				4846CED91EE172C000E84C91 /* TriangleView.swift in Sources */,
 				4846CED31EE16B9F00E84C91 /* LabelsViewController.swift in Sources */,
 				4841105F1EEDAE160016620B /* MakeableCollectionViewController.swift in Sources */,
 				484110311EED76150016620B /* VanillaLoginViewController.swift in Sources */,
+				48594C3C1EF06B370058594B /* TableViewControllerModel.swift in Sources */,
 				4841104F1EED8DE80016620B /* MixedViewsViewController.swift in Sources */,
 				4887BA2B1EEDB4CC00FAB210 /* MyCollectionViewCell.swift in Sources */,
+				48594C321EF0642A0058594B /* MakeableWKWebViewViewController.swift in Sources */,
 				484110251EEC44F10016620B /* LoginViewController.swift in Sources */,
-				484110531EED9CA60016620B /* MakeableTableViewController.swift in Sources */,
 				484110551EED9F1F0016620B /* UIView_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

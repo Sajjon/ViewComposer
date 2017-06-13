@@ -17,9 +17,10 @@ final class MixedViewsViewController: UIViewController, StackViewOwner {
     lazy var `switch`: UISwitch = [.on(true), .thumbTintColor(.orange), .tintColor(.blue), .onTintColor(.yellow)]
     lazy var segmentedControl: UISegmentedControl = [.segments([.title("Foo"), .title("Bar")]), .height(44)]
     lazy var searchBar: UISearchBar = [.prompt("This is a prompt"), .placeholder("Type to search"), .searchBarStyle(.prominent), .delegate(self)]
+    lazy var pageControl: UIPageControl = [.numberOfPages(5), .currentPage(3), .pageIndicatorTintColor(.blue), .currentPageIndicatorTintColor(.red)]
     lazy var pickerView: UIPickerView = [.dataSourceDelegate(self)]
     
-    private var views: [UIView] { return [slider, `switch`, segmentedControl, searchBar, pickerView] }
+    private var views: [UIView] { return [slider, `switch`, segmentedControl, searchBar, pageControl, pickerView] }
     lazy var stackView: UIStackView = [.views(self.views), .axis(.vertical), .distribution(.fill), .spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
 
     init() {
