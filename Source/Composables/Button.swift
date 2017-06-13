@@ -28,5 +28,5 @@ open class Button: UIButton, Composable {
 }
 
 private extension ViewStyle {
-    @nonobjc static let `default`: ViewStyle = [.radius(.rounded), .verticalHugging(.high), .verticalCompression(.high)]
+    @nonobjc static let `default`: ViewStyle = [.roundedBy(.height), .verticalHugging(.high), .verticalCompression(.high)]
 }

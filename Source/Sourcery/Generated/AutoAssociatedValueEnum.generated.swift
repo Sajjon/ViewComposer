@@ -71,8 +71,8 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return clearsContextBeforeDrawing
                                 case .cornerRadius(let cornerRadius):
                                     return cornerRadius
-                                case .radius(let radius):
-                                    return radius
+                                case .roundedBy(let roundedBy):
+                                    return roundedBy
                                 case .borderWidth(let borderWidth):
                                     return borderWidth
                                 case .borderColor(let borderColor):
@@ -410,10 +410,10 @@ public protocol AssociatedValueStrippable: Equatable {
                                 return nil
                         }
                     }
-                    var radius: Radius? {
+                    var roundedBy: CornerRounding? {
                         switch self {
-                            case .radius(let radius):
-                                return radius
+                            case .roundedBy(let roundedBy):
+                                return roundedBy
                             default:
                                 return nil
                         }
@@ -1044,7 +1044,7 @@ public protocol AssociatedValueStrippable: Equatable {
             case multipleTouchEnabled
             case clearsContextBeforeDrawing
             case cornerRadius
-            case radius
+            case roundedBy
             case borderWidth
             case borderColor
             case text
@@ -1187,8 +1187,8 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .clearsContextBeforeDrawing
         			 case .cornerRadius:
         				return .cornerRadius
-        			 case .radius:
-        				return .radius
+        			 case .roundedBy:
+        				return .roundedBy
         			 case .borderWidth:
         				return .borderWidth
         			 case .borderColor:

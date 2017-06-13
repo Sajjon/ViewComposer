@@ -25,8 +25,8 @@ public extension Styleable where Self: UIView, Style == ViewStyle {
 
 public extension Styleable where Self: UIView, Style == ViewStyle {
     func privateLayoutSubviews(with style: Style) {
-        guard let radius: Radius = style.value(.radius) else { return }
-        setupRadius(radius)
+        guard let rounding: CornerRounding = style.value(.roundedBy) else { return }
+        rounding.apply(to: self)
     }
     
     func setupConstraints(with style: Style) {
@@ -38,13 +38,5 @@ public extension Styleable where Self: UIView, Style == ViewStyle {
             addConstraint(widthAnchor.constraint(equalToConstant: width))
         }
     }
-    
-    func setupRadius(_ radius: Radius) {
-        switch radius {
-        case .rounded:
-            layer.cornerRadius = bounds.height / 2
-        }
-    }
-    
 }
 

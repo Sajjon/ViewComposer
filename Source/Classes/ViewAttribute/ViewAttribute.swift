@@ -36,7 +36,7 @@ public enum ViewAttribute {
     case clearsContextBeforeDrawing(Bool)
     
     //MARK: - UIView: Layer
-    case cornerRadius(CGFloat) /* might be overridden by: */; case radius(Radius)
+    case cornerRadius(CGFloat) /* might be overridden by: */; case roundedBy(CornerRounding)
     case borderWidth(CGFloat)
     case borderColor(UIColor)
     

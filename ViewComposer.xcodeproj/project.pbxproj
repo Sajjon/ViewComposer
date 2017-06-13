@@ -40,7 +40,7 @@
 		482B89551EE00C6500C97D42 /* ImageHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89221EE00C6500C97D42 /* ImageHolder.swift */; };
 		482B89561EE00C6500C97D42 /* LayoutPriority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89231EE00C6500C97D42 /* LayoutPriority.swift */; };
 		482B89571EE00C6500C97D42 /* PlaceholderOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89241EE00C6500C97D42 /* PlaceholderOwner.swift */; };
-		482B89581EE00C6500C97D42 /* Radius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89251EE00C6500C97D42 /* Radius.swift */; };
+		482B89581EE00C6500C97D42 /* CornerRounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89251EE00C6500C97D42 /* CornerRounding.swift */; };
 		482B89591EE00C6500C97D42 /* TextHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89261EE00C6500C97D42 /* TextHolder.swift */; };
 		482B895A1EE00C6500C97D42 /* ViewAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89271EE00C6500C97D42 /* ViewAttribute.swift */; };
 		482B89621EE00C6500C97D42 /* UIButton+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89321EE00C6500C97D42 /* UIButton+Makeable.swift */; };
@@ -134,7 +134,7 @@
 		482B89221EE00C6500C97D42 /* ImageHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHolder.swift; sourceTree = "<group>"; };
 		482B89231EE00C6500C97D42 /* LayoutPriority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutPriority.swift; sourceTree = "<group>"; };
 		482B89241EE00C6500C97D42 /* PlaceholderOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceholderOwner.swift; sourceTree = "<group>"; };
-		482B89251EE00C6500C97D42 /* Radius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radius.swift; sourceTree = "<group>"; };
+		482B89251EE00C6500C97D42 /* CornerRounding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CornerRounding.swift; sourceTree = "<group>"; };
 		482B89261EE00C6500C97D42 /* TextHolder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextHolder.swift; sourceTree = "<group>"; };
 		482B89271EE00C6500C97D42 /* ViewAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewAttribute.swift; sourceTree = "<group>"; };
 		482B89321EE00C6500C97D42 /* UIButton+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Makeable.swift"; sourceTree = "<group>"; };
@@ -364,7 +364,7 @@
 				482B89221EE00C6500C97D42 /* ImageHolder.swift */,
 				482B89231EE00C6500C97D42 /* LayoutPriority.swift */,
 				482B89241EE00C6500C97D42 /* PlaceholderOwner.swift */,
-				482B89251EE00C6500C97D42 /* Radius.swift */,
+				482B89251EE00C6500C97D42 /* CornerRounding.swift */,
 				482B89261EE00C6500C97D42 /* TextHolder.swift */,
 				4841101A1EEC315D0016620B /* FontSizeAdjusting.swift */,
 				4841101C1EEC32690016620B /* TextInputting.swift */,
@@ -761,7 +761,7 @@
 				48298B7D1EE6C3E800AB3724 /* Attributed+AssociatedValueEnumExtractor.swift in Sources */,
 				482B89631EE00C6500C97D42 /* UIImageView+Makeable.swift in Sources */,
 				48298B531EE5F28E00AB3724 /* TextView.swift in Sources */,
-				482B89581EE00C6500C97D42 /* Radius.swift in Sources */,
+				482B89581EE00C6500C97D42 /* CornerRounding.swift in Sources */,
 				4841104D1EED891D0016620B /* ThumbTintColorOwner.swift in Sources */,
 				484110511EED8ED20016620B /* UISlider+Makeable.swift in Sources */,
 				484110431EED7BE60016620B /* UICollectionView+Makeable.swift in Sources */,
