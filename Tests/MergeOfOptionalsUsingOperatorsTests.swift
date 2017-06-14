@@ -12,8 +12,8 @@ import XCTest
 class MergeOfOptionalsUsingOperatorsTests: XCTestCase {
     
     func testMergeOfAttributeIntoOptionalStyleWithValue() {
-        let fooStyle: ViewStyle? = [.text(foo), .cornerRadius(fooRadius)]
-        let barSingle: ViewAttribute = .text(bar)
+        let fooStyle: ViewStyle? = [.text(fooText), .cornerRadius(fooRadius)]
+        let barSingle: ViewAttribute = .text(barText)
         let fooIsMasterUsingSlave = fooStyle <- barSingle
         let fooIsMasterUsingMaster = barSingle <<- fooStyle
         let barAttributeIsMasterUsingSlave = barSingle <- fooStyle
@@ -24,15 +24,15 @@ class MergeOfOptionalsUsingOperatorsTests: XCTestCase {
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
         }
-        XCTAssert(fooIsMasterUsingSlave.associatedValue(.text) == foo)
-        XCTAssert(fooIsMasterUsingMaster.associatedValue(.text) == foo)
-        XCTAssert(barAttributeIsMasterUsingSlave.associatedValue(.text) == bar)
-        XCTAssert(barAttributeIsMasterUsingMaster.associatedValue(.text) == bar)
+        XCTAssert(fooIsMasterUsingSlave.associatedValue(.text) == fooText)
+        XCTAssert(fooIsMasterUsingMaster.associatedValue(.text) == fooText)
+        XCTAssert(barAttributeIsMasterUsingSlave.associatedValue(.text) == barText)
+        XCTAssert(barAttributeIsMasterUsingMaster.associatedValue(.text) == barText)
     }
     
     func testMergeOfAttributeIntoOptionalStyleBeingNil() {
         let nilStyle: ViewStyle? = nil
-        let barSingle: ViewAttribute = .text(bar)
+        let barSingle: ViewAttribute = .text(barText)
         let nilIsMasterUsingSlave = nilStyle <- barSingle
         let nilIsMasterUsingMaster = barSingle <<- nilStyle
         let barAttributeIsMasterUsingSlave = barSingle <- nilStyle
@@ -42,7 +42,7 @@ class MergeOfOptionalsUsingOperatorsTests: XCTestCase {
             XCTAssertNotNil(attributes)
             XCTAssert(attributes.count == 1)
             XCTAssert(attributes.contains(.text))
-            XCTAssert(attributes.associatedValue(.text) == bar)
+            XCTAssert(attributes.associatedValue(.text) == barText)
         }
     }
 }

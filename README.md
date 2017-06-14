@@ -235,16 +235,35 @@ final class MyViewDefaultingToRed: UIView {
     ...
 ```
 
-#### Operator Associativity when chained
+#### ViewComposer uses right operator associativty for chained merges
 
-Of course it is possible to chain merges. **Disregarding of left or right associativity** these three examples gets the same result:
+Of course it is possible to chain merges. But when chaining three operands, e.g. 
+
+```swift
+let foo: ViewStyle = ...
+let bar: ViewStyle = ...
+let baz: ViewStyle = ...
+
+let result1 = foo <<- bar <<- baz
+let result2 = foo <- bar <- baz
+let result3 = foo <<- bar <- baz
+let result4 = foo <- bar <<- baz
+```
+
+In which order shall the merging take place? Should we first merge `foo` with `bar` and then merge that intermediate result with `baz`? Or should we first merge `bar` with `baz` and then merge that intermediate result with `foo`?
+
+This is called [operator associativity](developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/AdvancedOperators.html). In the example above 
+
+**Disregarding of left or right associativity** the results **individually**, would have the same result. Meaning that the value of `result1` is the same when using *left* and *right* associativity. The same applies for `result2` and `result3`. 
+
 ```swift
 let foo: ViewStyle = [.text("foo")]
 let bar: ViewStyle = [.text("bar")]
 
-foo <<- bar <<- .text("baz") // result: `[.text(.baz)]`
-foo <- bar <- .text("baz") // result: `[.text(.foo)]`
-foo <<- bar <- .text("baz") // result: `[.text(.bar)]`
+// Associativity irrelevant
+let result1 = foo <<- bar <<- .text("baz") // result: `[.text(.baz)]`
+let result2 = foo <- bar <- .text("baz") // result: `[.text(.foo)]`
+let result3 = foo <<- bar <- .text("baz") // result: `[.text(.bar)]`
 ```
 
 But having a look at this example, **associativity matters!**:
@@ -252,14 +271,16 @@ But having a look at this example, **associativity matters!**:
 let foo: ViewStyle = [.text("foo")]
 let bar: ViewStyle = [.text("bar")]
 
-// `right` associative
-foo <- bar <<- .text("baz") // result: `[.text(.foo)]`
+// Associativy IS relevant
 
-// `left` associative
-foo <- bar <<- .text("baz") // result: `[.text(.baz)]`
+// when using `right` associative:
+let result4r = foo <- bar <<- .text("baz") // result: `[.text(.foo)]` USED IN ViewComposer
+
+// When using `left` associative:
+let result4l = foo <- bar <<- .text("baz") // result: `[.text(.baz)]`
 ```
 
-`ViewComposer` is using **right** for both the `<-` as well as the `<<-` operator. This means that you should read *from right to left* when values of chained merge operators.
+`ViewComposer` is using **right** for both the `<-` as well as the `<<-` operator. This means that you should read *from right to left* when values of chained merge operators. 
 
 ## Predefined styles
 

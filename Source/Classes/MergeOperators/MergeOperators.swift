@@ -10,7 +10,7 @@ import Foundation
 
 precedencegroup StyleablePrecedence {
     higherThan: CastingPrecedence
-    associativity: left
+    associativity: right
 }
 
 infix operator <- : StyleablePrecedence // merge operator returning `Styleable`

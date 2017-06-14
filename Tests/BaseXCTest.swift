@@ -10,8 +10,9 @@ import Foundation
 import XCTest
 
 let text: String = "foobar"
-let foo: String = "foo"
-let bar: String = "bar"
+let fooText: String = "foo"
+let barText: String = "bar"
+let bazText: String = "baz"
 let isHidden = true
 let color: UIColor = .red
 let cornerRadius: CGFloat = 3.1415

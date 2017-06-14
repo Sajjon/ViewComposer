@@ -34,7 +34,6 @@ final class MakeableWKWebViewViewController: UIViewController, StackViewOwner {
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard let keyPath = keyPath, keyPath == webViewProgressKeyPath, let progress = change?[.newKey] as? Float else { return }
-        print("progress: \(progress)")
         progressView.progress = progress
     }
 }

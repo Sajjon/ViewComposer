@@ -92,6 +92,7 @@
 		48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */; };
 		48D7F3CC1EE4988900BC7012 /* ViewAttribute+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */; };
 		48D7F3CF1EE5444000BC7012 /* MergingViewStyleWithArraysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */; };
+		48EF19F91EF129A600E7A10D /* MergeOperatorAssociativityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EF19F81EF129A600E7A10D /* MergeOperatorAssociativityTests.swift */; };
 		58A276593784FDED9DBBB41B /* Pods_ViewComposerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */; };
 		D03D14DF06693096BB6E0E5F /* Pods_ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F34C092F993FD8DECC1E76 /* Pods_ViewComposer.framework */; };
 /* End PBXBuildFile section */
@@ -198,6 +199,7 @@
 		48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningComposable.swift; sourceTree = "<group>"; };
 		48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewAttribute+Operators.swift"; sourceTree = "<group>"; };
 		48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergingViewStyleWithArraysTests.swift; sourceTree = "<group>"; };
+		48EF19F81EF129A600E7A10D /* MergeOperatorAssociativityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorAssociativityTests.swift; sourceTree = "<group>"; };
 		4C9A5DF6C0FB4A5BB8B1E1DF /* Pods-ViewComposerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests.release.xcconfig"; sourceTree = "<group>"; };
 		6011BAC9BF2B8073FF8CA0E5 /* Pods-ViewComposer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.release.xcconfig"; sourceTree = "<group>"; };
 		642A0EC1FB475445192D78FC /* Pods-ViewComposer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 				48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */,
 				48748A811EE5C4A600E937E0 /* MakeableFromStyleTests.swift */,
 				4841F8EB1EE9971C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift */,
+				48EF19F81EF129A600E7A10D /* MergeOperatorAssociativityTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -818,6 +821,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				482B897F1EE00C7100C97D42 /* MergingViewAttributeArraysTests.swift in Sources */,
+				48EF19F91EF129A600E7A10D /* MergeOperatorAssociativityTests.swift in Sources */,
 				48748A821EE5C4A600E937E0 /* MakeableFromStyleTests.swift in Sources */,
 				482B897C1EE00C7100C97D42 /* BaseXCTest.swift in Sources */,
 				4841F8ED1EE9975C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift in Sources */,

@@ -50,8 +50,8 @@ class MergeResultingInViewStyleTests: XCTestCase {
     
 
     func testMergeStyleWithArray() {
-        let fooStyle: ViewStyle = [.text(foo), .color(color)]
-        let barAttr: [ViewAttribute] = [.text(bar), .hidden(isHidden)]
+        let fooStyle: ViewStyle = [.text(fooText), .color(color)]
+        let barAttr: [ViewAttribute] = [.text(barText), .hidden(isHidden)]
         let fooMasterUsingSlave = fooStyle.merge(slave: barAttr)
         let fooMasterUsingMaster = barAttr.merge(master: fooStyle)
         let barMasterUsingSlave = barAttr.merge(slave: fooStyle)
@@ -63,15 +63,15 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.contains(.hidden))
             XCTAssert(attributes.contains(.text))
         }
-        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == foo)
-        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == foo)
-        XCTAssert(barMasterUsingSlave.associatedValue(.text) == bar)
-        XCTAssert(barMasterUsingMaster.associatedValue(.text) == bar)
+        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == fooText)
+        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == fooText)
+        XCTAssert(barMasterUsingSlave.associatedValue(.text) == barText)
+        XCTAssert(barMasterUsingMaster.associatedValue(.text) == barText)
     }
     
     func testMergeStyleWithArrayOperators() {
-        let fooStyle: ViewStyle = [.text(foo), .color(color)]
-        let barAttr: [ViewAttribute] = [.text(bar), .hidden(isHidden)]
+        let fooStyle: ViewStyle = [.text(fooText), .color(color)]
+        let barAttr: [ViewAttribute] = [.text(barText), .hidden(isHidden)]
         let fooMasterUsingSlave = fooStyle <- barAttr
         let fooMasterUsingMaster = barAttr <<- fooStyle
         let barMasterUsingSlave = barAttr <- fooStyle
@@ -83,15 +83,15 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.contains(.hidden))
             XCTAssert(attributes.contains(.text))
         }
-        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == foo)
-        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == foo)
-        XCTAssert(barMasterUsingSlave.associatedValue(.text) == bar)
-        XCTAssert(barMasterUsingMaster.associatedValue(.text) == bar)
+        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == fooText)
+        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == fooText)
+        XCTAssert(barMasterUsingSlave.associatedValue(.text) == barText)
+        XCTAssert(barMasterUsingMaster.associatedValue(.text) == barText)
     }
     
     func testStyleWithArrayTwoDoublets() {
-        let fooStyle: ViewStyle = [.text(foo), .cornerRadius(fooRadius)]
-        let barAttr: [ViewAttribute] = [.text(bar), .cornerRadius(barRadius)]
+        let fooStyle: ViewStyle = [.text(fooText), .cornerRadius(fooRadius)]
+        let barAttr: [ViewAttribute] = [.text(barText), .cornerRadius(barRadius)]
         let fooMasterUsingSlave = fooStyle.merge(slave: barAttr)
         let fooMasterUsingMaster = barAttr.merge(master: fooStyle)
         let barMasterUsingSlave = barAttr.merge(slave: fooStyle)
@@ -102,10 +102,10 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
         }
-        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == foo)
-        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == foo)
-        XCTAssert(barMasterUsingSlave.associatedValue(.text) == bar)
-        XCTAssert(barMasterUsingMaster.associatedValue(.text) == bar)
+        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == fooText)
+        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == fooText)
+        XCTAssert(barMasterUsingSlave.associatedValue(.text) == barText)
+        XCTAssert(barMasterUsingMaster.associatedValue(.text) == barText)
         
         XCTAssert(fooMasterUsingSlave.associatedValue(.cornerRadius) == fooRadius)
         XCTAssert(fooMasterUsingMaster.associatedValue(.cornerRadius) == fooRadius)
@@ -114,8 +114,8 @@ class MergeResultingInViewStyleTests: XCTestCase {
     }
     
     func testMergeStyleWithArrayTwoDoubletsOperators() {
-        let fooStyle: ViewStyle = [.text(foo), .cornerRadius(fooRadius)]
-        let barAttr: [ViewAttribute] = [.text(bar), .cornerRadius(barRadius)]
+        let fooStyle: ViewStyle = [.text(fooText), .cornerRadius(fooRadius)]
+        let barAttr: [ViewAttribute] = [.text(barText), .cornerRadius(barRadius)]
         let fooMasterUsingSlave = fooStyle <- barAttr
         let fooMasterUsingMaster = barAttr <<- fooStyle
         let barMasterUsingSlave = barAttr <- fooStyle
@@ -126,10 +126,10 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
         }
-        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == foo)
-        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == foo)
-        XCTAssert(barMasterUsingSlave.associatedValue(.text) == bar)
-        XCTAssert(barMasterUsingMaster.associatedValue(.text) == bar)
+        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == fooText)
+        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == fooText)
+        XCTAssert(barMasterUsingSlave.associatedValue(.text) == barText)
+        XCTAssert(barMasterUsingMaster.associatedValue(.text) == barText)
         
         XCTAssert(fooMasterUsingSlave.associatedValue(.cornerRadius) == fooRadius)
         XCTAssert(fooMasterUsingMaster.associatedValue(.cornerRadius) == fooRadius)
@@ -139,7 +139,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
     
  
     func testMergeStyleWithEmptyArray() {
-        let fooStyle: ViewStyle = [.text(foo), .cornerRadius(fooRadius)]
+        let fooStyle: ViewStyle = [.text(fooText), .cornerRadius(fooRadius)]
         let barAttr: [ViewAttribute] = []
         let fooMasterUsingSlave = fooStyle.merge(slave: barAttr)
         let fooMasterUsingMaster = barAttr.merge(master: fooStyle)
@@ -150,13 +150,13 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.count == 2)
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
-            XCTAssert(attributes.associatedValue(.text) == foo)
+            XCTAssert(attributes.associatedValue(.text) == fooText)
             XCTAssert(attributes.associatedValue(.cornerRadius) == fooRadius)
         }
     }
 
     func testMergeStyleWithEmptyArrayOperator() {
-        let fooStyle: ViewStyle = [.text(foo), .cornerRadius(fooRadius)]
+        let fooStyle: ViewStyle = [.text(fooText), .cornerRadius(fooRadius)]
         let barAttr: [ViewAttribute] = []
         let fooMasterUsingSlave = fooStyle <- barAttr
         let fooMasterUsingMaster = barAttr <<- fooStyle
@@ -167,12 +167,12 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.count == 2)
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
-            XCTAssert(attributes.associatedValue(.text) == foo)
+            XCTAssert(attributes.associatedValue(.text) == fooText)
             XCTAssert(attributes.associatedValue(.cornerRadius) == fooRadius)
         }
     }
     func testMergeStyleWithSingleAttribute() {
-        let style: ViewStyle = [.text(foo), .cornerRadius(fooRadius)]
+        let style: ViewStyle = [.text(fooText), .cornerRadius(fooRadius)]
         let single: ViewAttribute = .color(color)
         let arrayIsMasterUsingSlave = style.merge(slave: single)
         let arrayIsMasterUsingMaster = single.merge(master: style)
@@ -184,13 +184,13 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
             XCTAssert(attributes.contains(.color))
-            XCTAssert(attributes.associatedValue(.text) == foo)
+            XCTAssert(attributes.associatedValue(.text) == fooText)
             XCTAssert(attributes.associatedValue(.cornerRadius) == fooRadius)
         }
     }
     
     func testMergeStyleWithSingleAttributeOperator() {
-        let style: ViewStyle = [.text(foo), .cornerRadius(fooRadius)]
+        let style: ViewStyle = [.text(fooText), .cornerRadius(fooRadius)]
         let single: ViewAttribute = .color(color)
         let styleIsMasterUsingSlave = style <- single
         let styleIsMasterUsingMaster = single <<- style
@@ -202,7 +202,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
             XCTAssert(attributes.contains(.color))
-            XCTAssert(attributes.associatedValue(.text) == foo)
+            XCTAssert(attributes.associatedValue(.text) == fooText)
             XCTAssert(attributes.associatedValue(.cornerRadius) == fooRadius)
         }
     }
@@ -210,7 +210,7 @@ class MergeResultingInViewStyleTests: XCTestCase {
     
     func testMergeEmptyStyleWithSingleAttribute() {
         let style: ViewStyle = []
-        let single: ViewAttribute = .text(foo)
+        let single: ViewAttribute = .text(fooText)
         let styleIsMasterUsingSlave = style.merge(slave: single)
         let styleIsMasterUsingMaster = single.merge(master: style)
         let singleAttributeIsMasterUsingSlave = single.merge(slave: style)
@@ -219,13 +219,13 @@ class MergeResultingInViewStyleTests: XCTestCase {
         for attributes in attrs {
             XCTAssert(attributes.count == 1)
             XCTAssert(attributes.contains(.text))
-            XCTAssert(attributes.associatedValue(.text) == foo)
+            XCTAssert(attributes.associatedValue(.text) == fooText)
         }
     }
     
     func testMergeEmptyStyleWithSingleAttributeOperator() {
         let style: ViewStyle = []
-        let single: ViewAttribute = .text(foo)
+        let single: ViewAttribute = .text(fooText)
         let styleIsMasterUsingSlave = style <- single
         let styleIsMasterUsingMaster = single <<- style
         let singleAttributeIsMasterUsingSlave = single <- style
@@ -234,13 +234,13 @@ class MergeResultingInViewStyleTests: XCTestCase {
         for attributes in attrs {
             XCTAssert(attributes.count == 1)
             XCTAssert(attributes.contains(.text))
-            XCTAssert(attributes.associatedValue(.text) == foo)
+            XCTAssert(attributes.associatedValue(.text) == fooText)
         }
     }
     
     func testMergeStyleWithSingleAttributeDoublets() {
-        let fooStyle: ViewStyle = [.text(foo), .cornerRadius(fooRadius)]
-        let barSingle: ViewAttribute = .text(bar)
+        let fooStyle: ViewStyle = [.text(fooText), .cornerRadius(fooRadius)]
+        let barSingle: ViewAttribute = .text(barText)
         let fooIsMasterUsingSlave = fooStyle.merge(slave: barSingle)
         let fooIsMasterUsingMaster = barSingle.merge(master: fooStyle)
         let barAttributeIsMasterUsingSlave = barSingle.merge(slave: fooStyle)
@@ -251,15 +251,15 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
         }
-        XCTAssert(fooIsMasterUsingSlave.associatedValue(.text) == foo)
-        XCTAssert(fooIsMasterUsingMaster.associatedValue(.text) == foo)
-        XCTAssert(barAttributeIsMasterUsingSlave.associatedValue(.text) == bar)
-        XCTAssert(barAttributeIsMasterUsingMaster.associatedValue(.text) == bar)
+        XCTAssert(fooIsMasterUsingSlave.associatedValue(.text) == fooText)
+        XCTAssert(fooIsMasterUsingMaster.associatedValue(.text) == fooText)
+        XCTAssert(barAttributeIsMasterUsingSlave.associatedValue(.text) == barText)
+        XCTAssert(barAttributeIsMasterUsingMaster.associatedValue(.text) == barText)
     }
     
     func testMergeOperatorStyleWithSingleAttributeDoublets() {
-        let fooStyle: ViewStyle = [.text(foo), .cornerRadius(fooRadius)]
-        let barSingle: ViewAttribute = .text(bar)
+        let fooStyle: ViewStyle = [.text(fooText), .cornerRadius(fooRadius)]
+        let barSingle: ViewAttribute = .text(barText)
         let fooIsMasterUsingSlave = fooStyle <- barSingle
         let fooIsMasterUsingMaster = barSingle <<- fooStyle
         let barAttributeIsMasterUsingSlave = barSingle <- fooStyle
@@ -270,10 +270,10 @@ class MergeResultingInViewStyleTests: XCTestCase {
             XCTAssert(attributes.contains(.cornerRadius))
             XCTAssert(attributes.contains(.text))
         }
-        XCTAssert(fooIsMasterUsingSlave.associatedValue(.text) == foo)
-        XCTAssert(fooIsMasterUsingMaster.associatedValue(.text) == foo)
-        XCTAssert(barAttributeIsMasterUsingSlave.associatedValue(.text) == bar)
-        XCTAssert(barAttributeIsMasterUsingMaster.associatedValue(.text) == bar)
+        XCTAssert(fooIsMasterUsingSlave.associatedValue(.text) == fooText)
+        XCTAssert(fooIsMasterUsingMaster.associatedValue(.text) == fooText)
+        XCTAssert(barAttributeIsMasterUsingSlave.associatedValue(.text) == barText)
+        XCTAssert(barAttributeIsMasterUsingMaster.associatedValue(.text) == barText)
     }
 }
 
