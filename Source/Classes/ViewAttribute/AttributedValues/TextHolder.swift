@@ -20,6 +20,28 @@ public protocol TextHolder: class {
     func setCase(_ `case`: Case)
 }
 
+
+internal extension TextHolder {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .font(let font):
+                setFont(font)
+            case .textColor(let textColor):
+                setTextColor(textColor)
+            case .text(let text):
+                setText(text)
+            case .textAlignment(let textAlignment):
+                setTextAlignment(textAlignment)
+            case .case(let `case`):
+                setCase(`case`)
+            default:
+                break
+            }
+        }
+    }
+}
+
 public extension TextHolder {
     
     func setText(_ text: String?) {

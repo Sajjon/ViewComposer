@@ -15,6 +15,26 @@ public protocol Targetable: class {
     func addTarget(using actor: Actor)
 }
 
+internal extension Targetable {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .target(let actor):
+                addTarget(using: actor)
+            case .enabled(let enabled):
+                setEnabled(enabled)
+            case .selected(let selected):
+                setSelected(selected)
+            case .highlighted(let highlighted):
+                setHighlighted(highlighted)
+            default:
+                break
+            }
+        }
+    }
+}
+
+
 extension Targetable {
     @discardableResult
     func setEnabled(_ enabled: Bool) -> Self {

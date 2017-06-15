@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		4816818C1EDD53EE004E3DD0 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481681821EDD53EE004E3DD0 /* ViewComposer.framework */; };
+		4822A1341EF2906A005B8F77 /* UIStackView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */; };
+		4822A1361EF29083005B8F77 /* UICollectionView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1351EF29083005B8F77 /* UICollectionView+ViewStyle.swift */; };
+		4822A1381EF2909A005B8F77 /* UIScrollView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1371EF2909A005B8F77 /* UIScrollView+ViewStyle.swift */; };
+		4822A13A1EF290B4005B8F77 /* UILabel+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1391EF290B4005B8F77 /* UILabel+ViewStyle.swift */; };
+		4822A13C1EF290C8005B8F77 /* UISearchBar+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A13B1EF290C8005B8F77 /* UISearchBar+ViewStyle.swift */; };
+		4822A13E1EF290DF005B8F77 /* UISegmentedControl+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A13D1EF290DF005B8F77 /* UISegmentedControl+ViewStyle.swift */; };
+		4822A1401EF29104005B8F77 /* UISlider+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A13F1EF29104005B8F77 /* UISlider+ViewStyle.swift */; };
+		4822A1421EF2911A005B8F77 /* UISwitch+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1411EF2911A005B8F77 /* UISwitch+ViewStyle.swift */; };
+		4822A1441EF29140005B8F77 /* UIButton+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1431EF29140005B8F77 /* UIButton+ViewStyle.swift */; };
+		4822A1461EF29186005B8F77 /* UITextView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1451EF29186005B8F77 /* UITextView+ViewStyle.swift */; };
+		4822A1481EF2919A005B8F77 /* UITextField+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1471EF2919A005B8F77 /* UITextField+ViewStyle.swift */; };
 		48298B4E1EE5F28E00AB3724 /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B481EE5F27C00AB3724 /* Button.swift */; };
 		48298B4F1EE5F28E00AB3724 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B491EE5F27C00AB3724 /* ImageView.swift */; };
 		48298B501EE5F28E00AB3724 /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48298B4A1EE5F27C00AB3724 /* Label.swift */; };
@@ -112,6 +123,17 @@
 		379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewComposerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		481681821EDD53EE004E3DD0 /* ViewComposer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewComposer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4816818B1EDD53EE004E3DD0 /* ViewComposerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewComposerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A1351EF29083005B8F77 /* UICollectionView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A1371EF2909A005B8F77 /* UIScrollView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIScrollView+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A1391EF290B4005B8F77 /* UILabel+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A13B1EF290C8005B8F77 /* UISearchBar+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISearchBar+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A13D1EF290DF005B8F77 /* UISegmentedControl+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISegmentedControl+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A13F1EF29104005B8F77 /* UISlider+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISlider+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A1411EF2911A005B8F77 /* UISwitch+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UISwitch+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A1431EF29140005B8F77 /* UIButton+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A1451EF29186005B8F77 /* UITextView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+ViewStyle.swift"; sourceTree = "<group>"; };
+		4822A1471EF2919A005B8F77 /* UITextField+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextField+ViewStyle.swift"; sourceTree = "<group>"; };
 		48298B481EE5F27C00AB3724 /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		48298B491EE5F27C00AB3724 /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		48298B4A1EE5F27C00AB3724 /* Label.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
@@ -505,6 +527,17 @@
 				485524C51EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift */,
 				485524C71EF078080002C5D6 /* UIProgressView+ViewStyle.swift */,
 				485524C91EF079010002C5D6 /* UIPageControl+ViewStyle.swift */,
+				4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */,
+				4822A1351EF29083005B8F77 /* UICollectionView+ViewStyle.swift */,
+				4822A1371EF2909A005B8F77 /* UIScrollView+ViewStyle.swift */,
+				4822A1391EF290B4005B8F77 /* UILabel+ViewStyle.swift */,
+				4822A13B1EF290C8005B8F77 /* UISearchBar+ViewStyle.swift */,
+				4822A13D1EF290DF005B8F77 /* UISegmentedControl+ViewStyle.swift */,
+				4822A13F1EF29104005B8F77 /* UISlider+ViewStyle.swift */,
+				4822A1411EF2911A005B8F77 /* UISwitch+ViewStyle.swift */,
+				4822A1431EF29140005B8F77 /* UIButton+ViewStyle.swift */,
+				4822A1451EF29186005B8F77 /* UITextView+ViewStyle.swift */,
+				4822A1471EF2919A005B8F77 /* UITextField+ViewStyle.swift */,
 			);
 			path = "UIView+ViewStyle";
 			sourceTree = "<group>";
@@ -741,6 +774,7 @@
 				482B89671EE00C6500C97D42 /* UITextView+Makeable.swift in Sources */,
 				48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */,
 				48298B771EE6C28100AB3724 /* Attributed+CustomAttributeMerger.swift in Sources */,
+				4822A1401EF29104005B8F77 /* UISlider+ViewStyle.swift in Sources */,
 				48298B691EE6B32400AB3724 /* Makeable+Styleable.swift in Sources */,
 				4841104B1EED82740016620B /* Segment.swift in Sources */,
 				48298B711EE6C1D000AB3724 /* Attributed.swift in Sources */,
@@ -754,21 +788,25 @@
 				4841101F1EEC36B20016620B /* Targetable.swift in Sources */,
 				482B89531EE00C6500C97D42 /* ControlState.swift in Sources */,
 				482B894E1EE00C6500C97D42 /* Macros.swift in Sources */,
+				4822A1461EF29186005B8F77 /* UITextView+ViewStyle.swift in Sources */,
 				48594C421EF072770058594B /* UIPageControl+Makeable.swift in Sources */,
 				48298B4F1EE5F28E00AB3724 /* ImageView.swift in Sources */,
 				482B89651EE00C6500C97D42 /* UIStackView+Makeable.swift in Sources */,
 				48594C441EF072880058594B /* UIActivityIndicatorView+Makeable.swift in Sources */,
+				4822A1421EF2911A005B8F77 /* UISwitch+ViewStyle.swift in Sources */,
 				48298B5B1EE6B1AA00AB3724 /* Makeable.swift in Sources */,
 				4841103F1EED7BCE0016620B /* UITableView+Makeable.swift in Sources */,
 				48298B821EE6C61900AB3724 /* BaseAttributed.swift in Sources */,
 				48748A801EE5C31500E937E0 /* MergeOperatorReturningMakable.swift in Sources */,
 				484110351EED7B8D0016620B /* UISearchBar+Makeable.swift in Sources */,
+				4822A13C1EF290C8005B8F77 /* UISearchBar+ViewStyle.swift in Sources */,
 				482B89661EE00C6500C97D42 /* UITextField+Makeable.swift in Sources */,
 				48298B511EE5F28E00AB3724 /* StackView.swift in Sources */,
 				484110191EEC1E000016620B /* ViewAttribute+Mergeable.swift in Sources */,
 				48298B791EE6C2AC00AB3724 /* Attributed+Collection.swift in Sources */,
 				482B89561EE00C6500C97D42 /* LayoutPriority.swift in Sources */,
 				485524C81EF078080002C5D6 /* UIProgressView+ViewStyle.swift in Sources */,
+				4822A1361EF29083005B8F77 /* UICollectionView+ViewStyle.swift in Sources */,
 				48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */,
 				48298B631EE6B28300AB3724 /* Composable+UIView.swift in Sources */,
 				484110491EED7F220016620B /* DataSourceOwner.swift in Sources */,
@@ -777,18 +815,23 @@
 				48594C401EF06F8F0058594B /* UIProgressView+Makeable.swift in Sources */,
 				482B89701EE00C6500C97D42 /* SourceryRules.swift in Sources */,
 				485524C61EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift in Sources */,
+				4822A1341EF2906A005B8F77 /* UIStackView+ViewStyle.swift in Sources */,
 				48298B6B1EE6B33900AB3724 /* Composable+Styleable.swift in Sources */,
 				4841F8EA1EE995CD00D80898 /* ViewStyle+Optional+Operators.swift in Sources */,
+				4822A1441EF29140005B8F77 /* UIButton+ViewStyle.swift in Sources */,
+				4822A13E1EF290DF005B8F77 /* UISegmentedControl+ViewStyle.swift in Sources */,
 				482B89511EE00C6500C97D42 /* Case.swift in Sources */,
 				484110151EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift in Sources */,
 				48298B7F1EE6C5D700AB3724 /* Attributed+Mergeable.swift in Sources */,
 				48298B7B1EE6C34B00AB3724 /* Attributed+AssociatedValueStrippable.swift in Sources */,
 				484110571EEDA12E0016620B /* CellRegisterable.swift in Sources */,
+				4822A1381EF2909A005B8F77 /* UIScrollView+ViewStyle.swift in Sources */,
 				48298B581EE6B04C00AB3724 /* EmptyInitializable.swift in Sources */,
 				482B896B1EE00C6500C97D42 /* AutoAssociatedValueEnum.generated.swift in Sources */,
 				484110231EEC436E0016620B /* DelegatesOwner.swift in Sources */,
 				484110451EED7C030016620B /* UISegmentedControl+Makeable.swift in Sources */,
 				482B89641EE00C6500C97D42 /* UILabel+Makeable.swift in Sources */,
+				4822A13A1EF290B4005B8F77 /* UILabel+ViewStyle.swift in Sources */,
 				482B89681EE00C6500C97D42 /* ViewStyle.swift in Sources */,
 				48956DA51EEAC55600C6079D /* Makeable+Mergeable.swift in Sources */,
 				482B89621EE00C6500C97D42 /* UIButton+Makeable.swift in Sources */,
@@ -804,6 +847,7 @@
 				484110471EED7C320016620B /* UIPickerView+Makeable.swift in Sources */,
 				482B895A1EE00C6500C97D42 /* ViewAttribute.swift in Sources */,
 				482B89551EE00C6500C97D42 /* ImageHolder.swift in Sources */,
+				4822A1481EF2919A005B8F77 /* UITextField+ViewStyle.swift in Sources */,
 				48298B7D1EE6C3E800AB3724 /* Attributed+AssociatedValueEnumExtractor.swift in Sources */,
 				482B89631EE00C6500C97D42 /* UIImageView+Makeable.swift in Sources */,
 				48298B531EE5F28E00AB3724 /* TextView.swift in Sources */,

@@ -16,6 +16,20 @@ public protocol RegisterableCell {
     var identifier: String { get }
 }
 
+internal extension CellRegisterable {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .registerCells(let cells):
+                registerCells(cells)
+            default:
+                break
+            }
+        }
+    }
+}
+
+
 public struct CellClass: RegisterableCell {
     public let type: CellType.Type
     public let identifier: String

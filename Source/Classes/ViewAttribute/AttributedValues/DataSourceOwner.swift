@@ -12,6 +12,21 @@ protocol DataSourceOwner: class {
     var dataSourceProxy: NSObjectProtocol? { get set }
 }
 
+internal extension DataSourceOwner {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .dataSource(let dataSource):
+                setDataSource(dataSource)
+            case .dataSourceDelegate(let dataSource):
+                setDataSource(dataSource)
+            default:
+                break
+            }
+        }
+    }
+}
+
 extension DataSourceOwner {
     func setDataSource(_ dataSource: NSObjectProtocol?) {
         dataSourceProxy = dataSource

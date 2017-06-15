@@ -34,3 +34,15 @@ extension UISwitch: ThumbTintColorOwner {
     }
 }
 
+internal extension ThumbTintColorOwner {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .thumbTintColor(let color):
+                setThumbTintColor(color)
+            default:
+                break
+            }
+        }
+    }
+}

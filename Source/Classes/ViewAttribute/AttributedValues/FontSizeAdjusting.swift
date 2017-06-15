@@ -34,3 +34,16 @@ extension UITextField: FontSizeAdjusting {
         set { adjustsFontSizeToFitWidth = newValue }
     }
 }
+
+internal extension FontSizeAdjusting {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .adjustsFontSizeToFitWidth(let adjusts):
+                setAdjustsFontSizeToFitWidth(adjusts)
+            default:
+                break
+            }
+        }
+    }
+}

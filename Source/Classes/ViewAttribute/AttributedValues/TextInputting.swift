@@ -69,3 +69,20 @@ extension UITextView: TextInputting {
         set { /* ignored */}
     }
 }
+
+internal extension TextInputting {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .editable(let editable):
+                setEditable(editable)
+            case .clearsOnInsertion(let clearsOnInsertion):
+                setClearsOnInsertion(clearsOnInsertion)
+            case .clearsOnBeginEditing(let clearsOnBeginEditing):
+                setClearsOnBeginEditing(clearsOnBeginEditing)
+            default:
+                break
+            }
+        }
+    }
+}

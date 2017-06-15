@@ -13,6 +13,22 @@ protocol DelegatesOwner: class {
     var delegateProxy: NSObjectProtocol? { get set }
 }
 
+internal extension DelegatesOwner {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .delegate(let delegate):
+                setDelegate(delegate)
+            case .dataSourceDelegate(let delegate):
+                setDelegate(delegate)
+            default:
+                break
+            }
+        }
+    }
+}
+
+
 extension DelegatesOwner {
     func setDelegate(_ delegate: NSObjectProtocol?) {
         delegateProxy = delegate

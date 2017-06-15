@@ -33,3 +33,16 @@ extension UIButton: ImageHolder {
         set { setImage(newValue, for: .normal) }
     }
 }
+
+internal extension ImageHolder {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .image(let image):
+                setImage(image)
+            default:
+                break
+            }
+        }
+    }
+}

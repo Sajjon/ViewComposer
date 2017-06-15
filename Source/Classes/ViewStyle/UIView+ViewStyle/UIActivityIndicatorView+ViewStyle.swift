@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 internal extension UIActivityIndicatorView {
     func apply(_ style: ViewStyle) {
         style.attributes.forEach {

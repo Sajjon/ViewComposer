@@ -33,3 +33,15 @@ extension UISearchBar: PlaceholderOwner {
     }
 }
 
+internal extension PlaceholderOwner {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
+            case .placeholder(let placeholder):
+                setPlaceholder(placeholder)
+            default:
+                break
+            }
+        }
+    }
+}
