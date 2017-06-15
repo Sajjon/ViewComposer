@@ -635,7 +635,7 @@ Check out [TriangleView.swift](https://github.com/Sajjon/ViewComposer/blob/maste
 - [x] [UIActivityIndicatorView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIActivityIndicatorView%2BMakeable.swift)
 - [x] [UIButton](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIButton%2BMakeable.swift)
 - [x] [UICollectionView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UICollectionView%2BMakeable.swift)
-- [ ] [UIDatePicker](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIDatePicker%2BMakeable.swift)
+- [ ] `UIDatePicker`
 - [x] [UIImageView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIImageView%2BMakeable.swift)
 - [x] [UILabel](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UILabel%2BMakeable.swift)
 - [x] [UIPageControl](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIPageControl%2BMakeable.swift)
@@ -654,6 +654,3 @@ Check out [TriangleView.swift](https://github.com/Sajjon/ViewComposer/blob/maste
 - [ ] `UIToolbar`
 - [x] [UIWebView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIWebView%2BMakeable.swift)
 - [x] [WKWebView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/WKWebView%2BMakeable.swift)
-
-
- -->
