@@ -1,4 +1,4 @@
-[![Platform](https://img.shields.io/cocoapods/p/ViewComposer.svg?style=flat)](http://cocoapods.org/pods/ViewComposer)
+<!-- [![Platform](https://img.shields.io/cocoapods/p/ViewComposer.svg?style=flat)](http://cocoapods.org/pods/ViewComposer)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![Version](https://img.shields.io/cocoapods/v/ViewComposer.svg?style=flat)](http://cocoapods.org/pods/ViewComposer)
 [![License](https://img.shields.io/cocoapods/l/ViewComposer.svg?style=flat)](http://cocoapods.org/pods/ViewComposer)
@@ -23,7 +23,7 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 - [Predefined styles](#predefined-styles)
 - [Passing delegates](#passing-delegates)
 - [Supported attributes](#supported-attributes)
-- [ViewComposer + SwiftGen = ❤️](#viewcomposer--swiftgen--%E2%9D%A4%EF%B8%8F)
+- [SwiftGen support](#swiftgen-support)
 - [CAUTION: Avoid arrays with duplicate values.](#caution-avoid-arrays-with-duplicate-values)
 - [Composables](#composables)
 - [Custom attribute](#custom-attribute)
@@ -476,7 +476,8 @@ We can also use the `.delegates` attribute for `UITextViewDelegate` and more del
 ## Supported attributes
 View the [full of supported attributes list here](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/ViewAttribute/ViewAttribute.swift).
 
-## ViewComposer + SwiftGen = ❤️
+## SwiftGen support
+#### ViewComposer + SwiftGen = ❤️
 Thanks to this code snippet from [Olivier Halligon aka "AliSoftware"](https://github.com/AliSoftware) - creator of amazing open source project [SwiftGen](https://github.com/SwiftGen/SwiftGen):
 
 ```swift
@@ -631,27 +632,28 @@ Check out [TriangleView.swift](https://github.com/Sajjon/ViewComposer/blob/maste
 - [x] Fix bug where classes conforming to `Composable` and inheriting from superclass conforming to `Makeable` cannot be instantiated using array literals. (requires ues of caret postfix operator `^`)
 
 ### Supported UIKit views
-- [x] UIActivityIndicatorView
-- [x] UIButton
-- [x] UICollectionView
-- [ ] UIDatePicker
-- [x] UIImageView
-- [x] UILabel
-- [x] UIPageControl
-- [x] UIPickerView
-- [x] UIProgressView
-- [ ] UIScrollView (Tricky due to inheritance (TableView))
-- [x] UISearchBar
-- [x] UISegmentedControl
-- [x] UISlider
-- [x] UIStackView
-- [x] UISwitch
-- [ ] UITabBar
-- [x] UITableView
-- [x] UITextField
-- [x] UITextView
-- [ ] UIToolbar
-- [x] UIWebView
-- [x] WKWebView
+- [x] [UIActivityIndicatorView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIActivityIndicatorView%2BMakeable.swift)
+- [x] [UIButton](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIButton%2BMakeable.swift)
+- [x] [UICollectionView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UICollectionView%2BMakeable.swift)
+- [ ] [UIDatePicker](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIDatePicker%2BMakeable.swift)
+- [x] [UIImageView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIImageView%2BMakeable.swift)
+- [x] [UILabel](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UILabel%2BMakeable.swift)
+- [x] [UIPageControl](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIPageControl%2BMakeable.swift)
+- [x] [UIPickerView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIPickerView%2BMakeable.swift)
+- [x] [UIProgressView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIProgressView%2BMakeable.swift)
+- [ ] `UIScrollView` (Tricky since `UITableView` and `UICollectionView` inherits from it)
+- [x] [UISearchBar](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UISearchBar%2BMakeable.swift)
+- [x] [UISegmentedControl](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UISegmentedControl%2BMakeable.swift)
+- [x] [UISlider](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UISlider%2BMakeable.swift)
+- [x] [UIStackView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIStackView%2BMakeable.swift)
+- [x] [UISwitch](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UISwitch%2BMakeable.swift)
+- [ ] `UITabBar`
+- [x] [UITableView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UITableView%2BMakeable.swift)
+- [x] [UITextField](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UITextField%2BMakeable.swift)
+- [x] [UITextView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UITextView%2BMakeable.swift)
+- [ ] `UIToolbar`
+- [x] [UIWebView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/UIWebView%2BMakeable.swift)
+- [x] [WKWebView](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/Views/Makeable/WKWebView%2BMakeable.swift)
 
 
+ -->
