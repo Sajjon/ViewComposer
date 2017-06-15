@@ -21,8 +21,9 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
     - [Examples](#examples)
     - [Merge operators `<-` and `<<-`](#merge-operators---and--)
 - [Predefined styles](#predefined-styles)
-    - [Passing delegates](#passing-delegates)
+- [Passing delegates](#passing-delegates)
 - [Supported attributes](#supported-attributes)
+- [ViewComposer + SwiftGen = ❤️](#viewcomposer--swiftgen--%E2%9D%A4%EF%B8%8F)
 - [CAUTION: Avoid arrays with duplicate values.](#caution-avoid-arrays-with-duplicate-values)
 - [Composables](#composables)
 - [Custom attribute](#custom-attribute)
@@ -361,7 +362,7 @@ class LabelsViewControllerVanilla: UIViewController {
 }
 ```
 
-### Passing delegates
+## Passing delegates
 
 ```swift
 private let height: CGFloat = 50
@@ -474,6 +475,25 @@ We can also use the `.delegates` attribute for `UITextViewDelegate` and more del
 
 ## Supported attributes
 View the [full of supported attributes list here](https://github.com/Sajjon/ViewComposer/blob/master/Source/Classes/ViewAttribute/ViewAttribute.swift).
+
+## ViewComposer + SwiftGen = ❤️
+Thanks to this code snippet from [Olivier Halligon aka "AliSoftware"](https://github.com/AliSoftware) - creator of amazing open source project [SwiftGen](https://github.com/SwiftGen/SwiftGen):
+
+```swift
+extension ViewAttribute {
+    static func l10n(_ key: L10n) -> ViewAttribute {
+        return .text(key.string)
+    }
+}
+```
+
+You can make use of you `L10n` enum cases like this:
+
+```swift
+let label: UILabel = [.l10n(.helloWorld), .textColor(.red)]
+```
+
+Clear, consise and type safe! ⚡️
 
 ## CAUTION: Avoid arrays with duplicate values.
 As of now it is possible to create an attributes array with duplicate values, e.g.
