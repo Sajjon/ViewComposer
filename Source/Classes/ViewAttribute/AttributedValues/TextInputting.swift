@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 public protocol TextInputting: class {
     var editableProxy: Bool { get set} //used by `UITextView` but not by `UITextField`
     var clearsOnBeginEditingProxy: Bool { get set } //used by `UITextField` but not by `UITextView`

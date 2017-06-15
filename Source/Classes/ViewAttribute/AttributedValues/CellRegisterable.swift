@@ -29,7 +29,6 @@ internal extension CellRegisterable {
     }
 }
 
-
 public struct CellClass: RegisterableCell {
     public let type: CellType.Type
     public let identifier: String
@@ -99,7 +98,7 @@ extension UICollectionView: BaseCellRegisterable {
     }
 }
 
-
+//swiftlint:disable generic_type_name
 private class _AnyCellRegisterableBase<_BaseCellType: CellType>: BaseCellRegisterable {
     typealias BaseCellType = _BaseCellType
     init() {

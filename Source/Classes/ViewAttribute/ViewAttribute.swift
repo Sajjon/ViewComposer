@@ -8,6 +8,7 @@
 
 import Foundation
 
+//swiftlint:disable:next type_body_length
 public enum ViewAttribute {
     case custom(BaseAttributed)
     case delegate(NSObjectProtocol?)

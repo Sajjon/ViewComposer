@@ -43,7 +43,6 @@ extension Makeable {
         return make(style)
     }
     
-    
     /// Statically creates a `Makeable` using a style - a collection of attributes.
     ///
     /// - Parameter style: `Style` contains a collection of attributes.

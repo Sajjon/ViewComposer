@@ -9,6 +9,7 @@
 import Foundation
 
 internal extension UIScrollView {
+    //swiftlint:disable:next cyclomatic_complexity function_body_length
     func applyToSuperclass(_ style: ViewStyle) {
         style.attributes.forEach {
             switch $0 {

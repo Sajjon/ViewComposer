@@ -28,7 +28,6 @@ internal extension DelegatesOwner {
     }
 }
 
-
 extension DelegatesOwner {
     func setDelegate(_ delegate: NSObjectProtocol?) {
         delegateProxy = delegate
@@ -114,5 +113,3 @@ extension WKWebView: DelegatesOwner {
         }
     }
 }
-
-

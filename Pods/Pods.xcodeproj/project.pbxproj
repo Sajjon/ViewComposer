@@ -61,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0FE5BC1E14508FF237637F6D2E749C28 /* SwiftLint */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = SwiftLint;
+			path = SwiftLint;
+			sourceTree = "<group>";
+		};
 		427293AD734B92D9C0EE781C754C96BD /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -68,14 +76,6 @@
 				D4996F725AA86AD872DD001C0C37B506 /* Pods-ViewComposerTests */,
 			);
 			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		46210C7AA8EC26F0EC63D670F5F9E613 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9B8E5896440EE20E95B9C00A8E8829FB /* Sourcery */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		72F3E9E23084D867C09B93729D56E373 /* Pods-ViewComposer */ = {
@@ -95,23 +95,32 @@
 			path = "Target Support Files/Pods-ViewComposer";
 			sourceTree = "<group>";
 		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				46210C7AA8EC26F0EC63D670F5F9E613 /* Pods */,
-				FCBEFF6276EFE0B35CB639EF26F8FF91 /* Products */,
-				427293AD734B92D9C0EE781C754C96BD /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		9B8E5896440EE20E95B9C00A8E8829FB /* Sourcery */ = {
+		779EE6BDFFA0112F669013FA694E3E83 /* Sourcery */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			name = Sourcery;
 			path = Sourcery;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				7E8F910F3762B1203C4D7F21DFA793E7 /* Pods */,
+				FCBEFF6276EFE0B35CB639EF26F8FF91 /* Products */,
+				427293AD734B92D9C0EE781C754C96BD /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		7E8F910F3762B1203C4D7F21DFA793E7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				779EE6BDFFA0112F669013FA694E3E83 /* Sourcery */,
+				0FE5BC1E14508FF237637F6D2E749C28 /* SwiftLint */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {

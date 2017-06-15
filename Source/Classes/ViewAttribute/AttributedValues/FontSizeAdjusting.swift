@@ -6,7 +6,6 @@
 //
 //
 
-
 import UIKit
 
 public protocol FontSizeAdjusting: class {

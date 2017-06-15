@@ -12,6 +12,7 @@ public extension Attributed {
 
     func merge<M: Makeable>(slave: Self) -> M where M.Style == Self {
         let style: M.Style = merge(slave: slave)
+        //swiftlint:disable:next force_cast
         return M.make(style) as! M
     }
     

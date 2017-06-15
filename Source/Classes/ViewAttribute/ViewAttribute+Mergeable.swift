@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension ViewAttribute {
     func merge(master: ViewStyle) -> ViewStyle {
         return self <<- master

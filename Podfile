@@ -4,6 +4,7 @@ use_frameworks!
 inhibit_all_warnings!
 
 def pods
+  pod 'SwiftLint'
   pod 'Sourcery'
 end
 

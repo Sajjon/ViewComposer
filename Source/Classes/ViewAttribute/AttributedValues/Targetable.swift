@@ -34,7 +34,6 @@ internal extension Targetable {
     }
 }
 
-
 extension Targetable {
     @discardableResult
     func setEnabled(_ enabled: Bool) -> Self {

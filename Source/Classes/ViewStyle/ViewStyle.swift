@@ -26,6 +26,7 @@ public struct ViewStyle: Attributed {
 }
 
 public extension ViewStyle {
+    //swiftlint:disable:next cyclomatic_complexity function_body_length
     func install(on styleable: Any) {
         guard let view = styleable as? UIView else { return }
         if let targetable = view as? Targetable {

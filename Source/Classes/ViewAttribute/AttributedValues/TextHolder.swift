@@ -20,7 +20,6 @@ public protocol TextHolder: class {
     func setCase(_ `case`: Case)
 }
 
-
 internal extension TextHolder {
     func apply(_ style: ViewStyle) {
         style.attributes.forEach {
@@ -64,7 +63,6 @@ public extension TextHolder {
         textProxy = `case`.apply(to: textProxy)
     }
 }
-
 
 extension UILabel: TextHolder {
     public var textAlignmentProxy: NSTextAlignment {
