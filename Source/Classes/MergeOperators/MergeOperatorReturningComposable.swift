@@ -18,34 +18,33 @@ import Foundation
 
 //MARK: RHS `Attributed`
 // RHS MASTER
-public func <<- <A: Attributed, C: Composable>(lhs: A, rhs: A) -> C where C.Style == A {
+public func <<- <C: Composable>(lhs: C.Style, rhs: C.Style) -> C {
     return C(lhs <<- rhs)
 }
-
 // RHS SLAVE
-public func <- <A: Attributed, C: Composable>(lhs: A, rhs: A) -> C where C.Style == A {
+public func <- <C: Composable>(lhs: C.Style, rhs: C.Style) -> C {
     return C(lhs <- rhs)
 }
 
 //MARK: RHS `[Attributed.Attribute]`
 // RHS MASTER
-public func <<- <A: Attributed, C: Composable>(lhs: A, rhs: [A.Attribute]) -> C where C.Style == A {
+public func <<- <C: Composable>(lhs: C.Style, rhs: [C.Style.Attribute]) -> C {
     return C(lhs <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, C: Composable>(lhs: A, rhs: [A.Attribute]) -> C where C.Style == A {
+public func <- <C: Composable>(lhs: C.Style, rhs: [C.Style.Attribute]) -> C {
     return C(lhs <- rhs)
 }
 
 //MARK: RHS `Attributed.Attribute`
 // RHS MASTER
-public func <<- <A: Attributed, C: Composable>(lhs: A, rhs: A.Attribute) -> C where C.Style == A {
+public func <<- <C: Composable>(lhs: C.Style, rhs: C.Style.Attribute) -> C {
     return C(lhs <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, C: Composable>(lhs: A, rhs: A.Attribute) -> C where C.Style == A {
+public func <- <C: Composable>(lhs: C.Style, rhs: C.Style.Attribute) -> C {
     return C(lhs <- rhs)
 }
 
@@ -59,12 +58,12 @@ public func <- <A: Attributed, C: Composable>(lhs: A, rhs: A.Attribute) -> C whe
 
 //MARK: RHS `Attributed`
 // RHS MASTER
-public func <<- <A: Attributed, C: Composable>(lhs: [A.Attribute], rhs: A) -> C where C.Style == A {
+public func <<- <C: Composable>(lhs: [C.Style.Attribute], rhs: C.Style) -> C {
     return C(lhs <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, C: Composable>(lhs: [A.Attribute], rhs: A) -> C where C.Style == A {
+public func <- <C: Composable>(lhs: [C.Style.Attribute], rhs: C.Style) -> C {
     return C(lhs <- rhs)
 }
 
@@ -78,11 +77,12 @@ public func <- <A: Attributed, C: Composable>(lhs: [A.Attribute], rhs: A) -> C w
 
 //MARK: RHS `Attributed`
 // RHS MASTER
-public func <<- <A: Attributed, C: Composable>(lhs: A.Attribute, rhs: A) -> C where C.Style == A {
+public func <<- <C: Composable>(lhs: C.Style.Attribute, rhs: C.Style) -> C {
     return C([lhs] <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, C: Composable>(lhs: A.Attribute, rhs: A) -> C where C.Style == A {
+public func <- <C: Composable>(lhs: C.Style.Attribute, rhs: C.Style) -> C {
     return C([lhs] <- rhs)
 }
+

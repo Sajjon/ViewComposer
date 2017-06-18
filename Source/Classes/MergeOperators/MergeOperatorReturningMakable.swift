@@ -18,34 +18,34 @@ import Foundation
 
 //MARK: RHS `Attributed`
 // RHS MASTER
-public func <<- <A: Attributed, M: Makeable>(lhs: A, rhs: A) -> M where M.Style == A, M.Styled == M {
+public func <<- <M: Makeable>(lhs: M.Style, rhs: M.Style) -> M where M.Styled == M {
     return M.make(lhs <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, M: Makeable>(lhs: A, rhs: A) -> M where M.Style == A, M.Styled == M {
+public func <- <M: Makeable>(lhs: M.Style, rhs: M.Style) -> M where M.Styled == M {
     return M.make(lhs <- rhs)
 }
 
 //MARK: RHS `[Attributed.Attribute]`
 // RHS MASTER
-public func <<- <A: Attributed, M: Makeable>(lhs: A, rhs: [A.Attribute]) -> M where M.Style == A, M.Styled == M {
+public func <<- <M: Makeable>(lhs: M.Style, rhs: [M.Style.Attribute]) -> M where M.Styled == M {
     return M.make(lhs <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, M: Makeable>(lhs: A, rhs: [A.Attribute]) -> M where M.Style == A, M.Styled == M {
+public func <- <M: Makeable>(lhs: M.Style, rhs: [M.Style.Attribute]) -> M where M.Styled == M {
     return M.make(lhs <- rhs)
 }
 
 //MARK: RHS `Attributed.Attribute`
 // RHS MASTER
-public func <<- <A: Attributed, M: Makeable>(lhs: A, rhs: A.Attribute) -> M where M.Style == A, M.Styled == M {
+public func <<- <M: Makeable>(lhs: M.Style, rhs: M.Style.Attribute) -> M where M.Styled == M {
     return M.make(lhs <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, M: Makeable>(lhs: A, rhs: A.Attribute) -> M where M.Style == A, M.Styled == M {
+public func <- <M: Makeable>(lhs: M.Style, rhs: M.Style.Attribute) -> M where M.Styled == M {
     return M.make(lhs <- rhs)
 }
 
@@ -59,12 +59,12 @@ public func <- <A: Attributed, M: Makeable>(lhs: A, rhs: A.Attribute) -> M where
 
 //MARK: RHS `Attributed`
 // RHS MASTER
-public func <<- <A: Attributed, M: Makeable>(lhs: [A.Attribute], rhs: A) -> M where M.Style == A, M.Styled == M {
+public func <<- <M: Makeable>(lhs: [M.Style.Attribute], rhs: M.Style) -> M where M.Styled == M {
     return M.make(lhs <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, M: Makeable>(lhs: [A.Attribute], rhs: A) -> M where M.Style == A, M.Styled == M {
+public func <- <M: Makeable>(lhs: [M.Style.Attribute], rhs: M.Style) -> M where M.Styled == M {
     return M.make(lhs <- rhs)
 }
 
@@ -78,11 +78,12 @@ public func <- <A: Attributed, M: Makeable>(lhs: [A.Attribute], rhs: A) -> M whe
 
 //MARK: RHS `Attributed`
 // RHS MASTER
-public func <<- <A: Attributed, M: Makeable>(lhs: A.Attribute, rhs: A) -> M where M.Style == A, M.Styled == M {
+public func <<- <M: Makeable>(lhs: M.Style.Attribute, rhs: M.Style) -> M where M.Styled == M {
     return M.make([lhs] <<- rhs)
 }
 
 // RHS SLAVE
-public func <- <A: Attributed, M: Makeable>(lhs: A.Attribute, rhs: A) -> M where M.Style == A, M.Styled == M {
+public func <- <M: Makeable>(lhs: M.Style.Attribute, rhs: M.Style) -> M where M.Styled == M {
     return M.make([lhs] <- rhs)
 }
+
