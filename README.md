@@ -15,6 +15,8 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 <!-- MarkdownTOC autolink="true" bracket="round" -->
 
 - [Installation](#installation)
+    - [Swift 4](#swift-4)
+    - [Swift 3](#swift-3)
 - [Style views using enums swiftly](#style-views-using-enums-swiftly)
 - [Non-intrusive - standard UIKit views](#non-intrusive---standard-uikit-views)
 - [Mergeable](#mergeable)
@@ -37,11 +39,20 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 
 ## Installation
 
+### Swift 4
+You can use the `swift4` branch to use ViewComposer in your Swift 4 cod, e.g. with in CocoaPods, the Podfile would be:
+```ruby
+pod 'ViewComposer', :git => 'https://github.com/Sajjon/ViewComposer.git', :branch => 'swift4'
+```
+
+### Swift 3
+
 #### [CocoaPods](http://cocoapods.org) 
 
 ```ruby
 pod 'ViewComposer', '~> 0.2'
 ```
+
 
 #### [Carthage](https://github.com/Carthage/Carthage)
 
