@@ -9,10 +9,6 @@
 import Foundation
 
 public extension Attributed {
-    public typealias Index = Int
-    public typealias Iterator = IndexingIterator<Self>
-    public typealias Indices = DefaultIndices<Self>
-    
     public var endIndex: Int { return count }
     public var count: Int { return attributes.count }
     public var isEmpty: Bool { return attributes.isEmpty }
