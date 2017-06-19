@@ -9,22 +9,20 @@
 import Foundation
 
 public extension Attributed {
-
-    func merge<M: Makeable>(slave: Self) -> M where M.Style == Self {
-        let style: M.Style = merge(slave: slave)
-        //swiftlint:disable:next force_cast
-        return M.make(style) as! M
+    
+    func merge<M: Makeable>(slave: Self) -> M where M.Styled == M, M.Style == Self {
+        return M.make(merge(slave: slave))
     }
     
-    func merge<M: Makeable>(master: Self) -> M where M.Style == Self {
+    func merge<M: Makeable>(master: Self) -> M where M.Styled == M, M.Style == Self {
         return master.merge(slave: self)
     }
-
-    func merge<M: Makeable>(slave: M.Style.Attribute) -> M where M.Style == Self {
+    
+    func merge<M: Makeable>(slave: Attribute) -> M where M.Styled == M, M.Style == Self {
         return merge(slave: Self([slave]))
     }
     
-    func merge<M: Makeable>(master: M.Style.Attribute) -> M where M.Style == Self {
+    func merge<M: Makeable>(master: Attribute) -> M where M.Styled == M, M.Style == Self {
         return merge(master: Self([master]))
     }
 }

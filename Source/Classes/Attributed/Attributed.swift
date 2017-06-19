@@ -35,5 +35,10 @@ public protocol Attributed: Collection, ExpressibleByArrayLiteral, BaseAttribute
     
     func merge(slave: Attribute) -> Self
     func merge(master: Attribute) -> Self
+    
+    //MARK: - Collection associatedtypes
+    associatedtype Index = Int
+    associatedtype Iterator = IndexingIterator<Self>
+    associatedtype Indices = DefaultIndices<Self>
 }
 
