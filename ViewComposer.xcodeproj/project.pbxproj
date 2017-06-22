@@ -99,6 +99,7 @@
 		48594C401EF06F8F0058594B /* UIProgressView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C3F1EF06F8F0058594B /* UIProgressView+Makeable.swift */; };
 		48594C421EF072770058594B /* UIPageControl+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C411EF072770058594B /* UIPageControl+Makeable.swift */; };
 		48594C441EF072880058594B /* UIActivityIndicatorView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C431EF072880058594B /* UIActivityIndicatorView+Makeable.swift */; };
+		486217841EFC0EDD0000FB1F /* UIControl+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486217831EFC0EDD0000FB1F /* UIControl+ViewStyle.swift */; };
 		48748A801EE5C31500E937E0 /* MergeOperatorReturningMakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */; };
 		488131581EF68B6000F2E8CC /* Array+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488131571EF68B6000F2E8CC /* Array+Optional.swift */; };
 		4881315A1EF68BA400F2E8CC /* UtilitiesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488131591EF68BA400F2E8CC /* UtilitiesTests.swift */; };
@@ -216,6 +217,7 @@
 		48594C3F1EF06F8F0058594B /* UIProgressView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIProgressView+Makeable.swift"; sourceTree = "<group>"; };
 		48594C411EF072770058594B /* UIPageControl+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIPageControl+Makeable.swift"; sourceTree = "<group>"; };
 		48594C431EF072880058594B /* UIActivityIndicatorView+Makeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIActivityIndicatorView+Makeable.swift"; sourceTree = "<group>"; };
+		486217831EFC0EDD0000FB1F /* UIControl+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+ViewStyle.swift"; sourceTree = "<group>"; };
 		48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningMakable.swift; sourceTree = "<group>"; };
 		48748A811EE5C4A600E937E0 /* MakeableFromStyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableFromStyleTests.swift; sourceTree = "<group>"; };
 		488131571EF68B6000F2E8CC /* Array+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Optional.swift"; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				4822A1431EF29140005B8F77 /* UIButton+ViewStyle.swift */,
 				4822A1451EF29186005B8F77 /* UITextView+ViewStyle.swift */,
 				4822A1471EF2919A005B8F77 /* UITextField+ViewStyle.swift */,
+				486217831EFC0EDD0000FB1F /* UIControl+ViewStyle.swift */,
 			);
 			path = "UIView+ViewStyle";
 			sourceTree = "<group>";
@@ -851,6 +854,7 @@
 				4841F8EA1EE995CD00D80898 /* ViewStyle+Optional+Operators.swift in Sources */,
 				4822A1441EF29140005B8F77 /* UIButton+ViewStyle.swift in Sources */,
 				4822A13E1EF290DF005B8F77 /* UISegmentedControl+ViewStyle.swift in Sources */,
+				486217841EFC0EDD0000FB1F /* UIControl+ViewStyle.swift in Sources */,
 				482B89511EE00C6500C97D42 /* Case.swift in Sources */,
 				484110151EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift in Sources */,
 				48298B7F1EE6C5D700AB3724 /* Attributed+Mergeable.swift in Sources */,

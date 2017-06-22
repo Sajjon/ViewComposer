@@ -12,19 +12,6 @@ public protocol ControlStateHolder {
     @discardableResult func setControlStates(_ states: [ControlState]) -> Self
 }
 
-internal extension ControlStateHolder {
-    func apply(_ style: ViewStyle) {
-        style.attributes.forEach {
-            switch $0 {
-            case .states(let states):
-                setControlStates(states)
-            default:
-                break
-            }
-        }
-    }
-}
-
 extension UIButton: ControlStateHolder {
     @discardableResult
     @nonobjc public func setControlStates(_ states: [ControlState]) -> Self {
