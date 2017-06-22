@@ -16,11 +16,12 @@ final class MixedViewsViewController: UIViewController, StackViewOwner {
     lazy var slider: UISlider = [.sliderRange(0.0..<max), .sliderValue(max/4), .thumbTintColor(.red), .tintColor(.green)]
     lazy var `switch`: UISwitch = [.on(true), .thumbTintColor(.orange), .tintColor(.blue), .onTintColor(.yellow)]
     lazy var segmentedControl: UISegmentedControl = [.segments([.title("Foo"), .title("Bar")]), .height(44)]
+    lazy var titleButton: UIButton = [.image(UIImage.withColor(.red, size: CGSize(width: 20, height: 20))), .contentHorizontalAlignment(.right), .contentVerticalAlignment(.top), .color(.blue)]
     lazy var searchBar: UISearchBar = [.prompt("This is a prompt"), .placeholder("Type to search"), .searchBarStyle(.prominent), .delegate(self)]
     lazy var pageControl: UIPageControl = [.numberOfPages(5), .currentPage(3), .pageIndicatorTintColor(.blue), .currentPageIndicatorTintColor(.red)]
     lazy var pickerView: UIPickerView = [.dataSourceDelegate(self)]
     
-    private var views: [UIView] { return [slider, `switch`, segmentedControl, searchBar, pageControl, pickerView] }
+    private var views: [UIView] { return [slider, `switch`, segmentedControl, titleButton, searchBar, pageControl, pickerView] }
     lazy var stackView: UIStackView = [.views(self.views), .axis(.vertical), .distribution(.fill), .spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
 
     init() {
