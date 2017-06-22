@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		482420561EFC169300259C55 /* UIImage+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482420551EFC169300259C55 /* UIImage+UIColor.swift */; };
 		482B89111EE00C4C00C97D42 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B890B1EE00C4C00C97D42 /* AppDelegate.swift */; };
 		482B89121EE00C4C00C97D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482B890C1EE00C4C00C97D42 /* Assets.xcassets */; };
 		482B89131EE00C4C00C97D42 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 482B890D1EE00C4C00C97D42 /* LaunchScreen.storyboard */; };
@@ -74,6 +75,7 @@
 
 /* Begin PBXFileReference section */
 		481681B11EDD54A5004E3DD0 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		482420551EFC169300259C55 /* UIImage+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+UIColor.swift"; sourceTree = "<group>"; };
 		482B890B1EE00C4C00C97D42 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		482B890C1EE00C4C00C97D42 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		482B890E1EE00C4C00C97D42 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -135,9 +137,18 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		482420511EFC167F00259C55 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				482420551EFC169300259C55 /* UIImage+UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		482B890A1EE00C4C00C97D42 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				482420511EFC167F00259C55 /* Extensions */,
 				4846CED71EE172B800E84C91 /* Views */,
 				4846CEC81EE16B9F00E84C91 /* ViewControllers */,
 				482B890B1EE00C4C00C97D42 /* AppDelegate.swift */,
@@ -364,6 +375,7 @@
 				484110311EED76150016620B /* VanillaLoginViewController.swift in Sources */,
 				48594C3C1EF06B370058594B /* TableViewControllerModel.swift in Sources */,
 				4841104F1EED8DE80016620B /* MixedViewsViewController.swift in Sources */,
+				482420561EFC169300259C55 /* UIImage+UIColor.swift in Sources */,
 				4887BA2B1EEDB4CC00FAB210 /* MyCollectionViewCell.swift in Sources */,
 				48594C321EF0642A0058594B /* MakeableWKWebViewViewController.swift in Sources */,
 				484110251EEC44F10016620B /* LoginViewController.swift in Sources */,

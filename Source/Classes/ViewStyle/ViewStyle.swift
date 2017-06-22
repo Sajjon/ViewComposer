@@ -29,10 +29,6 @@ public extension ViewStyle {
     //swiftlint:disable:next cyclomatic_complexity function_body_length
     func install(on styleable: Any) {
         guard let view = styleable as? UIView else { return }
-        if let targetable = view as? Targetable {
-            targetable.apply(self)
-        }
-        
         if let textHolder = view as? TextHolder {
             textHolder.apply(self)
         }
@@ -76,13 +72,13 @@ public extension ViewStyle {
         if let segmentedControl = view as? UISegmentedControl {
             segmentedControl.apply(self)
         }
+  
+        if let control = view as? UIControl {
+            control.applyToSuperclass(self)
+        }
         
         if let button = view as? UIButton {
             button.apply(self)
-        }
-        
-        if let stateHolder = view as? ControlStateHolder {
-            stateHolder.apply(self)
         }
         
         // Also handling case `dataSourceDelegate`
@@ -165,6 +161,8 @@ public extension ViewStyle {
                 view.isMultipleTouchEnabled = isMultipleTouchEnabled
             case .clearsContextBeforeDrawing(let clearsContextBeforeDrawing):
                 view.clearsContextBeforeDrawing = clearsContextBeforeDrawing
+            case .semanticContentAttribute(let semantic):
+                view.semanticContentAttribute = semantic
             
                 // Layer
             case .cornerRadius(let radius):

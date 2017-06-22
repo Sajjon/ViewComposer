@@ -35,6 +35,7 @@ public enum ViewAttribute {
     case exclusiveTouch(Bool)
     case multipleTouchEnabled(Bool)
     case clearsContextBeforeDrawing(Bool)
+    case semanticContentAttribute(UISemanticContentAttribute)
     
     //MARK: - UIView: Layer
     case cornerRadius(CGFloat) /* might be overridden by: */; case roundedBy(CornerRounding)
@@ -99,10 +100,10 @@ public enum ViewAttribute {
     case scrollsToTop(Bool)
     case keyboardDismissMode(UIScrollViewKeyboardDismissMode)
     
-    //MARK: - ControlState
+    //MARK: - UIControl
     case states([ControlState])
-
-    //MARK: - Targetable
+    case contentVerticalAlignment(UIControlContentVerticalAlignment)
+    case contentHorizontalAlignment(UIControlContentHorizontalAlignment)
     case target(Actor)
     case enabled(Bool)
     case selected(Bool)
