@@ -69,6 +69,8 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return multipleTouchEnabled
                                 case .clearsContextBeforeDrawing(let clearsContextBeforeDrawing):
                                     return clearsContextBeforeDrawing
+                                case .semanticContentAttribute(let semanticContentAttribute):
+                                    return semanticContentAttribute
                                 case .cornerRadius(let cornerRadius):
                                     return cornerRadius
                                 case .roundedBy(let roundedBy):
@@ -159,6 +161,10 @@ public protocol AssociatedValueStrippable: Equatable {
                                     return keyboardDismissMode
                                 case .states(let states):
                                     return states
+                                case .contentVerticalAlignment(let contentVerticalAlignment):
+                                    return contentVerticalAlignment
+                                case .contentHorizontalAlignment(let contentHorizontalAlignment):
+                                    return contentHorizontalAlignment
                                 case .target(let target):
                                     return target
                                 case .enabled(let enabled):
@@ -430,6 +436,14 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .clearsContextBeforeDrawing(let clearsContextBeforeDrawing):
                                 return clearsContextBeforeDrawing
+                            default:
+                                return nil
+                        }
+                    }
+                    var semanticContentAttribute: UISemanticContentAttribute? {
+                        switch self {
+                            case .semanticContentAttribute(let semanticContentAttribute):
+                                return semanticContentAttribute
                             default:
                                 return nil
                         }
@@ -790,6 +804,22 @@ public protocol AssociatedValueStrippable: Equatable {
                         switch self {
                             case .states(let states):
                                 return states
+                            default:
+                                return nil
+                        }
+                    }
+                    var contentVerticalAlignment: UIControlContentVerticalAlignment? {
+                        switch self {
+                            case .contentVerticalAlignment(let contentVerticalAlignment):
+                                return contentVerticalAlignment
+                            default:
+                                return nil
+                        }
+                    }
+                    var contentHorizontalAlignment: UIControlContentHorizontalAlignment? {
+                        switch self {
+                            case .contentHorizontalAlignment(let contentHorizontalAlignment):
+                                return contentHorizontalAlignment
                             default:
                                 return nil
                         }
@@ -1203,6 +1233,7 @@ public protocol AssociatedValueStrippable: Equatable {
             case exclusiveTouch
             case multipleTouchEnabled
             case clearsContextBeforeDrawing
+            case semanticContentAttribute
             case cornerRadius
             case roundedBy
             case borderWidth
@@ -1248,6 +1279,8 @@ public protocol AssociatedValueStrippable: Equatable {
             case scrollsToTop
             case keyboardDismissMode
             case states
+            case contentVerticalAlignment
+            case contentHorizontalAlignment
             case target
             case enabled
             case selected
@@ -1361,6 +1394,8 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .multipleTouchEnabled
         			 case .clearsContextBeforeDrawing:
         				return .clearsContextBeforeDrawing
+        			 case .semanticContentAttribute:
+        				return .semanticContentAttribute
         			 case .cornerRadius:
         				return .cornerRadius
         			 case .roundedBy:
@@ -1451,6 +1486,10 @@ public protocol AssociatedValueStrippable: Equatable {
         				return .keyboardDismissMode
         			 case .states:
         				return .states
+        			 case .contentVerticalAlignment:
+        				return .contentVerticalAlignment
+        			 case .contentHorizontalAlignment:
+        				return .contentHorizontalAlignment
         			 case .target:
         				return .target
         			 case .enabled:

@@ -26,6 +26,8 @@ internal extension UIButton {
                 self.adjustsImageWhenDisabled = adjusts
             case .showsTouchWhenHighlighted(let show):
                 self.showsTouchWhenHighlighted = show
+            case .states(let states):
+                setControlStates(states)
             default:
                 break
             }
