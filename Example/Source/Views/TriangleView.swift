@@ -111,8 +111,12 @@ public enum TriangleFillStyle {
 }
 
 public struct TriangleViewStyle: Attributed {
+    public static var duplicatesHandler: AnyDuplicatesHandler<TriangleViewStyle>?
+
     public var startIndex: Int = 0
     public let attributes: [TriangleViewAttribute]
+    
+    public static var mergeInterceptors: [MergeInterceptor.Type] = []
     
     public init(_ attributes: [TriangleViewAttribute]) {
         self.attributes = attributes
