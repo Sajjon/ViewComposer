@@ -13,10 +13,32 @@ public extension AssociatedValueEnumExtractor {
     }
 }
 
-public protocol StrippedRepresentation: RawRepresentable, Equatable, Hashable {}
-public protocol AssociatedValueStrippable: Equatable {
+public protocol StrippedRepresentation: RawRepresentable, Equatable, Hashable, Comparable {}
+public protocol AssociatedValueStrippable: Equatable, Comparable {
     associatedtype Stripped: StrippedRepresentation
     var stripped: Stripped { get }
+}
+
+{% macro comparableFunc operator operandSuffix %}
+    public static func {{ operator }}(lhs: Self, rhs: Self) -> Bool {
+        return lhs{{ operandSuffix }} {{ operator }} rhs{{ operandSuffix }}
+    }
+{% endmacro %}
+
+{% macro comparable operandSuffix %}
+{% call comparableFunc "<" operandSuffix %}
+{% call comparableFunc ">" operandSuffix %}
+{% call comparableFunc ">=" operandSuffix %}
+{% call comparableFunc "<=" operandSuffix %}
+{% call comparableFunc "==" operandSuffix %}
+{% endmacro %}
+
+extension StrippedRepresentation where Self.RawValue: Comparable {
+    {% call comparable ".rawValue" %}
+}
+
+extension AssociatedValueStrippable {
+    {% call comparable ".stripped" %}
 }
 
 {% for enum in types.implementing.AutoAssociatedValueEnum|enum %}
@@ -58,6 +80,8 @@ public protocol AssociatedValueStrippable: Equatable {
         public enum {{ enum.name }}Stripped: String, StrippedRepresentation {
             {% for case in enum.cases %}case {{ case.name }}
             {% endfor %}
+
+
         } 
 
         extension {{ enum.name }}Stripped {
@@ -74,10 +98,6 @@ public protocol AssociatedValueStrippable: Equatable {
         }
         
         extension {{ enum.name }}: AssociatedValueStrippable {
-        	public static func == (lhs: {{ enum.name }}, rhs: {{ enum.name }}) -> Bool {
-        	    return lhs.stripped == rhs.stripped
-        	}
-        
             public typealias Stripped = {{ enum.name }}Stripped
             public var stripped: Stripped {
         		switch self {
