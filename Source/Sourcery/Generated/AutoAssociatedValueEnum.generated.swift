@@ -243,10 +243,56 @@ extension AssociatedValueStrippable {
                                     return views
                                 case .registerCells(let registerCells):
                                     return registerCells
+                                case .backgroundView(let backgroundView):
+                                    return backgroundView
+                                case .allowsMultipleSelection(let allowsMultipleSelection):
+                                    return allowsMultipleSelection
+                                case .allowsSelection(let allowsSelection):
+                                    return allowsSelection
+                                case .remembersLastFocusedIndexPath(let remembersLastFocusedIndexPath):
+                                    return remembersLastFocusedIndexPath
+                                case .sectionIndexMinimumDisplayRowCount(let sectionIndexMinimumDisplayRowCount):
+                                    return sectionIndexMinimumDisplayRowCount
+                                case .sectionIndexTrackingBackgroundColor(let sectionIndexTrackingBackgroundColor):
+                                    return sectionIndexTrackingBackgroundColor
+                                case .sectionIndexBackgroundColor(let sectionIndexBackgroundColor):
+                                    return sectionIndexBackgroundColor
+                                case .sectionIndexColor(let sectionIndexColor):
+                                    return sectionIndexColor
+                                case .rowHeight(let rowHeight):
+                                    return rowHeight
+                                case .separatorStyle(let separatorStyle):
+                                    return separatorStyle
+                                case .separatorColor(let separatorColor):
+                                    return separatorColor
+                                case .separatorEffect(let separatorEffect):
+                                    return separatorEffect
+                                case .separatorInset(let separatorInset):
+                                    return separatorInset
+                                case .cellLayoutMarginsFollowReadableWidth(let cellLayoutMarginsFollowReadableWidth):
+                                    return cellLayoutMarginsFollowReadableWidth
+                                case .sectionHeaderHeight(let sectionHeaderHeight):
+                                    return sectionHeaderHeight
+                                case .sectionFooterHeight(let sectionFooterHeight):
+                                    return sectionFooterHeight
+                                case .estimatedRowHeight(let estimatedRowHeight):
+                                    return estimatedRowHeight
+                                case .estimatedSectionHeaderHeight(let estimatedSectionHeaderHeight):
+                                    return estimatedSectionHeaderHeight
+                                case .estimatedSectionFooterHeight(let estimatedSectionFooterHeight):
+                                    return estimatedSectionFooterHeight
+                                case .allowsSelectionDuringEditing(let allowsSelectionDuringEditing):
+                                    return allowsSelectionDuringEditing
+                                case .allowsMultipleSelectionDuringEditing(let allowsMultipleSelectionDuringEditing):
+                                    return allowsMultipleSelectionDuringEditing
+                                case .isEditing(let isEditing):
+                                    return isEditing
                                 case .collectionViewLayout(let collectionViewLayout):
                                     return collectionViewLayout
                                 case .itemSize(let itemSize):
                                     return itemSize
+                                case .isPrefetchingEnabled(let isPrefetchingEnabled):
+                                    return isPrefetchingEnabled
                                 case .prompt(let prompt):
                                     return prompt
                                 case .searchBarStyle(let searchBarStyle):
@@ -1022,6 +1068,182 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
+                    var backgroundView: UIView? {
+                        switch self {
+                            case .backgroundView(let backgroundView):
+                                return backgroundView
+                            default:
+                                return nil
+                        }
+                    }
+                    var allowsMultipleSelection: Bool? {
+                        switch self {
+                            case .allowsMultipleSelection(let allowsMultipleSelection):
+                                return allowsMultipleSelection
+                            default:
+                                return nil
+                        }
+                    }
+                    var allowsSelection: Bool? {
+                        switch self {
+                            case .allowsSelection(let allowsSelection):
+                                return allowsSelection
+                            default:
+                                return nil
+                        }
+                    }
+                    var remembersLastFocusedIndexPath: Bool? {
+                        switch self {
+                            case .remembersLastFocusedIndexPath(let remembersLastFocusedIndexPath):
+                                return remembersLastFocusedIndexPath
+                            default:
+                                return nil
+                        }
+                    }
+                    var sectionIndexMinimumDisplayRowCount: Int? {
+                        switch self {
+                            case .sectionIndexMinimumDisplayRowCount(let sectionIndexMinimumDisplayRowCount):
+                                return sectionIndexMinimumDisplayRowCount
+                            default:
+                                return nil
+                        }
+                    }
+                    var sectionIndexTrackingBackgroundColor: UIColor? {
+                        switch self {
+                            case .sectionIndexTrackingBackgroundColor(let sectionIndexTrackingBackgroundColor):
+                                return sectionIndexTrackingBackgroundColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var sectionIndexBackgroundColor: UIColor? {
+                        switch self {
+                            case .sectionIndexBackgroundColor(let sectionIndexBackgroundColor):
+                                return sectionIndexBackgroundColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var sectionIndexColor: UIColor? {
+                        switch self {
+                            case .sectionIndexColor(let sectionIndexColor):
+                                return sectionIndexColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var rowHeight: CGFloat? {
+                        switch self {
+                            case .rowHeight(let rowHeight):
+                                return rowHeight
+                            default:
+                                return nil
+                        }
+                    }
+                    var separatorStyle: UITableViewCellSeparatorStyle? {
+                        switch self {
+                            case .separatorStyle(let separatorStyle):
+                                return separatorStyle
+                            default:
+                                return nil
+                        }
+                    }
+                    var separatorColor: UIColor? {
+                        switch self {
+                            case .separatorColor(let separatorColor):
+                                return separatorColor
+                            default:
+                                return nil
+                        }
+                    }
+                    var separatorEffect: UIVisualEffect? {
+                        switch self {
+                            case .separatorEffect(let separatorEffect):
+                                return separatorEffect
+                            default:
+                                return nil
+                        }
+                    }
+                    var separatorInset: UIEdgeInsets? {
+                        switch self {
+                            case .separatorInset(let separatorInset):
+                                return separatorInset
+                            default:
+                                return nil
+                        }
+                    }
+                    var cellLayoutMarginsFollowReadableWidth: Bool? {
+                        switch self {
+                            case .cellLayoutMarginsFollowReadableWidth(let cellLayoutMarginsFollowReadableWidth):
+                                return cellLayoutMarginsFollowReadableWidth
+                            default:
+                                return nil
+                        }
+                    }
+                    var sectionHeaderHeight: CGFloat? {
+                        switch self {
+                            case .sectionHeaderHeight(let sectionHeaderHeight):
+                                return sectionHeaderHeight
+                            default:
+                                return nil
+                        }
+                    }
+                    var sectionFooterHeight: CGFloat? {
+                        switch self {
+                            case .sectionFooterHeight(let sectionFooterHeight):
+                                return sectionFooterHeight
+                            default:
+                                return nil
+                        }
+                    }
+                    var estimatedRowHeight: CGFloat? {
+                        switch self {
+                            case .estimatedRowHeight(let estimatedRowHeight):
+                                return estimatedRowHeight
+                            default:
+                                return nil
+                        }
+                    }
+                    var estimatedSectionHeaderHeight: CGFloat? {
+                        switch self {
+                            case .estimatedSectionHeaderHeight(let estimatedSectionHeaderHeight):
+                                return estimatedSectionHeaderHeight
+                            default:
+                                return nil
+                        }
+                    }
+                    var estimatedSectionFooterHeight: CGFloat? {
+                        switch self {
+                            case .estimatedSectionFooterHeight(let estimatedSectionFooterHeight):
+                                return estimatedSectionFooterHeight
+                            default:
+                                return nil
+                        }
+                    }
+                    var allowsSelectionDuringEditing: Bool? {
+                        switch self {
+                            case .allowsSelectionDuringEditing(let allowsSelectionDuringEditing):
+                                return allowsSelectionDuringEditing
+                            default:
+                                return nil
+                        }
+                    }
+                    var allowsMultipleSelectionDuringEditing: Bool? {
+                        switch self {
+                            case .allowsMultipleSelectionDuringEditing(let allowsMultipleSelectionDuringEditing):
+                                return allowsMultipleSelectionDuringEditing
+                            default:
+                                return nil
+                        }
+                    }
+                    var isEditing: Bool? {
+                        switch self {
+                            case .isEditing(let isEditing):
+                                return isEditing
+                            default:
+                                return nil
+                        }
+                    }
                     var collectionViewLayout: UICollectionViewLayout? {
                         switch self {
                             case .collectionViewLayout(let collectionViewLayout):
@@ -1034,6 +1256,14 @@ extension AssociatedValueStrippable {
                         switch self {
                             case .itemSize(let itemSize):
                                 return itemSize
+                            default:
+                                return nil
+                        }
+                    }
+                    var isPrefetchingEnabled: Bool? {
+                        switch self {
+                            case .isPrefetchingEnabled(let isPrefetchingEnabled):
+                                return isPrefetchingEnabled
                             default:
                                 return nil
                         }
@@ -1339,8 +1569,31 @@ extension AssociatedValueStrippable {
             case baselineRelative
             case views
             case registerCells
+            case backgroundView
+            case allowsMultipleSelection
+            case allowsSelection
+            case remembersLastFocusedIndexPath
+            case sectionIndexMinimumDisplayRowCount
+            case sectionIndexTrackingBackgroundColor
+            case sectionIndexBackgroundColor
+            case sectionIndexColor
+            case rowHeight
+            case separatorStyle
+            case separatorColor
+            case separatorEffect
+            case separatorInset
+            case cellLayoutMarginsFollowReadableWidth
+            case sectionHeaderHeight
+            case sectionFooterHeight
+            case estimatedRowHeight
+            case estimatedSectionHeaderHeight
+            case estimatedSectionFooterHeight
+            case allowsSelectionDuringEditing
+            case allowsMultipleSelectionDuringEditing
+            case isEditing
             case collectionViewLayout
             case itemSize
+            case isPrefetchingEnabled
             case prompt
             case searchBarStyle
             case segments
@@ -1567,10 +1820,56 @@ extension AssociatedValueStrippable {
         				return .views
         			 case .registerCells:
         				return .registerCells
+        			 case .backgroundView:
+        				return .backgroundView
+        			 case .allowsMultipleSelection:
+        				return .allowsMultipleSelection
+        			 case .allowsSelection:
+        				return .allowsSelection
+        			 case .remembersLastFocusedIndexPath:
+        				return .remembersLastFocusedIndexPath
+        			 case .sectionIndexMinimumDisplayRowCount:
+        				return .sectionIndexMinimumDisplayRowCount
+        			 case .sectionIndexTrackingBackgroundColor:
+        				return .sectionIndexTrackingBackgroundColor
+        			 case .sectionIndexBackgroundColor:
+        				return .sectionIndexBackgroundColor
+        			 case .sectionIndexColor:
+        				return .sectionIndexColor
+        			 case .rowHeight:
+        				return .rowHeight
+        			 case .separatorStyle:
+        				return .separatorStyle
+        			 case .separatorColor:
+        				return .separatorColor
+        			 case .separatorEffect:
+        				return .separatorEffect
+        			 case .separatorInset:
+        				return .separatorInset
+        			 case .cellLayoutMarginsFollowReadableWidth:
+        				return .cellLayoutMarginsFollowReadableWidth
+        			 case .sectionHeaderHeight:
+        				return .sectionHeaderHeight
+        			 case .sectionFooterHeight:
+        				return .sectionFooterHeight
+        			 case .estimatedRowHeight:
+        				return .estimatedRowHeight
+        			 case .estimatedSectionHeaderHeight:
+        				return .estimatedSectionHeaderHeight
+        			 case .estimatedSectionFooterHeight:
+        				return .estimatedSectionFooterHeight
+        			 case .allowsSelectionDuringEditing:
+        				return .allowsSelectionDuringEditing
+        			 case .allowsMultipleSelectionDuringEditing:
+        				return .allowsMultipleSelectionDuringEditing
+        			 case .isEditing:
+        				return .isEditing
         			 case .collectionViewLayout:
         				return .collectionViewLayout
         			 case .itemSize:
         				return .itemSize
+        			 case .isPrefetchingEnabled:
+        				return .isPrefetchingEnabled
         			 case .prompt:
         				return .prompt
         			 case .searchBarStyle:

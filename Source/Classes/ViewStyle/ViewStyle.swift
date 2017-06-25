@@ -55,6 +55,14 @@ public extension ViewStyle {
             scrollView.applyToSuperclass(self)
         }
         
+        if let collectionTableView = view as? CollectionTableView {
+            collectionTableView.apply(self)
+        }
+        
+        if let tableView = view as? UITableView {
+            tableView.apply(self)
+        }
+        
         if let collectionView = view as? UICollectionView {
             collectionView.apply(self)
         }
