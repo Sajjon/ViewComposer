@@ -16,10 +16,48 @@ public extension AssociatedValueEnumExtractor {
     }
 }
 
-public protocol StrippedRepresentation: RawRepresentable, Equatable, Hashable {}
-public protocol AssociatedValueStrippable: Equatable {
+public protocol StrippedRepresentation: RawRepresentable, Equatable, Hashable, Comparable {}
+public protocol AssociatedValueStrippable: Equatable, Comparable {
     associatedtype Stripped: StrippedRepresentation
     var stripped: Stripped { get }
+}
+
+
+
+extension StrippedRepresentation where Self.RawValue: Comparable {
+    public static func <(lhs: Self, rhs: Self) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+    public static func >(lhs: Self, rhs: Self) -> Bool {
+        return lhs.rawValue > rhs.rawValue
+    }
+    public static func >=(lhs: Self, rhs: Self) -> Bool {
+        return lhs.rawValue >= rhs.rawValue
+    }
+    public static func <=(lhs: Self, rhs: Self) -> Bool {
+        return lhs.rawValue <= rhs.rawValue
+    }
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        return lhs.rawValue == rhs.rawValue
+    }
+}
+
+extension AssociatedValueStrippable {
+    public static func <(lhs: Self, rhs: Self) -> Bool {
+        return lhs.stripped < rhs.stripped
+    }
+    public static func >(lhs: Self, rhs: Self) -> Bool {
+        return lhs.stripped > rhs.stripped
+    }
+    public static func >=(lhs: Self, rhs: Self) -> Bool {
+        return lhs.stripped >= rhs.stripped
+    }
+    public static func <=(lhs: Self, rhs: Self) -> Bool {
+        return lhs.stripped <= rhs.stripped
+    }
+    public static func ==(lhs: Self, rhs: Self) -> Bool {
+        return lhs.stripped == rhs.stripped
+    }
 }
 
         extension ViewAttribute: AssociatedValueEnumExtractor {
@@ -1296,6 +1334,8 @@ public protocol AssociatedValueStrippable: Equatable {
             case hidesForSinglePage
             case pageIndicatorTintColor
             case currentPageIndicatorTintColor
+
+
         } 
 
         extension ViewAttributeStripped {
@@ -1311,9 +1351,6 @@ public protocol AssociatedValueStrippable: Equatable {
             }
         }
         extension ViewAttribute: AssociatedValueStrippable {
-        	public static func == (lhs: ViewAttribute, rhs: ViewAttribute) -> Bool {
-        	    return lhs.stripped == rhs.stripped
-        	}
             public typealias Stripped = ViewAttributeStripped
             public var stripped: Stripped {
         		switch self {

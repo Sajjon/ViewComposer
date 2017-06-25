@@ -8,6 +8,7 @@
 
 import Foundation
 import XCTest
+@testable import ViewComposer
 
 let text: String = "foobar"
 let fooText: String = "foo"
@@ -28,4 +29,13 @@ func assertIs<Value: Equatable>(_ optional: Value?, `is` expected: Value) {
         return
     }
     XCTAssert(actual == expected, "Expected '\(expected)', was: '\(actual)'")
+}
+
+
+class BaseXCTest: XCTestCase {
+    
+    override func setUp() {
+        ViewStyle.mergeInterceptors = []
+        ViewStyle.duplicatesHandler = nil
+    }
 }

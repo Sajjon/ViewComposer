@@ -9,8 +9,8 @@
 import XCTest
 @testable import ViewComposer
 
-class MakeableTests: XCTestCase {
-    
+class MakeableTests: BaseXCTest {
+        
     func makeStyle(includeColor: Bool = true) -> ViewStyle {
         var attributes: [ViewAttribute] = [.hidden(isHidden), .cornerRadius(cornerRadius), .text(text)]
         
@@ -114,17 +114,4 @@ class MakeableTests: XCTestCase {
         let label: Label = style <<- [.hidden(false)]
         assertIs(label.isHidden, is: false)
     }
-    
-//    func testComposableButton() {
-//        let buttonTitleNormal = "press me"
-//        let buttonImageNormal = UIImage()
-//        let states: [ControlState] = [.normal(buttonTitleNormal, buttonImageNormal)]
-//        let button: UIButton = style().merge(master: [.states(states)])
-//        assertIs(button.title(for: .normal), is: buttonTitleNormal)
-//        assertIs(button.image(for: .normal), is: buttonImageNormal)
-//        
-//        let button2: Button = [.text(text)]
-//        assertIs(button2.title(for: .normal), is: text)
-//    }
-    
 }
