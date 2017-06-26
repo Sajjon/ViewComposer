@@ -383,6 +383,8 @@ SWIFT_CLASS_NAMED("Class")
 @interface SwiftClass : Type
 /// Returns “class”
 @property (nonatomic, readonly, copy) NSString * _Nonnull kind;
+/// Whether type is final
+@property (nonatomic, readonly) BOOL isFinal;
 /// :nodoc:
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 /// :nodoc:
@@ -691,6 +693,10 @@ SWIFT_CLASS_NAMED("Method")
 @property (nonatomic, readonly) BOOL isConvenienceInitializer;
 /// Whether method is required
 @property (nonatomic, readonly) BOOL isRequired;
+/// Whether method is final
+@property (nonatomic, readonly) BOOL isFinal;
+/// Whether method is mutating
+@property (nonatomic, readonly) BOOL isMutating;
 /// Annotations, that were created with // sourcery: annotation1, other = “annotation value”, alterantive = 2
 @property (nonatomic, readonly, copy) NSDictionary<NSString *, NSObject *> * _Nonnull annotations;
 /// Method attributes, i.e. <code>@discardableResult</code>
@@ -738,6 +744,8 @@ SWIFT_CLASS("_TtC15SourceryRuntime15MethodParameter")
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 /// Parameter type name
 @property (nonatomic, readonly, strong) TypeName * _Nonnull typeName;
+/// Parameter flag whether it’s inout or not
+@property (nonatomic, readonly) BOOL inout;
 /// Parameter type, if known
 @property (nonatomic, strong) Type * _Nullable type;
 /// Parameter type attributes, i.e. <code>@escaping</code>
@@ -749,9 +757,9 @@ SWIFT_CLASS("_TtC15SourceryRuntime15MethodParameter")
 /// :nodoc:
 @property (nonatomic) id _Nullable __parserData;
 /// :nodoc:
-- (nonnull instancetype)initWithArgumentLabel:(NSString * _Nullable)argumentLabel name:(NSString * _Nonnull)name typeName:(TypeName * _Nonnull)typeName type:(Type * _Nullable)type defaultValue:(NSString * _Nullable)defaultValue annotations:(NSDictionary<NSString *, NSObject *> * _Nonnull)annotations OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithArgumentLabel:(NSString * _Nullable)argumentLabel name:(NSString * _Nonnull)name typeName:(TypeName * _Nonnull)typeName type:(Type * _Nullable)type defaultValue:(NSString * _Nullable)defaultValue annotations:(NSDictionary<NSString *, NSObject *> * _Nonnull)annotations inout:(BOOL)inout OBJC_DESIGNATED_INITIALIZER;
 /// :nodoc:
-- (nonnull instancetype)initWithName:(NSString * _Nonnull)name typeName:(TypeName * _Nonnull)typeName type:(Type * _Nullable)type defaultValue:(NSString * _Nullable)defaultValue annotations:(NSDictionary<NSString *, NSObject *> * _Nonnull)annotations OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)initWithName:(NSString * _Nonnull)name typeName:(TypeName * _Nonnull)typeName type:(Type * _Nullable)type defaultValue:(NSString * _Nullable)defaultValue annotations:(NSDictionary<NSString *, NSObject *> * _Nonnull)annotations inout:(BOOL)inout OBJC_DESIGNATED_INITIALIZER;
 /// :nodoc:
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)aDecoder OBJC_DESIGNATED_INITIALIZER;
 /// :nodoc:
@@ -1168,6 +1176,16 @@ SWIFT_CLASS("_TtC15SourceryRuntime9Typealias")
 @property (nonatomic, readonly) BOOL isImplicitlyUnwrappedOptional;
 /// Type name without attributes and optional type information. Shorthand for <code>typeName.unwrappedTypeName</code>
 @property (nonatomic, readonly, copy) NSString * _Nonnull unwrappedTypeName;
+/// Actual type name if declaration uses typealias, otherwise just a <code>typeName</code>. Shorthand for <code>typeName.actualTypeName</code>
+@property (nonatomic, readonly, strong) TypeName * _Nullable actualTypeName;
+/// Whether type is a tuple. Shorthand for <code>typeName.isTuple</code>
+@property (nonatomic, readonly) BOOL isTuple;
+/// Whether type is a closure. Shorthand for <code>typeName.isClosure</code>
+@property (nonatomic, readonly) BOOL isClosure;
+/// Whether type is an array. Shorthand for <code>typeName.isArray</code>
+@property (nonatomic, readonly) BOOL isArray;
+/// Whether type is a dictionary. Shorthand for <code>typeName.isDictionary</code>
+@property (nonatomic, readonly) BOOL isDictionary;
 @end
 
 @class TypesCollection;
@@ -1268,6 +1286,8 @@ SWIFT_CLASS("_TtC15SourceryRuntime8Variable")
 @property (nonatomic, copy) NSDictionary<NSString *, NSObject *> * _Nonnull annotations;
 /// Variable attributes, i.e. <code>@IBOutlet</code>, <code>@IBInspectable</code>
 @property (nonatomic, copy) NSDictionary<NSString *, Attribute *> * _Nonnull attributes;
+/// Whether variable is final or not
+@property (nonatomic, readonly) BOOL isFinal;
 /// :nodoc:
 @property (nonatomic) id _Nullable __parserData;
 /// :nodoc:
