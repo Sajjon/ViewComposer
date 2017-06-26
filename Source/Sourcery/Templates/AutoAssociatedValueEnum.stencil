@@ -1,7 +1,3 @@
-public protocol AssociatedValueEnumExtractor {
-    var associatedValue: Any? { get }
-}
-
 public extension AssociatedValueEnumExtractor {
     func associatedValueTyped<T>() -> T? {
         if let value = associatedValue as? T {
@@ -11,12 +7,6 @@ public extension AssociatedValueEnumExtractor {
         } 
         return nil
     }
-}
-
-public protocol StrippedRepresentation: RawRepresentable, Equatable, Hashable, Comparable {}
-public protocol AssociatedValueStrippable: Equatable, Comparable {
-    associatedtype Stripped: StrippedRepresentation
-    var stripped: Stripped { get }
 }
 
 {% macro comparableFunc operator operandSuffix %}

@@ -1,10 +1,6 @@
 // Generated using Sourcery 0.6.1 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
-public protocol AssociatedValueEnumExtractor {
-    var associatedValue: Any? { get }
-}
-
 public extension AssociatedValueEnumExtractor {
     func associatedValueTyped<T>() -> T? {
         if let value = associatedValue as? T {
@@ -14,12 +10,6 @@ public extension AssociatedValueEnumExtractor {
         } 
         return nil
     }
-}
-
-public protocol StrippedRepresentation: RawRepresentable, Equatable, Hashable, Comparable {}
-public protocol AssociatedValueStrippable: Equatable, Comparable {
-    associatedtype Stripped: StrippedRepresentation
-    var stripped: Stripped { get }
 }
 
 
