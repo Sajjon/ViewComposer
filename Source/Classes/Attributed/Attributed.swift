@@ -66,7 +66,7 @@ public struct AnyDuplicatesHandler<_Attributed: Attributed>: DuplicatesHandler {
     
     var _chooseDuplicate: ([AttributedType.Attribute]) -> AttributedType.Attribute
 
-    init<D: DuplicatesHandler>(_ concrete: D) where D.AttributedType == AttributedType {
+    public init<D: DuplicatesHandler>(_ concrete: D) where D.AttributedType == AttributedType {
         _chooseDuplicate = { duplicatess in concrete.choseDuplicate(from: duplicatess) }
     }
     
