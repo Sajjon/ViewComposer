@@ -1,6 +1,8 @@
 // Generated using Sourcery 0.6.1 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
+
+
 public extension AssociatedValueEnumExtractor {
     func associatedValueTyped<T>() -> T? {
         if let value = associatedValue as? T {

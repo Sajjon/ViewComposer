@@ -1,3 +1,7 @@
+{% if !argument.excludeViewComposerImport %}
+import ViewComposer
+{% endif %}
+
 public extension AssociatedValueEnumExtractor {
     func associatedValueTyped<T>() -> T? {
         if let value = associatedValue as? T {

@@ -8,3 +8,4 @@ args:
  --disableCache: true
  --prune: true
  --verbose: true
+ --excludeViewComposerImport: true
