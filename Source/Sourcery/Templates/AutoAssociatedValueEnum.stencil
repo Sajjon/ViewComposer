@@ -1,4 +1,4 @@
-{% if !argument.excludeViewComposerImport %}
+{% if argument.importViewComposerInTemplate %}
 import ViewComposer
 {% endif %}
 

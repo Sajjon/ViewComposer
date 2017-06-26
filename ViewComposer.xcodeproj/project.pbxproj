@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4812E1491F010D38008241F8 /* ProcessControlStatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4812E1481F010D38008241F8 /* ProcessControlStatesTests.swift */; };
 		4816818C1EDD53EE004E3DD0 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481681821EDD53EE004E3DD0 /* ViewComposer.framework */; };
 		4822A1341EF2906A005B8F77 /* UIStackView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */; };
 		4822A1361EF29083005B8F77 /* UICollectionView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1351EF29083005B8F77 /* UICollectionView+ViewStyle.swift */; };
@@ -128,6 +129,7 @@
 /* Begin PBXFileReference section */
 		35F34C092F993FD8DECC1E76 /* Pods_ViewComposer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewComposer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ViewComposerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4812E1481F010D38008241F8 /* ProcessControlStatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessControlStatesTests.swift; sourceTree = "<group>"; };
 		481681821EDD53EE004E3DD0 /* ViewComposer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewComposer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4816818B1EDD53EE004E3DD0 /* ViewComposerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewComposerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+ViewStyle.swift"; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 				48247B2E1F000E6600AF8F0A /* StrippedEquatableComparableTests.swift */,
 				48247B301F001CC800AF8F0A /* MergeInterceptorsTests.swift */,
 				48247B321F001D3E00AF8F0A /* DuplicatesHandlerTests.swift */,
+				4812E1481F010D38008241F8 /* ProcessControlStatesTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -918,6 +921,7 @@
 				48EF19F91EF129A600E7A10D /* MergeOperatorAssociativityTests.swift in Sources */,
 				48748A821EE5C4A600E937E0 /* MakeableFromStyleTests.swift in Sources */,
 				482B897C1EE00C7100C97D42 /* BaseXCTest.swift in Sources */,
+				4812E1491F010D38008241F8 /* ProcessControlStatesTests.swift in Sources */,
 				48247B311F001CC800AF8F0A /* MergeInterceptorsTests.swift in Sources */,
 				4841F8ED1EE9975C00D80898 /* MergeOfOptionalsUsingOperatorsTests.swift in Sources */,
 				48D7F3CF1EE5444000BC7012 /* MergingViewStyleWithArraysTests.swift in Sources */,
