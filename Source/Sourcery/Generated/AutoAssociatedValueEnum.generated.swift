@@ -243,6 +243,8 @@ extension AssociatedValueStrippable {
                                     return allowsSelection
                                 case .remembersLastFocusedIndexPath(let remembersLastFocusedIndexPath):
                                     return remembersLastFocusedIndexPath
+                                case .prefetchDataSource(let prefetchDataSource):
+                                    return prefetchDataSource
                                 case .sectionIndexMinimumDisplayRowCount(let sectionIndexMinimumDisplayRowCount):
                                     return sectionIndexMinimumDisplayRowCount
                                 case .sectionIndexTrackingBackgroundColor(let sectionIndexTrackingBackgroundColor):
@@ -1092,6 +1094,14 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
+                    var prefetchDataSource: NSObjectProtocol? {
+                        switch self {
+                            case .prefetchDataSource(let prefetchDataSource):
+                                return prefetchDataSource
+                            default:
+                                return nil
+                        }
+                    }
                     var sectionIndexMinimumDisplayRowCount: Int? {
                         switch self {
                             case .sectionIndexMinimumDisplayRowCount(let sectionIndexMinimumDisplayRowCount):
@@ -1565,6 +1575,7 @@ extension AssociatedValueStrippable {
             case allowsMultipleSelection
             case allowsSelection
             case remembersLastFocusedIndexPath
+            case prefetchDataSource
             case sectionIndexMinimumDisplayRowCount
             case sectionIndexTrackingBackgroundColor
             case sectionIndexBackgroundColor
@@ -1820,6 +1831,8 @@ extension AssociatedValueStrippable {
         				return .allowsSelection
         			 case .remembersLastFocusedIndexPath:
         				return .remembersLastFocusedIndexPath
+        			 case .prefetchDataSource:
+        				return .prefetchDataSource
         			 case .sectionIndexMinimumDisplayRowCount:
         				return .sectionIndexMinimumDisplayRowCount
         			 case .sectionIndexTrackingBackgroundColor:

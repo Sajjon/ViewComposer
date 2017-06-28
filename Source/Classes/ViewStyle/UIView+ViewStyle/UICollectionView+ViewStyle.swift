@@ -15,6 +15,11 @@ internal extension UICollectionView {
             case .itemSize(let itemSize):
                 guard let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout else { break }
                 flowLayout.itemSize = itemSize
+            case .collectionViewLayout(let layout):
+                collectionViewLayout = layout
+            case .isPrefetchingEnabled(let enabled):
+                guard #available(iOS 10.0, *) else { return }
+                isPrefetchingEnabled = enabled
             default:
                 break
             }

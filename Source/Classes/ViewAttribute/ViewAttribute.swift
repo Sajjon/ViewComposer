@@ -136,6 +136,7 @@ public enum ViewAttribute {
     case allowsMultipleSelection(Bool)
     case allowsSelection(Bool)
     case remembersLastFocusedIndexPath(Bool)
+    case prefetchDataSource(NSObjectProtocol?)
     
     //MARK: - UITableView
     case sectionIndexMinimumDisplayRowCount(Int)
