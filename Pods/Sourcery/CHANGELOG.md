@@ -2,6 +2,47 @@
 
 ---
 
+## 0.7.2
+
+### Internal changes
+
+- Add Version.swift to represent CLI tool version
+
+
+## 0.7.1
+
+### Bug fixes
+
+- Fixed regression in parsing templates from config file
+- Removed meaningless `isMutating` property for `Variable`
+
+### Internal changes
+
+- Improvements in release script
+- Updated boilerplate code to reflect latest changes
+
+
+## 0.7.0
+
+### New Features
+
+- Added `inout` flag for `MethodParameter`
+- Added parsing `mutating` and `final` attributes with convenience `isMutating` and `isFinal` properties
+- Added support for `include` Stencil tag
+- Added support for excluded paths
+
+### Bug fixes
+
+- Fixed inserting generated code inline automatically at wrong position
+- Fixed regression in AutoEquatable & AutoHashable template with private computed variables
+
+### Internal changes
+
+- Internal release procedure improvements
+- Improved `TemplatesTests` scheme running
+- Fixed swiftlint warnings (version 0.19.0)
+
+
 ## 0.6.1
 
 ### New Features

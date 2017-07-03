@@ -8,6 +8,16 @@
 
 import Foundation
 
+public protocol AssociatedValueEnumExtractor {
+    var associatedValue: Any? { get }
+}
+
+public protocol StrippedRepresentation: RawRepresentable, Hashable, Comparable {}
+public protocol AssociatedValueStrippable: Comparable {
+    associatedtype Stripped: StrippedRepresentation
+    var stripped: Stripped { get }
+}
+
 /// Type that holds a collection of attributes used to style some `Styleable`. 
 /// This collection can be merged with another instance of it sharing the same `Attribute` associatedtype.
 /// You can also extract values associated to a certain attribute e.g. the `UIColor` associated to the attribute `backgroundColor`.
@@ -56,7 +66,7 @@ public struct AnyDuplicatesHandler<_Attributed: Attributed>: DuplicatesHandler {
     
     var _chooseDuplicate: ([AttributedType.Attribute]) -> AttributedType.Attribute
 
-    init<D: DuplicatesHandler>(_ concrete: D) where D.AttributedType == AttributedType {
+    public init<D: DuplicatesHandler>(_ concrete: D) where D.AttributedType == AttributedType {
         _chooseDuplicate = { duplicatess in concrete.choseDuplicate(from: duplicatess) }
     }
     

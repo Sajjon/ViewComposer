@@ -12,7 +12,7 @@ import ViewComposer
 private let cellId = "cellIdentifier"
 final class TableViewController: UIViewController {
     fileprivate let models = makeModels()
-    lazy var tableView: UITableView = [.dataSourceDelegate(self), .registerCells([CellClass(UITableViewCell.self, cellId)])]
+    lazy var tableView: UITableView = [.dataSourceDelegate(self), .registerCells([CellClass(UITableViewCell.self, cellId)]), .prefetchDataSource(self)]
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
@@ -42,6 +42,12 @@ extension TableViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return section < 1 ? "Comparison" : "ViewComposer only"
+    }
+}
+
+extension TableViewController: UITableViewDataSourcePrefetching {
+    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        print("tableView prefetching...")
     }
 }
 

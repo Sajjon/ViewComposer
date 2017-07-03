@@ -13,7 +13,7 @@ import ViewComposer
 private let cellId = "cellIdentifier"
 final class MakeableCollectionViewController: UIViewController {
     
-    lazy var collectionView: UICollectionView = [.dataSourceDelegate(self), .registerCells([CellClass(MyCollectionViewCell.self, cellId)]), .itemSize(CGSize(width: 80, height: 100)), .color(.white)]
+    lazy var collectionView: UICollectionView = [.dataSourceDelegate(self), .prefetchDataSource(self), .registerCells([CellClass(MyCollectionViewCell.self, cellId)]), .itemSize(CGSize(width: 80, height: 100)), .color(.white)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +43,13 @@ extension MakeableCollectionViewController: UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("Selected item: \(indexPath.section):\(indexPath.row)")
     }
+}
 
+extension MakeableCollectionViewController: UICollectionViewDataSourcePrefetching {
+    
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        print("collectionView prefetching...")
+    }
 }
 
 private extension MakeableCollectionViewController {

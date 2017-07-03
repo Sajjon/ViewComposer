@@ -5,6 +5,7 @@ templates:
   - Source/Sourcery/Templates
 output: Source/Sourcery/Generated
 args:
- --disableCache: true
- --prune: true
- --verbose: true
+  disableCache: true
+  prune: true
+  verbose: true
+  importViewComposerInTemplate: false

@@ -131,12 +131,37 @@ public enum ViewAttribute {
     //MARK: - CellRegisterable
     case registerCells([RegisterableCell])
     
+    //MARK: CollectionTableView
+    case backgroundView(UIView?)
+    case allowsMultipleSelection(Bool)
+    case allowsSelection(Bool)
+    case remembersLastFocusedIndexPath(Bool)
+    case prefetchDataSource(NSObjectProtocol?)
+    
     //MARK: - UITableView
-//    case tableViewStyle(UITableViewStyle) //not possible to set `style` propery on TableView
+    case sectionIndexMinimumDisplayRowCount(Int)
+    case sectionIndexTrackingBackgroundColor(UIColor?)
+    case sectionIndexBackgroundColor(UIColor)
+    case sectionIndexColor(UIColor)
+    case rowHeight(CGFloat)
+    case separatorStyle(UITableViewCellSeparatorStyle)
+    case separatorColor(UIColor?)
+    case separatorEffect(UIVisualEffect?)
+    case separatorInset(UIEdgeInsets)
+    case cellLayoutMarginsFollowReadableWidth(Bool)
+    case sectionHeaderHeight(CGFloat)
+    case sectionFooterHeight(CGFloat)
+    case estimatedRowHeight(CGFloat)
+    case estimatedSectionHeaderHeight(CGFloat)
+    case estimatedSectionFooterHeight(CGFloat)
+    case allowsSelectionDuringEditing(Bool)
+    case allowsMultipleSelectionDuringEditing(Bool)
+    case isEditing(Bool)
     
     //MARK: - UICollectionView
     case collectionViewLayout(UICollectionViewLayout)
     case itemSize(CGSize)
+    case isPrefetchingEnabled(Bool)
     
     //MARK: - UISearchBar
     case prompt(String)

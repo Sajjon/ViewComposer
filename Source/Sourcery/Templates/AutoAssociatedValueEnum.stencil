@@ -1,6 +1,6 @@
-public protocol AssociatedValueEnumExtractor {
-    var associatedValue: Any? { get }
-}
+{% if argument.importViewComposerInTemplate %}
+import ViewComposer
+{% endif %}
 
 public extension AssociatedValueEnumExtractor {
     func associatedValueTyped<T>() -> T? {
@@ -11,12 +11,6 @@ public extension AssociatedValueEnumExtractor {
         } 
         return nil
     }
-}
-
-public protocol StrippedRepresentation: RawRepresentable, Hashable, Comparable {}
-public protocol AssociatedValueStrippable: Comparable {
-    associatedtype Stripped: StrippedRepresentation
-    var stripped: Stripped { get }
 }
 
 {% macro comparableFunc operator operandSuffix %}
@@ -103,7 +97,8 @@ extension AssociatedValueStrippable {
         		switch self {
         			{% for case in enum.cases %} case .{{ case.name }}:
         				return .{{ case.name }}
-        			{% endfor %}
+                    {% endfor %}
+default: print("`\(self)` case should be handled..")
         		}
         	}
         }

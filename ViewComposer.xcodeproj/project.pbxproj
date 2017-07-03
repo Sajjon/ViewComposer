@@ -15,6 +15,7 @@
 		4802200C1F0037670079DEFA /* Attributed+Mergeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480220041F0037030079DEFA /* Attributed+Mergeable.swift */; };
 		4802200D1F0037670079DEFA /* Attributed+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480220051F0037030079DEFA /* Attributed+Optional.swift */; };
 		4802200E1F0037670079DEFA /* Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 480220061F0037030079DEFA /* Attributed.swift */; };
+		4812E1491F010D38008241F8 /* ProcessControlStatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4812E1481F010D38008241F8 /* ProcessControlStatesTests.swift */; };
 		4816818C1EDD53EE004E3DD0 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 481681821EDD53EE004E3DD0 /* ViewComposer.framework */; };
 		4822A1341EF2906A005B8F77 /* UIStackView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */; };
 		4822A1361EF29083005B8F77 /* UICollectionView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4822A1351EF29083005B8F77 /* UICollectionView+ViewStyle.swift */; };
@@ -104,6 +105,10 @@
 		48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3C61EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift */; };
 		48D7F3CA1EE4659B00BC7012 /* MergeOperatorReturningComposable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */; };
 		48D7F3CC1EE4988900BC7012 /* ViewAttribute+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */; };
+		48D7F3CF1EE5444000BC7012 /* MergingViewStyleWithArraysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */; };
+		48EF19F91EF129A600E7A10D /* MergeOperatorAssociativityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EF19F81EF129A600E7A10D /* MergeOperatorAssociativityTests.swift */; };
+		48FD21E61F005B0E0074EAAB /* UITableView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD21E51F005B0E0074EAAB /* UITableView+ViewStyle.swift */; };
+		48FD21E81F005EB90074EAAB /* CollectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD21E71F005EB90074EAAB /* CollectionTableView.swift */; };
 		58A276593784FDED9DBBB41B /* Pods_ViewComposerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */; };
 		D03D14DF06693096BB6E0E5F /* Pods_ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35F34C092F993FD8DECC1E76 /* Pods_ViewComposer.framework */; };
 /* End PBXBuildFile section */
@@ -129,6 +134,7 @@
 		480220041F0037030079DEFA /* Attributed+Mergeable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Attributed+Mergeable.swift"; sourceTree = "<group>"; };
 		480220051F0037030079DEFA /* Attributed+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Attributed+Optional.swift"; sourceTree = "<group>"; };
 		480220061F0037030079DEFA /* Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Attributed.swift; sourceTree = "<group>"; };
+		4812E1481F010D38008241F8 /* ProcessControlStatesTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessControlStatesTests.swift; sourceTree = "<group>"; };
 		481681821EDD53EE004E3DD0 /* ViewComposer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ViewComposer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4816818B1EDD53EE004E3DD0 /* ViewComposerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ViewComposerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+ViewStyle.swift"; sourceTree = "<group>"; };
@@ -229,6 +235,8 @@
 		48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewAttribute+Operators.swift"; sourceTree = "<group>"; };
 		48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergingViewStyleWithArraysTests.swift; sourceTree = "<group>"; };
 		48EF19F81EF129A600E7A10D /* MergeOperatorAssociativityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorAssociativityTests.swift; sourceTree = "<group>"; };
+		48FD21E51F005B0E0074EAAB /* UITableView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+ViewStyle.swift"; sourceTree = "<group>"; };
+		48FD21E71F005EB90074EAAB /* CollectionTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableView.swift; sourceTree = "<group>"; };
 		4C9A5DF6C0FB4A5BB8B1E1DF /* Pods-ViewComposerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests.release.xcconfig"; sourceTree = "<group>"; };
 		6011BAC9BF2B8073FF8CA0E5 /* Pods-ViewComposer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.release.xcconfig"; sourceTree = "<group>"; };
 		642A0EC1FB475445192D78FC /* Pods-ViewComposer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer.debug.xcconfig"; sourceTree = "<group>"; };
@@ -434,6 +442,7 @@
 				4841104C1EED891D0016620B /* ThumbTintColorOwner.swift */,
 				484110561EEDA12E0016620B /* CellRegisterable.swift */,
 				485524C21EF074C80002C5D6 /* WebView.swift */,
+				48FD21E71F005EB90074EAAB /* CollectionTableView.swift */,
 			);
 			path = AttributedValues;
 			sourceTree = "<group>";
@@ -538,6 +547,7 @@
 				48247B301F001CC800AF8F0A /* MergeInterceptorsTests.swift */,
 				48247B321F001D3E00AF8F0A /* DuplicatesHandlerTests.swift */,
 				488131591EF68BA400F2E8CC /* UtilitiesTests.swift */,
+				4812E1481F010D38008241F8 /* ProcessControlStatesTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -546,20 +556,21 @@
 			isa = PBXGroup;
 			children = (
 				485524C51EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift */,
-				485524C71EF078080002C5D6 /* UIProgressView+ViewStyle.swift */,
-				485524C91EF079010002C5D6 /* UIPageControl+ViewStyle.swift */,
-				4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */,
+				4822A1431EF29140005B8F77 /* UIButton+ViewStyle.swift */,
 				4822A1351EF29083005B8F77 /* UICollectionView+ViewStyle.swift */,
-				4822A1371EF2909A005B8F77 /* UIScrollView+ViewStyle.swift */,
 				4822A1391EF290B4005B8F77 /* UILabel+ViewStyle.swift */,
+				485524C91EF079010002C5D6 /* UIPageControl+ViewStyle.swift */,
+				485524C71EF078080002C5D6 /* UIProgressView+ViewStyle.swift */,
+				4822A1371EF2909A005B8F77 /* UIScrollView+ViewStyle.swift */,
 				4822A13B1EF290C8005B8F77 /* UISearchBar+ViewStyle.swift */,
 				4822A13D1EF290DF005B8F77 /* UISegmentedControl+ViewStyle.swift */,
 				4822A13F1EF29104005B8F77 /* UISlider+ViewStyle.swift */,
+				4822A1331EF2906A005B8F77 /* UIStackView+ViewStyle.swift */,
 				4822A1411EF2911A005B8F77 /* UISwitch+ViewStyle.swift */,
-				4822A1431EF29140005B8F77 /* UIButton+ViewStyle.swift */,
-				4822A1451EF29186005B8F77 /* UITextView+ViewStyle.swift */,
 				4822A1471EF2919A005B8F77 /* UITextField+ViewStyle.swift */,
+				4822A1451EF29186005B8F77 /* UITextView+ViewStyle.swift */,
 				486217831EFC0EDD0000FB1F /* UIControl+ViewStyle.swift */,
+				48FD21E51F005B0E0074EAAB /* UITableView+ViewStyle.swift */,
 			);
 			path = "UIView+ViewStyle";
 			sourceTree = "<group>";
@@ -851,6 +862,7 @@
 				482B89661EE00C6500C97D42 /* UITextField+Makeable.swift in Sources */,
 				48298B511EE5F28E00AB3724 /* StackView.swift in Sources */,
 				484110191EEC1E000016620B /* ViewAttribute+Mergeable.swift in Sources */,
+				48FD21E81F005EB90074EAAB /* CollectionTableView.swift in Sources */,
 				482B89561EE00C6500C97D42 /* LayoutPriority.swift in Sources */,
 				4802200A1F0037670079DEFA /* Attributed+Collection.swift in Sources */,
 				485524C81EF078080002C5D6 /* UIProgressView+ViewStyle.swift in Sources */,
@@ -864,6 +876,7 @@
 				482B89701EE00C6500C97D42 /* SourceryRules.swift in Sources */,
 				485524C61EF076020002C5D6 /* UIActivityIndicatorView+ViewStyle.swift in Sources */,
 				4822A1341EF2906A005B8F77 /* UIStackView+ViewStyle.swift in Sources */,
+				48FD21E61F005B0E0074EAAB /* UITableView+ViewStyle.swift in Sources */,
 				48298B6B1EE6B33900AB3724 /* Composable+Styleable.swift in Sources */,
 				4841F8EA1EE995CD00D80898 /* ViewStyle+Optional+Operators.swift in Sources */,
 				480220081F0037670079DEFA /* Attributed+AssociatedValueEnumExtractor.swift in Sources */,
@@ -916,8 +929,11 @@
 			files = (
 				48247B331F001D3E00AF8F0A /* DuplicatesHandlerTests.swift in Sources */,
 				48247B2F1F000E6600AF8F0A /* StrippedEquatableComparableTests.swift in Sources */,
+				48EF19F91EF129A600E7A10D /* MergeOperatorAssociativityTests.swift in Sources */,
 				482B897C1EE00C7100C97D42 /* BaseXCTest.swift in Sources */,
+				4812E1491F010D38008241F8 /* ProcessControlStatesTests.swift in Sources */,
 				48247B311F001CC800AF8F0A /* MergeInterceptorsTests.swift in Sources */,
+				48D7F3CF1EE5444000BC7012 /* MergingViewStyleWithArraysTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1064,6 +1080,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -1085,6 +1102,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
