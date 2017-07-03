@@ -59,6 +59,11 @@ public enum ViewAttribute {
     case editable(Bool)
     case clearsOnInsertion(Bool)
     case clearsOnBeginEditing(Bool)
+    case inputView(UIView?)
+    case inputAccessoryView(UIView?)
+    case allowsEditingTextAttributes(Bool)
+    case dataDetectorTypes(UIDataDetectorTypes)
+    case typingAttributes([String: Any]?)
     
     //MARK: - UILabel
     case numberOfLines(Int)
@@ -68,12 +73,31 @@ public enum ViewAttribute {
     case shadowColor(UIColor)
     case shadowOffset(CGSize)
     
-    //MARK: - UITextField
-    case clearButtonMode(UITextFieldViewMode)
+    //MARK: UITextInputTraits (UITextField & UISearchBar & UITextView)
+    case autocapitalizationType(UITextAutocapitalizationType)
+    case autocorrectionType(UITextAutocorrectionType)
+    case spellCheckingType(UITextSpellCheckingType)
+    case keyboardType(UIKeyboardType)
+    case keyboardAppearance(UIKeyboardAppearance)
+    case returnKeyType(UIReturnKeyType)
+    case enablesReturnKeyAutomatically(Bool)
+    case isSecureTextEntry(Bool)
+    case textContentType(UITextContentType)
+    
+    //MARK: UITextField
     case borderStyle(UITextBorderStyle)
+    case background(UIImage?)
+    case disabledBackground(UIImage?)
+    case clearButtonMode(UITextFieldViewMode)
+    case leftView(UIView?)
+    case leftViewMode(UITextFieldViewMode)
+    case rightView(UIView?)
+    case rightViewMode(UITextFieldViewMode)
     
     //MARK: - UITextView
     case selectedRange(NSRange)
+    case linkTextAttributes([String: Any]?)
+    case textContainerInset(UIEdgeInsets)
     
     //MARK: - ImageHolder
     case image(UIImage?)

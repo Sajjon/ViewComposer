@@ -18,19 +18,13 @@ internal extension DelegatesOwner {
         style.attributes.forEach {
             switch $0 {
             case .delegate(let delegate):
-                setDelegate(delegate)
+                delegateProxy = delegate
             case .dataSourceDelegate(let delegate):
-                setDelegate(delegate)
+                delegateProxy = delegate
             default:
                 break
             }
         }
-    }
-}
-
-extension DelegatesOwner {
-    func setDelegate(_ delegate: NSObjectProtocol?) {
-        delegateProxy = delegate
     }
 }
 

@@ -47,6 +47,18 @@ public extension ViewStyle {
             placeholder.apply(self)
         }
         
+        if let textInputTraitable = view as? TextInputTraitable {
+            textInputTraitable.apply(self)
+        }
+        
+        if let textField = view as? UITextField {
+            textField.apply(self)
+        }
+        
+        if let textView = view as? UITextView {
+            textView.apply(self)
+        }
+        
         if let stackView = view as? UIStackView {
             stackView.apply(self)
         }

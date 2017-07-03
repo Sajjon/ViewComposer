@@ -9,76 +9,59 @@
 import Foundation
 
 public protocol TextInputting: class {
-    var editableProxy: Bool { get set} //used by `UITextView` but not by `UITextField`
-    var clearsOnBeginEditingProxy: Bool { get set } //used by `UITextField` but not by `UITextView`
-    var clearsOnInsertionProxy: Bool { get set}
-}
-
-extension TextInputting {
-    @discardableResult
-    func setEditable(_ editable: Bool) -> Self {
-        editableProxy = editable
-        return self
-    }
-    
-    @discardableResult
-    func setClearsOnInsertion(_ clearsOnInsertion: Bool) -> Self {
-        clearsOnInsertionProxy = clearsOnInsertion
-        return self
-    }
-    
-    @discardableResult
-    func setClearsOnBeginEditing(_ clearsOnBeginEditing: Bool) -> Self {
-        clearsOnBeginEditingProxy = clearsOnBeginEditing
-        return self
-    }
+    var editable: Bool { get set } //used by `UITextView` but not by `UITextField`
+    var clearsOnBeginEditing: Bool { get set } //used by `UITextField` but not by `UITextView`
+    var clearsOnInsertion: Bool { get set }
+    var inputView: UIView? { get set }
+    var inputAccessoryView: UIView? { get set }
+    var allowsEditingTextAttributes: Bool { get set }
+    var typingAttributesProxy: [String: Any]? { get set }
 }
 
 extension UITextField: TextInputting {
-    
-    public var editableProxy: Bool {
+    public var editable: Bool {
         get { return false }
         set { /* ignored */}
     }
     
-    public var clearsOnInsertionProxy: Bool {
-        get { return clearsOnInsertion }
-        set { clearsOnInsertion = newValue }
-    }
-    
-    public var clearsOnBeginEditingProxy: Bool {
-        get { return clearsOnBeginEditing }
-        set { clearsOnBeginEditing = newValue }
+    public var typingAttributesProxy: [String: Any]? {
+        get { return typingAttributes }
+        set { typingAttributes = newValue }
     }
 }
 
 extension UITextView: TextInputting {
-    public var editableProxy: Bool {
-        get { return isEditable }
-        set { isEditable = newValue }
-    }
-    
-    public var clearsOnInsertionProxy: Bool {
-        get { return clearsOnInsertion }
-        set { clearsOnInsertion = newValue }
-    }
-    
-    public var clearsOnBeginEditingProxy: Bool {
+    public var clearsOnBeginEditing: Bool {
         get { return false }
         set { /* ignored */}
     }
+    
+    public var typingAttributesProxy: [String: Any]? {
+        get { return typingAttributes }
+        set {
+            guard let attributes = newValue else { typingAttributes = [:]; return }
+            typingAttributes = attributes
+        }
+    }
 }
-
 internal extension TextInputting {
     func apply(_ style: ViewStyle) {
         style.attributes.forEach {
             switch $0 {
             case .editable(let editable):
-                setEditable(editable)
+                self.editable = editable
             case .clearsOnInsertion(let clearsOnInsertion):
-                setClearsOnInsertion(clearsOnInsertion)
+                self.clearsOnInsertion = clearsOnInsertion
             case .clearsOnBeginEditing(let clearsOnBeginEditing):
-                setClearsOnBeginEditing(clearsOnBeginEditing)
+                self.clearsOnBeginEditing = clearsOnBeginEditing
+            case .inputView(let view):
+                inputView = view
+            case .inputAccessoryView(let view):
+                inputAccessoryView = view
+            case .allowsEditingTextAttributes(let allows):
+                allowsEditingTextAttributes = allows
+            case .typingAttributes(let attributes):
+                typingAttributesProxy = attributes
             default:
                 break
             }

@@ -12,10 +12,22 @@ internal extension UITextField {
     func apply(_ style: ViewStyle) {
         style.attributes.forEach {
             switch $0 {
-            case .clearButtonMode(let clearButtonMode):
-                self.clearButtonMode = clearButtonMode
-            case .borderStyle(let borderStyle):
-                self.borderStyle = borderStyle
+            case .borderStyle(let style):
+                borderStyle = style
+            case .background(let image):
+                background = image
+            case .disabledBackground(let image):
+                disabledBackground = image
+            case .clearButtonMode(let mode):
+                clearButtonMode = mode
+            case .leftView(let view):
+                leftView = view
+            case .leftViewMode(let mode):
+                leftViewMode = mode
+            case .rightView(let view):
+                rightView = view
+            case .rightViewMode(let mode):
+                rightViewMode = mode
             default:
                 break
             }

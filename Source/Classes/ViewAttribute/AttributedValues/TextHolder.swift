@@ -13,11 +13,51 @@ public protocol TextHolder: class {
     var textColorProxy: UIColor? { get set }
     var fontProxy: UIFont? { get set }
     var textAlignmentProxy: NSTextAlignment { get set }
-    func setText(_ text: String?)
-    func setFont(_ font: UIFont)
-    func setTextColor(_ textColor: UIColor)
-    func setTextAlignment(_ textAlignment: NSTextAlignment)
     func setCase(_ `case`: Case)
+}
+
+public protocol NativeTextHolder: class {
+    var text: String? { get set }
+}
+
+public protocol NativeTextAlignmentHolder: class {
+    var textAlignment: NSTextAlignment { get set }
+}
+
+public protocol NativeTextColorHolder: class {
+    var textColor: UIColor? { get set }
+}
+
+public protocol NativeFontHolder: class {
+    var font: UIFont? { get set }
+}
+
+extension TextHolder where Self: NativeTextHolder {
+    public var textProxy: String? {
+        get { return text }
+        set { text = newValue }
+    }
+}
+
+extension TextHolder where Self: NativeTextAlignmentHolder {
+    public var textAlignmentProxy: NSTextAlignment {
+        get { return textAlignment }
+        set { textAlignment = newValue }
+    }
+}
+
+extension TextHolder where Self: NativeTextColorHolder {
+    public var textColorProxy: UIColor? {
+        get { return textColor }
+        set { textColor = newValue }
+    }
+}
+
+extension TextHolder where Self: NativeFontHolder {
+    public var fontProxy: UIFont? {
+        get { return font }
+        set { font = newValue }
+    }
 }
 
 internal extension TextHolder {
@@ -25,13 +65,13 @@ internal extension TextHolder {
         style.attributes.forEach {
             switch $0 {
             case .font(let font):
-                setFont(font)
+                fontProxy = font
             case .textColor(let textColor):
-                setTextColor(textColor)
+                textColorProxy = textColor
             case .text(let text):
-                setText(text)
+                textProxy = text
             case .textAlignment(let textAlignment):
-                setTextAlignment(textAlignment)
+                textAlignmentProxy = textAlignment
             case .case(let `case`):
                 setCase(`case`)
             default:
@@ -42,91 +82,32 @@ internal extension TextHolder {
 }
 
 public extension TextHolder {
-    
-    func setText(_ text: String?) {
-        textProxy = text
-    }
-    
-    func setFont(_ font: UIFont) {
-        fontProxy = font
-    }
-    
-    func setTextColor(_ textColor: UIColor) {
-        textColorProxy = textColor
-    }
-    
-    func setTextAlignment(_ textAlignment: NSTextAlignment) {
-        textAlignmentProxy = textAlignment
-    }
-    
     func setCase(_ `case`: Case) {
         textProxy = `case`.apply(to: textProxy)
     }
 }
 
+extension UILabel: NativeTextHolder {}
+extension UILabel: NativeTextAlignmentHolder {}
 extension UILabel: TextHolder {
-    public var textAlignmentProxy: NSTextAlignment {
-        get { return textAlignment }
-        set { textAlignment = newValue }
+    public var textColorProxy: UIColor? {
+        get { return textColor }
+        set { textColor = newValue }
     }
     
     public var fontProxy: UIFont? {
         get { return font }
         set { font = newValue }
     }
-    
-    public var textProxy: String? {
-        get { return text }
-        set { text = newValue }
-    }
-    
-    public var textColorProxy: UIColor? {
-        get { return textColor }
-        set { textColor = newValue }
-    }
 }
 
-extension UITextField: TextHolder {
-    public var textAlignmentProxy: NSTextAlignment {
-        get { return textAlignment }
-        set { textAlignment = newValue }
-    }
-    
-    public var fontProxy: UIFont? {
-        get { return font }
-        set { font = newValue }
-    }
-    
-    public var textProxy: String? {
-        get { return text }
-        set { text = newValue }
-    }
-    
-    public var textColorProxy: UIColor? {
-        get { return textColor }
-        set { textColor = newValue }
-    }
-}
-
+extension UITextView: NativeTextColorHolder {}
+extension UITextView: NativeTextAlignmentHolder {}
+extension UITextView: NativeFontHolder {}
 extension UITextView: TextHolder {
-    public var textAlignmentProxy: NSTextAlignment {
-        get { return textAlignment }
-        set { textAlignment = newValue }
-    }
-    
-    public var fontProxy: UIFont? {
-        get { return font }
-        set { font = newValue }
-    }
-    
     public var textProxy: String? {
         get { return text }
         set { text = newValue }
-    }
-    
-    public var textColorProxy: UIColor? {
-        get { return textColor }
-        set { textColor = newValue }
     }
 }
 

@@ -129,6 +129,16 @@ extension AssociatedValueStrippable {
                                     return clearsOnInsertion
                                 case .clearsOnBeginEditing(let clearsOnBeginEditing):
                                     return clearsOnBeginEditing
+                                case .inputView(let inputView):
+                                    return inputView
+                                case .inputAccessoryView(let inputAccessoryView):
+                                    return inputAccessoryView
+                                case .allowsEditingTextAttributes(let allowsEditingTextAttributes):
+                                    return allowsEditingTextAttributes
+                                case .dataDetectorTypes(let dataDetectorTypes):
+                                    return dataDetectorTypes
+                                case .typingAttributes(let typingAttributes):
+                                    return typingAttributes
                                 case .numberOfLines(let numberOfLines):
                                     return numberOfLines
                                 case .highlightedTextColor(let highlightedTextColor):
@@ -141,12 +151,46 @@ extension AssociatedValueStrippable {
                                     return shadowColor
                                 case .shadowOffset(let shadowOffset):
                                     return shadowOffset
-                                case .clearButtonMode(let clearButtonMode):
-                                    return clearButtonMode
+                                case .autocapitalizationType(let autocapitalizationType):
+                                    return autocapitalizationType
+                                case .autocorrectionType(let autocorrectionType):
+                                    return autocorrectionType
+                                case .spellCheckingType(let spellCheckingType):
+                                    return spellCheckingType
+                                case .keyboardType(let keyboardType):
+                                    return keyboardType
+                                case .keyboardAppearance(let keyboardAppearance):
+                                    return keyboardAppearance
+                                case .returnKeyType(let returnKeyType):
+                                    return returnKeyType
+                                case .enablesReturnKeyAutomatically(let enablesReturnKeyAutomatically):
+                                    return enablesReturnKeyAutomatically
+                                case .isSecureTextEntry(let isSecureTextEntry):
+                                    return isSecureTextEntry
+                                case .textContentType(let textContentType):
+                                    return textContentType
                                 case .borderStyle(let borderStyle):
                                     return borderStyle
+                                case .background(let background):
+                                    return background
+                                case .disabledBackground(let disabledBackground):
+                                    return disabledBackground
+                                case .clearButtonMode(let clearButtonMode):
+                                    return clearButtonMode
+                                case .leftView(let leftView):
+                                    return leftView
+                                case .leftViewMode(let leftViewMode):
+                                    return leftViewMode
+                                case .rightView(let rightView):
+                                    return rightView
+                                case .rightViewMode(let rightViewMode):
+                                    return rightViewMode
                                 case .selectedRange(let selectedRange):
                                     return selectedRange
+                                case .linkTextAttributes(let linkTextAttributes):
+                                    return linkTextAttributes
+                                case .textContainerInset(let textContainerInset):
+                                    return textContainerInset
                                 case .image(let image):
                                     return image
                                 case .scrollEnabled(let scrollEnabled):
@@ -638,6 +682,46 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
+                    var inputView: UIView? {
+                        switch self {
+                            case .inputView(let inputView):
+                                return inputView
+                            default:
+                                return nil
+                        }
+                    }
+                    var inputAccessoryView: UIView? {
+                        switch self {
+                            case .inputAccessoryView(let inputAccessoryView):
+                                return inputAccessoryView
+                            default:
+                                return nil
+                        }
+                    }
+                    var allowsEditingTextAttributes: Bool? {
+                        switch self {
+                            case .allowsEditingTextAttributes(let allowsEditingTextAttributes):
+                                return allowsEditingTextAttributes
+                            default:
+                                return nil
+                        }
+                    }
+                    var dataDetectorTypes: UIDataDetectorTypes? {
+                        switch self {
+                            case .dataDetectorTypes(let dataDetectorTypes):
+                                return dataDetectorTypes
+                            default:
+                                return nil
+                        }
+                    }
+                    var typingAttributes: [String: Any]? {
+                        switch self {
+                            case .typingAttributes(let typingAttributes):
+                                return typingAttributes
+                            default:
+                                return nil
+                        }
+                    }
                     var numberOfLines: Int? {
                         switch self {
                             case .numberOfLines(let numberOfLines):
@@ -686,10 +770,74 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
-                    var clearButtonMode: UITextFieldViewMode? {
+                    var autocapitalizationType: UITextAutocapitalizationType? {
                         switch self {
-                            case .clearButtonMode(let clearButtonMode):
-                                return clearButtonMode
+                            case .autocapitalizationType(let autocapitalizationType):
+                                return autocapitalizationType
+                            default:
+                                return nil
+                        }
+                    }
+                    var autocorrectionType: UITextAutocorrectionType? {
+                        switch self {
+                            case .autocorrectionType(let autocorrectionType):
+                                return autocorrectionType
+                            default:
+                                return nil
+                        }
+                    }
+                    var spellCheckingType: UITextSpellCheckingType? {
+                        switch self {
+                            case .spellCheckingType(let spellCheckingType):
+                                return spellCheckingType
+                            default:
+                                return nil
+                        }
+                    }
+                    var keyboardType: UIKeyboardType? {
+                        switch self {
+                            case .keyboardType(let keyboardType):
+                                return keyboardType
+                            default:
+                                return nil
+                        }
+                    }
+                    var keyboardAppearance: UIKeyboardAppearance? {
+                        switch self {
+                            case .keyboardAppearance(let keyboardAppearance):
+                                return keyboardAppearance
+                            default:
+                                return nil
+                        }
+                    }
+                    var returnKeyType: UIReturnKeyType? {
+                        switch self {
+                            case .returnKeyType(let returnKeyType):
+                                return returnKeyType
+                            default:
+                                return nil
+                        }
+                    }
+                    var enablesReturnKeyAutomatically: Bool? {
+                        switch self {
+                            case .enablesReturnKeyAutomatically(let enablesReturnKeyAutomatically):
+                                return enablesReturnKeyAutomatically
+                            default:
+                                return nil
+                        }
+                    }
+                    var isSecureTextEntry: Bool? {
+                        switch self {
+                            case .isSecureTextEntry(let isSecureTextEntry):
+                                return isSecureTextEntry
+                            default:
+                                return nil
+                        }
+                    }
+                    var textContentType: UITextContentType? {
+                        switch self {
+                            case .textContentType(let textContentType):
+                                return textContentType
                             default:
                                 return nil
                         }
@@ -702,10 +850,82 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
+                    var background: UIImage? {
+                        switch self {
+                            case .background(let background):
+                                return background
+                            default:
+                                return nil
+                        }
+                    }
+                    var disabledBackground: UIImage? {
+                        switch self {
+                            case .disabledBackground(let disabledBackground):
+                                return disabledBackground
+                            default:
+                                return nil
+                        }
+                    }
+                    var clearButtonMode: UITextFieldViewMode? {
+                        switch self {
+                            case .clearButtonMode(let clearButtonMode):
+                                return clearButtonMode
+                            default:
+                                return nil
+                        }
+                    }
+                    var leftView: UIView? {
+                        switch self {
+                            case .leftView(let leftView):
+                                return leftView
+                            default:
+                                return nil
+                        }
+                    }
+                    var leftViewMode: UITextFieldViewMode? {
+                        switch self {
+                            case .leftViewMode(let leftViewMode):
+                                return leftViewMode
+                            default:
+                                return nil
+                        }
+                    }
+                    var rightView: UIView? {
+                        switch self {
+                            case .rightView(let rightView):
+                                return rightView
+                            default:
+                                return nil
+                        }
+                    }
+                    var rightViewMode: UITextFieldViewMode? {
+                        switch self {
+                            case .rightViewMode(let rightViewMode):
+                                return rightViewMode
+                            default:
+                                return nil
+                        }
+                    }
                     var selectedRange: NSRange? {
                         switch self {
                             case .selectedRange(let selectedRange):
                                 return selectedRange
+                            default:
+                                return nil
+                        }
+                    }
+                    var linkTextAttributes: [String: Any]? {
+                        switch self {
+                            case .linkTextAttributes(let linkTextAttributes):
+                                return linkTextAttributes
+                            default:
+                                return nil
+                        }
+                    }
+                    var textContainerInset: UIEdgeInsets? {
+                        switch self {
+                            case .textContainerInset(let textContainerInset):
+                                return textContainerInset
                             default:
                                 return nil
                         }
@@ -1518,15 +1738,37 @@ extension AssociatedValueStrippable {
             case editable
             case clearsOnInsertion
             case clearsOnBeginEditing
+            case inputView
+            case inputAccessoryView
+            case allowsEditingTextAttributes
+            case dataDetectorTypes
+            case typingAttributes
             case numberOfLines
             case highlightedTextColor
             case minimumScaleFactor
             case baselineAdjustment
             case shadowColor
             case shadowOffset
-            case clearButtonMode
+            case autocapitalizationType
+            case autocorrectionType
+            case spellCheckingType
+            case keyboardType
+            case keyboardAppearance
+            case returnKeyType
+            case enablesReturnKeyAutomatically
+            case isSecureTextEntry
+            case textContentType
             case borderStyle
+            case background
+            case disabledBackground
+            case clearButtonMode
+            case leftView
+            case leftViewMode
+            case rightView
+            case rightViewMode
             case selectedRange
+            case linkTextAttributes
+            case textContainerInset
             case image
             case scrollEnabled
             case contentSize
@@ -1717,6 +1959,16 @@ extension AssociatedValueStrippable {
         				return .clearsOnInsertion
         			 case .clearsOnBeginEditing:
         				return .clearsOnBeginEditing
+        			 case .inputView:
+        				return .inputView
+        			 case .inputAccessoryView:
+        				return .inputAccessoryView
+        			 case .allowsEditingTextAttributes:
+        				return .allowsEditingTextAttributes
+        			 case .dataDetectorTypes:
+        				return .dataDetectorTypes
+        			 case .typingAttributes:
+        				return .typingAttributes
         			 case .numberOfLines:
         				return .numberOfLines
         			 case .highlightedTextColor:
@@ -1729,12 +1981,46 @@ extension AssociatedValueStrippable {
         				return .shadowColor
         			 case .shadowOffset:
         				return .shadowOffset
-        			 case .clearButtonMode:
-        				return .clearButtonMode
+        			 case .autocapitalizationType:
+        				return .autocapitalizationType
+        			 case .autocorrectionType:
+        				return .autocorrectionType
+        			 case .spellCheckingType:
+        				return .spellCheckingType
+        			 case .keyboardType:
+        				return .keyboardType
+        			 case .keyboardAppearance:
+        				return .keyboardAppearance
+        			 case .returnKeyType:
+        				return .returnKeyType
+        			 case .enablesReturnKeyAutomatically:
+        				return .enablesReturnKeyAutomatically
+        			 case .isSecureTextEntry:
+        				return .isSecureTextEntry
+        			 case .textContentType:
+        				return .textContentType
         			 case .borderStyle:
         				return .borderStyle
+        			 case .background:
+        				return .background
+        			 case .disabledBackground:
+        				return .disabledBackground
+        			 case .clearButtonMode:
+        				return .clearButtonMode
+        			 case .leftView:
+        				return .leftView
+        			 case .leftViewMode:
+        				return .leftViewMode
+        			 case .rightView:
+        				return .rightView
+        			 case .rightViewMode:
+        				return .rightViewMode
         			 case .selectedRange:
         				return .selectedRange
+        			 case .linkTextAttributes:
+        				return .linkTextAttributes
+        			 case .textContainerInset:
+        				return .textContainerInset
         			 case .image:
         				return .image
         			 case .scrollEnabled:
