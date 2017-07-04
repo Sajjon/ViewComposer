@@ -18,7 +18,7 @@ public struct ViewStyle: Attributed {
     
     public let attributes: [ViewAttribute]
     
-    public init(_ attributes: [ViewAttribute]) {
+    public init(attributes: [ViewAttribute]) {
         self.attributes = attributes
     }
 }
