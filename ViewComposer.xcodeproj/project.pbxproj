@@ -100,6 +100,8 @@
 		48594C441EF072880058594B /* UIActivityIndicatorView+Makeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C431EF072880058594B /* UIActivityIndicatorView+Makeable.swift */; };
 		486217841EFC0EDD0000FB1F /* UIControl+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486217831EFC0EDD0000FB1F /* UIControl+ViewStyle.swift */; };
 		48748A801EE5C31500E937E0 /* MergeOperatorReturningMakable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */; };
+		48748A821EE5C4A600E937E0 /* MakeableFromStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48748A811EE5C4A600E937E0 /* MakeableFromStyleTests.swift */; };
+		4875EC9B1F0A77CB00A9D680 /* TextInputTraitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4875EC9A1F0A77CB00A9D680 /* TextInputTraitable.swift */; };
 		488131581EF68B6000F2E8CC /* Array+Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 488131571EF68B6000F2E8CC /* Array+Optional.swift */; };
 		48956DA51EEAC55600C6079D /* Makeable+Mergeable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48956DA41EEAC55600C6079D /* Makeable+Mergeable.swift */; };
 		48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3C61EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift */; };
@@ -227,6 +229,7 @@
 		486217831EFC0EDD0000FB1F /* UIControl+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+ViewStyle.swift"; sourceTree = "<group>"; };
 		48748A7F1EE5C31500E937E0 /* MergeOperatorReturningMakable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningMakable.swift; sourceTree = "<group>"; };
 		48748A811EE5C4A600E937E0 /* MakeableFromStyleTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableFromStyleTests.swift; sourceTree = "<group>"; };
+		4875EC9A1F0A77CB00A9D680 /* TextInputTraitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextInputTraitable.swift; sourceTree = "<group>"; };
 		488131571EF68B6000F2E8CC /* Array+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Optional.swift"; sourceTree = "<group>"; };
 		488131591EF68BA400F2E8CC /* UtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesTests.swift; sourceTree = "<group>"; };
 		48956DA41EEAC55600C6079D /* Makeable+Mergeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Makeable+Mergeable.swift"; sourceTree = "<group>"; };
@@ -443,6 +446,7 @@
 				484110561EEDA12E0016620B /* CellRegisterable.swift */,
 				485524C21EF074C80002C5D6 /* WebView.swift */,
 				48FD21E71F005EB90074EAAB /* CollectionTableView.swift */,
+				4875EC9A1F0A77CB00A9D680 /* TextInputTraitable.swift */,
 			);
 			path = AttributedValues;
 			sourceTree = "<group>";
@@ -828,6 +832,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4875EC9B1F0A77CB00A9D680 /* TextInputTraitable.swift in Sources */,
 				485524C31EF074C80002C5D6 /* WebView.swift in Sources */,
 				482B89671EE00C6500C97D42 /* UITextView+Makeable.swift in Sources */,
 				48D7F3C91EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift in Sources */,

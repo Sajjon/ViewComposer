@@ -17,19 +17,13 @@ internal extension DataSourceOwner {
         style.attributes.forEach {
             switch $0 {
             case .dataSource(let dataSource):
-                setDataSource(dataSource)
+                dataSourceProxy = dataSource
             case .dataSourceDelegate(let dataSource):
-                setDataSource(dataSource)
+                dataSourceProxy = dataSource
             default:
                 break
             }
         }
-    }
-}
-
-extension DataSourceOwner {
-    func setDataSource(_ dataSource: NSObjectProtocol?) {
-        dataSourceProxy = dataSource
     }
 }
 

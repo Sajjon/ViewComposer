@@ -9,37 +9,18 @@
 import UIKit
 
 public protocol FontSizeAdjusting: class {
-    var adjustsFontSizeProxy: Bool { get set}
+    var adjustsFontSizeToFitWidth: Bool { get set }
 }
 
-extension FontSizeAdjusting {
-    @discardableResult
-    func setAdjustsFontSizeToFitWidth(_ adjusts: Bool) -> Self {
-        adjustsFontSizeProxy = adjusts
-        return self
-    }
-}
-
-extension UILabel: FontSizeAdjusting {
-    public var adjustsFontSizeProxy: Bool {
-        get { return adjustsFontSizeToFitWidth }
-        set { adjustsFontSizeToFitWidth = newValue }
-    }
-}
-
-extension UITextField: FontSizeAdjusting {
-    public var adjustsFontSizeProxy: Bool {
-        get { return adjustsFontSizeToFitWidth }
-        set { adjustsFontSizeToFitWidth = newValue }
-    }
-}
+extension UILabel: FontSizeAdjusting {}
+extension UITextField: FontSizeAdjusting {}
 
 internal extension FontSizeAdjusting {
     func apply(_ style: ViewStyle) {
         style.attributes.forEach {
             switch $0 {
-            case .adjustsFontSizeToFitWidth(let adjusts):
-                setAdjustsFontSizeToFitWidth(adjusts)
+            case .adjustsFontSizeToFitWidth(let adjustsFontSizeToFitWidth):
+                self.adjustsFontSizeToFitWidth  = adjustsFontSizeToFitWidth
             default:
                 break
             }

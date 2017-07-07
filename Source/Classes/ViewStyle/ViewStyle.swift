@@ -18,7 +18,7 @@ public struct ViewStyle: Attributed {
     
     public let attributes: [ViewAttribute]
     
-    public init(_ attributes: [ViewAttribute]) {
+    public init(attributes: [ViewAttribute]) {
         self.attributes = attributes
     }
 }
@@ -45,6 +45,18 @@ public extension ViewStyle {
         
         if let placeholder = view as? PlaceholderOwner {
             placeholder.apply(self)
+        }
+        
+        if let textInputTraitable = view as? TextInputTraitable {
+            textInputTraitable.apply(self)
+        }
+        
+        if let textField = view as? UITextField {
+            textField.apply(self)
+        }
+        
+        if let textView = view as? UITextView {
+            textView.apply(self)
         }
         
         if let stackView = view as? UIStackView {

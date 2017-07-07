@@ -13,7 +13,13 @@ internal extension UITextView {
         style.attributes.forEach {
             switch $0 {
             case .selectedRange(let range):
-                self.selectedRange = range
+                selectedRange = range
+            case .linkTextAttributes(let attributes):
+                linkTextAttributes = attributes
+            case .textContainerInset(let inset):
+                textContainerInset = inset
+            case .dataDetectorTypes(let types):
+                self.dataDetectorTypes = types
             default:
                 break
             }

@@ -9,28 +9,7 @@
 import Foundation
 
 public protocol PlaceholderOwner: class {
-    var placeholderProxy: String? { get set }
-    func setPlaceholder(_ placeholder: String?)
-}
-
-public extension PlaceholderOwner {
-    func setPlaceholder(_ placeholder: String?) {
-        placeholderProxy = placeholder
-    }
-}
-
-extension UITextField: PlaceholderOwner {
-    public var placeholderProxy: String? {
-        get { return placeholder }
-        set { placeholder = newValue }
-    }
-}
-
-extension UISearchBar: PlaceholderOwner {
-    public var placeholderProxy: String? {
-        get { return placeholder }
-        set { placeholder = newValue }
-    }
+    var placeholder: String? { get set }
 }
 
 internal extension PlaceholderOwner {
@@ -38,7 +17,7 @@ internal extension PlaceholderOwner {
         style.attributes.forEach {
             switch $0 {
             case .placeholder(let placeholder):
-                setPlaceholder(placeholder)
+                self.placeholder = placeholder
             default:
                 break
             }

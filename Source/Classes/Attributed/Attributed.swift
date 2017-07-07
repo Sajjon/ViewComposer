@@ -18,36 +18,41 @@ public protocol AssociatedValueStrippable: Comparable {
     var stripped: Stripped { get }
 }
 
-/// Type that holds a collection of attributes used to style some `Styleable`. 
-/// This collection can be merged with another instance of it sharing the same `Attribute` associatedtype.
-/// You can also extract values associated to a certain attribute e.g. the `UIColor` associated to the attribute `backgroundColor`.
-public protocol Attributed: Collection, ExpressibleByArrayLiteral, BaseAttributed {
-    
-    /// `Attribute` type used to style. Needs conformancs to `AssociatedValueStrippable` and `AssociatedValueEnumExtractor` 
+public typealias AttributeType = AssociatedValueStrippable & AssociatedValueEnumExtractor
+
+public protocol ExpressibleByAttributes: BaseAttributed {
+    /// `Attribute` type used to style. Needs conformancs to `AssociatedValueStrippable` and `AssociatedValueEnumExtractor`
     /// so that we can perform merging operations and also logic such as `contains:attribute` and `value` extraction,
     /// accessing the value associated to a certain attribute. e.g. the `UIColor` associated to the attribute `backgroundColor`
-    associatedtype Attribute: AssociatedValueStrippable, AssociatedValueEnumExtractor
+    associatedtype Attribute: AttributeType
     
-    init(_ attributes: [Attribute])
+    init(attributes: [Attribute])
     
     /// Attributes used to style some `Styleable` type
     var attributes: [Attribute] { get }
+}
+
+public protocol AttributesMergable: ExpressibleByAttributes {
+
+    //MARK: - Merging methods
+    func merge(slave: Self, intercept: Bool) -> Self
+}
+
+public protocol AttributesDuplicationHandler: AttributesMergable {
+    static var duplicatesHandler: AnyDuplicatesHandler<Self>? { get set }
+}
+
+public protocol AttributesMergableIntercepting: AttributesDuplicationHandler {
+    static var mergeInterceptors: [MergeInterceptor.Type] { get set }
+}
+
+/// Type that holds a collection of attributes used to style some `Styleable`. 
+/// This collection can be merged with another instance of it sharing the same `Attribute` associatedtype.
+/// You can also extract values associated to a certain attribute e.g. the `UIColor` associated to the attribute `backgroundColor`.
+public protocol Attributed: AttributesMergableIntercepting, Collection, ExpressibleByArrayLiteral, CustomStringConvertible {
     
     /// Needed for conformance to `Collection`
     var startIndex: Int { get }
-    
-    //MARK: - Merging methods
-    func merge(slave: Self, intercept: Bool) -> Self
-    func merge(master: Self, intercept: Bool) -> Self
-    
-    func merge(slave: [Attribute], intercept: Bool) -> Self
-    func merge(master: [Attribute], intercept: Bool) -> Self
-    
-    func merge(slave: Attribute, intercept: Bool) -> Self
-    func merge(master: Attribute, intercept: Bool) -> Self
-    
-    static var mergeInterceptors: [MergeInterceptor.Type] { get set }
-    static var duplicatesHandler: AnyDuplicatesHandler<Self>? { get set }
     
     //MARK: - Collection associatedtypes
     associatedtype Index = Int
@@ -55,22 +60,29 @@ public protocol Attributed: Collection, ExpressibleByArrayLiteral, BaseAttribute
     associatedtype Indices = DefaultIndices<Self>
 }
 
+extension Attributed {
+    public init(_ attributes: [Attribute]) {
+        self.init(attributes: Self.removeDuplicatesIfNeededAndAble(attributes))
+    }
+}
+
 public protocol DuplicatesHandler {
-    associatedtype AttributedType: Attributed
-    func choseDuplicate(from duplicates: [AttributedType.Attribute]) -> AttributedType.Attribute
+    associatedtype AttributesExpressible: ExpressibleByAttributes
+    func choseDuplicate(from duplicates: [AttributesExpressible.Attribute]) -> AttributesExpressible.Attribute
 }
 
 //swiftlint:disable generic_type_name
-public struct AnyDuplicatesHandler<_Attributed: Attributed>: DuplicatesHandler {
-    public typealias AttributedType = _Attributed
+public struct AnyDuplicatesHandler<E: ExpressibleByAttributes>: DuplicatesHandler {
+    public typealias AttributesExpressible = E
+    public typealias Attribute = AttributesExpressible.Attribute
     
-    var _chooseDuplicate: ([AttributedType.Attribute]) -> AttributedType.Attribute
+    var _chooseDuplicate: ([Attribute]) -> Attribute
 
-    public init<D: DuplicatesHandler>(_ concrete: D) where D.AttributedType == AttributedType {
+    public init<D: DuplicatesHandler>(_ concrete: D) where D.AttributesExpressible == AttributesExpressible {
         _chooseDuplicate = { duplicatess in concrete.choseDuplicate(from: duplicatess) }
     }
     
-    public func choseDuplicate(from duplicates: [AttributedType.Attribute]) -> AttributedType.Attribute { return _chooseDuplicate(duplicates) }
+    public func choseDuplicate(from duplicates: [Attribute]) -> Attribute { return _chooseDuplicate(duplicates) }
 }
 
 extension Attributed {
@@ -131,4 +143,16 @@ extension Attributed {
 
 public protocol MergeInterceptor {
     static func interceptMerge<A: Attributed>(master: A, slave: A) -> A
+}
+
+//MARK: - CustomStringConvertible
+public extension Attributed {
+    var description: String {
+        var attributesAsString = [String]()
+        for attribute in attributes {
+            guard let value = attribute.associatedValue else { continue }
+            attributesAsString.append("\(attribute.stripped.rawValue): \(value)")
+        }
+        return "[\(attributesAsString.joined(separator: ", "))]"
+    }
 }

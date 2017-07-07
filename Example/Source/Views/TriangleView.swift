@@ -118,12 +118,8 @@ public struct TriangleViewStyle: Attributed {
     
     public static var mergeInterceptors: [MergeInterceptor.Type] = []
     
-    public init(_ attributes: [TriangleViewAttribute]) {
+    public init(attributes: [TriangleViewAttribute]) {
         self.attributes = attributes
-    }
-    
-    public init(arrayLiteral elements: TriangleViewAttribute...) {
-        self.attributes = elements
     }
     
     public func install(on styleable: Any) {
