@@ -38,16 +38,21 @@ public protocol AttributesMergable: ExpressibleByAttributes {
     func merge(slave: Self, intercept: Bool) -> Self
 }
 
+public protocol AttributesDuplicationHandler: AttributesMergable {
+    static var duplicatesHandler: AnyDuplicatesHandler<Self>? { get set }
+}
+
+public protocol AttributesMergableIntercepting: AttributesDuplicationHandler {
+    static var mergeInterceptors: [MergeInterceptor.Type] { get set }
+}
+
 /// Type that holds a collection of attributes used to style some `Styleable`. 
 /// This collection can be merged with another instance of it sharing the same `Attribute` associatedtype.
 /// You can also extract values associated to a certain attribute e.g. the `UIColor` associated to the attribute `backgroundColor`.
-public protocol Attributed: AttributesMergable, Collection, ExpressibleByArrayLiteral, CustomStringConvertible {
+public protocol Attributed: AttributesMergableIntercepting, Collection, ExpressibleByArrayLiteral, CustomStringConvertible {
     
     /// Needed for conformance to `Collection`
     var startIndex: Int { get }
-    
-    static var mergeInterceptors: [MergeInterceptor.Type] { get set }
-    static var duplicatesHandler: AnyDuplicatesHandler<Self>? { get set }
     
     //MARK: - Collection associatedtypes
     associatedtype Index = Int
@@ -62,21 +67,22 @@ extension Attributed {
 }
 
 public protocol DuplicatesHandler {
-    associatedtype AttributedType: Attributed
-    func choseDuplicate(from duplicates: [AttributedType.Attribute]) -> AttributedType.Attribute
+    associatedtype AttributesExpressible: ExpressibleByAttributes
+    func choseDuplicate(from duplicates: [AttributesExpressible.Attribute]) -> AttributesExpressible.Attribute
 }
 
 //swiftlint:disable generic_type_name
-public struct AnyDuplicatesHandler<_Attributed: Attributed>: DuplicatesHandler {
-    public typealias AttributedType = _Attributed
+public struct AnyDuplicatesHandler<E: ExpressibleByAttributes>: DuplicatesHandler {
+    public typealias AttributesExpressible = E
+    public typealias Attribute = AttributesExpressible.Attribute
     
-    var _chooseDuplicate: ([AttributedType.Attribute]) -> AttributedType.Attribute
+    var _chooseDuplicate: ([Attribute]) -> Attribute
 
-    public init<D: DuplicatesHandler>(_ concrete: D) where D.AttributedType == AttributedType {
+    public init<D: DuplicatesHandler>(_ concrete: D) where D.AttributesExpressible == AttributesExpressible {
         _chooseDuplicate = { duplicatess in concrete.choseDuplicate(from: duplicatess) }
     }
     
-    public func choseDuplicate(from duplicates: [AttributedType.Attribute]) -> AttributedType.Attribute { return _chooseDuplicate(duplicates) }
+    public func choseDuplicate(from duplicates: [Attribute]) -> Attribute { return _chooseDuplicate(duplicates) }
 }
 
 extension Attributed {
