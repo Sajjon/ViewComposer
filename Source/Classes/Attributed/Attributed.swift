@@ -32,23 +32,19 @@ public protocol ExpressibleByAttributes: BaseAttributed {
     var attributes: [Attribute] { get }
 }
 
+public protocol AttributesMergable: ExpressibleByAttributes {
+
+    //MARK: - Merging methods
+    func merge(slave: Self, intercept: Bool) -> Self
+}
+
 /// Type that holds a collection of attributes used to style some `Styleable`. 
 /// This collection can be merged with another instance of it sharing the same `Attribute` associatedtype.
 /// You can also extract values associated to a certain attribute e.g. the `UIColor` associated to the attribute `backgroundColor`.
-public protocol Attributed: ExpressibleByAttributes, Collection, ExpressibleByArrayLiteral, CustomStringConvertible {
+public protocol Attributed: AttributesMergable, Collection, ExpressibleByArrayLiteral, CustomStringConvertible {
     
     /// Needed for conformance to `Collection`
     var startIndex: Int { get }
-    
-    //MARK: - Merging methods
-    func merge(slave: Self, intercept: Bool) -> Self
-    func merge(master: Self, intercept: Bool) -> Self
-    
-    func merge(slave: [Attribute], intercept: Bool) -> Self
-    func merge(master: [Attribute], intercept: Bool) -> Self
-    
-    func merge(slave: Attribute, intercept: Bool) -> Self
-    func merge(master: Attribute, intercept: Bool) -> Self
     
     static var mergeInterceptors: [MergeInterceptor.Type] { get set }
     static var duplicatesHandler: AnyDuplicatesHandler<Self>? { get set }
@@ -60,7 +56,7 @@ public protocol Attributed: ExpressibleByAttributes, Collection, ExpressibleByAr
 }
 
 extension Attributed {
-    init(_ attributes: [Attribute]) {
+    public init(_ attributes: [Attribute]) {
         self.init(attributes: Self.removeDuplicatesIfNeededAndAble(attributes))
     }
 }
