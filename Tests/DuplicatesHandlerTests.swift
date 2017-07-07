@@ -34,7 +34,7 @@ class DuplicatesHandlerTests: BaseXCTest {
 }
 
 struct FoobarViewAttributeDuplicatesHandler: DuplicatesHandler {
-    typealias AttributedType = ViewStyle
+    typealias AttributesExpressible = ViewStyle
     func choseDuplicate(from duplicates: [ViewAttribute]) -> ViewAttribute {
         var foobarAttributes: [FooBarViewAttribute] = []
         for duplicate in duplicates {
