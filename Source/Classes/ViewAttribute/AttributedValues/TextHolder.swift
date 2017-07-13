@@ -101,6 +101,16 @@ extension UILabel: TextHolder {
     }
 }
 
+extension UITextField: NativeTextColorHolder {}
+extension UITextField: NativeTextAlignmentHolder {}
+extension UITextField: NativeFontHolder {}
+extension UITextField: TextHolder {
+    public var textProxy: String? {
+        get { return text }
+        set { text = newValue }
+    }
+}
+
 extension UITextView: NativeTextColorHolder {}
 extension UITextView: NativeTextAlignmentHolder {}
 extension UITextView: NativeFontHolder {}
