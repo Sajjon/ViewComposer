@@ -40,7 +40,7 @@ let label: UILabel = [.text("Hello World"), .textColor(.red)]
 ## Installation
 
 ### Swift 4
-You can use the `swift4` branch to use ViewComposer in your Swift 4 cod, e.g. with in CocoaPods, the Podfile would be:
+You can use the `swift4` branch to use ViewComposer in your Swift 4 code, e.g. with in CocoaPods, the Podfile would be:
 ```ruby
 pod 'ViewComposer', :git => 'https://github.com/Sajjon/ViewComposer.git', :branch => 'swift4'
 ```
