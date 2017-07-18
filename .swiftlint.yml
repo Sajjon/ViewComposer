@@ -12,6 +12,7 @@ included:
   - Source
 excluded:
   - Source/Sourcery
+  - Pods
 line_length: 300
 type_name:
   min_length: 3
