@@ -13,6 +13,7 @@ public struct ViewStyle: Attributed {
     public typealias Element = ViewAttribute
     public static var mergeInterceptors: [MergeInterceptor.Type] = []
     public static var duplicatesHandler: AnyDuplicatesHandler<ViewStyle>?
+    public static var customStyler: AnyCustomStyler<ViewStyle>?
     
     public var startIndex: Int = 0
     
@@ -26,6 +27,7 @@ public struct ViewStyle: Attributed {
 public extension ViewStyle {
     //swiftlint:disable:next cyclomatic_complexity function_body_length
     func install(on styleable: Any) {
+        defer { ViewStyle.customStyler?.customStyle(styleable, with: self) }
         guard let view = styleable as? UIView else { return }
         if let textHolder = view as? TextHolder {
             textHolder.apply(self)

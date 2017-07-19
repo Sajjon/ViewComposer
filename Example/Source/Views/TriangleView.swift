@@ -111,6 +111,7 @@ public enum TriangleFillStyle {
 }
 
 public struct TriangleViewStyle: Attributed {
+    public static var customStyler: AnyCustomStyler<TriangleViewStyle>?
     public static var duplicatesHandler: AnyDuplicatesHandler<TriangleViewStyle>?
 
     public var startIndex: Int = 0

@@ -46,10 +46,14 @@ public protocol AttributesMergableIntercepting: AttributesDuplicationHandler {
     static var mergeInterceptors: [MergeInterceptor.Type] { get set }
 }
 
+public protocol CustomStyling: AttributesMergableIntercepting {
+    static var customStyler: AnyCustomStyler<Self>? { get set }
+}
+
 /// Type that holds a collection of attributes used to style some `Styleable`. 
 /// This collection can be merged with another instance of it sharing the same `Attribute` associatedtype.
 /// You can also extract values associated to a certain attribute e.g. the `UIColor` associated to the attribute `backgroundColor`.
-public protocol Attributed: AttributesMergableIntercepting, Collection, ExpressibleByArrayLiteral, CustomStringConvertible {
+public protocol Attributed: CustomStyling, Collection, ExpressibleByArrayLiteral, CustomStringConvertible {
     
     /// Needed for conformance to `Collection`
     var startIndex: Int { get }
@@ -79,10 +83,27 @@ public struct AnyDuplicatesHandler<E: ExpressibleByAttributes>: DuplicatesHandle
     var _chooseDuplicate: ([Attribute]) -> Attribute
 
     public init<D: DuplicatesHandler>(_ concrete: D) where D.AttributesExpressible == AttributesExpressible {
-        _chooseDuplicate = { duplicatess in concrete.choseDuplicate(from: duplicatess) }
+        _chooseDuplicate = { concrete.choseDuplicate(from: $0) }
     }
     
     public func choseDuplicate(from duplicates: [Attribute]) -> Attribute { return _chooseDuplicate(duplicates) }
+}
+
+public protocol CustomStyler {
+    associatedtype AttributesExpressible: ExpressibleByAttributes
+    func customStyle(_ styleable: Any, with style: AttributesExpressible)
+}
+
+public struct AnyCustomStyler<E: ExpressibleByAttributes>: CustomStyler {
+    public typealias AttributesExpressible = E
+    var _customStyle: (Any, AttributesExpressible) -> Void
+    public init<Concrete: CustomStyler>(_ concrete: Concrete) where Concrete.AttributesExpressible == AttributesExpressible {
+        _customStyle = { concrete.customStyle($0, with: $1) }
+    }
+    
+    public func customStyle(_ styleable: Any, with style: E) {
+        _customStyle(styleable, style)
+    }
 }
 
 extension Attributed {
