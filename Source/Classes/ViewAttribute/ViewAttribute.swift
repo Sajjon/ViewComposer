@@ -128,7 +128,10 @@ public enum ViewAttribute {
     case states([ControlState])
     case contentVerticalAlignment(UIControlContentVerticalAlignment)
     case contentHorizontalAlignment(UIControlContentHorizontalAlignment)
-    case target(Actor)
+    case targets([Actor])
+    public static func target(_ actor: Actor) -> ViewAttribute {
+        return .targets([actor])
+    }
     case enabled(Bool)
     case selected(Bool)
     case highlighted(Bool)

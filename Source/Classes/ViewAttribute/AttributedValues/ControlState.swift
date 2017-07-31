@@ -8,137 +8,72 @@
 
 import UIKit
 
-public protocol ControlState {
-    var state: UIControlState { get }
+public class ControlState {
+    public var state: UIControlState { fatalError("Override me") }
     
-    var title: String? { get set }
-    var titleColor: UIColor? { get set }
-    var image: UIImage? { get set }
-    init(title: String?, titleColor: UIColor?, image: UIImage?)
+    public var title: String?
+    public var titleColor: UIColor?
+    public var image: UIImage?
+    public var borderColor: UIColor?
+    
+    public init(title: String?, titleColor: UIColor?, image: UIImage?, borderColor: UIColor?) {
+        self.title = title
+        self.titleColor = titleColor
+        self.image = image
+        self.borderColor = borderColor
+    }
 }
 
 extension ControlState {
-    
-    public init(_ title: String) {
-        self.init(title: title, titleColor: nil, image: nil)
+    public convenience init(_ title: String) {
+        self.init(title: title, titleColor: nil, image: nil, borderColor: nil)
     }
     
-    /// Use together with some other state with title. Title from that other state will be copied over by ViewComposer
-    public init(_ titleColor: UIColor) {
-        self.init(title: nil, titleColor: titleColor, image: nil)
+    public convenience init(_ title: String?, _ titleColor: UIColor?) {
+        self.init(title: title, titleColor: titleColor, image: nil, borderColor: nil)
     }
     
-    public init(_ image: UIImage) {
-        self.init(title: nil, titleColor: nil, image: image)
+    public convenience init(_ title: String?, _ image: UIImage?) {
+        self.init(title: title, titleColor: nil, image: image, borderColor: nil)
     }
     
-    public init(_ title: String, _ titleColor: UIColor) {
-        self.init(title: title, titleColor: titleColor, image: nil)
+    public convenience init(_ title: String?, _ titleColor: UIColor?, _ image: UIImage?) {
+        self.init(title: title, titleColor: titleColor, image: image, borderColor: nil)
     }
     
-    public init(_ title: String, _ image: UIImage) {
-        self.init(title: title, titleColor: nil, image: image)
+    public convenience init(_ titleColor: UIColor?) {
+        self.init(title: nil, titleColor: titleColor, image: nil, borderColor: nil)
     }
     
-    public init(_ title: String, _ titleColor: UIColor, _ image: UIImage) {
-        self.init(title: title, titleColor: titleColor, image: image)
+    public convenience init(_ title: String?, _ titleColor: UIColor?, _ image: UIImage? = nil, borderColor: UIColor?) {
+        self.init(title: title, titleColor: titleColor, image: image, borderColor: borderColor)
     }
 }
 
-public struct Normal: ControlState {
-    public let state: UIControlState = .normal
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
+public class Normal: ControlState {
+    public override var state: UIControlState { return .normal }
 }
 
-public struct Highlighted: ControlState {
-    public let state: UIControlState = .highlighted
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
+public class Highlighted: ControlState {
+    public override var state: UIControlState { return .highlighted }
 }
 
-public struct Disabled: ControlState {
-    public let state: UIControlState = .disabled
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
+public class Disabled: ControlState {
+    public override var state: UIControlState { return .disabled }
 }
 
-public struct Selected: ControlState {
-    public let state: UIControlState = .selected
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
+public class Selected: ControlState {
+    public override var state: UIControlState { return .selected }
 }
 
-public struct Focused: ControlState {
-    public let state: UIControlState = .focused
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
+public class Focused: ControlState {
+    public override var state: UIControlState { return .focused }
 }
 
-public struct Application: ControlState {
-    public let state: UIControlState = .application
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
+public class Application: ControlState {
+    public override var state: UIControlState { return .application }
 }
 
-public struct Reserved: ControlState {
-    public let state: UIControlState = .reserved
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
+public class Reserved: ControlState {
+    public override var state: UIControlState { return .reserved }
 }

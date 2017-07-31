@@ -308,6 +308,7 @@ extension ViewAttribute {
 }
 
 public struct FooBarViewStyle: Attributed {
+    public static var customStyler: AnyCustomStyler<FooBarViewStyle>?
     public static var mergeInterceptors: [MergeInterceptor.Type] = []
     public static var duplicatesHandler: AnyDuplicatesHandler<FooBarViewStyle>?
     
