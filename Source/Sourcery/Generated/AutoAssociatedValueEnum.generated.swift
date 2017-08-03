@@ -239,8 +239,8 @@ extension AssociatedValueStrippable {
                                     return contentVerticalAlignment
                                 case .contentHorizontalAlignment(let contentHorizontalAlignment):
                                     return contentHorizontalAlignment
-                                case .target(let target):
-                                    return target
+                                case .targets(let targets):
+                                    return targets
                                 case .enabled(let enabled):
                                     return enabled
                                 case .selected(let selected):
@@ -1122,10 +1122,10 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
-                    var target: Actor? {
+                    var targets: [Actor]? {
                         switch self {
-                            case .target(let target):
-                                return target
+                            case .targets(let targets):
+                                return targets
                             default:
                                 return nil
                         }
@@ -1793,7 +1793,7 @@ extension AssociatedValueStrippable {
             case states
             case contentVerticalAlignment
             case contentHorizontalAlignment
-            case target
+            case targets
             case enabled
             case selected
             case highlighted
@@ -2069,8 +2069,8 @@ extension AssociatedValueStrippable {
         				return .contentVerticalAlignment
         			 case .contentHorizontalAlignment:
         				return .contentHorizontalAlignment
-        			 case .target:
-        				return .target
+        			 case .targets:
+        				return .targets
         			 case .enabled:
         				return .enabled
         			 case .selected:
