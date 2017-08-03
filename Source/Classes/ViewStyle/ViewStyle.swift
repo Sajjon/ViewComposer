@@ -11,7 +11,7 @@ import UIKit
 public struct ViewStyle: Attributed {
     public typealias Attribute = ViewAttribute
     public typealias Element = ViewAttribute
-    public static var mergeInterceptors: [MergeInterceptor.Type] = []
+    public static var mergeInterceptors: [MergeInterceptor.Type] = [ControlStateMerger.self]
     public static var duplicatesHandler: AnyDuplicatesHandler<ViewStyle>?
     public static var customStyler: AnyCustomStyler<ViewStyle>?
     
