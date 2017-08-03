@@ -16,7 +16,7 @@ public class ControlState {
     public var image: UIImage?
     public var borderColor: UIColor?
     
-    public init(title: String?, titleColor: UIColor?, image: UIImage?, borderColor: UIColor?) {
+    public init(title: String? = nil, titleColor: UIColor? = nil, image: UIImage? = nil, colorOfBorder borderColor: UIColor? = nil) {
         self.title = title
         self.titleColor = titleColor
         self.image = image
@@ -25,28 +25,17 @@ public class ControlState {
 }
 
 extension ControlState {
-    public convenience init(_ title: String) {
-        self.init(title: title, titleColor: nil, image: nil, borderColor: nil)
-    }
     
-    public convenience init(_ title: String?, _ titleColor: UIColor?) {
-        self.init(title: title, titleColor: titleColor, image: nil, borderColor: nil)
+    public convenience init(_ title: String? = nil, _ titleColor: UIColor? = nil, _ image: UIImage? = nil, borderColor: UIColor? = nil) {
+        self.init(title: title, titleColor: titleColor, image: image, colorOfBorder: borderColor)
     }
     
     public convenience init(_ title: String?, _ image: UIImage?) {
-        self.init(title: title, titleColor: nil, image: image, borderColor: nil)
-    }
-    
-    public convenience init(_ title: String?, _ titleColor: UIColor?, _ image: UIImage?) {
-        self.init(title: title, titleColor: titleColor, image: image, borderColor: nil)
+        self.init(title: title, titleColor: nil, image: image, colorOfBorder: nil)
     }
     
     public convenience init(_ titleColor: UIColor?) {
-        self.init(title: nil, titleColor: titleColor, image: nil, borderColor: nil)
-    }
-    
-    public convenience init(_ title: String?, _ titleColor: UIColor?, _ image: UIImage? = nil, borderColor: UIColor?) {
-        self.init(title: title, titleColor: titleColor, image: image, borderColor: borderColor)
+        self.init(title: nil, titleColor: titleColor, image: nil, colorOfBorder: nil)
     }
 }
 

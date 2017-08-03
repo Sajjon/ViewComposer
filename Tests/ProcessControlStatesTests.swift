@@ -53,4 +53,59 @@ class ProcessControlStatesTests: BaseXCTest {
         assertIs(button.titleColor(for: .reserved), is: colorReserved)
     }
     
+    func testControlStateInitializerTitleOnly() {
+        let controlState = Normal(fooText)
+        assertButton(with: controlState)
+    }
+    
+    func testControlStateInitializerTitleColorOnly() {
+        let controlState = Normal(.red)
+        assertButton(with: controlState)
+    }
+    
+    func testControlStateInitializerBorderColorOnly() {
+        let controlState = Normal(borderColor: .red)
+        assertButton(with: controlState)
+    }
+    
+    func testControlStateInitializerTitleAndTitleColor() {
+        let controlState = Normal(fooText, .red)
+        assertButton(with: controlState)
+    }
+
+    func testControlStateInitializerTitleAndTitleColorAndBorderColor() {
+        let controlState = Normal(fooText, .red, borderColor: .blue)
+        assertButton(with: controlState)
+    }
+    
+    func testControlStateInitializerTitleAndImage() {
+        let controlState = Normal(fooText, image)
+        assertButton(with: controlState)
+    }
+
+    func testControlStateInitializerTitleAndTitleColorAndImage() {
+        let controlState = Normal(fooText, .red, image)
+        assertButton(with: controlState)
+    }
+    
+    func testControlStateInitializerTitleAndTitleColorAndImageAndBorderColor() {
+        let controlState = Normal(fooText, .red, image, borderColor: .blue)
+        assertButton(with: controlState)
+    }
+    
+    private func assertButton(with state: ControlState) {
+        let button: UIButton = [.states([state])]
+        if let title = state.title {
+            assertIs(button.title(for: state.state), is: title)
+        }
+        if let titleColor = state.titleColor {
+            assertIs(button.titleColor(for: state.state), is: titleColor)
+        }
+        if let image = state.image {
+            assertIs(button.image(for: state.state), is: image)
+        }
+        if let borderColor = state.borderColor, state.state == .normal {
+            assertIs(button.layer.borderColor, is: borderColor.cgColor)
+        }
+    }
 }
