@@ -68,17 +68,6 @@ public func <- <A: Attributed, C: Composable>(lhs: [A.Attribute], rhs: A) -> C w
     return C(lhs <- rhs)
 }
 
-//MARK: RHS `[Attributed.Attribute]`
-// RHS MASTER
-public func <<- <A: Attributed, C: Composable>(lhs: [A.Attribute], rhs: [A.Attribute]) -> C where C.Style == A {
-    return C(lhs <<- A(rhs))
-}
-
-// RHS SLAVE
-public func <- <A: Attributed, C: Composable>(lhs: [A.Attribute], rhs: [A.Attribute]) -> C where C.Style == A {
-    return C(lhs <- A(rhs))
-}
-
 ////////////////////////////////////////////////
 //MARK: -
 //MARK: -

@@ -68,17 +68,6 @@ public func <- <A: Attributed, M: Makeable>(lhs: [A.Attribute], rhs: A) -> M whe
     return M.make(lhs <- rhs)
 }
 
-//MARK: RHS `[Attributed.Attribute]`
-// RHS MASTER
-public func <<- <A: Attributed, M: Makeable>(lhs: [A.Attribute], rhs: [A.Attribute]) -> M where M.Style == A, M.Styled == M {
-    return M.make(lhs <<- A(rhs))
-}
-
-// RHS SLAVE
-public func <- <A: Attributed, M: Makeable>(lhs: [A.Attribute], rhs: [A.Attribute]) -> M where M.Style == A, M.Styled == M {
-    return M.make(lhs <- A(rhs))
-}
-
 ////////////////////////////////////////////////
 //MARK: -
 //MARK: -
