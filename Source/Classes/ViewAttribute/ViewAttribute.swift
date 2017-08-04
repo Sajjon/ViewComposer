@@ -125,7 +125,7 @@ public enum ViewAttribute {
     case keyboardDismissMode(UIScrollViewKeyboardDismissMode)
     
     //MARK: - UIControl
-    case states([ControlState])
+    case states([ControlStateStyle])
     case contentVerticalAlignment(UIControlContentVerticalAlignment)
     case contentHorizontalAlignment(UIControlContentHorizontalAlignment)
     case targets([Actor])

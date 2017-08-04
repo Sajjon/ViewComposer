@@ -50,12 +50,12 @@ private extension Button {
 }
 
 private extension ViewStyle {
-    func state(with state: UIControlState) -> ControlState? {
-        guard let states: [ControlState] = value(.states) else { return nil }
+    func state(with state: UIControlState) -> ControlStateStyle? {
+        guard let states: [ControlStateStyle] = value(.states) else { return nil }
         return states.filter { $0.state == state }.first
     }
 }
 
 private extension ViewStyle {
-    @nonobjc static let `default`: ViewStyle = [.roundedBy(.height), .verticalHugging(.high), .verticalCompression(.high)]
+    @nonobjc static let `default`: ViewStyle = [.roundedBy(.height), .clipsToBounds(true), .verticalHugging(.high), .verticalCompression(.high)]
 }

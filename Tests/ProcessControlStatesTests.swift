@@ -20,7 +20,7 @@ class ProcessControlStatesTests: BaseXCTest {
         let colorFocused: UIColor = .cyan
         let colorApplication: UIColor = .purple
         let colorReserved: UIColor = .orange
-        let states: [ControlState] = [
+        let states: [ControlStateStyle] = [
             Normal(fooText, colorNormal),
             Highlighted(colorHighlighted),
             Disabled(colorDisabled),
@@ -53,57 +53,58 @@ class ProcessControlStatesTests: BaseXCTest {
     }
     
     func testControlStateInitializerTitleOnly() {
-        let controlState = Normal(fooText)
-        assertButton(with: controlState)
+        let controlStateStyle = Normal(fooText)
+        assertButton(with: controlStateStyle)
     }
     
     func testControlStateInitializerTitleColorOnly() {
-        let controlState = Normal(.red)
-        assertButton(with: controlState)
+        let controlStateStyle = Normal(.red)
+        assertButton(with: controlStateStyle)
     }
     
     func testControlStateInitializerBorderColorOnly() {
-        let controlState = Normal(borderColor: .red)
-        assertButton(with: controlState)
+        let controlStateStyle = Normal(borderColor: .red)
+        assertButton(with: controlStateStyle)
     }
     
     func testControlStateInitializerTitleAndTitleColor() {
-        let controlState = Normal(fooText, .red)
-        assertButton(with: controlState)
+        let controlStateStyle = Normal(fooText, .red)
+        assertButton(with: controlStateStyle)
     }
 
     func testControlStateInitializerTitleAndTitleColorAndBorderColor() {
-        let controlState = Normal(fooText, .red, borderColor: .blue)
-        assertButton(with: controlState)
+        let controlStateStyle = Normal(fooText, titleColor: .red, borderColor: .blue)
+        assertButton(with: controlStateStyle)
     }
     
     func testControlStateInitializerTitleAndImage() {
-        let controlState = Normal(fooText, image)
-        assertButton(with: controlState)
+        let controlStateStyle = Normal(fooText, image)
+        assertButton(with: controlStateStyle)
     }
 
     func testControlStateInitializerTitleAndTitleColorAndImage() {
-        let controlState = Normal(fooText, .red, image)
-        assertButton(with: controlState)
+        let controlStateStyle = Normal(fooText, image, .red)
+        assertButton(with: controlStateStyle)
     }
     
     func testControlStateInitializerTitleAndTitleColorAndImageAndBorderColor() {
-        let controlState = Normal(fooText, .red, image, borderColor: .blue)
-        assertButton(with: controlState)
+        let controlStateStyle = Normal(fooText, image: image, titleColor: .red, borderColor: .blue)
+        assertButton(with: controlStateStyle)
     }
     
-    private func assertButton(with state: ControlState) {
-        let button: UIButton = [.states([state])]
-        if let title = state.title {
-            assertIs(button.title(for: state.state), is: title)
+    private func assertButton(with style: ControlStateStyle) {
+        let button: UIButton = [.states([style])]
+        let state = style.state
+        if let title = style.title {
+            assertIs(button.title(for: state), is: title)
         }
-        if let titleColor = state.titleColor {
-            assertIs(button.titleColor(for: state.state), is: titleColor)
+        if let titleColor = style.titleColor {
+            assertIs(button.titleColor(for: state), is: titleColor)
         }
-        if let image = state.image {
-            assertIs(button.image(for: state.state), is: image)
+        if let image = style.image {
+            assertIs(button.image(for: state), is: image)
         }
-        if let borderColor = state.borderColor, state.state == .normal {
+        if let borderColor = style.borderColor, state == .normal {
             assertIs(button.layer.borderColor, is: borderColor.cgColor)
         }
     }
