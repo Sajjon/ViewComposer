@@ -38,6 +38,12 @@ class MakeableFromStyleTests: XCTestCase {
         assertIs(label.textAlignment, is: .center)
     }
     
+    func testMakingLabelFromMergeBetweenTwoArrays() {
+        let label: UILabel =  [.text(barText)] <- [.textAlignment(.center)]
+        assertIs(label.text, is: barText)
+        assertIs(label.textAlignment, is: .center)
+    }
+    
     func testMakingButtonFromMergeBetweenStyleAndAttributesArrayOperators() {
         let button: UIButton = style <<- [.text(barText), .textColor(.red)]
         assertIs(button.title(for: .normal), is: barText)

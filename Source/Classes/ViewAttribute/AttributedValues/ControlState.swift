@@ -1,5 +1,5 @@
 //
-//  ControlState.swift
+//  ControlStateStyle.swift
 //  ViewComposer
 //
 //  Created by Alexander Cyon on 2017-05-31.
@@ -8,72 +8,79 @@
 
 import UIKit
 
-public class ControlState {
+public class ControlStateStyle {
     public var state: UIControlState { fatalError("Override me") }
     
     public var title: String?
     public var titleColor: UIColor?
     public var image: UIImage?
     public var borderColor: UIColor?
+    public var backgroundColor: UIColor?
     
-    public init(title: String? = nil, titleColor: UIColor? = nil, image: UIImage? = nil, colorOfBorder borderColor: UIColor? = nil) {
+    public init(
+        _ title: String? = nil,
+        image: UIImage? = nil,
+        titleColor: UIColor? = nil,
+        backgroundColor: UIColor? = nil,
+        borderColor: UIColor? = nil
+    ) {
         self.title = title
         self.titleColor = titleColor
         self.image = image
         self.borderColor = borderColor
+        self.backgroundColor = backgroundColor
     }
 }
 
-extension ControlState {
+extension ControlStateStyle {
     
-    public convenience init() {
-        self.init(borderColor: nil)
+    public convenience init(_ title: String, _ titleColor: UIColor) {
+        self.init(title, titleColor: titleColor)
     }
     
-    public convenience init(_ title: String? = nil, _ titleColor: UIColor? = nil, _ image: UIImage? = nil, borderColor: UIColor? = nil) {
-        self.init(title: title, titleColor: titleColor, image: image, colorOfBorder: borderColor)
+    public convenience init(_ title: String, _ image: UIImage) {
+        self.init(title, image: image)
     }
     
-    public convenience init(_ title: String?, _ image: UIImage?) {
-        self.init(title: title, titleColor: nil, image: image, colorOfBorder: nil)
+    public convenience init(_ title: String, _ image: UIImage, _ titleColor: UIColor) {
+        self.init(title, image: image, titleColor: titleColor)
     }
     
-    public convenience init(_ titleColor: UIColor?) {
-        self.init(title: nil, titleColor: titleColor, image: nil, colorOfBorder: nil)
+    public convenience init(_ titleColor: UIColor) {
+        self.init(titleColor: titleColor)
     }
 }
 
-public class Normal: ControlState {
+public class Normal: ControlStateStyle {
     public override var state: UIControlState { return .normal }
 }
 
-public class Highlighted: ControlState {
+public class Highlighted: ControlStateStyle {
     public override var state: UIControlState { return .highlighted }
 }
 
-public class Disabled: ControlState {
+public class Disabled: ControlStateStyle {
     public override var state: UIControlState { return .disabled }
 }
 
-public class Selected: ControlState {
+public class Selected: ControlStateStyle {
     public override var state: UIControlState { return .selected }
 }
 
-public class Focused: ControlState {
+public class Focused: ControlStateStyle {
     public override var state: UIControlState { return .focused }
 }
 
-public class Application: ControlState {
+public class Application: ControlStateStyle {
     public override var state: UIControlState { return .application }
 }
 
-public class Reserved: ControlState {
+public class Reserved: ControlStateStyle {
     public override var state: UIControlState { return .reserved }
 }
 
-
-extension ControlState: MergeableAttribute {
-    public func merge(overwrittenBy other: ControlState) -> Self {
+extension ControlStateStyle: MergeableAttribute {
+    public func merge(overwrittenBy other: ControlStateStyle) -> Self {
         guard state == other.state else { fatalError("Not same UIControlState") }
         let merged = self
         merged.title = other.title ?? self.title
@@ -88,25 +95,25 @@ extension UIControlState: Hashable {
     public var hashValue: Int { return rawValue.hashValue }
 }
 
-extension ControlState: Equatable {
-    public static func == (lhs: ControlState, rhs: ControlState) -> Bool { return lhs.state == rhs.state }
+extension ControlStateStyle: Equatable {
+    public static func == (lhs: ControlStateStyle, rhs: ControlStateStyle) -> Bool { return lhs.state == rhs.state }
 }
 
-extension ControlState: Hashable {
+extension ControlStateStyle: Hashable {
     public var hashValue: Int { return state.hashValue }
 }
 
-extension Array where Element == ControlState {
-    public func merge(overwrittenBy other: [ControlState]) -> [ControlState] {
+extension Array where Element == ControlStateStyle {
+    public func merge(overwrittenBy other: [ControlStateStyle]) -> [ControlStateStyle] {
         
-        let concatenated: [ControlState] = self + other
+        let concatenated: [ControlStateStyle] = self + other
         
         let allTypes: [UIControlState] = concatenated.map { $0.state }
         let duplicateOfDuplicates = allTypes.filter { (type: UIControlState) in allTypes.filter { $0 == type }.count > 1 }
         //swiftlint:disable:next syntactic_sugar
         let duplicateTypes = Array<UIControlState>(Set<UIControlState>(duplicateOfDuplicates))
         
-        var merged = [ControlState]()
+        var merged = [ControlStateStyle]()
         
         for duplicateType in duplicateTypes {
             let duplicateStates = concatenated.filter { $0.state == duplicateType }
@@ -115,7 +122,7 @@ extension Array where Element == ControlState {
             merged.append(duplicateState)
         }
         
-        var set = Set<ControlState>(merged)
+        var set = Set<ControlStateStyle>(merged)
         concatenated.forEach { set.insert($0) }
         return Array(set)
     }
@@ -126,8 +133,8 @@ public struct ControlStateMerger: MergeInterceptor {
         guard
             let master = masterAttributed as? ViewStyle,
             let slave = slave as? ViewStyle,
-            let masterControlStates: [ControlState] = master.value(.states),
-            let slaveControlStates: [ControlState] = slave.value(.states)
+            let masterControlStates: [ControlStateStyle] = master.value(.states),
+            let slaveControlStates: [ControlStateStyle] = slave.value(.states)
             else { return masterAttributed }
         let merged = slaveControlStates.merge(overwrittenBy: masterControlStates)
         //swiftlint:disable:next force_cast

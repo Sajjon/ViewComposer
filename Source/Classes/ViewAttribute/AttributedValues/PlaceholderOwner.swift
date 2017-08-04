@@ -24,3 +24,6 @@ internal extension PlaceholderOwner {
         }
     }
 }
+
+extension UITextField: PlaceholderOwner {}
+extension UISearchBar: PlaceholderOwner {}

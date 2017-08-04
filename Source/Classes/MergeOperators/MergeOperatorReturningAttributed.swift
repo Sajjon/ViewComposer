@@ -80,6 +80,17 @@ public func <- <A: Attributed>(lhs: [A.Attribute], rhs: A) -> A {
     return lhs.merge(slave: rhs)
 }
 
+//MARK: RHS `[Attributed.Attribute]`
+// RHS MASTER
+public func <<- <A: Attributed>(lhs: [A.Attribute], rhs: [A.Attribute]) -> A {
+    return lhs.merge(master: A(rhs))
+}
+
+// RHS SLAVE
+public func <- <A: Attributed>(lhs: [A.Attribute], rhs: [A.Attribute]) -> A {
+    return lhs.merge(slave: A(rhs))
+}
+
 //////////////////////////////////////////////////////////
 //MARK: -
 //MARK: LHS: `Attributed.Attribute`

@@ -15,8 +15,8 @@ import XCTest
 class ControlStateMergingTests: BaseXCTest {
     
     func testMergeOfTwoArrayContainingSingleNormalStateHavingTitleAndColor() {
-        let s1: [ControlState] = [Normal(fooText)]
-        let s2: [ControlState] = [Normal(.red)]
+        let s1: [ControlStateStyle] = [Normal(fooText)]
+        let s2: [ControlStateStyle] = [Normal(.red)]
         let merged = s1.merge(overwrittenBy: s2)
         XCTAssertTrue(merged.count == 1)
         let mergedState = merged[0]
@@ -26,8 +26,8 @@ class ControlStateMergingTests: BaseXCTest {
     }
     
     func testMergeOfArrayNormalStateHavingTextWithArrayWithNormalStateHavingTitleColorAndImageAndBorderColor() {
-        let s1: [ControlState] = [Normal(fooText)]
-        let s2: [ControlState] = [Normal(titleColor: .red, image: image, colorOfBorder: .blue)]
+        let s1: [ControlStateStyle] = [Normal(fooText)]
+        let s2: [ControlStateStyle] = [Normal(image: image, titleColor: .red, borderColor: .blue)]
         let merged = s1.merge(overwrittenBy: s2)
         XCTAssertTrue(merged.count == 1)
         let mergedState = merged[0]
@@ -42,15 +42,15 @@ class ControlStateMergingTests: BaseXCTest {
         XCTAssertTrue(ViewStyle.mergeInterceptors.count == 0)
         ViewStyle.mergeInterceptors.append(ControlStateMerger.self)
         XCTAssertTrue(ViewStyle.mergeInterceptors.count == 1)
-        let c1: [ControlState] = [Normal(fooText)]
-        let c2: [ControlState] = [Normal(titleColor: .red, image: image, colorOfBorder: .blue)]
+        let c1: [ControlStateStyle] = [Normal(fooText)]
+        let c2: [ControlStateStyle] = [Normal(image: image, titleColor: .red, borderColor: .blue)]
         
         let s1: ViewStyle = [.states(c1)]
         let s2: ViewStyle = [.states(c2)]
         
         let merged = s1.merge(master: s2)
         XCTAssertTrue(merged.count == 1)
-        guard let mergedStates: [ControlState] = merged.value(.states) else { XCTAssertTrue(false); return }
+        guard let mergedStates: [ControlStateStyle] = merged.value(.states) else { XCTAssertTrue(false); return }
         XCTAssertTrue(mergedStates.count == 1)
         
         let mergedState = mergedStates[0]
@@ -62,8 +62,8 @@ class ControlStateMergingTests: BaseXCTest {
     }
     
     func testMergeOfTwoArrayContainingNormalAndHighlightedStateBothHavingTitleAndColor() {
-        let s1: [ControlState] = [Normal(fooText), Highlighted(.blue)]
-        let s2: [ControlState] = [Highlighted(barText), Normal(.red)]
+        let s1: [ControlStateStyle] = [Normal(fooText), Highlighted(.blue)]
+        let s2: [ControlStateStyle] = [Highlighted(barText), Normal(.red)]
         let merged = s1.merge(overwrittenBy: s2)
         XCTAssertTrue(merged.count == 2)
         for state in merged {
@@ -79,8 +79,8 @@ class ControlStateMergingTests: BaseXCTest {
     }
     
     func testMergeOfArrayContainingSingleNormalStateHavingTitleWithArrayContainingSingleNormalStateEmtpy() {
-        let s1: [ControlState] = [Normal(fooText)]
-        let s2: [ControlState] = [Normal()]
+        let s1: [ControlStateStyle] = [Normal(fooText)]
+        let s2: [ControlStateStyle] = [Normal()]
         let merged = s1.merge(overwrittenBy: s2)
         XCTAssertTrue(merged.count == 1)
         let mergedState = merged[0]
@@ -89,8 +89,8 @@ class ControlStateMergingTests: BaseXCTest {
     }
     
     func testMergeOfArrayContainingSingleNormalStateHavungTitleWithArrayContainingSingleNormalStateEmtpyInvertedOrder() {
-        let s1: [ControlState] = [Normal(fooText)]
-        let s2: [ControlState] = [Normal()]
+        let s1: [ControlStateStyle] = [Normal(fooText)]
+        let s2: [ControlStateStyle] = [Normal()]
         let merged = s2.merge(overwrittenBy: s1)
         XCTAssertTrue(merged.count == 1)
         let mergedState = merged[0]
@@ -99,8 +99,8 @@ class ControlStateMergingTests: BaseXCTest {
     }
     
     func testMergeOfTwoArrayContainingSingleNormalStateHavingTitleConflicting() {
-        let s1: [ControlState] = [Normal(fooText)]
-        let s2: [ControlState] = [Normal(barText)]
+        let s1: [ControlStateStyle] = [Normal(fooText)]
+        let s2: [ControlStateStyle] = [Normal(barText)]
         let merged = s1.merge(overwrittenBy: s2)
         XCTAssertTrue(merged.count == 1)
         let mergedState = merged[0]
@@ -109,8 +109,8 @@ class ControlStateMergingTests: BaseXCTest {
     }
     
     func testMergeOfTwoArrayContainingSingleNormalStateHavingTitleConflictingInverted() {
-        let s1: [ControlState] = [Normal(fooText)]
-        let s2: [ControlState] = [Normal(barText)]
+        let s1: [ControlStateStyle] = [Normal(fooText)]
+        let s2: [ControlStateStyle] = [Normal(barText)]
         let merged = s2.merge(overwrittenBy: s1)
         XCTAssertTrue(merged.count == 1)
         let mergedState = merged[0]
@@ -119,8 +119,8 @@ class ControlStateMergingTests: BaseXCTest {
     }
     
     func testMergeOfArrayContainingSingleNormalStateHavingTitleWithEmptyArray() {
-        let s1: [ControlState] = [Normal(fooText)]
-        let s2 = [ControlState]()
+        let s1: [ControlStateStyle] = [Normal(fooText)]
+        let s2 = [ControlStateStyle]()
         let merged = s1.merge(overwrittenBy: s2)
         XCTAssertTrue(merged.count == 1)
         let mergedState = merged[0]
@@ -129,8 +129,8 @@ class ControlStateMergingTests: BaseXCTest {
     }
     
     func testMergeOfTwoEmptyArrays() {
-        let s1 = [ControlState]()
-        let s2 = [ControlState]()
+        let s1 = [ControlStateStyle]()
+        let s2 = [ControlStateStyle]()
         let merged = s1.merge(overwrittenBy: s2)
         XCTAssertTrue(merged.count == 0)
     }

@@ -1098,7 +1098,7 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
-                    var states: [ControlState]? {
+                    var states: [ControlStateStyle]? {
                         switch self {
                             case .states(let states):
                                 return states
