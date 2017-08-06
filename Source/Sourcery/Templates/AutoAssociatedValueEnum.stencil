@@ -98,6 +98,9 @@ extension AssociatedValueStrippable {
         			{% for case in enum.cases %} case .{{ case.name }}:
         				return .{{ case.name }}
         			{% endfor %}
+                    {% if argument.swift4 %}
+                        default: break
+                    {% endif %}
         		}
         	}
         }
