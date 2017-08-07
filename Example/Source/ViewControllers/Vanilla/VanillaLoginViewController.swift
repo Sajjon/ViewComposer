@@ -9,6 +9,8 @@
 import UIKit
 
 private let height: CGFloat = 50
+private let borderColorNormal: UIColor = .blue
+private let borderColorHighlighted: UIColor = .red
 final class VanillaLoginViewController: UIViewController, StackViewOwner {
     
     lazy var emailField: UITextField = {
@@ -43,7 +45,12 @@ final class VanillaLoginViewController: UIViewController, StackViewOwner {
         button.setTitleColor(.blue, for: .normal)
         button.setTitleColor(.red, for: .highlighted)
         button.backgroundColor = .green
+        button.layer.borderColor = borderColorNormal.cgColor
+        button.layer.borderWidth = 2
+        button.titleLabel?.font = .big
         button.addTarget(self, action: #selector(loginButtonPressed), for: .primaryActionTriggered)
+        button.addTarget(self, action: #selector(useBorderColorHighlighted), for: .touchDown)
+        button.addTarget(self, action: #selector(useBorderColorNormal), for: .touchUpInside)
         return button
     }()
     
@@ -74,5 +81,13 @@ extension VanillaLoginViewController: UITextFieldDelegate {
 private extension VanillaLoginViewController {
     @objc func loginButtonPressed() {
         print("should login")
+    }
+    
+    @objc func useBorderColorHighlighted() {
+        loginButton.layer.borderColor = borderColorHighlighted.cgColor
+    }
+    
+    @objc func useBorderColorNormal() {
+        loginButton.layer.borderColor = borderColorNormal.cgColor
     }
 }

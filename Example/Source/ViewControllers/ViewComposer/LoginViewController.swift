@@ -10,22 +10,26 @@ import UIKit
 import ViewComposer
 
 private let height: CGFloat = 50
-private let style: ViewStyle = [.font(.big), .height(height)]
-private let fieldStyle = style <<- .borderWidth(2)
+private let style: ViewStyle = [.font(.big), .height(height), .clipsToBounds(true) ]
+private let borderStyle = style <<- .borderWidth(2)
+private let borderColorNormal: UIColor = .blue
 
 final class LoginViewController: UIViewController, StackViewOwner {
     
-    lazy var emailField: UITextField = fieldStyle <<- [.placeholder("Email"), .delegate(self)]
-    lazy var passwordField: UITextField = fieldStyle <<- [.placeholder("Password"), .delegate(self)]
+    lazy var emailField: UITextField = borderStyle <<- [.placeholder("Email"), .delegate(self)]
+    lazy var passwordField: UITextField = borderStyle <<- [.placeholder("Password"), .delegate(self)]
     
-    lazy var loginButton: UIButton = style <<-
-            .states([Normal("Login", .blue), Highlighted("Logging in...", .red)]) <-
-            .target(self.target(#selector(loginButtonPressed))) <-
-            [.color(.green), .cornerRadius(height/2)]
-        
-    lazy var stackView: UIStackView = .axis(.vertical) <-
-            .views([self.emailField, self.passwordField, self.loginButton]) <-
-            [.spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
+    lazy var loginButton: Button = borderStyle
+        <<- .states([
+            Normal("Login", titleColor: .blue, backgroundColor: .green, borderColor: borderColorNormal),
+            Highlighted("Logging in...", titleColor: .red, backgroundColor: .yellow, borderColor: .red)
+        ])
+        <- .target(self.target(#selector(loginButtonPressed)))
+        <- [.roundedBy(.height)]
+    
+    var views: [UIView] { return [emailField, passwordField, loginButton] }
+    lazy var stackView: UIStackView = .axis(.vertical) <- .views(self.views)
+        <- [.spacing(20), .layoutMargins(all: 20), .marginsRelative(true)]
     
     override func viewDidLoad() {
         super.viewDidLoad()

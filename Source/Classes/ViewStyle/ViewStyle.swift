@@ -11,8 +11,9 @@ import UIKit
 public struct ViewStyle: Attributed {
     public typealias Attribute = ViewAttribute
     public typealias Element = ViewAttribute
-    public static var mergeInterceptors: [MergeInterceptor.Type] = []
+    public static var mergeInterceptors: [MergeInterceptor.Type] = [ControlStateMerger.self]
     public static var duplicatesHandler: AnyDuplicatesHandler<ViewStyle>?
+    public static var customStyler: AnyCustomStyler<ViewStyle>?
     
     public var startIndex: Int = 0
     
@@ -26,7 +27,63 @@ public struct ViewStyle: Attributed {
 public extension ViewStyle {
     //swiftlint:disable:next cyclomatic_complexity function_body_length
     func install(on styleable: Any) {
+        defer { ViewStyle.customStyler?.customStyle(styleable, with: self) }
         guard let view = styleable as? UIView else { return }
+        
+        // Important to setup shared settings first, so that specific setting may override
+        attributes.forEach {
+            switch $0 {
+            // All UIViews
+            case .custom(let attributed):
+                attributed.install(on: styleable)
+            case .hidden(let isHidden):
+                view.isHidden = isHidden
+            case .layoutMargins(let margin):
+                view.layoutMargins = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
+            case .color(let color):
+                view.backgroundColor = color
+            case .verticalHugging(let prio):
+                view.setContentHuggingPriority(prio.value, for: .vertical)
+            case .verticalCompression(let prio):
+                view.setContentCompressionResistancePriority(prio.value, for: .vertical)
+            case .horizontalHugging(let prio):
+                view.setContentHuggingPriority(prio.value, for: .horizontal)
+            case .horizontalCompression(let prio):
+                view.setContentCompressionResistancePriority(prio.value, for: .horizontal)
+            case .contentMode(let contentMode):
+                view.contentMode = contentMode
+            case .userInteractable(let isUserInteractionEnabled):
+                view.isUserInteractionEnabled = isUserInteractionEnabled
+            case .tintColor(let tintColor):
+                view.tintColor = tintColor
+            case .clipsToBounds(let clipsToBounds):
+                view.clipsToBounds = clipsToBounds
+            case .alpha(let alpha):
+                view.alpha = alpha
+            case .opaque(let isOpaque):
+                view.isOpaque = isOpaque
+            case .exclusiveTouch(let isExclusiveTouch):
+                view.isExclusiveTouch = isExclusiveTouch
+            case .multipleTouchEnabled(let isMultipleTouchEnabled):
+                view.isMultipleTouchEnabled = isMultipleTouchEnabled
+            case .clearsContextBeforeDrawing(let clearsContextBeforeDrawing):
+                view.clearsContextBeforeDrawing = clearsContextBeforeDrawing
+            case .semanticContentAttribute(let semantic):
+                view.semanticContentAttribute = semantic
+                
+            // Layer
+            case .cornerRadius(let radius):
+                view.layer.cornerRadius = radius
+                view.layer.masksToBounds = radius > 0
+            case .borderWidth(let borderWidth):
+                view.layer.borderWidth = borderWidth
+            case .borderColor(let borderColor):
+                view.layer.borderColor = borderColor.cgColor
+            default:
+                break
+            }
+        }
+        
         if let textHolder = view as? TextHolder {
             textHolder.apply(self)
         }
@@ -139,60 +196,6 @@ public extension ViewStyle {
         
         if let progressView = view as? UIProgressView {
             progressView.apply(self)
-        }
-        
-        // Shared
-        attributes.forEach {
-            switch $0 {
-            // All UIViews
-            case .custom(let attributed):
-                attributed.install(on: styleable)
-            case .hidden(let isHidden):
-                view.isHidden = isHidden
-            case .layoutMargins(let margin):
-                view.layoutMargins = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-            case .color(let color):
-                view.backgroundColor = color
-            case .verticalHugging(let prio):
-                view.setContentHuggingPriority(prio.value, for: .vertical)
-            case .verticalCompression(let prio):
-                view.setContentCompressionResistancePriority(prio.value, for: .vertical)
-            case .horizontalHugging(let prio):
-                view.setContentHuggingPriority(prio.value, for: .horizontal)
-            case .horizontalCompression(let prio):
-                view.setContentCompressionResistancePriority(prio.value, for: .horizontal)
-            case .contentMode(let contentMode):
-                view.contentMode = contentMode
-            case .userInteractable(let isUserInteractionEnabled):
-                view.isUserInteractionEnabled = isUserInteractionEnabled
-            case .tintColor(let tintColor):
-                view.tintColor = tintColor
-            case .clipsToBounds(let clipsToBounds):
-                view.clipsToBounds = clipsToBounds
-            case .alpha(let alpha):
-                view.alpha = alpha
-            case .opaque(let isOpaque):
-                view.isOpaque = isOpaque
-            case .exclusiveTouch(let isExclusiveTouch):
-                view.isExclusiveTouch = isExclusiveTouch
-            case .multipleTouchEnabled(let isMultipleTouchEnabled):
-                view.isMultipleTouchEnabled = isMultipleTouchEnabled
-            case .clearsContextBeforeDrawing(let clearsContextBeforeDrawing):
-                view.clearsContextBeforeDrawing = clearsContextBeforeDrawing
-            case .semanticContentAttribute(let semantic):
-                view.semanticContentAttribute = semantic
-            
-                // Layer
-            case .cornerRadius(let radius):
-                view.layer.cornerRadius = radius
-                view.layer.masksToBounds = radius > 0
-            case .borderWidth(let borderWidth):
-                view.layer.borderWidth = borderWidth
-            case .borderColor(let borderColor):
-                view.layer.borderColor = borderColor.cgColor
-            default:
-                break
-            }
         }
     }
 }

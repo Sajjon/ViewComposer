@@ -89,6 +89,21 @@ class MergeResultingInAttributeArrayTests: XCTestCase {
         XCTAssert(barMasterUsingMaster.associatedValue(.text) == barText)
     }
     
+    func testMergeArraysByLiteralsOperators() {
+        let fooMasterUsingSlave = [.text(fooText), .color(color)] <- [.text(barText), .hidden(isHidden)]
+        let fooMasterUsingMaster = [.text(barText), .hidden(isHidden)] <<- [.text(fooText), .color(color)]
+        let attrs = [fooMasterUsingSlave, fooMasterUsingMaster]
+        for attributes in attrs {
+            XCTAssert(attributes.count == 3)
+            XCTAssert(type(of: attributes) == ViewStyle.self)
+            XCTAssert(attributes.contains(.color))
+            XCTAssert(attributes.contains(.hidden))
+            XCTAssert(attributes.contains(.text))
+        }
+        XCTAssert(fooMasterUsingSlave.associatedValue(.text) == fooText)
+        XCTAssert(fooMasterUsingMaster.associatedValue(.text) == fooText)
+    }
+    
     func testMergeArraysTwoDoublets() {
         let fooAttr: [ViewAttribute] = [.text(fooText), .cornerRadius(fooRadius)]
         let barAttr: [ViewAttribute] = [.text(barText), .cornerRadius(barRadius)]

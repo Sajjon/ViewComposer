@@ -23,8 +23,8 @@ internal extension UIControl {
                 isSelected = selected
             case .highlighted(let highlighted):
                 isHighlighted = highlighted
-            case .target(let actor):
-                addTarget(using: actor)
+            case .targets(let actors):
+                actors.forEach { addTarget(using: $0) }
             default:
                 break
             }

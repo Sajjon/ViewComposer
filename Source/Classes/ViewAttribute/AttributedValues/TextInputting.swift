@@ -9,7 +9,7 @@
 import Foundation
 
 public protocol TextInputting: class {
-    var editable: Bool { get set } //used by `UITextView` but not by `UITextField`
+    var isEditable: Bool { get set } //used by `UITextView` but not by `UITextField`
     var clearsOnBeginEditing: Bool { get set } //used by `UITextField` but not by `UITextView`
     var clearsOnInsertion: Bool { get set }
     var inputView: UIView? { get set }
@@ -19,7 +19,7 @@ public protocol TextInputting: class {
 }
 
 extension UITextField: TextInputting {
-    public var editable: Bool {
+    public var isEditable: Bool {
         get { return false }
         set { /* ignored */}
     }
@@ -49,7 +49,7 @@ internal extension TextInputting {
         style.attributes.forEach {
             switch $0 {
             case .editable(let editable):
-                self.editable = editable
+                self.isEditable = editable
             case .clearsOnInsertion(let clearsOnInsertion):
                 self.clearsOnInsertion = clearsOnInsertion
             case .clearsOnBeginEditing(let clearsOnBeginEditing):

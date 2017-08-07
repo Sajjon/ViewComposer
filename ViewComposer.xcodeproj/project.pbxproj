@@ -68,7 +68,6 @@
 		482B89681EE00C6500C97D42 /* ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89391EE00C6500C97D42 /* ViewStyle.swift */; };
 		482B896B1EE00C6500C97D42 /* AutoAssociatedValueEnum.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B893F1EE00C6500C97D42 /* AutoAssociatedValueEnum.generated.swift */; };
 		482B89701EE00C6500C97D42 /* SourceryRules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89451EE00C6500C97D42 /* SourceryRules.swift */; };
-		482B89711EE00C6500C97D42 /* AutoAssociatedValueEnum.stencil in Resources */ = {isa = PBXBuildFile; fileRef = 482B89471EE00C6500C97D42 /* AutoAssociatedValueEnum.stencil */; };
 		482B89761EE00C6500C97D42 /* ViewComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 482B894C1EE00C6500C97D42 /* ViewComposer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		482B897C1EE00C7100C97D42 /* BaseXCTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B89781EE00C7100C97D42 /* BaseXCTest.swift */; };
 		484110151EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484110141EEC1DCB0016620B /* ViewAttribute+Mergeable+Array.swift */; };
@@ -109,6 +108,8 @@
 		48D7F3CC1EE4988900BC7012 /* ViewAttribute+Operators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */; };
 		48D7F3CF1EE5444000BC7012 /* MergingViewStyleWithArraysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */; };
 		48EF19F91EF129A600E7A10D /* MergeOperatorAssociativityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48EF19F81EF129A600E7A10D /* MergeOperatorAssociativityTests.swift */; };
+		48F3FFB21F33629D005D8FA1 /* ControlStateMergingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F3FFB11F33629D005D8FA1 /* ControlStateMergingTests.swift */; };
+		48F3FFB51F336B12005D8FA1 /* MergableAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48F3FFB31F336B04005D8FA1 /* MergableAttribute.swift */; };
 		48FD21E61F005B0E0074EAAB /* UITableView+ViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD21E51F005B0E0074EAAB /* UITableView+ViewStyle.swift */; };
 		48FD21E81F005EB90074EAAB /* CollectionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48FD21E71F005EB90074EAAB /* CollectionTableView.swift */; };
 		58A276593784FDED9DBBB41B /* Pods_ViewComposerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 379A92F3B9FFF9572443D16B /* Pods_ViewComposerTests.framework */; };
@@ -238,6 +239,8 @@
 		48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewAttribute+Operators.swift"; sourceTree = "<group>"; };
 		48D7F3CD1EE5443A00BC7012 /* MergingViewStyleWithArraysTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergingViewStyleWithArraysTests.swift; sourceTree = "<group>"; };
 		48EF19F81EF129A600E7A10D /* MergeOperatorAssociativityTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorAssociativityTests.swift; sourceTree = "<group>"; };
+		48F3FFB11F33629D005D8FA1 /* ControlStateMergingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ControlStateMergingTests.swift; sourceTree = "<group>"; };
+		48F3FFB31F336B04005D8FA1 /* MergableAttribute.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergableAttribute.swift; sourceTree = "<group>"; };
 		48FD21E51F005B0E0074EAAB /* UITableView+ViewStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+ViewStyle.swift"; sourceTree = "<group>"; };
 		48FD21E71F005EB90074EAAB /* CollectionTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionTableView.swift; sourceTree = "<group>"; };
 		4C9A5DF6C0FB4A5BB8B1E1DF /* Pods-ViewComposerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ViewComposerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -447,6 +450,7 @@
 				485524C21EF074C80002C5D6 /* WebView.swift */,
 				48FD21E71F005EB90074EAAB /* CollectionTableView.swift */,
 				4875EC9A1F0A77CB00A9D680 /* TextInputTraitable.swift */,
+				48F3FFB31F336B04005D8FA1 /* MergableAttribute.swift */,
 			);
 			path = AttributedValues;
 			sourceTree = "<group>";
@@ -552,6 +556,7 @@
 				48247B321F001D3E00AF8F0A /* DuplicatesHandlerTests.swift */,
 				488131591EF68BA400F2E8CC /* UtilitiesTests.swift */,
 				4812E1481F010D38008241F8 /* ProcessControlStatesTests.swift */,
+				48F3FFB11F33629D005D8FA1 /* ControlStateMergingTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -708,7 +713,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				482B89711EE00C6500C97D42 /* AutoAssociatedValueEnum.stencil in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -896,6 +900,7 @@
 				4822A1381EF2909A005B8F77 /* UIScrollView+ViewStyle.swift in Sources */,
 				4802200E1F0037670079DEFA /* Attributed.swift in Sources */,
 				48298B581EE6B04C00AB3724 /* EmptyInitializable.swift in Sources */,
+				48F3FFB51F336B12005D8FA1 /* MergableAttribute.swift in Sources */,
 				482B896B1EE00C6500C97D42 /* AutoAssociatedValueEnum.generated.swift in Sources */,
 				484110231EEC436E0016620B /* DelegatesOwner.swift in Sources */,
 				484110451EED7C030016620B /* UISegmentedControl+Makeable.swift in Sources */,
@@ -937,6 +942,7 @@
 				48EF19F91EF129A600E7A10D /* MergeOperatorAssociativityTests.swift in Sources */,
 				482B897C1EE00C7100C97D42 /* BaseXCTest.swift in Sources */,
 				4812E1491F010D38008241F8 /* ProcessControlStatesTests.swift in Sources */,
+				48F3FFB21F33629D005D8FA1 /* ControlStateMergingTests.swift in Sources */,
 				48247B311F001CC800AF8F0A /* MergeInterceptorsTests.swift in Sources */,
 				48D7F3CF1EE5444000BC7012 /* MergingViewStyleWithArraysTests.swift in Sources */,
 			);

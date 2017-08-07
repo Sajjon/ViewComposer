@@ -1,5 +1,5 @@
 //
-//  ControlState.swift
+//  ControlStateStyle.swift
 //  ViewComposer
 //
 //  Created by Alexander Cyon on 2017-05-31.
@@ -8,137 +8,137 @@
 
 import UIKit
 
-public protocol ControlState {
-    var state: UIControlState { get }
-    
-    var title: String? { get set }
-    var titleColor: UIColor? { get set }
-    var image: UIImage? { get set }
-    init(title: String?, titleColor: UIColor?, image: UIImage?)
-}
-
-extension ControlState {
-    
-    public init(_ title: String) {
-        self.init(title: title, titleColor: nil, image: nil)
-    }
-    
-    /// Use together with some other state with title. Title from that other state will be copied over by ViewComposer
-    public init(_ titleColor: UIColor) {
-        self.init(title: nil, titleColor: titleColor, image: nil)
-    }
-    
-    public init(_ image: UIImage) {
-        self.init(title: nil, titleColor: nil, image: image)
-    }
-    
-    public init(_ title: String, _ titleColor: UIColor) {
-        self.init(title: title, titleColor: titleColor, image: nil)
-    }
-    
-    public init(_ title: String, _ image: UIImage) {
-        self.init(title: title, titleColor: nil, image: image)
-    }
-    
-    public init(_ title: String, _ titleColor: UIColor, _ image: UIImage) {
-        self.init(title: title, titleColor: titleColor, image: image)
-    }
-}
-
-public struct Normal: ControlState {
-    public let state: UIControlState = .normal
+public class ControlStateStyle {
+    public var state: UIControlState { fatalError("Override me") }
     
     public var title: String?
     public var titleColor: UIColor?
     public var image: UIImage?
+    public var borderColor: UIColor?
+    public var backgroundColor: UIColor?
     
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
+    public init(
+        _ title: String? = nil,
+        image: UIImage? = nil,
+        titleColor: UIColor? = nil,
+        backgroundColor: UIColor? = nil,
+        borderColor: UIColor? = nil
+    ) {
         self.title = title
         self.titleColor = titleColor
         self.image = image
+        self.borderColor = borderColor
+        self.backgroundColor = backgroundColor
     }
 }
 
-public struct Highlighted: ControlState {
-    public let state: UIControlState = .highlighted
+extension ControlStateStyle {
     
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
+    public convenience init(_ title: String, _ titleColor: UIColor) {
+        self.init(title, titleColor: titleColor)
+    }
     
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
+    public convenience init(_ title: String, _ image: UIImage) {
+        self.init(title, image: image)
+    }
+    
+    public convenience init(_ title: String, _ image: UIImage, _ titleColor: UIColor) {
+        self.init(title, image: image, titleColor: titleColor)
+    }
+    
+    public convenience init(_ titleColor: UIColor) {
+        self.init(titleColor: titleColor)
     }
 }
 
-public struct Disabled: ControlState {
-    public let state: UIControlState = .disabled
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
+public class Normal: ControlStateStyle {
+    public override var state: UIControlState { return .normal }
+}
+
+public class Highlighted: ControlStateStyle {
+    public override var state: UIControlState { return .highlighted }
+}
+
+public class Disabled: ControlStateStyle {
+    public override var state: UIControlState { return .disabled }
+}
+
+public class Selected: ControlStateStyle {
+    public override var state: UIControlState { return .selected }
+}
+
+public class Focused: ControlStateStyle {
+    public override var state: UIControlState { return .focused }
+}
+
+public class Application: ControlStateStyle {
+    public override var state: UIControlState { return .application }
+}
+
+public class Reserved: ControlStateStyle {
+    public override var state: UIControlState { return .reserved }
+}
+
+extension ControlStateStyle: MergeableAttribute {
+    public func merge(overwrittenBy other: ControlStateStyle) -> Self {
+        guard state == other.state else { fatalError("Not same UIControlState") }
+        let merged = self
+        merged.title = other.title ?? self.title
+        merged.titleColor = other.titleColor ?? self.titleColor
+        merged.image = other.image ?? self.image
+        merged.borderColor = other.borderColor ?? self.borderColor
+        return merged
     }
 }
 
-public struct Selected: ControlState {
-    public let state: UIControlState = .selected
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
+extension UIControlState: Hashable {
+    public var hashValue: Int { return rawValue.hashValue }
+}
+
+extension ControlStateStyle: Equatable {
+    public static func == (lhs: ControlStateStyle, rhs: ControlStateStyle) -> Bool { return lhs.state == rhs.state }
+}
+
+extension ControlStateStyle: Hashable {
+    public var hashValue: Int { return state.hashValue }
+}
+
+extension Array where Element == ControlStateStyle {
+    public func merge(overwrittenBy other: [ControlStateStyle]) -> [ControlStateStyle] {
+        
+        let concatenated: [ControlStateStyle] = self + other
+        
+        let allTypes: [UIControlState] = concatenated.map { $0.state }
+        let duplicateOfDuplicates = allTypes.filter { (type: UIControlState) in allTypes.filter { $0 == type }.count > 1 }
+        //swiftlint:disable:next syntactic_sugar
+        let duplicateTypes = Array<UIControlState>(Set<UIControlState>(duplicateOfDuplicates))
+        
+        var merged = [ControlStateStyle]()
+        
+        for duplicateType in duplicateTypes {
+            let duplicateStates = concatenated.filter { $0.state == duplicateType }
+            var duplicateState = duplicateStates[0]
+            duplicateStates.forEach { duplicateState = duplicateState.merge(overwrittenBy: $0) }
+            merged.append(duplicateState)
+        }
+        
+        var set = Set<ControlStateStyle>(merged)
+        concatenated.forEach { set.insert($0) }
+        return Array(set)
     }
 }
 
-public struct Focused: ControlState {
-    public let state: UIControlState = .focused
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
+public struct ControlStateMerger: MergeInterceptor {
+    public static func interceptMerge<A>(master masterAttributed: A, slave: A) -> A where A : Attributed {
+        guard
+            let master = masterAttributed as? ViewStyle,
+            let slave = slave as? ViewStyle,
+            let masterControlStates: [ControlStateStyle] = master.value(.states),
+            let slaveControlStates: [ControlStateStyle] = slave.value(.states)
+            else { return masterAttributed }
+        let merged = slaveControlStates.merge(overwrittenBy: masterControlStates)
+        //swiftlint:disable:next force_cast
+        return ViewStyle([.states(merged)]) as! A
     }
 }
 
-public struct Application: ControlState {
-    public let state: UIControlState = .application
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
-}
-
-public struct Reserved: ControlState {
-    public let state: UIControlState = .reserved
-    
-    public var title: String?
-    public var titleColor: UIColor?
-    public var image: UIImage?
-    
-    public init(title: String?, titleColor: UIColor?, image: UIImage?) {
-        self.title = title
-        self.titleColor = titleColor
-        self.image = image
-    }
-}

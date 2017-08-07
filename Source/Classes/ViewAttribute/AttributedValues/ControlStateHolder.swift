@@ -9,58 +9,49 @@
 import Foundation
 
 public protocol ControlStateHolder {
-    @discardableResult func setControlStates(_ states: [ControlState]) -> Self
+    func setControlStates(_ states: [ControlStateStyle])
 }
 
 extension UIButton: ControlStateHolder {
-    @discardableResult
-    @nonobjc public func setControlStates(_ states: [ControlState]) -> Self {
-        let processed = processStates(states)
-        processed.forEach {
+    @nonobjc public func setControlStates(_ states: [ControlStateStyle]) {
+        ifNeededSetTitleForNonNormalStates(states)
+        states.forEach {
             configureControlState($0)
         }
-        return self
+        ifNeededSetBorderColor(states)
+    }
+}
+
+internal extension UIButton {
+    func configureControlState(_ style: ControlStateStyle) {
+        let state = style.state
+        // important to call `setBackgroundColor` before `setImage`, since image should override.
+        setBackgroundColor(style.backgroundColor, forState: state)
+        setTitle(style.title, for: state)
+        setTitleColor(style.titleColor, for: state)
+        setImage(style.image, for: state)
     }
     
-    func configureControlState(_ state: ControlState) {
-        setTitle(state.title, for: state.state)
-        setImage(state.image, for: state.state)
-        setTitleColor(state.titleColor, for: state.state)
+    func ifNeededSetBorderColor(_ styles: [ControlStateStyle]) {
+        let normal = styles.filter({ $0.state == .normal }).first
+        setBorderColor(normal?.borderColor)
     }
     
-    func processStates(_ states: [ControlState]) -> [ControlState] {
-        guard let title = normalTitle(from: states) else { return states }
-        var states = states
-        states = ifNeededSetTitle(title, forStateOfType: Highlighted.self, in: states)
-        states = ifNeededSetTitle(title, forStateOfType: Disabled.self, in: states)
-        states = ifNeededSetTitle(title, forStateOfType: Selected.self, in: states)
-        states = ifNeededSetTitle(title, forStateOfType: Focused.self, in: states)
-        states = ifNeededSetTitle(title, forStateOfType: Application.self, in: states)
-        states = ifNeededSetTitle(title, forStateOfType: Reserved.self, in: states)
-        return states
+    @nonobjc func setBorderColor(_ borderColor: UIColor?) {
+        guard let borderColor = borderColor else { return }
+        setBorderColor(borderColor.cgColor)
     }
     
-    func ifNeededSetTitle<C: ControlState>(_ title: String, forStateOfType stateType: C.Type, in states: [ControlState]) -> [ControlState] {
-        var states = states
-        var alteredState: C?
-        var indexOfStateToRemove = 0
-        for (index, state) in states.enumerated() {
-            guard
-                type(of: state) == stateType,
-                state.title == nil,
-                let titleColor = state.titleColor
-            else { continue }
-            indexOfStateToRemove = index
-            alteredState = C.init(title: title, titleColor: titleColor, image: state.image)
-            break
-        }
-        guard let altered = alteredState else { return states }
-        states.remove(at: indexOfStateToRemove)
-        states.append(altered)
-        return states
+    @nonobjc func setBorderColor(_ borderColor: CGColor) {
+        layer.borderColor = borderColor
     }
     
-    func normalTitle(from states: [ControlState]) -> String? {
+    func ifNeededSetTitleForNonNormalStates(_ states: [ControlStateStyle]) {
+        guard let title = normalTitle(from: states) else { return }
+        states.filter { $0.title == nil }.forEach { $0.title = title }
+    }
+    
+    func normalTitle(from states: [ControlStateStyle]) -> String? {
         var normalTitle: String?
         for state in states {
             guard state is Normal else { continue }
@@ -68,4 +59,23 @@ extension UIButton: ControlStateHolder {
         }
         return normalTitle
     }
+
+    func setBackgroundColor(_ color: UIColor?, forState state: UIControlState) {
+        guard let color = color else { return }
+        setBackgroundImage(imageWithColor(color), for: state)
+    }
+}
+
+fileprivate func imageWithColor(_ color: UIColor) -> UIImage {
+    let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+    UIGraphicsBeginImageContext(rect.size)
+    let context = UIGraphicsGetCurrentContext()
+    
+    context?.setFillColor(color.cgColor)
+    context?.fill(rect)
+    
+    let image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+    
+    return image!
 }

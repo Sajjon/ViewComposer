@@ -239,8 +239,8 @@ extension AssociatedValueStrippable {
                                     return contentVerticalAlignment
                                 case .contentHorizontalAlignment(let contentHorizontalAlignment):
                                     return contentHorizontalAlignment
-                                case .target(let target):
-                                    return target
+                                case .targets(let targets):
+                                    return targets
                                 case .enabled(let enabled):
                                     return enabled
                                 case .selected(let selected):
@@ -1098,7 +1098,7 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
-                    var states: [ControlState]? {
+                    var states: [ControlStateStyle]? {
                         switch self {
                             case .states(let states):
                                 return states
@@ -1122,10 +1122,10 @@ extension AssociatedValueStrippable {
                                 return nil
                         }
                     }
-                    var target: Actor? {
+                    var targets: [Actor]? {
                         switch self {
-                            case .target(let target):
-                                return target
+                            case .targets(let targets):
+                                return targets
                             default:
                                 return nil
                         }
@@ -1793,7 +1793,7 @@ extension AssociatedValueStrippable {
             case states
             case contentVerticalAlignment
             case contentHorizontalAlignment
-            case target
+            case targets
             case enabled
             case selected
             case highlighted
@@ -1887,333 +1887,332 @@ extension AssociatedValueStrippable {
         		switch self {
         			 case .custom:
         				return .custom
-                     case .delegate:
+        			 case .delegate:
         				return .delegate
-                     case .dataSource:
+        			 case .dataSource:
         				return .dataSource
-                     case .dataSourceDelegate:
+        			 case .dataSourceDelegate:
         				return .dataSourceDelegate
-                     case .hidden:
+        			 case .hidden:
         				return .hidden
-                     case .color:
+        			 case .color:
         				return .color
-                     case .verticalHugging:
+        			 case .verticalHugging:
         				return .verticalHugging
-                     case .verticalCompression:
+        			 case .verticalCompression:
         				return .verticalCompression
-                     case .horizontalHugging:
+        			 case .horizontalHugging:
         				return .horizontalHugging
-                     case .horizontalCompression:
+        			 case .horizontalCompression:
         				return .horizontalCompression
-                     case .contentMode:
+        			 case .contentMode:
         				return .contentMode
-                     case .height:
+        			 case .height:
         				return .height
-                     case .width:
+        			 case .width:
         				return .width
-                     case .layoutMargins:
+        			 case .layoutMargins:
         				return .layoutMargins
-                     case .userInteractable:
+        			 case .userInteractable:
         				return .userInteractable
-                     case .tintColor:
+        			 case .tintColor:
         				return .tintColor
-                     case .clipsToBounds:
+        			 case .clipsToBounds:
         				return .clipsToBounds
-                     case .alpha:
+        			 case .alpha:
         				return .alpha
-                     case .opaque:
+        			 case .opaque:
         				return .opaque
-                     case .exclusiveTouch:
+        			 case .exclusiveTouch:
         				return .exclusiveTouch
-                     case .multipleTouchEnabled:
+        			 case .multipleTouchEnabled:
         				return .multipleTouchEnabled
-                     case .clearsContextBeforeDrawing:
+        			 case .clearsContextBeforeDrawing:
         				return .clearsContextBeforeDrawing
-                     case .semanticContentAttribute:
+        			 case .semanticContentAttribute:
         				return .semanticContentAttribute
-                     case .cornerRadius:
+        			 case .cornerRadius:
         				return .cornerRadius
-                     case .roundedBy:
+        			 case .roundedBy:
         				return .roundedBy
-                     case .borderWidth:
+        			 case .borderWidth:
         				return .borderWidth
-                     case .borderColor:
+        			 case .borderColor:
         				return .borderColor
-                     case .text:
+        			 case .text:
         				return .text
-                     case .font:
+        			 case .font:
         				return .font
-                     case .textColor:
+        			 case .textColor:
         				return .textColor
-                     case .`case`:
+        			 case .`case`:
         				return .`case`
-                     case .textAlignment:
+        			 case .textAlignment:
         				return .textAlignment
-                     case .adjustsFontSizeToFitWidth:
+        			 case .adjustsFontSizeToFitWidth:
         				return .adjustsFontSizeToFitWidth
-                     case .placeholder:
+        			 case .placeholder:
         				return .placeholder
-                     case .editable:
+        			 case .editable:
         				return .editable
-                     case .clearsOnInsertion:
+        			 case .clearsOnInsertion:
         				return .clearsOnInsertion
-                     case .clearsOnBeginEditing:
+        			 case .clearsOnBeginEditing:
         				return .clearsOnBeginEditing
-                     case .inputView:
+        			 case .inputView:
         				return .inputView
-                     case .inputAccessoryView:
+        			 case .inputAccessoryView:
         				return .inputAccessoryView
-                     case .allowsEditingTextAttributes:
+        			 case .allowsEditingTextAttributes:
         				return .allowsEditingTextAttributes
-                     case .dataDetectorTypes:
+        			 case .dataDetectorTypes:
         				return .dataDetectorTypes
-                     case .typingAttributes:
+        			 case .typingAttributes:
         				return .typingAttributes
-                     case .numberOfLines:
+        			 case .numberOfLines:
         				return .numberOfLines
-                     case .highlightedTextColor:
+        			 case .highlightedTextColor:
         				return .highlightedTextColor
-                     case .minimumScaleFactor:
+        			 case .minimumScaleFactor:
         				return .minimumScaleFactor
-                     case .baselineAdjustment:
+        			 case .baselineAdjustment:
         				return .baselineAdjustment
-                     case .shadowColor:
+        			 case .shadowColor:
         				return .shadowColor
-                     case .shadowOffset:
+        			 case .shadowOffset:
         				return .shadowOffset
-                     case .autocapitalizationType:
+        			 case .autocapitalizationType:
         				return .autocapitalizationType
-                     case .autocorrectionType:
+        			 case .autocorrectionType:
         				return .autocorrectionType
-                     case .spellCheckingType:
+        			 case .spellCheckingType:
         				return .spellCheckingType
-                     case .keyboardType:
+        			 case .keyboardType:
         				return .keyboardType
-                     case .keyboardAppearance:
+        			 case .keyboardAppearance:
         				return .keyboardAppearance
-                     case .returnKeyType:
+        			 case .returnKeyType:
         				return .returnKeyType
-                     case .enablesReturnKeyAutomatically:
+        			 case .enablesReturnKeyAutomatically:
         				return .enablesReturnKeyAutomatically
-                     case .isSecureTextEntry:
+        			 case .isSecureTextEntry:
         				return .isSecureTextEntry
-                     case .textContentType:
+        			 case .textContentType:
         				return .textContentType
-                     case .borderStyle:
+        			 case .borderStyle:
         				return .borderStyle
-                     case .background:
+        			 case .background:
         				return .background
-                     case .disabledBackground:
+        			 case .disabledBackground:
         				return .disabledBackground
-                     case .clearButtonMode:
+        			 case .clearButtonMode:
         				return .clearButtonMode
-                     case .leftView:
+        			 case .leftView:
         				return .leftView
-                     case .leftViewMode:
+        			 case .leftViewMode:
         				return .leftViewMode
-                     case .rightView:
+        			 case .rightView:
         				return .rightView
-                     case .rightViewMode:
+        			 case .rightViewMode:
         				return .rightViewMode
-                     case .selectedRange:
+        			 case .selectedRange:
         				return .selectedRange
-                     case .linkTextAttributes:
+        			 case .linkTextAttributes:
         				return .linkTextAttributes
-                     case .textContainerInset:
+        			 case .textContainerInset:
         				return .textContainerInset
-                     case .image:
+        			 case .image:
         				return .image
-                     case .scrollEnabled:
+        			 case .scrollEnabled:
         				return .scrollEnabled
-                     case .contentSize:
+        			 case .contentSize:
         				return .contentSize
-                     case .contentInset:
+        			 case .contentInset:
         				return .contentInset
-                     case .bounces:
+        			 case .bounces:
         				return .bounces
-                     case .alwaysBounceVertical:
+        			 case .alwaysBounceVertical:
         				return .alwaysBounceVertical
-                     case .alwaysBounceHorizontal:
+        			 case .alwaysBounceHorizontal:
         				return .alwaysBounceHorizontal
-                     case .pagingEnabled:
+        			 case .pagingEnabled:
         				return .pagingEnabled
-                     case .showsHorizontalScrollIndicator:
+        			 case .showsHorizontalScrollIndicator:
         				return .showsHorizontalScrollIndicator
-                     case .showsVerticalScrollIndicator:
+        			 case .showsVerticalScrollIndicator:
         				return .showsVerticalScrollIndicator
-                     case .scrollIndicatorInsets:
+        			 case .scrollIndicatorInsets:
         				return .scrollIndicatorInsets
-                     case .indicatorStyle:
+        			 case .indicatorStyle:
         				return .indicatorStyle
-                     case .decelerationRate:
+        			 case .decelerationRate:
         				return .decelerationRate
-                     case .delaysContentTouches:
+        			 case .delaysContentTouches:
         				return .delaysContentTouches
-                     case .canCancelContentTouches:
+        			 case .canCancelContentTouches:
         				return .canCancelContentTouches
-                     case .minimumZoomScale:
+        			 case .minimumZoomScale:
         				return .minimumZoomScale
-                     case .maximumZoomScale:
+        			 case .maximumZoomScale:
         				return .maximumZoomScale
-                     case .zoomScale:
+        			 case .zoomScale:
         				return .zoomScale
-                     case .bouncesZoom:
+        			 case .bouncesZoom:
         				return .bouncesZoom
-                     case .scrollsToTop:
+        			 case .scrollsToTop:
         				return .scrollsToTop
-                     case .keyboardDismissMode:
+        			 case .keyboardDismissMode:
         				return .keyboardDismissMode
-                     case .states:
+        			 case .states:
         				return .states
-                     case .contentVerticalAlignment:
+        			 case .contentVerticalAlignment:
         				return .contentVerticalAlignment
-                     case .contentHorizontalAlignment:
+        			 case .contentHorizontalAlignment:
         				return .contentHorizontalAlignment
-                     case .target:
-        				return .target
-                     case .enabled:
+        			 case .targets:
+        				return .targets
+        			 case .enabled:
         				return .enabled
-                     case .selected:
+        			 case .selected:
         				return .selected
-                     case .highlighted:
+        			 case .highlighted:
         				return .highlighted
-                     case .contentEdgeInsets:
+        			 case .contentEdgeInsets:
         				return .contentEdgeInsets
-                     case .titleEdgeInsets:
+        			 case .titleEdgeInsets:
         				return .titleEdgeInsets
-                     case .reversesTitleShadowWhenHighlighted:
+        			 case .reversesTitleShadowWhenHighlighted:
         				return .reversesTitleShadowWhenHighlighted
-                     case .imageEdgeInsets:
+        			 case .imageEdgeInsets:
         				return .imageEdgeInsets
-                     case .adjustsImageWhenHighlighted:
+        			 case .adjustsImageWhenHighlighted:
         				return .adjustsImageWhenHighlighted
-                     case .adjustsImageWhenDisabled:
+        			 case .adjustsImageWhenDisabled:
         				return .adjustsImageWhenDisabled
-                     case .showsTouchWhenHighlighted:
+        			 case .showsTouchWhenHighlighted:
         				return .showsTouchWhenHighlighted
-                     case .axis:
+        			 case .axis:
         				return .axis
-                     case .distribution:
+        			 case .distribution:
         				return .distribution
-                     case .alignment:
+        			 case .alignment:
         				return .alignment
-                     case .spacing:
+        			 case .spacing:
         				return .spacing
-                     case .margin:
+        			 case .margin:
         				return .margin
-                     case .marginsRelative:
+        			 case .marginsRelative:
         				return .marginsRelative
-                     case .baselineRelative:
+        			 case .baselineRelative:
         				return .baselineRelative
-                     case .views:
+        			 case .views:
         				return .views
-                     case .registerCells:
+        			 case .registerCells:
         				return .registerCells
-                     case .backgroundView:
+        			 case .backgroundView:
         				return .backgroundView
-                     case .allowsMultipleSelection:
+        			 case .allowsMultipleSelection:
         				return .allowsMultipleSelection
-                     case .allowsSelection:
+        			 case .allowsSelection:
         				return .allowsSelection
-                     case .remembersLastFocusedIndexPath:
+        			 case .remembersLastFocusedIndexPath:
         				return .remembersLastFocusedIndexPath
-                     case .prefetchDataSource:
+        			 case .prefetchDataSource:
         				return .prefetchDataSource
-                     case .sectionIndexMinimumDisplayRowCount:
+        			 case .sectionIndexMinimumDisplayRowCount:
         				return .sectionIndexMinimumDisplayRowCount
-                     case .sectionIndexTrackingBackgroundColor:
+        			 case .sectionIndexTrackingBackgroundColor:
         				return .sectionIndexTrackingBackgroundColor
-                     case .sectionIndexBackgroundColor:
+        			 case .sectionIndexBackgroundColor:
         				return .sectionIndexBackgroundColor
-                     case .sectionIndexColor:
+        			 case .sectionIndexColor:
         				return .sectionIndexColor
-                     case .rowHeight:
+        			 case .rowHeight:
         				return .rowHeight
-                     case .separatorStyle:
+        			 case .separatorStyle:
         				return .separatorStyle
-                     case .separatorColor:
+        			 case .separatorColor:
         				return .separatorColor
-                     case .separatorEffect:
+        			 case .separatorEffect:
         				return .separatorEffect
-                     case .separatorInset:
+        			 case .separatorInset:
         				return .separatorInset
-                     case .cellLayoutMarginsFollowReadableWidth:
+        			 case .cellLayoutMarginsFollowReadableWidth:
         				return .cellLayoutMarginsFollowReadableWidth
-                     case .sectionHeaderHeight:
+        			 case .sectionHeaderHeight:
         				return .sectionHeaderHeight
-                     case .sectionFooterHeight:
+        			 case .sectionFooterHeight:
         				return .sectionFooterHeight
-                     case .estimatedRowHeight:
+        			 case .estimatedRowHeight:
         				return .estimatedRowHeight
-                     case .estimatedSectionHeaderHeight:
+        			 case .estimatedSectionHeaderHeight:
         				return .estimatedSectionHeaderHeight
-                     case .estimatedSectionFooterHeight:
+        			 case .estimatedSectionFooterHeight:
         				return .estimatedSectionFooterHeight
-                     case .allowsSelectionDuringEditing:
+        			 case .allowsSelectionDuringEditing:
         				return .allowsSelectionDuringEditing
-                     case .allowsMultipleSelectionDuringEditing:
+        			 case .allowsMultipleSelectionDuringEditing:
         				return .allowsMultipleSelectionDuringEditing
-                     case .isEditing:
+        			 case .isEditing:
         				return .isEditing
-                     case .collectionViewLayout:
+        			 case .collectionViewLayout:
         				return .collectionViewLayout
-                     case .itemSize:
+        			 case .itemSize:
         				return .itemSize
-                     case .isPrefetchingEnabled:
+        			 case .isPrefetchingEnabled:
         				return .isPrefetchingEnabled
-                     case .prompt:
+        			 case .prompt:
         				return .prompt
-                     case .searchBarStyle:
+        			 case .searchBarStyle:
         				return .searchBarStyle
-                     case .segments:
+        			 case .segments:
         				return .segments
-                     case .thumbTintColor:
+        			 case .thumbTintColor:
         				return .thumbTintColor
-                     case .on:
+        			 case .on:
         				return .on
-                     case .onTintColor:
+        			 case .onTintColor:
         				return .onTintColor
-                     case .onImage:
+        			 case .onImage:
         				return .onImage
-                     case .offImge:
+        			 case .offImge:
         				return .offImge
-                     case .webPage:
+        			 case .webPage:
         				return .webPage
-                     case .sliderValue:
+        			 case .sliderValue:
         				return .sliderValue
-                     case .sliderRange:
+        			 case .sliderRange:
         				return .sliderRange
-                     case .spin:
+        			 case .spin:
         				return .spin
-                     case .hidesWhenStopped:
+        			 case .hidesWhenStopped:
         				return .hidesWhenStopped
-                     case .spinnerStyle:
+        			 case .spinnerStyle:
         				return .spinnerStyle
-                     case .spinnerScale:
+        			 case .spinnerScale:
         				return .spinnerScale
-                     case .progressViewStyle:
+        			 case .progressViewStyle:
         				return .progressViewStyle
-                     case .progress:
+        			 case .progress:
         				return .progress
-                     case .progressTintColor:
+        			 case .progressTintColor:
         				return .progressTintColor
-                     case .progressImage:
+        			 case .progressImage:
         				return .progressImage
-                     case .trackTintColor:
+        			 case .trackTintColor:
         				return .trackTintColor
-                     case .trackImage:
+        			 case .trackImage:
         				return .trackImage
-                     case .currentPage:
+        			 case .currentPage:
         				return .currentPage
-                     case .numberOfPages:
+        			 case .numberOfPages:
         				return .numberOfPages
-                     case .hidesForSinglePage:
+        			 case .hidesForSinglePage:
         				return .hidesForSinglePage
-                     case .pageIndicatorTintColor:
+        			 case .pageIndicatorTintColor:
         				return .pageIndicatorTintColor
-                     case .currentPageIndicatorTintColor:
+        			 case .currentPageIndicatorTintColor:
         				return .currentPageIndicatorTintColor
-default: print("`\(self)` case should be handled..")
         		}
         	}
         }

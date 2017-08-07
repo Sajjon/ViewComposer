@@ -10,7 +10,7 @@ import UIKit
 
 open class Button: UIButton, Composable {
     
-    open let style: ViewStyle
+    open var style: ViewStyle
     
     required public init(_ style: ViewStyle? = nil) {
         let style = style.merge(slave: .default)
@@ -25,8 +25,37 @@ open class Button: UIButton, Composable {
         super.layoutSubviews()
         layoutSubviews(with: style)
     }
+    
+    public func setupSubviews(with style: ViewStyle) {
+        let targets: [Actor] = [
+            target(#selector(useBorderColorNormal), event: .touchUpInside),
+            target(#selector(useBorderColorHighlighted), event: .touchDown)
+        ]
+        self.style = style <<- .targets(targets)
+        targets.forEach { addTarget(using: $0) }
+    }
+}
+
+private extension Button {
+    
+    @objc func useBorderColorHighlighted() {
+        guard let highlighted = style.state(with: .highlighted), let borderColor = highlighted.borderColor else { return }
+        layer.borderColor = borderColor.cgColor
+    }
+    
+    @objc func useBorderColorNormal() {
+        guard let highlighted = style.state(with: .normal), let borderColor = highlighted.borderColor else { return }
+        layer.borderColor = borderColor.cgColor
+    }
 }
 
 private extension ViewStyle {
-    @nonobjc static let `default`: ViewStyle = [.roundedBy(.height), .verticalHugging(.high), .verticalCompression(.high)]
+    func state(with state: UIControlState) -> ControlStateStyle? {
+        guard let states: [ControlStateStyle] = value(.states) else { return nil }
+        return states.filter { $0.state == state }.first
+    }
+}
+
+private extension ViewStyle {
+    @nonobjc static let `default`: ViewStyle = [.roundedBy(.height), .clipsToBounds(true), .verticalHugging(.high), .verticalCompression(.high)]
 }

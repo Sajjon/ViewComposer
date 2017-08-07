@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ViewComposer
 
 @UIApplicationMain
 class AppDelegate: UIResponder {
@@ -16,10 +17,19 @@ class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
+        ViewStyle.customStyler = AnyCustomStyler(CustomStylerExample())
         return true
     }
 }
 
+struct CustomStylerExample: CustomStyler {
+    
+    func customStyle(_ styleable: Any, with style: ViewStyle) {
+        if styleable is UITableView {
+            print("Styleable is TableView")
+        }
+    }
+}
 
 //MARK: Private Methods
 private extension AppDelegate {
