@@ -20,7 +20,7 @@ extension UIStackView: Makeable {
 }
 
 extension UIStackView {
-    func setupArrangedSubviews(with style: ViewStyle) {
+    public func setupArrangedSubviews(with style: ViewStyle) {
         guard let optionalViews: [UIView?] = style.value(.views) else { return }
         let views: [UIView] = optionalViews.removeNils()
         views.forEach { addArrangedSubview($0) }
