@@ -15,8 +15,13 @@ class LabelsViewController: UIViewController, StackViewOwner {
     private lazy var fooLabel: UILabel = labelStyle <<- .text("Foo")
     private lazy var barLabel: UILabel = labelStyle <<- [.text("Bar"), .textColor(.blue), .color(.red)]
     private lazy var bazLabel: UILabel = labelStyle <<- [.text("Baz"), .textAlignment(.left), .color(.green), .font(.boldSystemFont(ofSize: 45))]
+    private lazy var attributedText: NSAttributedString = "This is an attributed string".applyAttributes([
+        NSForegroundColorAttributeName: UIColor.red,
+        NSFontAttributeName: UIFont.boldSystemFont(ofSize: 30)
+        ], toSubstring: "attributed")
+    private lazy var attributedLabel: UILabel = labelStyle <<- [.font(.boldSystemFont(ofSize: 14)), .textColor(.green), .color(.purple), .attributedText(self.attributedText)]
     
-    lazy var stackView: UIStackView = StackView([.views([self.fooLabel, self.barLabel, self.bazLabel]), .distribution(.fillEqually), .color(.blue), .spacing(50), .layoutMargins(all: 40), .marginsRelative(true)])
+    lazy var stackView: UIStackView = StackView([.views([self.fooLabel, self.barLabel, self.bazLabel, self.attributedLabel]), .distribution(.fillEqually), .color(.blue), .spacing(50), .layoutMargins(all: 40), .marginsRelative(true)])
     
     init() {
         super.init(nibName: nil, bundle: nil)

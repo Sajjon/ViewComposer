@@ -72,6 +72,7 @@ public enum ViewAttribute {
     case baselineAdjustment(UIBaselineAdjustment)
     case shadowColor(UIColor)
     case shadowOffset(CGSize)
+    case attributedText(NSAttributedString)
     
     //MARK: UITextInputTraits (UITextField & UISearchBar & UITextView)
     case autocapitalizationType(UITextAutocapitalizationType)

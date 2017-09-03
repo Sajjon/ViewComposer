@@ -151,6 +151,8 @@ extension AssociatedValueStrippable {
                                     return shadowColor
                                 case .shadowOffset(let shadowOffset):
                                     return shadowOffset
+                                case .attributedText(let attributedText):
+                                    return attributedText
                                 case .autocapitalizationType(let autocapitalizationType):
                                     return autocapitalizationType
                                 case .autocorrectionType(let autocorrectionType):
@@ -766,6 +768,14 @@ extension AssociatedValueStrippable {
                         switch self {
                             case .shadowOffset(let shadowOffset):
                                 return shadowOffset
+                            default:
+                                return nil
+                        }
+                    }
+                    var attributedText: NSAttributedString? {
+                        switch self {
+                            case .attributedText(let attributedText):
+                                return attributedText
                             default:
                                 return nil
                         }
@@ -1749,6 +1759,7 @@ extension AssociatedValueStrippable {
             case baselineAdjustment
             case shadowColor
             case shadowOffset
+            case attributedText
             case autocapitalizationType
             case autocorrectionType
             case spellCheckingType
@@ -1981,6 +1992,8 @@ extension AssociatedValueStrippable {
         				return .shadowColor
         			 case .shadowOffset:
         				return .shadowOffset
+        			 case .attributedText:
+        				return .attributedText
         			 case .autocapitalizationType:
         				return .autocapitalizationType
         			 case .autocorrectionType:
