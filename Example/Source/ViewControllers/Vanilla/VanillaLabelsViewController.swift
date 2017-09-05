@@ -43,8 +43,22 @@ class VanillaLabelsViewController: UIViewController, StackViewOwner {
         return label
     }()
     
+    private lazy var attributedLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        let attributedText = "This is an attributed string".applyAttributes([
+            NSForegroundColorAttributeName: UIColor.red,
+            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 30)
+            ], toSubstring: "attributed")
+        label.backgroundColor = .purple
+        label.textColor = .green
+        label.textAlignment = .center
+        label.font = .systemFont(ofSize: 14)
+        return label
+    }()
+    
     lazy var stackView: UIStackView = {
-        let stackView = UIStackView(arrangedSubviews: [self.fooLabel, self.barLabel, self.bazLabel])
+        let stackView = UIStackView(arrangedSubviews: [self.fooLabel, self.barLabel, self.bazLabel, self.attributedLabel])
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
