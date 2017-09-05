@@ -101,6 +101,12 @@ public enum ViewAttribute {
     
     //MARK: - ImageHolder
     case image(UIImage?)
+    case highlightedImage(UIImage?)
+    case renderingMode(UIImageRenderingMode)
+    case animationImages([UIImage]?)
+    case highlightedAnimationImages([UIImage]?)
+    case animationRepeatCount(Int)
+    case animationDuration(TimeInterval)
     
     //MARK: - UIScrollView
     case scrollEnabled(Bool)

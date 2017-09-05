@@ -26,6 +26,7 @@
 		4846CED91EE172C000E84C91 /* TriangleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CED81EE172C000E84C91 /* TriangleView.swift */; };
 		4846CEE01EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEDF1EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift */; };
 		4846CEE21EE2C3DF00E84C91 /* FooLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4846CEE11EE2C3DF00E84C91 /* FooLabel.swift */; };
+		484C5C501F5E9FB400196A97 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 484C5C4F1F5E9FB400196A97 /* ImageViewController.swift */; };
 		48594C321EF0642A0058594B /* MakeableWKWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C311EF0642A0058594B /* MakeableWKWebViewViewController.swift */; };
 		48594C381EF067430058594B /* SingleSubviewOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C371EF067430058594B /* SingleSubviewOwner.swift */; };
 		48594C3A1EF0674C0058594B /* StackViewOwner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C391EF0674C0058594B /* StackViewOwner.swift */; };
@@ -96,6 +97,7 @@
 		4846CEDF1EE2C03600E84C91 /* SimpleCustomAttributeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleCustomAttributeViewController.swift; sourceTree = "<group>"; };
 		4846CEE11EE2C3DF00E84C91 /* FooLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FooLabel.swift; sourceTree = "<group>"; };
 		4846CEE41EE2DBB500E84C91 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = ../Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		484C5C4F1F5E9FB400196A97 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		48594C311EF0642A0058594B /* MakeableWKWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableWKWebViewViewController.swift; sourceTree = "<group>"; };
 		48594C371EF067430058594B /* SingleSubviewOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleSubviewOwner.swift; sourceTree = "<group>"; };
 		48594C391EF0674C0058594B /* StackViewOwner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackViewOwner.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				4841105E1EEDAE160016620B /* MakeableCollectionViewController.swift */,
 				48594C311EF0642A0058594B /* MakeableWKWebViewViewController.swift */,
 				48594C3D1EF06EA80058594B /* MakeableUIWebViewViewController.swift */,
+				484C5C4F1F5E9FB400196A97 /* ImageViewController.swift */,
 			);
 			path = ViewComposer;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				4887BA2B1EEDB4CC00FAB210 /* MyCollectionViewCell.swift in Sources */,
 				48594C321EF0642A0058594B /* MakeableWKWebViewViewController.swift in Sources */,
 				484110251EEC44F10016620B /* LoginViewController.swift in Sources */,
+				484C5C501F5E9FB400196A97 /* ImageViewController.swift in Sources */,
 				484110551EED9F1F0016620B /* UIView_Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

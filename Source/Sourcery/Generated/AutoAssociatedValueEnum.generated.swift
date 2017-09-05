@@ -193,6 +193,18 @@ extension AssociatedValueStrippable {
                                     return textContainerInset
                                 case .image(let image):
                                     return image
+                                case .highlightedImage(let highlightedImage):
+                                    return highlightedImage
+                                case .renderingMode(let renderingMode):
+                                    return renderingMode
+                                case .animationImages(let animationImages):
+                                    return animationImages
+                                case .highlightedAnimationImages(let highlightedAnimationImages):
+                                    return highlightedAnimationImages
+                                case .animationRepeatCount(let animationRepeatCount):
+                                    return animationRepeatCount
+                                case .animationDuration(let animationDuration):
+                                    return animationDuration
                                 case .scrollEnabled(let scrollEnabled):
                                     return scrollEnabled
                                 case .contentSize(let contentSize):
@@ -934,6 +946,54 @@ extension AssociatedValueStrippable {
                         switch self {
                             case .image(let image):
                                 return image
+                            default:
+                                return nil
+                        }
+                    }
+                    var highlightedImage: UIImage? {
+                        switch self {
+                            case .highlightedImage(let highlightedImage):
+                                return highlightedImage
+                            default:
+                                return nil
+                        }
+                    }
+                    var renderingMode: UIImageRenderingMode? {
+                        switch self {
+                            case .renderingMode(let renderingMode):
+                                return renderingMode
+                            default:
+                                return nil
+                        }
+                    }
+                    var animationImages: [UIImage]? {
+                        switch self {
+                            case .animationImages(let animationImages):
+                                return animationImages
+                            default:
+                                return nil
+                        }
+                    }
+                    var highlightedAnimationImages: [UIImage]? {
+                        switch self {
+                            case .highlightedAnimationImages(let highlightedAnimationImages):
+                                return highlightedAnimationImages
+                            default:
+                                return nil
+                        }
+                    }
+                    var animationRepeatCount: Int? {
+                        switch self {
+                            case .animationRepeatCount(let animationRepeatCount):
+                                return animationRepeatCount
+                            default:
+                                return nil
+                        }
+                    }
+                    var animationDuration: TimeInterval? {
+                        switch self {
+                            case .animationDuration(let animationDuration):
+                                return animationDuration
                             default:
                                 return nil
                         }
@@ -1770,6 +1830,12 @@ extension AssociatedValueStrippable {
             case linkTextAttributes
             case textContainerInset
             case image
+            case highlightedImage
+            case renderingMode
+            case animationImages
+            case highlightedAnimationImages
+            case animationRepeatCount
+            case animationDuration
             case scrollEnabled
             case contentSize
             case contentInset
@@ -2023,6 +2089,18 @@ extension AssociatedValueStrippable {
         				return .textContainerInset
         			 case .image:
         				return .image
+        			 case .highlightedImage:
+        				return .highlightedImage
+        			 case .renderingMode:
+        				return .renderingMode
+        			 case .animationImages:
+        				return .animationImages
+        			 case .highlightedAnimationImages:
+        				return .highlightedAnimationImages
+        			 case .animationRepeatCount:
+        				return .animationRepeatCount
+        			 case .animationDuration:
+        				return .animationDuration
         			 case .scrollEnabled:
         				return .scrollEnabled
         			 case .contentSize:
