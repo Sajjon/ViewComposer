@@ -24,6 +24,8 @@ internal extension UILabel {
                 self.shadowColor = shadowColor
             case .shadowOffset(let shadowOffset):
                 self.shadowOffset = shadowOffset
+            case .attributedText(let attributedText):
+                self.attributedText = attributedText
             default:
                 break
             }

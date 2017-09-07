@@ -8,29 +8,25 @@
 
 import UIKit
 
+public protocol ImageHolderHolder: class {
+    var imageHolder: ImageHolder? { get }
+}
+
 public protocol ImageHolder: class {
-    var imageProxy: UIImage? { get set}
+    var image: UIImage? { get set }
+    var isHighlighted: Bool { get set}
+    var highlightedImage: UIImage? { get set }
+    var animationImages: [UIImage]? { get set }
+    var highlightedAnimationImages: [UIImage]? { get set }
+    var animationRepeatCount: Int { get set }
+    var animationDuration: TimeInterval { get set }
 }
 
-extension ImageHolder {
-    @discardableResult
-    func setImage(_ image: UIImage?) -> Self {
-        imageProxy = image
-        return self
-    }
-}
+extension UIImageView: ImageHolder {}
 
-extension UIImageView: ImageHolder {
-    public var imageProxy: UIImage? {
-        get { return image }
-        set { image = newValue }
-    }
-}
-
-extension UIButton: ImageHolder {
-    public var imageProxy: UIImage? {
-        get { return self.image(for: .normal) }
-        set { setImage(newValue, for: .normal) }
+extension UIButton: ImageHolderHolder {
+    public var imageHolder: ImageHolder? {
+        return imageView
     }
 }
 
@@ -39,10 +35,29 @@ internal extension ImageHolder {
         style.attributes.forEach {
             switch $0 {
             case .image(let image):
-                setImage(image)
+                self.image = image
+            case .highlightedImage(let image):
+                self.highlightedImage = image
+            case .animationImages(let images):
+                self.animationImages = images
+            case .highlightedAnimationImages(let images):
+                self.highlightedAnimationImages = images
+            case .animationRepeatCount(let count):
+                self.animationRepeatCount = count
+            case .animationDuration(let duration):
+                self.animationDuration = duration
+            case .highlighted(let highlighted):
+                self.isHighlighted = highlighted
             default:
                 break
             }
         }
+    }
+}
+
+internal extension ImageHolderHolder {
+    func apply(_ style: ViewStyle) {
+        guard let imageHolder = imageHolder else { return }
+        imageHolder.apply(style)
     }
 }
