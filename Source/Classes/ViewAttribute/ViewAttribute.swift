@@ -72,6 +72,7 @@ public enum ViewAttribute {
     case baselineAdjustment(UIBaselineAdjustment)
     case shadowColor(UIColor)
     case shadowOffset(CGSize)
+    case attributedText(NSAttributedString)
     
     //MARK: UITextInputTraits (UITextField & UISearchBar & UITextView)
     case autocapitalizationType(UITextAutocapitalizationType)
@@ -101,6 +102,12 @@ public enum ViewAttribute {
     
     //MARK: - ImageHolder
     case image(UIImage?)
+    case highlightedImage(UIImage?)
+    case renderingMode(UIImageRenderingMode)
+    case animationImages([UIImage]?)
+    case highlightedAnimationImages([UIImage]?)
+    case animationRepeatCount(Int)
+    case animationDuration(TimeInterval)
     
     //MARK: - UIScrollView
     case scrollEnabled(Bool)

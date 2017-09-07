@@ -77,7 +77,8 @@ func makeModels() -> [[Model]] {
         Model("Custom attribute: TriangleView (advanced)", type: TriangleViewController.self),
         Model("Mixed Views", type: MixedViewsViewController.self),
         Model("CollectionView", type: MakeableCollectionViewController.self),
-        Model("WKWebView", type: MakeableWKWebViewViewController.self)
+        Model("WKWebView", type: MakeableWKWebViewViewController.self),
+        Model("ImageView", type: ImageViewController.self)
     ]
     return [both, viewComposerOnly]
 }
