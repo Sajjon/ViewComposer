@@ -8,12 +8,11 @@
 
 import UIKit
 
-public protocol ImageHolderHolder: class {
-    var imageHolder: ImageHolder? { get }
+public protocol ImageHolder: class {
+    var imageProxy: UIImage? { get set }
 }
 
-public protocol ImageHolder: class {
-    var image: UIImage? { get set }
+public protocol ImageViewRepresentable: class, ImageHolder {
     var isHighlighted: Bool { get set}
     var highlightedImage: UIImage? { get set }
     var animationImages: [UIImage]? { get set }
@@ -22,20 +21,39 @@ public protocol ImageHolder: class {
     var animationDuration: TimeInterval { get set }
 }
 
-extension UIImageView: ImageHolder {}
-
-extension UIButton: ImageHolderHolder {
-    public var imageHolder: ImageHolder? {
-        return imageView
+extension ImageHolder where Self: UIImageView {
+    public var imageProxy: UIImage? {
+        get { return image }
+        set { image = newValue }
     }
 }
+
+extension ImageHolder where Self: UIButton {
+    public var imageProxy: UIImage? {
+        get { return image(for: .normal) }
+        set { setImage(newValue, for: .normal) }
+    }
+}
+
+extension UIImageView: ImageViewRepresentable {}
+extension UIButton: ImageHolder {}
 
 internal extension ImageHolder {
     func apply(_ style: ViewStyle) {
         style.attributes.forEach {
             switch $0 {
             case .image(let image):
-                self.image = image
+                self.imageProxy = image
+            default: break
+            }
+        }
+    }
+}
+
+internal extension ImageViewRepresentable {
+    func apply(_ style: ViewStyle) {
+        style.attributes.forEach {
+            switch $0 {
             case .highlightedImage(let image):
                 self.highlightedImage = image
             case .animationImages(let images):
@@ -52,12 +70,5 @@ internal extension ImageHolder {
                 break
             }
         }
-    }
-}
-
-internal extension ImageHolderHolder {
-    func apply(_ style: ViewStyle) {
-        guard let imageHolder = imageHolder else { return }
-        imageHolder.apply(style)
     }
 }

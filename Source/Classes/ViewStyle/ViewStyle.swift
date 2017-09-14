@@ -100,6 +100,10 @@ public extension ViewStyle {
             imageHolder.apply(self)
         }
         
+        if let imageViewRepresentable = view as? ImageViewRepresentable {
+            imageViewRepresentable.apply(self)
+        }
+        
         if let placeholder = view as? PlaceholderOwner {
             placeholder.apply(self)
         }

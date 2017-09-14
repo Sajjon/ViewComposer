@@ -11,6 +11,7 @@ import Foundation
 extension UIButton: Makeable {
     public typealias Style = ViewStyle
     public static func createEmpty() -> UIButton {
-        return UIButton(frame: .zero)
+//        return UIButton(frame: .zero)
+        return UIButton(type: .custom)
     }
 }
