@@ -12,8 +12,8 @@ public protocol AssociatedValueEnumExtractor {
     var associatedValue: Any? { get }
 }
 
-public protocol StrippedRepresentation: RawRepresentable, Equatable, Hashable, Comparable {}
-public protocol AssociatedValueStrippable: Equatable, Comparable {
+public protocol StrippedRepresentation: RawRepresentable, Hashable, Comparable {}
+public protocol AssociatedValueStrippable: Comparable {
     associatedtype Stripped: StrippedRepresentation
     var stripped: Stripped { get }
 }
@@ -124,7 +124,7 @@ extension Attributed {
     
     static func removeDuplicatesIfNeededAndAble(_ attributes: [Attribute]) -> [Attribute] {
         let grouped = Self.groupAttributes(attributes)
-        let duplicates = Dictionary(grouped.filter { $1.count > 1 })
+        let duplicates = Dictionary(grouped.filter { $0.1.count > 1 })
         let selected = Self.choseDuplicates(from: duplicates)
         return selected + grouped.values.filter { $0.count == 1 }.flatMap { $0 }
     }

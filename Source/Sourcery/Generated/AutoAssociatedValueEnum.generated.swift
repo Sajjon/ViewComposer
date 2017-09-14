@@ -2310,13 +2310,13 @@ extension AssociatedValueStrippable {
 
 
 extension Collection where Iterator.Element: AssociatedValueStrippable, Iterator.Element: Hashable {
-    func contains<Stripped: StrippedRepresentation>(_ element: Stripped) -> Bool where Stripped == Iterator.Element.Stripped {
+    func contains<Stripped>(_ element: Stripped) -> Bool where Stripped == Iterator.Element.Stripped {
         return map { $0.stripped }.contains(element)
     }
 }
 
 extension Collection where Iterator.Element: AssociatedValueStrippable, Iterator.Element: AssociatedValueEnumExtractor {
-    func associatedValue<AssociatedValue, Stripped: StrippedRepresentation>(_ element: Stripped) -> AssociatedValue? where Stripped == Iterator.Element.Stripped {
+    func associatedValue<AssociatedValue, Stripped>(_ element: Stripped) -> AssociatedValue? where Stripped == Iterator.Element.Stripped {
         for item in self {
             guard item.stripped == element else { continue }
             return item.associatedValueTyped()

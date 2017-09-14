@@ -47,8 +47,8 @@ class VanillaLabelsViewController: UIViewController, StackViewOwner {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         let attributedText = "This is an attributed string".applyAttributes([
-            NSForegroundColorAttributeName: UIColor.red,
-            NSFontAttributeName: UIFont.boldSystemFont(ofSize: 30)
+            NSAttributedStringKey.foregroundColor: UIColor.red,
+            NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 30)
             ], toSubstring: "attributed")
         label.backgroundColor = .purple
         label.textColor = .green

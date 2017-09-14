@@ -16,8 +16,8 @@ class LabelsViewController: UIViewController, StackViewOwner {
     private lazy var barLabel: UILabel = labelStyle <<- [.text("Bar"), .textColor(.blue), .color(.red)]
     private lazy var bazLabel: UILabel = labelStyle <<- [.text("Baz"), .textAlignment(.left), .color(.green), .font(.boldSystemFont(ofSize: 45))]
     private lazy var attributedText: NSAttributedString = "This is an attributed string".applyAttributes([
-        NSForegroundColorAttributeName: UIColor.red,
-        NSFontAttributeName: UIFont.boldSystemFont(ofSize: 30)
+        NSAttributedStringKey.foregroundColor: UIColor.red,
+        NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 30)
         ], toSubstring: "attributed")
     private lazy var attributedLabel: UILabel = labelStyle <<- [.font(.boldSystemFont(ofSize: 14)), .textColor(.green), .color(.purple), .attributedText(self.attributedText)]
     

@@ -19,13 +19,13 @@ extension LayoutPriority {
     var value: UILayoutPriority {
         switch self {
         case .required:
-            return UILayoutPriorityRequired
+            return .required
         case .low:
-            return UILayoutPriorityDefaultLow
+            return .defaultLow
         case .high:
-            return UILayoutPriorityDefaultHigh
+            return .defaultHigh
         case .custom(let prio):
-            return prio
+            return UILayoutPriority(rawValue: prio)
         }
     }
 }

@@ -38,7 +38,7 @@ extension SingleSubviewOwner {
         parentView.addConstraint(subview.leadingAnchor.constraint(equalTo: parentView.leadingAnchor))
         parentView.addConstraint(subview.trailingAnchor.constraint(equalTo: parentView.trailingAnchor))
         let bottom = subview.bottomAnchor.constraint(equalTo: parentView.bottomAnchor)
-        bottom.priority = UILayoutPriorityDefaultHigh
+        bottom.priority = .defaultHigh
         parentView.addConstraint(bottom)
         
         specialConfig()

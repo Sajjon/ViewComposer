@@ -90,7 +90,7 @@ extension ViewStyle: CustomAttributeMerger {
     public typealias CustomAttribute = TriangleViewStyle
 }
 
-private extension Optional where Wrapped == ViewStyle, Wrapped: CustomAttributeMerger {
+private extension Optional where Wrapped == ViewStyle {
     func merge(slave: Wrapped) -> Wrapped {
         guard let `self` = self else { return slave }
         return self.customMerge(slave: slave, into: self)

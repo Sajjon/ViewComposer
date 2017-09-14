@@ -23,8 +23,8 @@ extension UIView {
     static func spacer(_ color: UIColor) -> UIView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .vertical)
-        view.setContentCompressionResistancePriority(UILayoutPriorityDefaultLow, for: .horizontal)
+        view.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         view.backgroundColor = color
         return view
     }
