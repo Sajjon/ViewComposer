@@ -15,6 +15,6 @@ Pod::Spec.new do |s|
   s.source = { :git => 'https://github.com/Sajjon/ViewComposer.git', :tag => s.version }
   s.source_files = 'Source/Classes/**/*.swift', 'Source/Sourcery/Generated/*.swift'
   s.dependency 'Sourcery'
-  s.ios.resources = 'Source/Sourcery/Templates/*.stencil'
+  s.ios.resources = 'Source/Sourcery/Templates/'
   s.ios.deployment_target = '9.0'
 end
