@@ -24,9 +24,10 @@ internal extension UIStackView {
                 self.isBaselineRelativeArrangement = isBaselineRelativeArrangement
             case .marginsRelative(let isLayoutMarginsRelativeArrangement):
                 self.isLayoutMarginsRelativeArrangement = isLayoutMarginsRelativeArrangement
-            case .margin(let margin):
-                self.layoutMargins = UIEdgeInsets(top: margin, left: margin, bottom: margin, right: margin)
-                self.isLayoutMarginsRelativeArrangement = true
+            case .margin(let marginExpressible):
+                let margin = marginExpressible.margin
+                self.layoutMargins = margin.insets
+                self.isLayoutMarginsRelativeArrangement = margin.isRelative
             default:
                 break
             }

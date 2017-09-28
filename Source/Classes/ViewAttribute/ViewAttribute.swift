@@ -8,6 +8,54 @@
 
 import Foundation
 
+public protocol MarginExpressible {
+    var margin: Margin { get }
+}
+
+extension CGFloat: MarginExpressible {
+    public var margin: Margin { return Margin(self) }
+}
+
+public struct Margin {
+    let insets: UIEdgeInsets
+    let isRelative: Bool
+    public init(top: CGFloat, left: CGFloat, bottom: CGFloat, right: CGFloat, isRelative: Bool = true) {
+        insets = UIEdgeInsets(top: top, left: left, bottom: bottom, right: right)
+        self.isRelative = isRelative
+    }
+    
+    public init(_ all: CGFloat, isRelative: Bool = true) {
+        self.init(top: all, left: all, bottom: all, right: all, isRelative: isRelative)
+    }
+
+    public init(vertical: CGFloat, horizontal: CGFloat, isRelative: Bool = true) {
+        self.init(top: vertical, left: horizontal, bottom: vertical, right: horizontal, isRelative: isRelative)
+    }
+    
+    public init(horizontal: CGFloat, isRelative: Bool = true) {
+        self.init(vertical: 0, horizontal: horizontal, isRelative: isRelative)
+    }
+    
+    public init(vertical: CGFloat, isRelative: Bool = true) {
+        self.init(vertical: vertical, horizontal: 0, isRelative: isRelative)
+    }
+}
+
+extension Margin: MarginExpressible {
+    public var margin: Margin { return self }
+}
+
+public extension Margin {
+    
+    static func vertical(_ vertical: CGFloat) -> MarginExpressible {
+        return Margin(vertical: vertical)
+    }
+    
+    static func horizontal(_ horizontal: CGFloat) -> MarginExpressible {
+        return Margin(horizontal: horizontal)
+    }
+}
+
 //swiftlint:disable:next type_body_length
 public enum ViewAttribute {
     case custom(BaseAttributed)
@@ -157,7 +205,13 @@ public enum ViewAttribute {
     case distribution(UIStackViewDistribution)
     case alignment(UIStackViewAlignment)
     case spacing(CGFloat)
-    case margin(CGFloat)
+    case margin(MarginExpressible)
+    public static func horizontalMargin(_ horizontal: CGFloat) -> ViewAttribute {
+        return .margin(Margin.horizontal(horizontal))
+    }
+    public static func verticalMargin(_ vertical: CGFloat) -> ViewAttribute {
+        return .margin(Margin.vertical(vertical))
+    }
     case marginsRelative(Bool)
     case baselineRelative(Bool)
     case views([UIView?])
