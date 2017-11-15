@@ -12,7 +12,7 @@ public protocol ImageHolder: class {
     var imageProxy: UIImage? { get set }
 }
 
-public protocol ImageViewRepresentable: class, ImageHolder {
+public protocol ImageViewRepresentable: ImageHolder {
     var isHighlighted: Bool { get set}
     var highlightedImage: UIImage? { get set }
     var animationImages: [UIImage]? { get set }
