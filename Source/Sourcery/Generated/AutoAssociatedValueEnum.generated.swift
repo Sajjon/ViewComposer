@@ -78,6 +78,14 @@ public extension Collection where Iterator.Element: AssociatedValueStrippable, I
 extension ViewAttribute: AssociatedValueEnumExtractor {
     public var associatedValue: Any? {
         switch self {
+            case .runtimePlaceholderColor(let runtimePlaceholderColor):
+                return runtimePlaceholderColor
+            case .runtimePlaceholderFont(let runtimePlaceholderFont):
+                return runtimePlaceholderFont
+            case .runtimeTextFieldInset(let runtimeTextFieldInset):
+                return runtimeTextFieldInset
+            case .runtimeTextFieldEdgeInset(let runtimeTextFieldEdgeInset):
+                return runtimeTextFieldEdgeInset
             case .custom(let custom):
                 return custom
             case .delegate(let delegate):
@@ -420,6 +428,38 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
                 return pageIndicatorTintColor
             case .currentPageIndicatorTintColor(let currentPageIndicatorTintColor):
                 return currentPageIndicatorTintColor
+        }
+    }
+
+    var runtimePlaceholderColor: UIColor? {
+        switch self {
+            case .runtimePlaceholderColor(let runtimePlaceholderColor):
+                return runtimePlaceholderColor
+            default: return nil
+        }
+    }
+
+    var runtimePlaceholderFont: UIFont? {
+        switch self {
+            case .runtimePlaceholderFont(let runtimePlaceholderFont):
+                return runtimePlaceholderFont
+            default: return nil
+        }
+    }
+
+    var runtimeTextFieldInset: CGFloat? {
+        switch self {
+            case .runtimeTextFieldInset(let runtimeTextFieldInset):
+                return runtimeTextFieldInset
+            default: return nil
+        }
+    }
+
+    var runtimeTextFieldEdgeInset: CGFloat? {
+        switch self {
+            case .runtimeTextFieldEdgeInset(let runtimeTextFieldEdgeInset):
+                return runtimeTextFieldEdgeInset
+            default: return nil
         }
     }
 
@@ -1794,13 +1834,17 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
 }
 
 public enum ViewAttributeStripped: String, StrippedRepresentation {
-    case custom, delegate, dataSource, dataSourceDelegate, hidden, color, verticalHugging, verticalCompression, horizontalHugging, horizontalCompression, contentMode, height, width, layoutMargins, userInteractable, tintColor, clipsToBounds, alpha, opaque, exclusiveTouch, multipleTouchEnabled, clearsContextBeforeDrawing, semanticContentAttribute, cornerRadius, roundedBy, borderWidth, borderColor, text, font, textColor, `case`, textAlignment, adjustsFontSizeToFitWidth, placeholder, editable, clearsOnInsertion, clearsOnBeginEditing, inputView, inputAccessoryView, allowsEditingTextAttributes, dataDetectorTypes, typingAttributes, numberOfLines, highlightedTextColor, minimumScaleFactor, baselineAdjustment, shadowColor, shadowOffset, attributedText, autocapitalizationType, autocorrectionType, spellCheckingType, keyboardType, keyboardAppearance, returnKeyType, enablesReturnKeyAutomatically, isSecureTextEntry, textContentType, borderStyle, background, disabledBackground, clearButtonMode, leftView, leftViewMode, rightView, rightViewMode, selectedRange, linkTextAttributes, textContainerInset, image, highlightedImage, renderingMode, animationImages, highlightedAnimationImages, animationRepeatCount, animationDuration, scrollEnabled, contentSize, contentInset, bounces, alwaysBounceVertical, alwaysBounceHorizontal, pagingEnabled, showsHorizontalScrollIndicator, showsVerticalScrollIndicator, scrollIndicatorInsets, indicatorStyle, decelerationRate, delaysContentTouches, canCancelContentTouches, minimumZoomScale, maximumZoomScale, zoomScale, bouncesZoom, scrollsToTop, keyboardDismissMode, states, contentVerticalAlignment, contentHorizontalAlignment, targets, enabled, selected, highlighted, contentEdgeInsets, titleEdgeInsets, reversesTitleShadowWhenHighlighted, imageEdgeInsets, adjustsImageWhenHighlighted, adjustsImageWhenDisabled, showsTouchWhenHighlighted, axis, distribution, alignment, spacing, margin, marginsRelative, baselineRelative, views, registerCells, backgroundView, allowsMultipleSelection, allowsSelection, remembersLastFocusedIndexPath, prefetchDataSource, sectionIndexMinimumDisplayRowCount, sectionIndexTrackingBackgroundColor, sectionIndexBackgroundColor, sectionIndexColor, rowHeight, separatorStyle, separatorColor, separatorEffect, separatorInset, cellLayoutMarginsFollowReadableWidth, sectionHeaderHeight, sectionFooterHeight, estimatedRowHeight, estimatedSectionHeaderHeight, estimatedSectionFooterHeight, allowsSelectionDuringEditing, allowsMultipleSelectionDuringEditing, isEditing, collectionViewLayout, itemSize, isPrefetchingEnabled, prompt, searchBarStyle, segments, thumbTintColor, on, onTintColor, onImage, offImge, webPage, sliderValue, sliderRange, spin, hidesWhenStopped, spinnerStyle, spinnerScale, progressViewStyle, progress, progressTintColor, progressImage, trackTintColor, trackImage, currentPage, numberOfPages, hidesForSinglePage, pageIndicatorTintColor, currentPageIndicatorTintColor
+    case runtimePlaceholderColor, runtimePlaceholderFont, runtimeTextFieldInset, runtimeTextFieldEdgeInset, custom, delegate, dataSource, dataSourceDelegate, hidden, color, verticalHugging, verticalCompression, horizontalHugging, horizontalCompression, contentMode, height, width, layoutMargins, userInteractable, tintColor, clipsToBounds, alpha, opaque, exclusiveTouch, multipleTouchEnabled, clearsContextBeforeDrawing, semanticContentAttribute, cornerRadius, roundedBy, borderWidth, borderColor, text, font, textColor, `case`, textAlignment, adjustsFontSizeToFitWidth, placeholder, editable, clearsOnInsertion, clearsOnBeginEditing, inputView, inputAccessoryView, allowsEditingTextAttributes, dataDetectorTypes, typingAttributes, numberOfLines, highlightedTextColor, minimumScaleFactor, baselineAdjustment, shadowColor, shadowOffset, attributedText, autocapitalizationType, autocorrectionType, spellCheckingType, keyboardType, keyboardAppearance, returnKeyType, enablesReturnKeyAutomatically, isSecureTextEntry, textContentType, borderStyle, background, disabledBackground, clearButtonMode, leftView, leftViewMode, rightView, rightViewMode, selectedRange, linkTextAttributes, textContainerInset, image, highlightedImage, renderingMode, animationImages, highlightedAnimationImages, animationRepeatCount, animationDuration, scrollEnabled, contentSize, contentInset, bounces, alwaysBounceVertical, alwaysBounceHorizontal, pagingEnabled, showsHorizontalScrollIndicator, showsVerticalScrollIndicator, scrollIndicatorInsets, indicatorStyle, decelerationRate, delaysContentTouches, canCancelContentTouches, minimumZoomScale, maximumZoomScale, zoomScale, bouncesZoom, scrollsToTop, keyboardDismissMode, states, contentVerticalAlignment, contentHorizontalAlignment, targets, enabled, selected, highlighted, contentEdgeInsets, titleEdgeInsets, reversesTitleShadowWhenHighlighted, imageEdgeInsets, adjustsImageWhenHighlighted, adjustsImageWhenDisabled, showsTouchWhenHighlighted, axis, distribution, alignment, spacing, margin, marginsRelative, baselineRelative, views, registerCells, backgroundView, allowsMultipleSelection, allowsSelection, remembersLastFocusedIndexPath, prefetchDataSource, sectionIndexMinimumDisplayRowCount, sectionIndexTrackingBackgroundColor, sectionIndexBackgroundColor, sectionIndexColor, rowHeight, separatorStyle, separatorColor, separatorEffect, separatorInset, cellLayoutMarginsFollowReadableWidth, sectionHeaderHeight, sectionFooterHeight, estimatedRowHeight, estimatedSectionHeaderHeight, estimatedSectionFooterHeight, allowsSelectionDuringEditing, allowsMultipleSelectionDuringEditing, isEditing, collectionViewLayout, itemSize, isPrefetchingEnabled, prompt, searchBarStyle, segments, thumbTintColor, on, onTintColor, onImage, offImge, webPage, sliderValue, sliderRange, spin, hidesWhenStopped, spinnerStyle, spinnerScale, progressViewStyle, progress, progressTintColor, progressImage, trackTintColor, trackImage, currentPage, numberOfPages, hidesForSinglePage, pageIndicatorTintColor, currentPageIndicatorTintColor
 } 
 
 extension ViewAttribute: AssociatedValueStrippable {
     public typealias Stripped = ViewAttributeStripped
     public var stripped: Stripped {
         switch self {
+            case .runtimePlaceholderColor: return .runtimePlaceholderColor
+            case .runtimePlaceholderFont: return .runtimePlaceholderFont
+            case .runtimeTextFieldInset: return .runtimeTextFieldInset
+            case .runtimeTextFieldEdgeInset: return .runtimeTextFieldEdgeInset
             case .custom: return .custom
             case .delegate: return .delegate
             case .dataSource: return .dataSource

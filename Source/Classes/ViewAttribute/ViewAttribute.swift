@@ -58,6 +58,13 @@ public extension Margin {
 
 //swiftlint:disable:next type_body_length
 public enum ViewAttribute {
+    
+    //MARK: - Runtime attributes, not used inside of ViewComposer, you can use these inside runtime methods such as `layoutSubviews` and e.g. using `runtimeTextFieldInset` in the UITextFields method `placeholderRect:forBounds`
+    case runtimePlaceholderColor(UIColor)
+    case runtimePlaceholderFont(UIFont)
+    case runtimeTextFieldInset(CGFloat)
+    case runtimeTextFieldEdgeInset(CGFloat)
+    
     case custom(BaseAttributed)
     case delegate(NSObjectProtocol?)
     case dataSource(NSObjectProtocol?)
