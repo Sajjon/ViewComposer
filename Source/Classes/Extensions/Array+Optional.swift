@@ -18,6 +18,6 @@ extension Optional: OptionalType {
 
 extension Sequence where Iterator.Element: OptionalType {
     func removeNils() -> [Iterator.Element.Wrapped] {
-        return self.flatMap { $0.optional }
+        return compactMap { $0.optional }
     }
 }
