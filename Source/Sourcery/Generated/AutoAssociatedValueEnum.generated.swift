@@ -1,4 +1,4 @@
-// Generated using Sourcery 0.9.0 — https://github.com/krzysztofzablocki/Sourcery
+// Generated using Sourcery 0.12.0 — https://github.com/krzysztofzablocki/Sourcery
 // DO NOT EDIT
 
 
@@ -60,13 +60,13 @@ public extension AssociatedValueEnumExtractor {
 }
 
 public extension Collection where Iterator.Element: AssociatedValueStrippable, Iterator.Element: Hashable {
-    func contains<Stripped>(_ element: Stripped) -> Bool where Stripped == Iterator.Element.Stripped {
+    func contains(_ element: Iterator.Element.Stripped) -> Bool {
         return map { $0.stripped }.contains(element)
     }
 }
 
 public extension Collection where Iterator.Element: AssociatedValueStrippable, Iterator.Element: AssociatedValueEnumExtractor {
-    func associatedValue<AssociatedValue, Stripped>(_ element: Stripped) -> AssociatedValue? where Stripped == Iterator.Element.Stripped {
+    func associatedValue<AssociatedValue>(_ element: Iterator.Element.Stripped) -> AssociatedValue? {
         for item in self {
             guard item.stripped == element else { continue }
             return item.associatedValueTyped()

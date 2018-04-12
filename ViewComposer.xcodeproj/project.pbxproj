@@ -192,7 +192,6 @@
 		482B893C1EE00C6500C97D42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		482B893F1EE00C6500C97D42 /* AutoAssociatedValueEnum.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoAssociatedValueEnum.generated.swift; sourceTree = "<group>"; };
 		482B89451EE00C6500C97D42 /* SourceryRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SourceryRules.swift; sourceTree = "<group>"; };
-		482B89471EE00C6500C97D42 /* AutoAssociatedValueEnum.stencil */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AutoAssociatedValueEnum.stencil; sourceTree = "<group>"; };
 		482B894C1EE00C6500C97D42 /* ViewComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewComposer.h; sourceTree = "<group>"; };
 		482B89781EE00C7100C97D42 /* BaseXCTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseXCTest.swift; sourceTree = "<group>"; };
 		482B89791EE00C7100C97D42 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -233,6 +232,7 @@
 		488131571EF68B6000F2E8CC /* Array+Optional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Optional.swift"; sourceTree = "<group>"; };
 		488131591EF68BA400F2E8CC /* UtilitiesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesTests.swift; sourceTree = "<group>"; };
 		48956DA41EEAC55600C6079D /* Makeable+Mergeable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Makeable+Mergeable.swift"; sourceTree = "<group>"; };
+		489F6CBE207F732E0092AEDF /* AutoAssociatedValueEnum.swifttemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = AutoAssociatedValueEnum.swifttemplate; sourceTree = "<group>"; };
 		48D7F3C61EE4659B00BC7012 /* MergeOperatorReturningAttributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningAttributed.swift; sourceTree = "<group>"; };
 		48D7F3C71EE4659B00BC7012 /* MergeOperatorReturningComposable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MergeOperatorReturningComposable.swift; sourceTree = "<group>"; };
 		48D7F3CB1EE4988900BC7012 /* ViewAttribute+Operators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ViewAttribute+Operators.swift"; sourceTree = "<group>"; };
@@ -534,7 +534,7 @@
 		482B89461EE00C6500C97D42 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				482B89471EE00C6500C97D42 /* AutoAssociatedValueEnum.stencil */,
+				489F6CBE207F732E0092AEDF /* AutoAssociatedValueEnum.swifttemplate */,
 			);
 			path = Templates;
 			sourceTree = "<group>";
@@ -636,7 +636,6 @@
 				4816817E1EDD53EE004E3DD0 /* Frameworks */,
 				4816817F1EDD53EE004E3DD0 /* Headers */,
 				481681801EDD53EE004E3DD0 /* Resources */,
-				ADEA31D1E3AD7167274864C3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -655,8 +654,6 @@
 				481681871EDD53EE004E3DD0 /* Sources */,
 				481681881EDD53EE004E3DD0 /* Frameworks */,
 				481681891EDD53EE004E3DD0 /* Resources */,
-				ACB799D357F8CA445ED232EE /* [CP] Embed Pods Frameworks */,
-				C8727112CE8ACBF08D5CB4C3 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -770,51 +767,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
-		};
-		ACB799D357F8CA445ED232EE /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		ADEA31D1E3AD7167274864C3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ViewComposer/Pods-ViewComposer-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C8727112CE8ACBF08D5CB4C3 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ViewComposerTests/Pods-ViewComposerTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		FFC368742640B841E0243240 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
