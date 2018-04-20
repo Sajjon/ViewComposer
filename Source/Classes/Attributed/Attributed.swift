@@ -75,7 +75,6 @@ public protocol DuplicatesHandler {
     func choseDuplicate(from duplicates: [AttributesExpressible.Attribute]) -> AttributesExpressible.Attribute
 }
 
-//swiftlint:disable generic_type_name
 public struct AnyDuplicatesHandler<E: ExpressibleByAttributes>: DuplicatesHandler {
     public typealias AttributesExpressible = E
     public typealias Attribute = AttributesExpressible.Attribute

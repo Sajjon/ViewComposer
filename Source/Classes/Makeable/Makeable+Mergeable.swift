@@ -8,7 +8,6 @@
 
 import Foundation
 
-//swiftlint:disable force_cast
 public extension Attributed {
     
     func merge<M: Makeable>(slave: Self) -> M where M.Styled == M, M.Style == Self {
