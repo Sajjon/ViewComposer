@@ -1,0 +1,3 @@
+#include "ViewComposerTests-Common.xcconfig"
+#include "./Configurations/base_debug.xcconfig"
+#include "../../Pods/Target Support Files/Pods-Framework-ViewComposerTests/Pods-Framework-ViewComposerTests.debug.xcconfig"

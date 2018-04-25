@@ -1,0 +1,22 @@
+#include "ViewComposer-Example-Common.xcconfig"
+#include "../../../Configurations/base_debug.xcconfig"
+#include "../../../Pods/Target Support Files/Pods-App-Example/Pods-App-Example.debug.xcconfig"
+
+_DEBUG = DEBUG
+_CODE_SIGN_ID_DEBUG = iPhone Developer
+_BUNDLE_IDENTIFIER_DEBUG = $(_BUNDLE_IDENTIFIER_PROD).dev
+
+CODE_SIGN_IDENTITY = $(_CODE_SIGN_ID_DEBUG)
+CODE_SIGN_IDENTITY[sdk=iphoneos*] = $(_CODE_SIGN_ID_DEBUG)
+
+PRODUCT_BUNDLE_IDENTIFIER = $(_BUNDLE_IDENTIFIER_DEBUG)
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) $(_DEBUG)
+GCC_PREPROCESSOR_DEFINITIONS = $(_DEBUG)
+GCC_OPTIMIZATION_LEVEL = 0
+MTL_ENABLE_DEBUG_INFO = YES
+SWIFT_OPTIMIZATION_LEVEL = -Onone
+GCC_DYNAMIC_NO_PIC = NO
+ONLY_ACTIVE_ARCH = YES
+ENABLE_NS_ASSERTIONS = YES
+ENABLE_NS_ASSERTIONS[sdk=iphoneos*] = YES
+VALIDATE_PRODUCT = NO

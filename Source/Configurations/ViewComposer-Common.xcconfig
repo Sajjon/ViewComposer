@@ -1,0 +1,4 @@
+#include "../../Configurations/base_framework.xcconfig"
+
+INFOPLIST_FILE = Source/SupportingFiles/ViewComposer-Info.plist
+PRODUCT_BUNDLE_IDENTIFIER = com.cyon.ViewComposer

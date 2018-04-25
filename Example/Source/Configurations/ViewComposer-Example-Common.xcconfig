@@ -1,0 +1,17 @@
+#include "../../../Configurations/base_apps.xcconfig"
+
+_APP_NAME_PROD = ViewComposerExample
+_BUNDLE_IDENTIFIER_PROD = com.cyon.ViewComposerExample
+INFOPLIST_FILE = Source/SupportingFiles/ViewComposer-Example-Info.plist
+
+PRODUCT_NAME = $(_APP_NAME_PROD)
+
+PRODUCT_MODULE_NAME = ViewComposerExample
+
+// Overridden in Debug.xcconfig
+CODE_SIGN_IDENTITY = iPhone Distribution
+
+// Overridden in Release.xcconfig
+ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon-Alpha
+
+ENABLE_TESTABILITY = YES

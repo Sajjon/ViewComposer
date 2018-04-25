@@ -1,0 +1,8 @@
+#include "ViewComposer-Example-Common.xcconfig"
+#include "../../../Configurations/base_release.xcconfig"
+#include "../../../Pods/Target Support Files/Pods-App-Example/Pods-App-Example.release.xcconfig"
+
+PRODUCT_BUNDLE_IDENTIFIER = $(_BUNDLE_IDENTIFIER_PROD)
+APP_DISPLAY_NAME = $(_APP_NAME_PROD)
+SWIFT_ACTIVE_COMPILATION_CONDITIONS = $(inherited) APP_STORE_BUILD
+SWIFT_OPTIMIZATION_LEVEL = -Owholemodule
