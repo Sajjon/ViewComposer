@@ -9,45 +9,45 @@
 import Foundation
 
 //MARK: RHS `[ViewAttribute]`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- (lhs: [ViewAttribute], rhs: [ViewAttribute]) -> ViewStyle {
     return lhs.merge(master: rhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- (lhs: [ViewAttribute], rhs: [ViewAttribute]) -> ViewStyle {
     return lhs.merge(slave: rhs)
 }
 
 //MARK: RHS `ViewAttribute`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- (lhs: [ViewAttribute], rhs: ViewAttribute) -> ViewStyle {
     return lhs <<- [rhs]
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- (lhs: [ViewAttribute], rhs: ViewAttribute) -> ViewStyle {
     return lhs <- [rhs]
 }
 
 //MARK: RHS `[ViewAttribute]`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- (lhs: ViewAttribute, rhs: [ViewAttribute]) -> ViewStyle {
     return [lhs] <<- rhs
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- (lhs: ViewAttribute, rhs: [ViewAttribute]) -> ViewStyle {
     return [lhs] <- rhs
 }
 
 //MARK: RHS `ViewAttribute`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- (lhs: ViewAttribute, rhs: ViewAttribute) -> ViewStyle {
     return [lhs] <<- rhs
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- (lhs: ViewAttribute, rhs: ViewAttribute) -> ViewStyle {
     return [lhs] <- rhs
 }

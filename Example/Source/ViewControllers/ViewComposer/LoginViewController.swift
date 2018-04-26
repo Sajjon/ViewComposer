@@ -19,7 +19,7 @@ final class LoginViewController: UIViewController, StackViewOwner {
     lazy var emailField: UITextField = borderStyle <<- [.placeholder("Email"), .delegate(self)]
     lazy var passwordField: UITextField = borderStyle <<- [.placeholder("Password"), .delegate(self)]
     
-    lazy var loginButton: Button = borderStyle
+    lazy var loginButton: UIButton = borderStyle
         <<- .states([
             Normal("Login", titleColor: .blue, backgroundColor: .green, borderColor: borderColorNormal),
             Highlighted("Logging in...", titleColor: .red, backgroundColor: .yellow, borderColor: .red)

@@ -19,7 +19,7 @@ public class BaseAttribute: BaseAttributeProtocol, CustomStringConvertible {
     public required init(name: String, value: Any) {
         self.name = name
         self.anyValue = value
-    }
+}
 }
 
 // MARK: CustomStringConvertible

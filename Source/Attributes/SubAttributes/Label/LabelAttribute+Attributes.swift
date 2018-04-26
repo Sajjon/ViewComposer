@@ -20,4 +20,13 @@ public extension LabelAttribute {
     public static func textColor<A>(_ value: UIColor) -> A where A: LabelAttribute {
         return A(name: .textColor, value: value)
     }
+
+    public static func font<A>(_ value: UIFont) -> A where A: LabelAttribute {
+        return A(name: .font, value: value)
+    }
+
+    public static func textAlignment<A>(_ value: NSTextAlignment) -> A where A: LabelAttribute {
+        return A(name: .textAlignment, value: value)
+    }
 }
+

@@ -17,34 +17,34 @@ import Foundation
 ////////////////////////////////////////////////
 
 //MARK: RHS `Attributed`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <M: Makeable>(lhs: M.Style, rhs: M.Style) -> M where M.Styled == M {
     return M.make(lhs <<- rhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <M: Makeable>(lhs: M.Style, rhs: M.Style) -> M where M.Styled == M {
     return M.make(lhs <- rhs)
 }
 
 //MARK: RHS `[Attributed.Attribute]`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <M: Makeable>(lhs: M.Style, rhs: [M.Style.Attribute]) -> M where M.Styled == M {
     return M.make(lhs <<- rhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <M: Makeable>(lhs: M.Style, rhs: [M.Style.Attribute]) -> M where M.Styled == M {
     return M.make(lhs <- rhs)
 }
 
 //MARK: RHS `Attributed.Attribute`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <M: Makeable>(lhs: M.Style, rhs: M.Style.Attribute) -> M where M.Styled == M {
     return M.make(lhs <<- rhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <M: Makeable>(lhs: M.Style, rhs: M.Style.Attribute) -> M where M.Styled == M {
     return M.make(lhs <- rhs)
 }
@@ -58,12 +58,12 @@ public func <- <M: Makeable>(lhs: M.Style, rhs: M.Style.Attribute) -> M where M.
 ////////////////////////////////////////////////
 
 //MARK: RHS `Attributed`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <M: Makeable>(lhs: [M.Style.Attribute], rhs: M.Style) -> M where M.Styled == M {
     return M.make(lhs <<- rhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <M: Makeable>(lhs: [M.Style.Attribute], rhs: M.Style) -> M where M.Styled == M {
     return M.make(lhs <- rhs)
 }
@@ -77,12 +77,12 @@ public func <- <M: Makeable>(lhs: [M.Style.Attribute], rhs: M.Style) -> M where 
 ////////////////////////////////////////////////
 
 //MARK: RHS `Attributed`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <M: Makeable>(lhs: M.Style.Attribute, rhs: M.Style) -> M where M.Styled == M {
     return M.make([lhs] <<- rhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <M: Makeable>(lhs: M.Style.Attribute, rhs: M.Style) -> M where M.Styled == M {
     return M.make([lhs] <- rhs)
 }

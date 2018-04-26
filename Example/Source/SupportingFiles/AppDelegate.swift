@@ -17,17 +17,7 @@ class AppDelegate: UIResponder {
 extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         setupWindow()
-        ViewStyle.customStyler = AnyCustomStyler(CustomStylerExample())
         return true
-    }
-}
-
-struct CustomStylerExample: CustomStyler {
-    
-    func customStyle(_ styleable: Any, with style: ViewStyle) {
-        if styleable is UITableView {
-            print("Styleable is TableView")
-        }
     }
 }
 
@@ -39,8 +29,8 @@ private extension AppDelegate {
         window.makeKeyAndVisible()
         window.backgroundColor = UIColor.white
         
-        let rootViewController = TableViewController()
-        let navigationController = UINavigationController(rootViewController: rootViewController)
+//        let rootViewController = TableViewController()
+        let navigationController = UINavigationController(rootViewController: UIViewController())
         window.rootViewController = navigationController
         self.window = window
     }

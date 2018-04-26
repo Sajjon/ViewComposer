@@ -15,7 +15,7 @@ import Foundation
 ////////////////////////////////////////////////
 
 //MARK: RHS `Attributed`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <A: Attributed>(lhs: A, rhs: A) -> A {
     return lhs.merge(master: rhs)
 }
@@ -28,7 +28,7 @@ public func <<- <A: Attributed>(lhs: A, rhs: A?) -> A {
     return rhs.merge(slave: lhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <A: Attributed>(lhs: A, rhs: A) -> A {
     return lhs.merge(slave: rhs)
 }
@@ -42,23 +42,23 @@ public func <- <A: Attributed>(lhs: A, rhs: A?) -> A {
 }
 
 //MARK: RHS `[Attributed.Attribute]`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <A: Attributed>(lhs: A, rhs: [A.Attribute]) -> A {
     return lhs.merge(master: rhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <A: Attributed>(lhs: A, rhs: [A.Attribute]) -> A {
     return lhs.merge(slave: rhs)
 }
 
 //MARK: RHS `Attributed.Attribute`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <A: Attributed>(lhs: A, rhs: A.Attribute) -> A {
     return lhs.merge(master: [rhs])
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <A: Attributed>(lhs: A, rhs: A.Attribute) -> A {
     return lhs.merge(slave: [rhs])
 }
@@ -70,12 +70,12 @@ public func <- <A: Attributed>(lhs: A, rhs: A.Attribute) -> A {
 ////////////////////////////////////////////////
 
 //MARK: RHS `Attributed`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <A: Attributed>(lhs: [A.Attribute], rhs: A) -> A {
     return lhs.merge(master: rhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <A: Attributed>(lhs: [A.Attribute], rhs: A) -> A {
     return lhs.merge(slave: rhs)
 }
@@ -87,12 +87,12 @@ public func <- <A: Attributed>(lhs: [A.Attribute], rhs: A) -> A {
 //////////////////////////////////////////////////////////
 
 //MARK: RHS `Attributed`
-// RHS MASTER
+// CHOSING RIGHT
 public func <<- <A: Attributed>(lhs: A.Attribute, rhs: A) -> A {
     return rhs.merge(slave: lhs)
 }
 
-// RHS SLAVE
+// CHOSING LEFT
 public func <- <A: Attributed>(lhs: A.Attribute, rhs: A) -> A {
     return rhs.merge(master: lhs)
 }

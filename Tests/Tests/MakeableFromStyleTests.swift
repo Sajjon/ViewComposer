@@ -11,7 +11,7 @@ import XCTest
 
 class MakeableFromStyleTests: XCTestCase {
     
-    private let style: ViewStyle = [.text(fooText), .color(color)]
+    private let style: LabelStyle = [.text(fooText), .backgroundColor(color)]
     func testMakingLabelFromMergeBetweenStyleAndSingleAttribute() {
         let label: UILabel = style <<- .text(barText)
         assertIs(label.text, is: barText)

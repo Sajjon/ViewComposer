@@ -12,4 +12,8 @@ extension String {
     static var backgroundColor: String {
         return #function
     }
+
+    static var clipsToBounds: String {
+        return #function
+    }
 }

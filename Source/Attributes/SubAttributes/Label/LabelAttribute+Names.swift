@@ -20,4 +20,13 @@ extension String {
     static var textColor: String {
         return #function
     }
+
+    static var font: String {
+        return #function
+    }
+
+    static var textAlignment: String {
+        return #function
+    }
+
 }

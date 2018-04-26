@@ -45,12 +45,6 @@ extension TableViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-extension TableViewController: UITableViewDataSourcePrefetching {
-    public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        print("tableView prefetching...")
-    }
-}
-
 private extension TableViewController {
     func didSelectRow(at indexPath: IndexPath) {
         model(at: indexPath).push(onto: navigationController)
@@ -66,19 +60,19 @@ private extension TableViewController {
 }
 
 func makeModels() -> [[Model]] {
-    let both = [
-        Model("Nested StackViews", type: NestedStackViewsViewController.self, vanilla: VanillaNestedStackViewsViewController.self),
-        Model("Labels", type: LabelsViewController.self, vanilla: VanillaLabelsViewController.self),
-        Model("LoginViewController", type: LoginViewController.self, vanilla: VanillaLoginViewController.self),
-    ]
-    
-    let viewComposerOnly = [
-        Model("Custom attribute: FooLabel (simple)", type: SimpleCustomAttributeViewController.self),
-        Model("Custom attribute: TriangleView (advanced)", type: TriangleViewController.self),
-        Model("Mixed Views", type: MixedViewsViewController.self),
-        Model("CollectionView", type: MakeableCollectionViewController.self),
-        Model("WKWebView", type: MakeableWKWebViewViewController.self),
-        Model("ImageView", type: ImageViewController.self)
-    ]
-    return [both, viewComposerOnly]
+//    let both = [
+//        Model("Nested StackViews", type: NestedStackViewsViewController.self, vanilla: VanillaNestedStackViewsViewController.self),
+//        Model("Labels", type: LabelsViewController.self, vanilla: VanillaLabelsViewController.self),
+//        Model("LoginViewController", type: LoginViewController.self, vanilla: VanillaLoginViewController.self),
+//    ]
+
+//    let viewComposerOnly = [
+//        Model("Custom attribute: FooLabel (simple)", type: SimpleCustomAttributeViewController.self),
+//        Model("Custom attribute: TriangleView (advanced)", type: TriangleViewController.self),
+//        Model("Mixed Views", type: MixedViewsViewController.self),
+//        Model("CollectionView", type: MakeableCollectionViewController.self),
+//        Model("WKWebView", type: MakeableWKWebViewViewController.self),
+//        Model("ImageView", type: ImageViewController.self)
+//    ]
+    return [[]]
 }

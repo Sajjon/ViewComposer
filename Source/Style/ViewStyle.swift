@@ -17,11 +17,16 @@ public protocol StyleProtocol: ExpressibleByArrayLiteral, CustomStringConvertibl
     init(attributes: Attributes)
     init(tuples: [(Key, Value)], uniquingKeysWith combine: UniquingKeys) rethrows
     func install(on view: UIView)
-
+    func customInstall(on view: UIView)
+    func baseSetup(for view: UIView)
     func merging(_ other: Attributes, uniquingKeysWith combine: UniquingKeys) rethrows -> Self
+    func merging(_ other: Self, uniquingKeysWith combine: UniquingKeys) rethrows -> Self
 }
 
 public extension StyleProtocol {
+    func merging(_ other: Self, uniquingKeysWith combine: UniquingKeys) rethrows -> Self {
+        return try merging(other.attributes, uniquingKeysWith: combine)
+    }
 
     func merging(_ other: Attributes, uniquingKeysWith combine: UniquingKeys) rethrows -> Self {
         let merged = try attributes.merging(other, uniquingKeysWith: combine)
@@ -29,13 +34,18 @@ public extension StyleProtocol {
     }
 }
 
+public extension StyleProtocol {
+    func merging(_ other: Self?, uniquingKeysWith combine: UniquingKeys) rethrows -> Self {
+        guard let other = other else { return self }
+        return try attributes.merging(other, uniquingKeysWith: combine)
+    }
+}
 
 public class ViewStyle<A: BaseAttribute>: StyleProtocol {
     public typealias Attribute = A
     public typealias ArrayLiteralElement = A
 
     public let attributes: [Key: Value]
-
 
     public required init(attributes: [Key: Value]) {
         self.attributes = attributes
@@ -57,8 +67,15 @@ public class ViewStyle<A: BaseAttribute>: StyleProtocol {
         self.init(attributes: elements)
     }
 
-    public func install(on view: UIView) {
+    public func customInstall(on view: UIView) {}
+
+    public func baseSetup(for view: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    public func install(on view: UIView) {
+        customInstall(on: view)
+        baseSetup(for: view)
         for (name, value) in attributes {
             let v = value
             switch name {

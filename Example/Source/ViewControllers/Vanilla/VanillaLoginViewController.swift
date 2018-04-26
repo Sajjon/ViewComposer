@@ -8,6 +8,8 @@
 
 import UIKit
 
+extension UIFont { @nonobjc static let big: UIFont = .boldSystemFont(ofSize: 25) }
+
 private let height: CGFloat = 50
 private let borderColorNormal: UIColor = .blue
 private let borderColorHighlighted: UIColor = .red
