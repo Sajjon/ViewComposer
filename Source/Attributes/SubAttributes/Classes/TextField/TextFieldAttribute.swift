@@ -9,3 +9,4 @@
 import UIKit
 
 public class TextFieldAttribute: BaseAttribute {}
+extension TextFieldAttribute: TextOwner {}

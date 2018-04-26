@@ -12,21 +12,4 @@ extension String {
     static var numberOfLines: String {
         return #function
     }
-
-    static var text: String {
-        return #function
-    }
-
-    static var textColor: String {
-        return #function
-    }
-
-    static var font: String {
-        return #function
-    }
-
-    static var textAlignment: String {
-        return #function
-    }
-
 }

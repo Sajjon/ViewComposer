@@ -9,3 +9,4 @@
 import Foundation
 
 public class LabelAttribute: BaseAttribute {}
+extension LabelAttribute: TextOwner {}

@@ -17,4 +17,3 @@ public extension BaseAttribute {
         return A(name: .clipsToBounds, value: value)
     }
 }
-
