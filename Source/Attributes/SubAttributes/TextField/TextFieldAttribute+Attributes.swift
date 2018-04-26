@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension TextFieldAttribute{
+public extension TextFieldAttribute {
     public static func placeholder<A>(_ value: String?) -> A where A: TextFieldAttribute {
         return A(name: .placeholder, value: value as Any)
     }

@@ -37,7 +37,7 @@ public extension StyleProtocol {
 public extension StyleProtocol {
     func merging(_ other: Self?, uniquingKeysWith combine: UniquingKeys) rethrows -> Self {
         guard let other = other else { return self }
-        return try attributes.merging(other, uniquingKeysWith: combine)
+        return try merging(other, uniquingKeysWith: combine)
     }
 }
 
@@ -56,7 +56,7 @@ public class ViewStyle<A: BaseAttribute>: StyleProtocol {
         self.init(attributes: _attributes)
     }
 
-    public convenience init(attributes: [A], uniquingKeysWith combine: UniquingKeys = { (_, last) in last }) {
+    public convenience required init(attributes: [A], uniquingKeysWith combine: UniquingKeys = { (_, last) in last }) {
         do {
             let _attributes = try Dictionary(attributes.asTuples(), uniquingKeysWith: combine)
             self.init(attributes: _attributes)

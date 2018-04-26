@@ -37,43 +37,46 @@ public func <<- <S>(lhs: S?, rhs: S) -> S where S: StyleProtocol {
 }
 
 public func <<- <S>(lhs: S, rhs: S?) -> S where S: StyleProtocol {
-    guard
+    guard let rhs = rhs else { return lhs }
+    return lhs.merging(rhs) { (_, r) in r }
 }
-/*
 
 // CHOSING LEFT
 public func <- <S>(lhs: S, rhs: S) -> S where S: StyleProtocol {
-    return lhs.merge(slave: rhs)
+    return lhs.merging(rhs) { (l, _) in l }
 }
 
 public func <- <S>(lhs: S?, rhs: S) -> S where S: StyleProtocol {
-    return lhs.merge(slave: rhs)
+    return lhs.merging(rhs) { (l, _) in l }
 }
 
 public func <- <S>(lhs: S, rhs: S?) -> S where S: StyleProtocol {
-    return rhs.merge(master: lhs)
+    guard let rhs = rhs else { return lhs }
+    return lhs.merging(rhs) { (l, _) in l }
 }
 
 //MARK: RHS `[Attributed.Attribute]`
 // CHOSING RIGHT
-public func <<- <S>(lhs: A, rhs: [A.Attribute]) -> S where S: StyleProtocol {
-    return lhs.merge(master: rhs)
+public func <<- <A, V>(lhs: V, rhs: [A]) -> V where A: BaseAttribute, V: ViewStyle<A> {
+    let other = V(attributes: rhs)
+    return lhs.merging(other) { (_, r) in r }
 }
 
 // CHOSING LEFT
-public func <- <S>(lhs: A, rhs: [A.Attribute]) -> S where S: StyleProtocol {
-    return lhs.merge(slave: rhs)
+public func <- <A, V>(lhs: V, rhs: [A]) -> V where A: BaseAttribute, V: ViewStyle<A> {
+    let rhs = V(attributes: rhs)
+    return lhs.merging(rhs) { (l, _) in l }
 }
 
 //MARK: RHS `Attributed.Attribute`
 // CHOSING RIGHT
-public func <<- <S>(lhs: S, rhs: S.Attribute) -> S where S: StyleProtocol {
-    return lhs.merge(master: [rhs])
+public func <<- <A, V>(lhs: V, rhs: A) -> V where A: BaseAttribute, V: ViewStyle<A> {
+    return lhs <<- [rhs]
 }
 
 // CHOSING LEFT
-public func <- <S>(lhs: S, rhs: S.Attribute) -> S where S: StyleProtocol {
-    return lhs.merge(slave: [rhs])
+public func <- <A, V>(lhs: V, rhs: A) -> V where A: BaseAttribute, V: ViewStyle<A> {
+    return lhs <- [rhs]
 }
 
 ////////////////////////////////////////////////
@@ -84,13 +87,15 @@ public func <- <S>(lhs: S, rhs: S.Attribute) -> S where S: StyleProtocol {
 
 //MARK: RHS `Attributed`
 // CHOSING RIGHT
-public func <<- <S>(lhs: [A.Attribute], rhs: A) -> S where S: StyleProtocol {
-    return lhs.merge(master: rhs)
+public func <<- <A, V>(lhs: [A], rhs: A) -> V where A: BaseAttribute, V: ViewStyle<A> {
+    let lhs = V(attributes: lhs)
+    return lhs <<- rhs
 }
 
 // CHOSING LEFT
-public func <- <S>(lhs: [A.Attribute], rhs: A) -> S where S: StyleProtocol {
-    return lhs.merge(slave: rhs)
+public func <- <A, V>(lhs: [A], rhs: A) -> V where A: BaseAttribute, V: ViewStyle<A> {
+    let lhs = V(attributes: lhs)
+    return lhs <- rhs
 }
 
 //////////////////////////////////////////////////////////
@@ -101,12 +106,13 @@ public func <- <S>(lhs: [A.Attribute], rhs: A) -> S where S: StyleProtocol {
 
 //MARK: RHS `Attributed`
 // CHOSING RIGHT
-public func <<- <S>(lhs: A.Attribute, rhs: A) -> S where S: StyleProtocol {
-    return rhs.merge(slave: lhs)
+public func <<- <A, V>(lhs: A, rhs: V) -> V where A: BaseAttribute, V: ViewStyle<A> {
+    let lhs = V(attributes: [lhs])
+    return lhs <<- rhs
 }
 
 // CHOSING LEFT
-public func <- <S>(lhs: A.Attribute, rhs: A) -> S where S: StyleProtocol {
-    return rhs.merge(master: lhs)
+public func <- <A, V>(lhs: A, rhs: V) -> V where A: BaseAttribute, V: ViewStyle<A> {
+    let lhs = V(attributes: [lhs])
+    return lhs <- rhs
 }
- */

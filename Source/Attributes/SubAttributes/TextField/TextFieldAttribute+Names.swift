@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 extension String {
     static var placeholder: String {
         return #function
