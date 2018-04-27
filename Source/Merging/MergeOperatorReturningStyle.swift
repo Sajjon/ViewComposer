@@ -9,14 +9,14 @@ import Foundation
 
 extension Optional where Wrapped: StyleProtocol {
 
-    func merging(_ other: Wrapped.Attributes, uniquingKeysWith combine: Wrapped.UniquingKeys) rethrows -> Wrapped {
+    func merging(_ other: Wrapped.Attributes, uniquingKeysWith combine: Wrapped.UniquingKeys) -> Wrapped {
         guard case let .some(wrapped) = self else { return Wrapped(attributes: other) }
-        return try wrapped.merging(other, uniquingKeysWith: combine)
+        return wrapped.merging(other, uniquingKeysWith: combine)
     }
 
-    func merging(_ other: Wrapped, uniquingKeysWith combine: Wrapped.UniquingKeys) rethrows -> Wrapped {
+    func merging(_ other: Wrapped, uniquingKeysWith combine: Wrapped.UniquingKeys) -> Wrapped {
         guard case let .some(wrapped) = self else { return other }
-        return try wrapped.merging(other, uniquingKeysWith: combine)
+        return wrapped.merging(other, uniquingKeysWith: combine)
     }
 }
 

@@ -8,39 +8,6 @@
 
 import UIKit
 
-public protocol StyleProtocol: ExpressibleByArrayLiteral, CustomStringConvertible {
-    typealias Key = String
-    typealias Value = Any
-    typealias UniquingKeys = (Value, Value) throws -> Value
-    typealias Attributes = [Key: Value]
-    var attributes: Attributes { get }
-    init(attributes: Attributes)
-    init(tuples: [(Key, Value)], uniquingKeysWith combine: UniquingKeys) rethrows
-    func install(on view: UIView)
-    func customInstall(on view: UIView)
-    func baseSetup(for view: UIView)
-    func merging(_ other: Attributes, uniquingKeysWith combine: UniquingKeys) rethrows -> Self
-    func merging(_ other: Self, uniquingKeysWith combine: UniquingKeys) rethrows -> Self
-}
-
-public extension StyleProtocol {
-    func merging(_ other: Self, uniquingKeysWith combine: UniquingKeys) rethrows -> Self {
-        return try merging(other.attributes, uniquingKeysWith: combine)
-    }
-
-    func merging(_ other: Attributes, uniquingKeysWith combine: UniquingKeys) rethrows -> Self {
-        let merged = try attributes.merging(other, uniquingKeysWith: combine)
-        return Self(attributes: merged)
-    }
-}
-
-public extension StyleProtocol {
-    func merging(_ other: Self?, uniquingKeysWith combine: UniquingKeys) rethrows -> Self {
-        guard let other = other else { return self }
-        return try merging(other, uniquingKeysWith: combine)
-    }
-}
-
 public class ViewStyle<A: BaseAttribute>: StyleProtocol {
     public typealias Attribute = A
     public typealias ArrayLiteralElement = A
@@ -51,16 +18,13 @@ public class ViewStyle<A: BaseAttribute>: StyleProtocol {
         self.attributes = attributes
     }
 
-    public convenience required init(tuples: [(Key, Value)], uniquingKeysWith combine: UniquingKeys) rethrows {
-        let _attributes = try Dictionary(tuples, uniquingKeysWith: combine)
+    public convenience required init(tuples: [(Key, Value)], uniquingKeysWith combine: UniquingKeys) {
+        let _attributes = Dictionary(tuples, uniquingKeysWith: combine)
         self.init(attributes: _attributes)
     }
 
-    public convenience required init(attributes: [A], uniquingKeysWith combine: UniquingKeys = { (_, last) in last }) {
-        do {
-            let _attributes = try Dictionary(attributes.asTuples(), uniquingKeysWith: combine)
-            self.init(attributes: _attributes)
-        } catch { fatalError("Failed to create dictionary, \(error)") }
+    public convenience required init(attributes: [A], uniquingKeysWith combine: UniquingKeys = LastValue) {
+        self.init(tuples: attributes.asTuples(), uniquingKeysWith: combine)
     }
 
     public convenience required init(arrayLiteral elements: A...) {

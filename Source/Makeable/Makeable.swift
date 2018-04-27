@@ -8,7 +8,14 @@
 
 import UIKit
 
-public protocol EmptyInitializable {
+extension UICollectionView {//}: EmptyInitializable {
+    // Compilation error: "Initializer 'init()' with Objective-C selector 'init' conflicts with implicit initializer 'init()' with the same Objective-C selector"
+    @nonobjc convenience init() { // must be marked `convenience` since it is an initializer in an extension
+        self.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    }
+}
+
+public protocol EmptyInitializable { // change this to JUST `init()`
     associatedtype Styled
     static func createEmpty() -> Styled
 }
