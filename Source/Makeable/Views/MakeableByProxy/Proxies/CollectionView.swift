@@ -8,9 +8,7 @@
 import UIKit
 
 public final class CollectionView: UICollectionView, ProxyMade {
-    public typealias ProxyAttribute = CollectionViewAttribute
-
-    public static func staticallyInitializeSinceLackOfEmptyInit(with attributes: [ProxyAttribute]) -> CollectionView {
+    public static func staticallyInitializeSinceLackOfEmptyInit(with attributes: [CollectionViewAttribute]) -> CollectionView {
         let layout = attributes.attribute(named: .collectionViewLayout, as: UICollectionViewLayout.self) ?? UICollectionViewFlowLayout()
         return CollectionView(frame: .zero, collectionViewLayout: layout)
     }
