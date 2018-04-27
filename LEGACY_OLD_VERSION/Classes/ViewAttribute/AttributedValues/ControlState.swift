@@ -127,18 +127,3 @@ extension Array where Element == ControlStateStyle {
         return Array(set)
     }
 }
-
-public struct ControlStateMerger: MergeInterceptor {
-    public static func interceptMerge<A>(master masterAttributed: A, slave: A) -> A where A : Attributed {
-        guard
-            let master = masterAttributed as? ViewStyle,
-            let slave = slave as? ViewStyle,
-            let masterControlStates: [ControlStateStyle] = master.value(.states),
-            let slaveControlStates: [ControlStateStyle] = slave.value(.states)
-            else { return masterAttributed }
-        let merged = slaveControlStates.merge(overwrittenBy: masterControlStates)
-        //swiftlint:disable:next force_cast
-        return ViewStyle([.states(merged)]) as! A
-    }
-}
-

@@ -25,7 +25,7 @@ public protocol ProxyMade: Styleable {
 }
 
 public protocol MakeableByProxy: Makeable {
-    associatedtype Proxy: ProxyMade
+    associatedtype Proxy: ProxyMade & SubKlass
     static func makeProxy(_ attributes: [Self.StyleableAttribute]) -> Proxy
 }
 
@@ -61,10 +61,28 @@ extension Makeable {
     }
 }
 
-extension Makeable where Self: MakeableByProxy {
+public protocol SuperKlass: AnyObject {
+    associatedtype SubKlassType: SubKlass & UIView
+}
+
+public protocol SubKlass: AnyObject {
+    associatedtype SuperKlassType: SuperKlass & UIView
+    func asSuper() -> SuperKlassType
+}
+
+extension UICollectionView: SuperKlass {
+    public typealias SubKlassType = CollectionView
+}
+
+extension CollectionView: SubKlass {
+    public typealias SuperKlassType = UICollectionView
+    public func asSuper() -> SuperKlassType { return self as SuperKlassType }
+}
+
+extension Makeable where Self: SuperKlass, Self: MakeableByProxy, Self.SubKlassType == Self.Proxy, Self.Proxy.SuperKlassType == SelfMakeable {
     public static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
-        // swiftlint:disable force_cast
-        return Self.makeProxy(attributes) as! SelfMakeable
+        let made: Self.SubKlassType = Self.makeProxy(attributes)
+        return made.asSuper()
     }
 }
 

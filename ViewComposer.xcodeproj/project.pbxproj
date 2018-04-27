@@ -217,8 +217,6 @@
 		48F17C192091A92700C070B2 /* MergeOfOptionalsUsingOperatorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeOfOptionalsUsingOperatorsTests.swift; sourceTree = "<group>"; };
 		48F17C1A2091A92700C070B2 /* BaseXCTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseXCTest.swift; sourceTree = "<group>"; };
 		48F17C1B2091A92700C070B2 /* ProcessControlStatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProcessControlStatesTests.swift; sourceTree = "<group>"; };
-		48F17C1C2091A92700C070B2 /* MergeInterceptorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeInterceptorsTests.swift; sourceTree = "<group>"; };
-		48F17C1D2091A92700C070B2 /* MakeableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeableTests.swift; sourceTree = "<group>"; };
 		48F17C1E2091A92700C070B2 /* ControlStateMergingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlStateMergingTests.swift; sourceTree = "<group>"; };
 		48F17C1F2091A92700C070B2 /* MergeOperatorAssociativityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeOperatorAssociativityTests.swift; sourceTree = "<group>"; };
 		48F17C202091A92700C070B2 /* MergingViewStyleWithArraysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergingViewStyleWithArraysTests.swift; sourceTree = "<group>"; };
@@ -784,8 +782,6 @@
 				48F17C192091A92700C070B2 /* MergeOfOptionalsUsingOperatorsTests.swift */,
 				48F17C1A2091A92700C070B2 /* BaseXCTest.swift */,
 				48F17C1B2091A92700C070B2 /* ProcessControlStatesTests.swift */,
-				48F17C1C2091A92700C070B2 /* MergeInterceptorsTests.swift */,
-				48F17C1D2091A92700C070B2 /* MakeableTests.swift */,
 				48F17C1E2091A92700C070B2 /* ControlStateMergingTests.swift */,
 				48F17C1F2091A92700C070B2 /* MergeOperatorAssociativityTests.swift */,
 				48F17C202091A92700C070B2 /* MergingViewStyleWithArraysTests.swift */,
