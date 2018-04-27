@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0087A1FD1F5C89110041D272 /* String+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0087A1FC1F5C89110041D272 /* String+Attributed.swift */; };
-		13488DEF9390B5FC7423243B /* libPods-App-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F993F1AEAEFEE79F3D0D80C9 /* libPods-App-Example.a */; };
 		482310ED2091332100AB37DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482310EB2091332100AB37DC /* AppDelegate.swift */; };
 		482420561EFC169300259C55 /* UIImage+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482420551EFC169300259C55 /* UIImage+UIColor.swift */; };
 		482B89121EE00C4C00C97D42 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 482B890C1EE00C4C00C97D42 /* Assets.xcassets */; };
@@ -21,7 +20,7 @@
 		48CC57642091A610001EB1DB /* TableViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48594C3B1EF06B370058594B /* TableViewControllerModel.swift */; };
 		48CC57662091A663001EB1DB /* Validating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4841102E1EED701C0016620B /* Validating.swift */; };
 		48F4F4041EE0100F003005B9 /* ViewComposer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48F4F3FC1EE00FF4003005B9 /* ViewComposer.framework */; };
-		DF44BBCD5F802AD4ABE3C27C /* libPods-ExampleApp-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A39B454AA98236BCF6991945 /* libPods-ExampleApp-Example.a */; };
+		BCE1E146B2AA32D16F495098 /* libPods-App-Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8140A9934661440C8C493DA3 /* libPods-App-Example.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,12 +104,10 @@
 		48594C3D1EF06EA80058594B /* MakeableUIWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeableUIWebViewViewController.swift; sourceTree = "<group>"; };
 		4887BA2A1EEDB4CC00FAB210 /* MyCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCollectionViewCell.swift; sourceTree = "<group>"; };
 		48F4F3F61EE00FF4003005B9 /* ViewComposer.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ViewComposer.xcodeproj; path = ../ViewComposer.xcodeproj; sourceTree = "<group>"; };
-		48F4F4021EE01007003005B9 /* Pods_ViewComposer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_ViewComposer.framework; path = "/Users/sajjon/Developer/iOS/ViewComposer/Pods/../build/Debug-iphoneos/Pods_ViewComposer.framework"; sourceTree = "<absolute>"; };
 		80A0F47F65359E56E45ADD7D /* Pods-ExampleApp-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp-Example.release.xcconfig"; path = "../Pods/Target Support Files/Pods-ExampleApp-Example/Pods-ExampleApp-Example.release.xcconfig"; sourceTree = "<group>"; };
+		8140A9934661440C8C493DA3 /* libPods-App-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-App-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		833BA05B2A1D4EFAA9142A11 /* Pods-App-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Example.release.xcconfig"; path = "../Pods/Target Support Files/Pods-App-Example/Pods-App-Example.release.xcconfig"; sourceTree = "<group>"; };
 		A0C95D2B819408B715C9AEB2 /* Pods-ExampleApp-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleApp-Example.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-ExampleApp-Example/Pods-ExampleApp-Example.debug.xcconfig"; sourceTree = "<group>"; };
-		A39B454AA98236BCF6991945 /* libPods-ExampleApp-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ExampleApp-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F993F1AEAEFEE79F3D0D80C9 /* libPods-App-Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-App-Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +116,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				48F4F4041EE0100F003005B9 /* ViewComposer.framework in Frameworks */,
-				DF44BBCD5F802AD4ABE3C27C /* libPods-ExampleApp-Example.a in Frameworks */,
-				13488DEF9390B5FC7423243B /* libPods-App-Example.a in Frameworks */,
+				BCE1E146B2AA32D16F495098 /* libPods-App-Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,9 +278,7 @@
 		48F4F4011EE01007003005B9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				48F4F4021EE01007003005B9 /* Pods_ViewComposer.framework */,
-				A39B454AA98236BCF6991945 /* libPods-ExampleApp-Example.a */,
-				F993F1AEAEFEE79F3D0D80C9 /* libPods-App-Example.a */,
+				8140A9934661440C8C493DA3 /* libPods-App-Example.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

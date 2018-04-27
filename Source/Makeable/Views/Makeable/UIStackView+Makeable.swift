@@ -8,11 +8,7 @@
 
 import UIKit
 
-extension UIStackView: Makeable {
+extension UIStackView: Composable {
     public typealias Style = StackViewStyle
-    public typealias Attribute = StackViewAttribute
-    public static func createEmpty() -> UIStackView {
-        return UIStackView(frame: .zero)
-    }
 }
 

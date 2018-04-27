@@ -8,15 +8,3 @@
 
 import Foundation
 
-public protocol Styleable: ExpressibleByArrayLiteral {
-    associatedtype Attribute: BaseAttribute
-    associatedtype Style: StyleProtocol
-    associatedtype ArrayLiteralElement = Attribute
-}
-
-/// Makes it possible to instantiate and style `Makeable` from array literal like this: `let label: UILabel = [.text("foo")]`
-public extension Styleable where Self: Makeable, Self.Styled == Self {
-    init(arrayLiteral elements: Self.Attribute...) {
-        self = Self.make(elements)
-    }
-}

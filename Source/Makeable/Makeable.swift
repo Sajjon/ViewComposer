@@ -8,59 +8,104 @@
 
 import UIKit
 
-extension UICollectionView {//}: EmptyInitializable {
-    // Compilation error: "Initializer 'init()' with Objective-C selector 'init' conflicts with implicit initializer 'init()' with the same Objective-C selector"
-    @nonobjc convenience init() { // must be marked `convenience` since it is an initializer in an extension
-        self.init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    }
-}
+public typealias Composable = Makeable & EmptyInitializable & Styleable
+public typealias ComposableByProxy = Makeable & MakeableByProxy & Styleable
 
-public protocol EmptyInitializable { // change this to JUST `init()`
-    associatedtype Styled
-    static func createEmpty() -> Styled
+public protocol EmptyInitializable {
+    init()
 }
 
 /// Type that can be instantiated using static method `make([Style.Attribute])`
-public protocol Makeable: EmptyInitializable, Styleable {
-    static func make(_ attributes: [Attribute]) -> Styled
+public protocol Styling {
+    static func applyStyle<S>(_ style: S) where S: StyleProtocol
 }
 
-extension Makeable where Self.Styled == Self {
-    /// Allow for use of array literals statically like this `UIButton.make(.text("foo"), .textColor(.red))`
-    public static func make(_ elements: Attribute...) -> Styled {
-        return make(elements)
-    }
+public protocol Makeable {
+    static func make<A>(_ attributes: [A]) -> Self where A: BaseAttribute
+}
 
-    /// Allows for use of static instatiation like this: `UIButton.make([.text("foo"), .textColor(.red)])`
-    public static func make(_ attributes: [Attribute]) -> Styled {
-        let style = Style.init(tuples: attributes.asTuples()) { (_, last) in last }
-        return make(style)
-    }
+public protocol MakeableByProxy {
+    associatedtype Proxy: EmptyInitializable //& Makeable
+    static func makeProxy<A>(_ attributes: [A]) -> Proxy where A: BaseAttribute
+}
 
-    /// Statically creates a `Makeable` using a style - a collection of attributes.
-    ///
-    /// - Parameter style: `Style` contains a collection of attributes.
-    /// - Returns: retuens a `Styled` instance, which refers to the `Makable` _itself_.
-    public static func make(_ style: Style) -> Styled {
-        let styled = createEmpty()
-        if let view = styled as? UIView {
+public protocol Styleable: ExpressibleByArrayLiteral {
+    associatedtype StyleableAttribute: BaseAttribute
+    associatedtype Style: StyleProtocol
+}
+
+public extension Styleable where Self.Style: AttributedStyleProtocol {
+    typealias StyleableAttribute = Self.Style.Attribute
+}
+
+/// Makes it possible to instantiate and style `Makeable` from array literal like this: `let label: UILabel = [.text("foo")]`
+public extension Styleable where Self: Makeable {
+    init(arrayLiteral elements: Self.StyleableAttribute...) {
+        self = Self.makeAndStyle(elements)
+    }
+}
+
+extension Makeable where Self: Styleable {
+    public static func makeAndStyle(_ attributes: [Self.StyleableAttribute]) -> Self {
+        let `self` = Self.make(attributes)
+        if let view = self as? UIView {
+            let style = Style.init(tuples: attributes.asTuples()) { (first, last) in last }
             style.install(on: view)
         }
-        return styled
+        return self
     }
 }
 
-/// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
-public func make<M: Makeable>(_ attributes: [M.Attribute]) -> M where M.Styled == M {
-    return M.make(attributes)
+extension Makeable where Self: MakeableByProxy {
+    public static func make<A>(_ attributes: [A]) -> Self where A: BaseAttribute {
+        // swiftlint:disable force_cast
+        return Self.makeProxy(attributes) as! Self
+    }
 }
 
-/// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
-public func make<M: Makeable>(_ style: M.Style) -> M where M.Styled == M {
-    return M.make(style)
+extension Makeable where Self: EmptyInitializable {
+    public static func make<A>(_ attributes: [A]) -> Self where A: BaseAttribute {
+        return self.init()
+    }
 }
 
-// Array literals support
-public func make<M: Makeable>(_ attributes: M.Attribute...) -> M where M.Styled == M {
-    return make(attributes)
-}
+//extension Makeable {
+//    /// Allow for use of array literals statically like this `UIButton.make(.text("foo"), .textColor(.red))`
+//    public static func make(_ elements: Attribute...) -> Self {
+//        return make(elements)
+//    }
+//
+//    /// Allows for use of static instatiation like this: `UIButton.make([.text("foo"), .textColor(.red)])`
+//    public static func make(_ attributes: [Attribute]) -> Self {
+//        let style = Style.init(tuples: attributes.asTuples()) { (_, last) in last }
+//        return make(style)
+//    }
+//
+//    /// Statically creates a `Makeable` using a style - a collection of attributes.
+//    ///
+//    /// - Parameter style: `Style` contains a collection of attributes.
+//    /// - Returns: retuens a `Styled` instance, which refers to the `Makable` _itself_.
+//    public static func make(_ style: Style) -> Self {
+//        fatalError("do this")
+////        let `` = createEmpty()
+////        if let view = styled as? UIView {
+////            style.install(on: view)
+////        }
+////        return styled
+//    }
+//}
+
+/// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
+//public func make<M: Makeable>(_ attributes: [M.Attribute]) -> M {
+//    return M.make(attributes)
+//}
+//
+///// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
+//public func make<M: Makeable>(_ style: M.Style) -> M {
+//    return M.make(style)
+//}
+//
+//// Array literals support
+//public func make<M: Makeable>(_ attributes: M.Attribute...) -> M {
+//    return make(attributes)
+//}

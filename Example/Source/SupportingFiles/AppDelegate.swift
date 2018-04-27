@@ -28,10 +28,59 @@ private extension AppDelegate {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.makeKeyAndVisible()
         window.backgroundColor = UIColor.white
-        
-//        let rootViewController = TableViewController()
-        let navigationController = UINavigationController(rootViewController: UIViewController())
+        let navigationController = UINavigationController(rootViewController: ViewController())
         window.rootViewController = navigationController
         self.window = window
     }
 }
+
+
+class ViewController: UIViewController {
+
+    lazy var viewStyle: ViewStyle = [.backgroundColor(.red)]
+    lazy var labelStyle: LabelStyle = [.numberOfLines(0), .backgroundColor(.red)]
+    lazy var greenLabel: UILabel = [.numberOfLines(0), .backgroundColor(.green), .text("Green"), .textColor(.red)]
+    lazy var redLabel: UILabel = [.numberOfLines(0), .backgroundColor(.red), .text("Red"), .textColor(.blue)]
+    lazy var blueLabel: UILabel = [.numberOfLines(0), .backgroundColor(.blue), .text("Blue"), .textColor(.green)]
+    lazy var stackView: UIStackView = [.axis(.vertical), .arrangedSubviews([.spacer(150), greenLabel, redLabel, blueLabel, .spacer]), .distribution(.fillProportionally)]
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(stackView)
+        stackView.edgesToSuperView()
+    }
+}
+extension UIView {
+    func edgesToSuperView() {
+        guard let superview = superview else { return }
+        topAnchor.constraint(equalTo: superview.topAnchor).isActive = true
+        bottomAnchor.constraint(equalTo: superview.bottomAnchor).isActive = true
+        leadingAnchor.constraint(equalTo: superview.leadingAnchor).isActive = true
+        trailingAnchor.constraint(equalTo: superview.trailingAnchor).isActive = true
+    }
+}
+
+final class Spacer: UIView {
+    let height: CGFloat
+    init(height: CGFloat = UIViewNoIntrinsicMetric, color: UIColor = .white) {
+        self.height = height
+        super.init(frame: .zero)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = color
+    }
+    required init?(coder aDecoder: NSCoder) {
+        Swift.fatalError("required init")
+    }
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: height)
+    }
+}
+
+extension UIView {
+    static var spacer: Spacer { return Spacer() }
+    static func spacer(_ height: CGFloat = UIViewNoIntrinsicMetric, color: UIColor = .white) -> Spacer {
+        return Spacer(height: height, color: color)
+    }
+}
+
+

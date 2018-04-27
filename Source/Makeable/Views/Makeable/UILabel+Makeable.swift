@@ -8,11 +8,6 @@
 
 import UIKit
 
-extension UILabel: Makeable {
+extension UILabel: Composable {
     public typealias Style = LabelStyle
-    public typealias Attribute = LabelAttribute
-    public static func createEmpty() -> UILabel {
-        return UILabel(frame: .zero)
-    }
 }
-
