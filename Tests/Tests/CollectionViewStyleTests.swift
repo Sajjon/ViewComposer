@@ -9,8 +9,6 @@ import Foundation
 import XCTest
 @testable import ViewComposer
 
-
-
 class CollectionViewStyleTests: XCTestCase {
     func testMakingCollectionView() {
         let dataSource = TestColllectionViewDataSource()
