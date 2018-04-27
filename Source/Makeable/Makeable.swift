@@ -15,8 +15,9 @@ public protocol EmptyInitializable {
     init()
 }
 
-public protocol Makeable {
-    static func make<A>(_ attributes: [A]) -> Self where A: BaseAttribute
+public protocol Makeable: Styleable {
+    associatedtype SelfMakeable
+    static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable
 }
 
 public protocol ProxyMade {
@@ -26,12 +27,11 @@ public protocol ProxyMade {
 
 public protocol MakeableByProxy {
     associatedtype Proxy: ProxyMade
-    static func makeProxy<A>(_ attributes: [A]) -> Proxy where A: BaseAttribute
+    static func makeProxy(_ attributes: [Proxy.ProxyAttribute]) -> Proxy
 }
 
 extension MakeableByProxy {
-    public static func makeProxy<A>(_ attributes: [A]) -> Proxy where A: BaseAttribute {
-        guard let attributes = attributes as? [Self.Proxy.ProxyAttribute] else { fatalError("Wrong attribute type") }
+    public static func makeProxy(_ attributes: [Proxy.ProxyAttribute]) -> Proxy {
         return Proxy.staticallyInitializeSinceLackOfEmptyInit(with: attributes)
     }
 }
@@ -48,12 +48,13 @@ public extension Styleable where Self.Style: AttributedStyleProtocol {
 /// Makes it possible to instantiate and style `Makeable` from array literal like this: `let label: UILabel = [.text("foo")]`
 public extension Styleable where Self: Makeable {
     init(arrayLiteral elements: Self.StyleableAttribute...) {
-        self = Self.makeAndStyle(elements)
+        // swiftlint:disable force_cast
+        self = Self.makeAndStyle(elements) as! Self
     }
 }
 
-extension Makeable where Self: Styleable {
-    public static func makeAndStyle(_ attributes: [Self.StyleableAttribute]) -> Self {
+extension Makeable {
+    public static func makeAndStyle(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
         let `self` = Self.make(attributes)
         if let view = self as? UIView {
             let style = Style.init(tuples: attributes.asTuples()) { (first, last) in last }
@@ -63,16 +64,17 @@ extension Makeable where Self: Styleable {
     }
 }
 
-extension Makeable where Self: MakeableByProxy {
-    public static func make<A>(_ attributes: [A]) -> Self where A: BaseAttribute {
+extension Makeable where Self: MakeableByProxy, Self.Proxy.ProxyAttribute == Self.StyleableAttribute {
+    public static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
         // swiftlint:disable force_cast
-        return Self.makeProxy(attributes) as! Self
+        return Self.makeProxy(attributes) as! SelfMakeable
     }
 }
 
 extension Makeable where Self: EmptyInitializable {
-    public static func make<A>(_ attributes: [A]) -> Self where A: BaseAttribute {
-        return self.init()
+    public static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
+        // swiftlint:disable force_cast
+        return self.init() as! SelfMakeable
     }
 }
 
@@ -101,9 +103,9 @@ extension Makeable where Self: EmptyInitializable {
 ////        return styled
 //    }
 //}
-
-/// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
-//public func make<M: Makeable>(_ attributes: [M.Attribute]) -> M {
+//let label: UILabel = make([.numberOfLines(1)])
+//// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
+//public func make<M: Makeable & Styleable>(_ attributes: [M.Attribute]) -> M {
 //    return M.make(attributes)
 //}
 //
