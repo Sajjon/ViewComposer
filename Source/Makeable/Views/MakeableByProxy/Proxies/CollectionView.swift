@@ -13,3 +13,8 @@ public final class CollectionView: UICollectionView, ProxyMade {
         return CollectionView(frame: .zero, collectionViewLayout: layout)
     }
 }
+
+extension CollectionView: SubKlass {
+    public typealias SuperKlassType = UICollectionView
+    public func asSuper() -> SuperKlassType { return self as SuperKlassType }
+}
