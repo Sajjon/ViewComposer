@@ -8,7 +8,11 @@
 import Foundation
 
 extension String {
-    static var dataSource: String {
+    static var collectionViewDataSource: String {
+        return #function
+    }
+
+    static var collectionViewLayout: String {
         return #function
     }
 }

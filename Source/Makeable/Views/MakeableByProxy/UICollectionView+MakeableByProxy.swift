@@ -7,12 +7,6 @@
 
 import Foundation
 
-extension MakeableByProxy {
-    public static func makeProxy<A>(_ attributes: [A]) -> Proxy where A: BaseAttribute {
-        return Proxy()
-    }
-}
-
 extension UICollectionView: ComposableByProxy {
     public typealias Style = CollectionViewStyle
     public typealias Proxy = CollectionView

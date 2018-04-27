@@ -13,3 +13,17 @@ public extension Array where Element: BaseAttributeProtocol {
         return map { ($0.name, $0.anyValue) }
     }
 }
+
+extension Array where Element: BaseAttribute {
+    func attribute<V>(named name: String) -> V? {
+        for attribute in self {
+            guard attribute.name == name else { continue }
+            return attribute.value()
+        }
+        return nil
+    }
+
+    func attribute<V>(named name: String, `as` valueType: V.Type) -> V? {
+        return attribute(named: name)
+    }
+}

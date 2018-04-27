@@ -23,6 +23,8 @@ public class StackViewStyle: ViewStyle<StackViewAttribute> {
                 if let v = v as? UILayoutConstraintAxis { stackView.axis = v }
             case .arrangedSubviews:
                 if let v = v as? [UIView] { v.forEach { stackView.addArrangedSubview($0) } }
+            case .distribution:
+                if let v = v as? UIStackViewDistribution { stackView.distribution = v }
             default:
                 print("⚠️ WARNING Not yet supporting attribute with name: `\(name)`, having value: `\(value)`")
                 continue

@@ -15,18 +15,25 @@ public protocol EmptyInitializable {
     init()
 }
 
-/// Type that can be instantiated using static method `make([Style.Attribute])`
-public protocol Styling {
-    static func applyStyle<S>(_ style: S) where S: StyleProtocol
-}
-
 public protocol Makeable {
     static func make<A>(_ attributes: [A]) -> Self where A: BaseAttribute
 }
 
+public protocol ProxyMade {
+    associatedtype ProxyAttribute: BaseAttribute
+    static func staticallyInitializeSinceLackOfEmptyInit(with attributes: [ProxyAttribute]) -> Self
+}
+
 public protocol MakeableByProxy {
-    associatedtype Proxy: EmptyInitializable //& Makeable
+    associatedtype Proxy: ProxyMade
     static func makeProxy<A>(_ attributes: [A]) -> Proxy where A: BaseAttribute
+}
+
+extension MakeableByProxy {
+    public static func makeProxy<A>(_ attributes: [A]) -> Proxy where A: BaseAttribute {
+        guard let attributes = attributes as? [Self.Proxy.ProxyAttribute] else { fatalError("Wrong attribute type") }
+        return Proxy.staticallyInitializeSinceLackOfEmptyInit(with: attributes)
+    }
 }
 
 public protocol Styleable: ExpressibleByArrayLiteral {

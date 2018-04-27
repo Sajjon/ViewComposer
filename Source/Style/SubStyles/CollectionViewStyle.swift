@@ -15,7 +15,7 @@ public class CollectionViewStyle: ViewStyle<CollectionViewAttribute> {
         for (name, value) in attributes {
             let v = value
             switch name {
-            case .dataSource:
+            case .collectionViewDataSource:
                 if let v = v as? UICollectionViewDataSource { collectionView.dataSource = v }
             default:
                 print("⚠️ WARNING Not yet supporting attribute with name: `\(name)`, having value: `\(value)`")
