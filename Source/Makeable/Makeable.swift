@@ -17,7 +17,7 @@ public protocol EmptyInitializable {
 
 public protocol Makeable: Styleable {
     associatedtype SelfMakeable
-    static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable
+    static func make(_ attributes: [Self.Attribute]) -> SelfMakeable
     static func make(_ style: Style) -> SelfMakeable
 }
 
@@ -37,26 +37,26 @@ extension MakeableByProxy where Self.Style == Self.Proxy.Style {
 }
 
 public protocol Styleable: ExpressibleByArrayLiteral {
-    associatedtype StyleableAttribute: BaseAttribute
+    associatedtype Attribute: BaseAttribute
     associatedtype Style: StyleProtocol
 }
 
 public extension Styleable where Self.Style: AttributedStyleProtocol {
-    typealias StyleableAttribute = Self.Style.Attribute
+    typealias Attribute = Self.Style.Attribute
 }
 
 public extension Styleable where Self: Makeable, Self.SelfMakeable == Self {
-    init(arrayLiteral elements: Self.StyleableAttribute...) {
+    init(arrayLiteral elements: Self.Attribute...) {
         self = Self.make(elements)
     }
 }
 
 extension Makeable {
-    public static func make(_ elements: Self.StyleableAttribute...) -> SelfMakeable {
+    public static func make(_ elements: Self.Attribute...) -> SelfMakeable {
         return make(elements)
     }
 
-    public static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
+    public static func make(_ attributes: [Self.Attribute]) -> SelfMakeable {
         let style = Style.init(tuples: attributes.asTuples()) { (_, last) in last }
         let `self` = make(style)
         if let view = self as? UIView {
@@ -87,7 +87,7 @@ extension Makeable where Self: EmptyInitializable, SelfMakeable == Self {
 
 /// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
 /// let label: UILabel = make([.numberOfLines(1)])
-public func make<M>(_ attributes: [M.StyleableAttribute]) -> M where M: Makeable, M.SelfMakeable == M {
+public func make<M>(_ attributes: [M.Attribute]) -> M where M: Makeable, M.SelfMakeable == M {
     return M.make(attributes)
 }
 
@@ -99,6 +99,6 @@ public func make<M>(_ style: M.Style) -> M where M: Makeable, M.SelfMakeable == 
 
 /// Array literals support
 // let label: UILabel = make(.text("hi"), .numberOfLines(1))
-public func make<M>(_ attributes: M.StyleableAttribute...) -> M where M: Makeable, M.SelfMakeable == M {
+public func make<M>(_ attributes: M.Attribute...) -> M where M: Makeable, M.SelfMakeable == M {
     return make(attributes)
 }
