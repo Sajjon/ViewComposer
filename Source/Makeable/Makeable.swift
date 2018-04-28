@@ -18,20 +18,21 @@ public protocol EmptyInitializable {
 public protocol Makeable: Styleable {
     associatedtype SelfMakeable
     static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable
+    static func make(_ style: Style) -> SelfMakeable
 }
 
 public protocol ProxyMade: Styleable {
-    static func staticallyInitializeSinceLackOfEmptyInit(with attributes: [Self.StyleableAttribute]) -> Self
+    static func staticallyInitializeSinceLackOfEmptyInit(with style: Style) -> Self
 }
 
 public protocol MakeableByProxy: Makeable {
     associatedtype Proxy: ProxyMade
-    static func makeProxy(_ attributes: [Self.StyleableAttribute]) -> Proxy
+    static func makeProxy(_ style: Style) -> Proxy
 }
 
-extension MakeableByProxy where Self.StyleableAttribute == Self.Proxy.StyleableAttribute {
-    public static func makeProxy(_ attributes: [Self.StyleableAttribute]) -> Proxy {
-        return Proxy.staticallyInitializeSinceLackOfEmptyInit(with: attributes)
+extension MakeableByProxy where Self.Style == Self.Proxy.Style {
+    public static func makeProxy(_ style: Style) -> Proxy {
+        return Proxy.staticallyInitializeSinceLackOfEmptyInit(with: style)
     }
 }
 
@@ -46,74 +47,71 @@ public extension Styleable where Self.Style: AttributedStyleProtocol {
 
 public extension Styleable where Self: Makeable, Self.SelfMakeable == Self {
     init(arrayLiteral elements: Self.StyleableAttribute...) {
-        self = Self.makeAndStyle(elements)
+        self = Self.make(elements)
     }
 }
 
-extension Makeable {
-    public static func makeAndStyle(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
-        let `self` = Self.make(attributes)
-        if let view = self as? UIView {
-            let style = Style.init(tuples: attributes.asTuples()) { (first, last) in last }
-            style.install(on: view)
-        }
-        return self
-    }
-}
+//extension Makeable {
+//    public static func makeAndStyle(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
+//        let `self` = Self.make(attributes)
+//        if let view = self as? UIView {
+//            let style = Style.init(tuples: attributes.asTuples()) { (first, last) in last }
+//            style.install(on: view)
+//        }
+//        return self
+//    }
+//}
 public protocol SubKlass: AnyObject {
     associatedtype SuperKlassType
     func asSuper() -> SuperKlassType
 }
 
 extension Makeable where Self: MakeableByProxy, Self.Proxy: SubKlass, Self.Proxy.SuperKlassType == SelfMakeable {
-    public static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
-        return Self.makeProxy(attributes).asSuper()
+    public static func make(_ style: Style) -> SelfMakeable {
+        let `self` = Self.makeProxy(style).asSuper()
+        if let view = self as? UIView {
+            style.install(on: view)
+        }
+        return self
     }
 }
 
 extension Makeable where Self: EmptyInitializable, SelfMakeable == Self {
-    public static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
-        return self.init()
+    public static func make(_ style: Style) -> SelfMakeable {
+        let `self` = self.init()
+        if let view = self as? UIView {
+            style.install(on: view)
+        }
+        return self
     }
 }
 
-//extension Makeable {
-//    /// Allow for use of array literals statically like this `UIButton.make(.text("foo"), .textColor(.red))`
-//    public static func make(_ elements: Attribute...) -> Self {
-//        return make(elements)
-//    }
-//
-//    /// Allows for use of static instatiation like this: `UIButton.make([.text("foo"), .textColor(.red)])`
-//    public static func make(_ attributes: [Attribute]) -> Self {
-//        let style = Style.init(tuples: attributes.asTuples()) { (_, last) in last }
-//        return make(style)
-//    }
-//
-//    /// Statically creates a `Makeable` using a style - a collection of attributes.
-//    ///
-//    /// - Parameter style: `Style` contains a collection of attributes.
-//    /// - Returns: retuens a `Styled` instance, which refers to the `Makable` _itself_.
-//    public static func make(_ style: Style) -> Self {
-//        fatalError("do this")
-////        let `` = createEmpty()
-////        if let view = styled as? UIView {
-////            style.install(on: view)
-////        }
-////        return styled
-//    }
-//}
-let label: UILabel = make([.numberOfLines(1)])
-// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
+extension Makeable {
+    /// Allow for use of array literals statically like this `UIButton.make(.text("foo"), .textColor(.red))`
+    public static func make(_ elements: Self.StyleableAttribute...) -> SelfMakeable {
+        return make(elements)
+    }
+
+    /// Allows for use of static instatiation like this: `UIButton.make([.text("foo"), .textColor(.red)])`
+    public static func make(_ attributes: [Self.StyleableAttribute]) -> SelfMakeable {
+        let style = Style.init(tuples: attributes.asTuples()) { (_, last) in last }
+        return make(style)
+    }
+}
+
+/// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
 public func make<M>(_ attributes: [M.StyleableAttribute]) -> M where M: Makeable, M.SelfMakeable == M {
     return M.make(attributes)
 }
-//
-///// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
-//public func make<M: Makeable>(_ style: M.Style) -> M {
-//    return M.make(style)
-//}
-//
-//// Array literals support
+let label: UILabel = make([.numberOfLines(1)])
+
+/// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
+public func make<M>(_ style: M.Style) -> M where M: Makeable, M.SelfMakeable == M {
+    return M.make(style)
+}
+let label2: UILabel = make([.text("hi")])
+
+/// Array literals support
 //public func make<M: Makeable>(_ attributes: M.Attribute...) -> M {
 //    return make(attributes)
 //}

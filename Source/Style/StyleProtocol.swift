@@ -61,3 +61,14 @@ public extension StyleProtocol {
         return merging(other, uniquingKeysWith: combine)
     }
 }
+
+
+extension StyleProtocol {
+    func attribute<V>(named name: String) -> V? {
+        return attributes[name] as? V
+    }
+
+    func attribute<V>(named name: String, `as` valueType: V.Type) -> V? {
+        return attribute(named: name)
+    }
+}
