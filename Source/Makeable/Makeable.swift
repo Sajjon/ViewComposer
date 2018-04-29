@@ -16,7 +16,7 @@ public protocol EmptyInitializable {
 }
 
 public protocol Makeable: Styleable {
-    associatedtype SelfMakeable
+    associatedtype SelfMakeable: Makeable
     static func make(_ attributes: [Self.Attribute]) -> SelfMakeable
     static func make(_ style: Style) -> SelfMakeable
 }
@@ -71,6 +71,10 @@ extension Makeable {
 public protocol SubKlass: AnyObject {
     associatedtype SuperKlassType
     func asSuper() -> SuperKlassType
+}
+
+extension MakeableByProxy where Self.Proxy: SubKlass {
+    public typealias SelfMakeable = Self.Proxy.SuperKlassType
 }
 
 extension Makeable where Self: MakeableByProxy, Self.Proxy: SubKlass, Self.Proxy.SuperKlassType == SelfMakeable {

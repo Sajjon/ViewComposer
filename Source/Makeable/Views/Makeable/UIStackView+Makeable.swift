@@ -10,7 +10,5 @@ import UIKit
 
 extension UIStackView: Composable {
     public typealias SelfMakeable = UIStackView
-
     public typealias Style = StackViewStyle
 }
-
