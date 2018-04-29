@@ -10,6 +10,5 @@ import UIKit
 
 extension UILabel: Composable {
     public typealias SelfMakeable = UILabel
-
     public typealias Style = LabelStyle
 }

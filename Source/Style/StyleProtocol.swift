@@ -62,7 +62,6 @@ public extension StyleProtocol {
     }
 }
 
-
 extension StyleProtocol {
     func attribute<V>(named name: String) -> V? {
         return attributes[name] as? V

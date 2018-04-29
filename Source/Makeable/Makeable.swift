@@ -15,7 +15,7 @@ public protocol EmptyInitializable {
     init()
 }
 
-public protocol Makeable: Styleable {
+public protocol Makeable: Styleable where SelfMakeable == Self, Self.SelfMakeable.Style == Self.Style {
     associatedtype SelfMakeable: Makeable
     static func make(_ attributes: [Self.Attribute]) -> SelfMakeable
     static func make(_ style: Style) -> SelfMakeable
@@ -45,7 +45,7 @@ public extension Styleable where Self.Style: AttributedStyleProtocol {
     typealias Attribute = Self.Style.Attribute
 }
 
-public extension Styleable where Self: Makeable, Self.SelfMakeable == Self {
+public extension Styleable where Self: Makeable {
     init(arrayLiteral elements: Self.Attribute...) {
         self = Self.make(elements)
     }
@@ -91,18 +91,18 @@ extension Makeable where Self: EmptyInitializable, SelfMakeable == Self {
 
 /// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
 /// let label: UILabel = make([.numberOfLines(1)])
-public func make<M>(_ attributes: [M.Attribute]) -> M where M: Makeable, M.SelfMakeable == M {
+public func make<M>(_ attributes: [M.Attribute]) -> M where M: Makeable {
     return M.make(attributes)
 }
 
 /// Makes (pun intended) it possible to write `let label: UILabel = make([.text("hi")])` notice the lack of `.` in `.make`.
 /// let label: UILabel = make([.text("hi")])
-public func make<M>(_ style: M.Style) -> M where M: Makeable, M.SelfMakeable == M {
+public func make<M>(_ style: M.Style) -> M where M: Makeable {
     return M.make(style)
 }
 
 /// Array literals support
 // let label: UILabel = make(.text("hi"), .numberOfLines(1))
-public func make<M>(_ attributes: M.Attribute...) -> M where M: Makeable, M.SelfMakeable == M {
+public func make<M>(_ attributes: M.Attribute...) -> M where M: Makeable {
     return make(attributes)
 }
