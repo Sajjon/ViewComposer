@@ -27,7 +27,9 @@ extension SingleSubviewOwner where Self: UIViewController {
     func specialConfig() {
         view.backgroundColor = .white
         edgesForExtendedLayout = []
-        automaticallyAdjustsScrollViewInsets = false
+        if let scrollView = subview as? UIScrollView {
+            scrollView.contentInsetAdjustmentBehavior = .automatic
+        }
     }
 }
 
