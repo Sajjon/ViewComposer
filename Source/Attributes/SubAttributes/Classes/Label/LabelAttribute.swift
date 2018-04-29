@@ -8,5 +8,5 @@
 
 import Foundation
 
-public class LabelAttribute: BaseAttribute {}
+open class LabelAttribute: BaseAttribute {}
 extension LabelAttribute: TextOwner {}

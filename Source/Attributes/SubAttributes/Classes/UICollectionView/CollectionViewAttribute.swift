@@ -7,6 +7,4 @@
 
 import Foundation
 
-public class CollectionViewAttribute: BaseAttribute {
-    
-}
+open class CollectionViewAttribute: BaseAttribute {}

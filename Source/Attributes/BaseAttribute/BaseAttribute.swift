@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BaseAttribute: BaseAttributeProtocol, CustomStringConvertible {
+open class BaseAttribute: BaseAttributeProtocol, CustomStringConvertible {
     public let name: String
     public let anyValue: Any
 

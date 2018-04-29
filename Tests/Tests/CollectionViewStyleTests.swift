@@ -11,15 +11,15 @@ import XCTest
 
 class CollectionViewStyleTests: XCTestCase {
     func testMakingCollectionView() {
-        let dataSource = TestColllectionViewDataSource()
+        let dataSource = TestCollectionViewDataSource()
         let layout = TestCollectionViewLayout()
         let collectionView: UICollectionView = [.dataSource(dataSource), .collectionViewLayout(layout)]
         assertIs(collectionView.collectionViewLayout as? TestCollectionViewLayout, is: layout)
-        assertIs(collectionView.dataSource as? TestColllectionViewDataSource, is: dataSource)
+        assertIs(collectionView.dataSource as? TestCollectionViewDataSource, is: dataSource)
     }
 }
 
-private class TestColllectionViewDataSource: NSObject, UICollectionViewDataSource {
+class TestCollectionViewDataSource: NSObject, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         abstract
     }
@@ -28,11 +28,11 @@ private class TestColllectionViewDataSource: NSObject, UICollectionViewDataSourc
         abstract
     }
 
-    fileprivate override init() {}
+    override init() {}
 }
 
 private class TestCollectionViewLayout: UICollectionViewLayout {
-    fileprivate override init() {
+    override init() {
         super.init()
     }
     public required init?(coder: NSCoder) { abstract }

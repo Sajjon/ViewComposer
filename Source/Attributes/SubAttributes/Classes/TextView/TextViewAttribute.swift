@@ -7,5 +7,5 @@
 
 import UIKit
 
-public class TextViewAttribute: BaseAttribute {}
+open class TextViewAttribute: BaseAttribute {}
 extension TextViewAttribute: TextOwner {}

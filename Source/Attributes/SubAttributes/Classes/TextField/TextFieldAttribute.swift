@@ -8,5 +8,5 @@
 
 import UIKit
 
-public class TextFieldAttribute: BaseAttribute {}
+open class TextFieldAttribute: BaseAttribute {}
 extension TextFieldAttribute: TextOwner {}
