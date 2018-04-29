@@ -74,6 +74,8 @@ public protocol SubKlass: AnyObject {
 }
 
 extension MakeableByProxy where Self.Proxy: SubKlass {
+    // The warning `Typealias overriding associated type SelfMakeable from protocol 'Makeable' is better expressed as same-type constraint`
+    // action "FIX" will not work. Just messes up the code. So Xcode does not really help us here. This is what we want.
     public typealias SelfMakeable = Self.Proxy.SuperKlassType
 }
 
