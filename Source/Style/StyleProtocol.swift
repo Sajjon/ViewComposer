@@ -21,10 +21,10 @@ public protocol StyleProtocol: ExpressibleByArrayLiteral, CustomStringConvertibl
     init(uniqueKeysWithValues: [(Key, Value)])
     func install(on view: UIView)
     func customInstall(on view: UIView)
-    func baseSetup(for view: UIView)
+    func baseSetupForView(_ view: UIView)
 
     // Require the `combine` closure to always return a value. It is not allow to throw an error as Dictionaries are: https://developer.apple.com/documentation/swift/dictionary/2892855-merge
-    func merging(_ other: Attributes, uniquingKeysWith combine: UniquingKeys) -> Self
+    func merging<S>(_ other: Attributes, uniquingKeysWith combine: UniquingKeys) -> S where S: StyleProtocol
 }
 
 internal let duplicatesValueErrorMessage = "Array of tuples contained duplicates which was not allowed."
@@ -43,20 +43,30 @@ public var LastValue: (Any, Any) -> Any {
 
 // Default implementations
 public extension StyleProtocol {
-    func merging(_ other: Attributes, uniquingKeysWith combine: UniquingKeys) -> Self {
+    func merging<S>(_ other: Attributes, uniquingKeysWith combine: UniquingKeys = LastValue) -> S where S: StyleProtocol {
         let merged = attributes.merging(other, uniquingKeysWith: combine)
-        return Self(attributes: merged)
+        return S(attributes: merged)
     }
 }
 
 // Convenience/Extra
 public extension StyleProtocol {
 
-    func merging(_ other: Self, uniquingKeysWith combine: UniquingKeys) -> Self {
+    func merging<S>(_ other: Self, uniquingKeysWith combine: UniquingKeys = LastValue) -> S where S: StyleProtocol {
         return merging(other.attributes, uniquingKeysWith: combine)
     }
 
-    func merging(_ other: Self?, uniquingKeysWith combine: UniquingKeys) -> Self {
+    func merging<S>(_ other: S, uniquingKeysWith combine: UniquingKeys = LastValue) -> S where S: StyleProtocol {
+        let merged = attributes.merging(other.attributes, uniquingKeysWith: combine)
+        return S(attributes: merged)
+    }
+
+    func merging<S>(_ attribute: S.Attribute, uniquingKeysWith combine: UniquingKeys = LastValue) -> S where S: AttributedStyleProtocol {
+        let style = S.init(attributes: [attribute.name: attribute.anyValue])
+        return merging(style, uniquingKeysWith: combine)
+    }
+
+    func merging(_ other: Self?, uniquingKeysWith combine: UniquingKeys = LastValue) -> Self {
         guard let other = other else { return self }
         return merging(other, uniquingKeysWith: combine)
     }

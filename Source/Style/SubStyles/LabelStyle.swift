@@ -19,12 +19,8 @@ public class LabelStyle: ViewStyle<LabelAttribute> {
         for (name, value) in attributes {
             let v = value
             switch name {
-            case .text:
-                if let v = v as? String { label.text = v }
             case .numberOfLines:
                 if let v = v as? Int { label.numberOfLines = v }
-            case .textColor:
-                if let v = v as? UIColor { label.textColor = v }
             default:
                 print("⚠️ WARNING Not yet supporting attribute with name: `\(name)`, having value: `\(value)`")
                 continue
@@ -32,3 +28,5 @@ public class LabelStyle: ViewStyle<LabelAttribute> {
         }
     }
 }
+
+extension LabelStyle: TextOwnerStyle {}

@@ -12,7 +12,6 @@ import XCTest
 class UITableViewStyleTests: XCTestCase {
     func testTableViewViewStyle() {
         let tableViewDataSource = TestTableViewDataSource()
-//        let collectionViewDataSource = TestCollectionViewDataSource()
         let style: TableViewStyle = [.dataSource(tableViewDataSource)]
         assertIs(style.attribute(named: String.tableViewDataSource, as: TestTableViewDataSource.self), is: tableViewDataSource)
     }

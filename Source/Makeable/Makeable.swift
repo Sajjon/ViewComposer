@@ -8,14 +8,13 @@
 
 import UIKit
 
-public typealias Composable = Makeable & EmptyInitializable & Styleable
-public typealias ComposableByProxy = Makeable & MakeableByProxy & Styleable
+public typealias Composable = Makeable & EmptyInitializable
 
 public protocol EmptyInitializable {
     init()
 }
 
-public protocol Makeable: Styleable where SelfMakeable == Self, Self.SelfMakeable.Style == Self.Style {
+public protocol Makeable: Styleable where SelfMakeable == Self {
     associatedtype SelfMakeable: Makeable
     static func make(_ attributes: [Self.Attribute]) -> SelfMakeable
     static func make(_ style: Style) -> SelfMakeable

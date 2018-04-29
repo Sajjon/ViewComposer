@@ -7,4 +7,7 @@
 
 import Foundation
 
-public protocol TextOwner {}
+public protocol TextOwner: BaseAttributeProtocol {}
+
+/// Used for declaring shared textOwner attributes
+public class TextAttribute: BaseAttribute, TextOwner {}

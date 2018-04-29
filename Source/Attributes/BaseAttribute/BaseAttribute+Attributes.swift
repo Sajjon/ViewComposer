@@ -9,11 +9,11 @@
 import UIKit
 
 public extension BaseAttribute {
-    public static func backgroundColor<A>(_ value: UIColor) -> A where A: BaseAttribute {
+    public static func backgroundColor<A>(_ value: UIColor) -> A where A: BaseAttributeProtocol {
         return A(name: .backgroundColor, value: value)
     }
     
-    public static func clipsToBounds<A>(_ value: Bool) -> A where A: BaseAttribute {
+    public static func clipsToBounds<A>(_ value: Bool) -> A where A: BaseAttributeProtocol {
         return A(name: .clipsToBounds, value: value)
     }
 }

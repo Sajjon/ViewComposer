@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UITableView: ComposableByProxy {
+extension UITableView: MakeableByProxy {
     public typealias Style = TableViewStyle
     public typealias Proxy = TableView
 }

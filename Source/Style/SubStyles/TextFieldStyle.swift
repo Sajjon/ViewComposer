@@ -28,3 +28,5 @@ public class TextFieldStyle: ViewStyle<TextFieldAttribute> {
         }
     }
 }
+
+extension TextFieldStyle: TextOwnerStyle {}

@@ -42,7 +42,13 @@ class ViewController: UIViewController {
     lazy var greenLabel: UILabel = [.numberOfLines(0), .backgroundColor(.green), .text("Green"), .textColor(.red)]
     lazy var redLabel: UILabel = [.numberOfLines(0), .backgroundColor(.red), .text("Red"), .textColor(.blue)]
     lazy var blueLabel: UILabel = [.numberOfLines(0), .backgroundColor(.blue), .text("Blue"), .textColor(.green)]
-    lazy var stackView: UIStackView = [.axis(.vertical), .arrangedSubviews([.spacer(150), greenLabel, redLabel, blueLabel, .spacer]), .distribution(.fillProportionally)]
+    lazy var textView: UITextView = [.isSelectable(true), .isEditable(true), .text("""
+        Lorem ipsum dolor sit amet, an mel tractatos dignissim, mundi quidam ei sit. Melius vivendum assentior duo ne. Prima meliore partiendo te mei, qui ut enim mucius concludaturque. At epicuri expetendis qui. Cu eos hendrerit interesset omittantur, ut magna menandri eos.
+
+        Mel cu aliquid fierent, has ullum tempor an. Probatus abhorreant scriptorem ex mel, enim aliquam sensibus ea usu, ne malis maiorum albucius mea. Ut pri elitr fabellas. Te rebum ridens cotidieque usu, in inani principes definitiones vim. An pro illum aliquid commune, mei ne esse explicari mediocritatem.
+"""
+), .textColor(.green), .backgroundColor(.orange)]
+    lazy var stackView: UIStackView = [.axis(.vertical), .arrangedSubviews([.spacer(150), greenLabel, redLabel, blueLabel, textView, .spacer]), .distribution(.fill)]
 
     override func viewDidLoad() {
         super.viewDidLoad()

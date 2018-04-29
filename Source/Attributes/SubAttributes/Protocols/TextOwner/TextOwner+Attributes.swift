@@ -7,20 +7,38 @@
 
 import Foundation
 
-extension TextOwner where Self: BaseAttribute {
+//extension TextOwner where Self: BaseAttribute {
+//    public static func text<A>(_ value: String?) -> A where A: BaseAttribute {
+//        return A(name: .text, value: value as Any)
+//    }
+//
+//    public static func textAlignment<A>(_ value: NSTextAlignment) -> A where A: BaseAttribute {
+//        return A(name: .textAlignment, value: value)
+//    }
+//
+//    public static func textColor<A>(_ value: UIColor) -> A where A: BaseAttribute {
+//        return A(name: .textColor, value: value)
+//    }
+//
+//    public static func font<A>(_ value: UIFont) -> A where A: BaseAttribute {
+//        return A(name: .font, value: value)
+//    }
+//}
+
+extension BaseAttributeProtocol where Self: TextOwner {
     public static func text<A>(_ value: String?) -> A where A: BaseAttribute {
         return A(name: .text, value: value as Any)
     }
 
-    public static func textAlignment<A>(_ value: NSTextAlignment) -> A where A: LabelAttribute {
+    public static func textAlignment<A>(_ value: NSTextAlignment) -> A where A: BaseAttribute {
         return A(name: .textAlignment, value: value)
     }
 
-    public static func textColor<A>(_ value: UIColor) -> A where A: LabelAttribute {
+    public static func textColor<A>(_ value: UIColor) -> A where A: BaseAttribute {
         return A(name: .textColor, value: value)
     }
 
-    public static func font<A>(_ value: UIFont) -> A where A: LabelAttribute {
+    public static func font<A>(_ value: UIFont) -> A where A: BaseAttribute {
         return A(name: .font, value: value)
     }
 }

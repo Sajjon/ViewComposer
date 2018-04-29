@@ -8,6 +8,10 @@
 
 import UIKit
 
+public protocol SharedStyle {
+    func installShared(on view: UIView)
+}
+
 public protocol AttributedStyleProtocol: StyleProtocol {
     associatedtype Attribute: BaseAttribute
 }
@@ -37,13 +41,20 @@ public class ViewStyle<A: BaseAttribute>: AttributedStyleProtocol {
 
     public func customInstall(on view: UIView) {}
 
-    public func baseSetup(for view: UIView) {
+    public func baseSetupForView(_ view: UIView) {
         view.translatesAutoresizingMaskIntoConstraints = false
+    }
+
+    public func installAttributesDeclaredInProtocols(on view: UIView) {
+        if let textOwnerStyle = self as? TextOwnerStyle {
+            textOwnerStyle.installShared(on: view)
+        }
     }
 
     public func install(on view: UIView) {
         customInstall(on: view)
-        baseSetup(for: view)
+        baseSetupForView(view)
+        installAttributesDeclaredInProtocols(on: view)
         for (name, value) in attributes {
             let v = value
             switch name {

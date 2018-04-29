@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol TextHolder: class {
+public protocol TextHolder: AnyObject {
     var textProxy: String? { get set }
     var textColorProxy: UIColor? { get set }
     var fontProxy: UIFont? { get set }
@@ -16,19 +16,19 @@ public protocol TextHolder: class {
     func setCase(_ `case`: Case)
 }
 
-public protocol NativeTextHolder: class {
+public protocol NativeTextHolder: AnyObject {
     var text: String? { get set }
 }
 
-public protocol NativeTextAlignmentHolder: class {
+public protocol NativeTextAlignmentHolder: AnyObject {
     var textAlignment: NSTextAlignment { get set }
 }
 
-public protocol NativeTextColorHolder: class {
+public protocol NativeTextColorHolder: AnyObject {
     var textColor: UIColor? { get set }
 }
 
-public protocol NativeFontHolder: class {
+public protocol NativeFontHolder: AnyObject {
     var font: UIFont? { get set }
 }
 
@@ -60,26 +60,49 @@ extension TextHolder where Self: NativeFontHolder {
     }
 }
 
-internal extension TextHolder {
-    func apply(_ style: ViewStyle) {
-        style.attributes.forEach {
-            switch $0 {
-            case .font(let font):
-                fontProxy = font
-            case .textColor(let textColor):
-                textColorProxy = textColor
-            case .text(let text):
-                textProxy = text
-            case .textAlignment(let textAlignment):
-                textAlignmentProxy = textAlignment
-            case .case(let `case`):
-                setCase(`case`)
+public protocol TextOwnerStyle: SharedStyle {}
+public extension TextOwnerStyle where Self: StyleProtocol {
+    func installShared(on view: UIView) {
+        guard let textHolder = view as? TextHolder else { fatalError("not TextHolder") }
+        for (name, value) in attributes {
+            let v = value
+            switch name {
+            case .text:
+                if let v = v as? String { textHolder.textProxy = v }
+            case .textColor:
+                if let v = v as? UIColor { textHolder.textColorProxy = v }
+            case .textAlignment:
+                if let v = v as? NSTextAlignment { textHolder.textAlignmentProxy = v }
+            case .font:
+                if let v = v as? UIFont { textHolder.fontProxy = v }
             default:
-                break
+                print("⚠️ WARNING Not yet supporting attribute with name: `\(name)`, having value: `\(value)`")
+                continue
             }
         }
     }
 }
+
+//internal extension TextHolder {
+//    func apply(_ style: ViewStyle) {
+//        style.attributes.forEach {
+//            switch $0 {
+//            case .font(let font):
+//                fontProxy = font
+//            case .textColor(let textColor):
+//                textColorProxy = textColor
+//            case .text(let text):
+//                textProxy = text
+//            case .textAlignment(let textAlignment):
+//                textAlignmentProxy = textAlignment
+//            case .case(let `case`):
+//                setCase(`case`)
+//            default:
+//                break
+//            }
+//        }
+//    }
+//}
 
 public extension TextHolder {
     func setCase(_ `case`: Case) {

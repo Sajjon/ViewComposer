@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension UICollectionView: ComposableByProxy {
+extension UICollectionView: MakeableByProxy {
     public typealias Style = CollectionViewStyle
     public typealias Proxy = CollectionView
 }

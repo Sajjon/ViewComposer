@@ -7,7 +7,7 @@
 
 import UIKit
 
-public final class TableView: UITableView, ProxyMade {
+public final class TableView: UITableView, ProxyMade {    
     public static func staticallyInitializeSinceLackOfEmptyInit(with style: TableViewStyle) -> TableView {
         let tableStyle = style.attribute(named: .tableViewStyle, as: UITableViewStyle.self) ?? .plain
         return TableView(frame: .zero, style: tableStyle)

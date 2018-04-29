@@ -7,8 +7,7 @@
 
 import Foundation
 
-extension String {
-    static var isEditable: String {
-        return #function
-    }
+public extension String {
+    static var isEditable: String { return #function }
+    static var isSelectable: String { return #function }
 }

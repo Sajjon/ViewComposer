@@ -8,8 +8,12 @@
 import UIKit
 
 public extension TextViewAttribute {
-    public static func isEditable<A>(_ value: Bool) -> A where A: TextViewAttribute {
+    static func isEditable<A>(_ value: Bool) -> A where A: TextViewAttribute {
         return A(name: .isEditable, value: value)
+    }
+
+    static func isSelectable<A>(_ value: Bool) -> A where A: TextViewAttribute {
+        return A(name: .isSelectable, value: value)
     }
 
 }
