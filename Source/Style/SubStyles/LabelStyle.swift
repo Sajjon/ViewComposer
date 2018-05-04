@@ -1,18 +1,14 @@
 //
 //  LabelStyle.swift
-//  ViewComposer1
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2018-04-22.
+//  Created by Alexander Cyon on 2018-04-25.
 //  Copyright © 2018 cyon. All rights reserved.
 //
 
 import UIKit
 
 public class LabelStyle: ViewStyle<LabelAttribute> {
-    public convenience required init(arrayLiteral elements: LabelAttribute...) {
-        self.init(attributes: elements)
-    }
-
     public override func install(on view: UIView) {
         super.install(on: view)
         guard let label = view as? UILabel else { fatalError("not UILabel") }

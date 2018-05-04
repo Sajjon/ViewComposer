@@ -1,6 +1,6 @@
 //
 //  StackViewStyle.swift
-//  ViewComposer1
+//  ViewComposer
 //
 //  Created by Alexander Cyon on 2018-04-25.
 //  Copyright © 2018 cyon. All rights reserved.
@@ -9,10 +9,6 @@
 import UIKit
 
 public class StackViewStyle: ViewStyle<StackViewAttribute> {
-    public convenience required init(arrayLiteral elements: StackViewAttribute...) {
-        self.init(attributes: elements)
-    }
-
     public override func install(on view: UIView) {
         super.install(on: view)
         guard let stackView = view as? UIStackView else { fatalError("not UIStackView") }

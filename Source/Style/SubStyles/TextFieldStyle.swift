@@ -1,18 +1,14 @@
 //
 //  TextFieldStyle.swift
-//  ViewComposer1
+//  ViewComposer
 //
-//  Created by Alexander Cyon on 2018-04-22.
+//  Created by Alexander Cyon on 2018-04-25.
 //  Copyright © 2018 cyon. All rights reserved.
 //
 
 import UIKit
 
 public class TextFieldStyle: ViewStyle<TextFieldAttribute> {
-    public convenience required init(arrayLiteral elements: TextFieldAttribute...) {
-        self.init(attributes: elements)
-    }
-
     public override func install(on view: UIView) {
         super.install(on: view)
         guard let label = view as? UITextField else { fatalError("not UITextField") }

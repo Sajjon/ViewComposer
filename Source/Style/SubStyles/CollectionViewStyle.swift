@@ -2,13 +2,13 @@
 //  CollectionViewStyle.swift
 //  ViewComposer
 //
-//  Created by Alexander Cyon on 2018-04-27.
+//  Created by Alexander Cyon on 2018-04-25.
+//  Copyright © 2018 cyon. All rights reserved.
 //
 
 import UIKit
 
 public class CollectionViewStyle: ViewStyle<CollectionViewAttribute> {
-
     public override func install(on view: UIView) {
         super.install(on: view)
         guard let collectionView = view as? UICollectionView else { fatalError("not UICollectionView") }

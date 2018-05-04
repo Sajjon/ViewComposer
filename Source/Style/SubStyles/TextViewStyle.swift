@@ -2,16 +2,13 @@
 //  TextViewStyle.swift
 //  ViewComposer
 //
-//  Created by Alexander Cyon on 2018-04-29.
+//  Created by Alexander Cyon on 2018-04-25.
+//  Copyright © 2018 cyon. All rights reserved.
 //
 
 import Foundation
 
 public class TextViewStyle: ViewStyle<TextViewAttribute> {
-    public convenience required init(arrayLiteral elements: TextViewAttribute...) {
-        self.init(attributes: elements)
-    }
-
     public override func install(on view: UIView) {
         super.install(on: view)
         guard let textView = view as? UITextView else { fatalError("not UITextView") }
