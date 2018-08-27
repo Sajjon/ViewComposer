@@ -9,7 +9,7 @@
 import Foundation
 
 extension UITableView: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UITableView {
         return UITableView(frame: .zero, style: .plain)
     }

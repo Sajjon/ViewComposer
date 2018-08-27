@@ -9,7 +9,7 @@
 import Foundation
 
 extension UITextField: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UITextField {
         return UITextField(frame: .zero)
     }

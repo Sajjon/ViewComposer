@@ -12,7 +12,7 @@ import ViewComposer
 extension UIFont { @nonobjc static let big: UIFont = .boldSystemFont(ofSize: 25) }
 
 final class FooLabel: UIView, FooProtocol {
-    typealias Style = ViewStyle
+    typealias StyleType = ViewStyle
     var foo: String? { didSet { label.text = foo } }
     let label: UILabel
     

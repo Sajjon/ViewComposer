@@ -8,28 +8,28 @@
 
 import Foundation
 
-public extension Styleable where Self: UIView, Style == ViewStyle {
-    func setup(with style: Style) {
+public extension Styleable where Self: UIView, StyleType == ViewStyle {
+    func setup(with style: StyleType) {
         translatesAutoresizingMaskIntoConstraints = false
         style.install(on: self)
         setupConstraints(with: style)
     }
     
-    func layoutSubviews(with style: Style) {
+    func layoutSubviews(with style: StyleType) {
         privateLayoutSubviews(with: style)
         customLayoutSubviews(with: style)
     }
     
-    func customLayoutSubviews(with style: Style) {}
+    func customLayoutSubviews(with style: StyleType) {}
 }
 
-public extension Styleable where Self: UIView, Style == ViewStyle {
-    func privateLayoutSubviews(with style: Style) {
+public extension Styleable where Self: UIView, StyleType == ViewStyle {
+    func privateLayoutSubviews(with style: StyleType) {
         guard let rounding: CornerRounding = style.value(.roundedBy) else { return }
         rounding.apply(to: self)
     }
     
-    func setupConstraints(with style: Style) {
+    func setupConstraints(with style: StyleType) {
         if let height: CGFloat = style.value(.height) {
             addConstraint(heightAnchor.constraint(equalToConstant: height))
         }

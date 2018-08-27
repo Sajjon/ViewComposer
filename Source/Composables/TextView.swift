@@ -10,7 +10,7 @@ import UIKit
 
 open class TextView: UITextView, Composable {
     
-    open let style: ViewStyle
+    public let style: ViewStyle
     
     required public init(_ style: ViewStyle? = nil) {
         let style = style.merge(slave: .default)

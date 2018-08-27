@@ -9,7 +9,7 @@
 import Foundation
 
 extension UISlider: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UISlider {
         return UISlider(frame: .zero)
     }

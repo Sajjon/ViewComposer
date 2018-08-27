@@ -10,7 +10,7 @@ import Foundation
 
 open class ImageView: UIImageView, Composable {
     
-    open let style: ViewStyle
+    public let style: ViewStyle
     
     required public init(_ style: ViewStyle? = nil) {
         let style = style.merge(slave: .default)

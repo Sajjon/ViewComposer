@@ -11,7 +11,7 @@ import XCTest
 
 func assertStyle(_ style: ViewStyle, containsText expected: String, _ message: String? = nil) {
     guard let actual: String = style.value(.text) else {
-        XCTFail("Style does not contain `text` attribute")
+        XCTFail("StyleType does not contain `text` attribute")
         return
     }
     let message = message ?? "Expected '\(expected)', was: '\(actual)'"

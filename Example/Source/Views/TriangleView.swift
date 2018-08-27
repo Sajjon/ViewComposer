@@ -10,7 +10,7 @@ import UIKit
 import ViewComposer
 
 final class TriangleView: UIView, Composable {
-    typealias Style = ViewStyle
+    typealias StyleType = ViewStyle
     var fillColor: UIColor?
     var fillStyle: TriangleFillStyle?
     

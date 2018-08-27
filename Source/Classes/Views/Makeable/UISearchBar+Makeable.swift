@@ -9,7 +9,7 @@
 import Foundation
 
 extension UISearchBar: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UISearchBar {
         return UISearchBar(frame: .zero)
     }

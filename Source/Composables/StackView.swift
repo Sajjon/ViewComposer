@@ -9,7 +9,7 @@
 import Foundation
 
 open class StackView: UIStackView {
-    open let style: ViewStyle
+    public let style: ViewStyle
     open var backgroundColorView: UIView?
     
     required public init(_ style: ViewStyle? = nil) {
@@ -41,7 +41,7 @@ public extension StackView {
         backgroundColorView.translatesAutoresizingMaskIntoConstraints = false
         backgroundColorView.backgroundColor = color
         addSubview(backgroundColorView)
-        sendSubview(toBack: backgroundColorView)
+        sendSubviewToBack(backgroundColorView)
         addConstraint(backgroundColorView.topAnchor.constraint(equalTo: self.topAnchor))
         addConstraint(backgroundColorView.leadingAnchor.constraint(equalTo: self.leadingAnchor))
         addConstraint(backgroundColorView.trailingAnchor.constraint(equalTo: self.trailingAnchor))

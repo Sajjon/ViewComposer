@@ -9,8 +9,8 @@
 import Foundation
 
 /// Makes it possible to instantiate and style `Composable` from array literal like this: `let myComposableView: MyComposableView = [.text("foo")]`
-public extension Styleable where Self: Composable, Self.Style.Attribute == Element {
+public extension Styleable where Self: Composable, Self.StyleType.Attribute == Element {
     init(arrayLiteral elements: Self.Element...) {
-        self.init(Style(Self.Style.removeDuplicatesIfNeededAndAble(elements)))
+        self.init(StyleType(Self.StyleType.removeDuplicatesIfNeededAndAble(elements)))
     }
 }

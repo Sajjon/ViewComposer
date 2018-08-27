@@ -9,7 +9,7 @@
 import Foundation
 
 extension UISegmentedControl: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UISegmentedControl {
         return UISegmentedControl(frame: .zero)
     }

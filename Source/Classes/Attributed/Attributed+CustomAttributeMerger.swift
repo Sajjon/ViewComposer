@@ -10,8 +10,8 @@ import Foundation
 
 public protocol CustomAttributeMerger {
     associatedtype CustomAttribute: Attributed
-    associatedtype Style: Attributed
-    func customMerge(slave: Style, into master: Style) -> Style
+    associatedtype StyleType: Attributed
+    func customMerge(slave: StyleType, into master: StyleType) -> StyleType
 }
 
 extension CustomAttributeMerger where Self: Attributed, Self.Attribute == ViewAttribute {

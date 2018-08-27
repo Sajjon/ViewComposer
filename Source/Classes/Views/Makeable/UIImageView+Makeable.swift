@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIImageView: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UIImageView {
         return UIImageView(frame: .zero)
     }

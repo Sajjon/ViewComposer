@@ -791,7 +791,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var typingAttributes: [String: Any]? {
+    var typingAttributes: [NSAttributedString.Key: Any]? {
         switch self {
             case .typingAttributes(let typingAttributes):
                 return typingAttributes
@@ -999,7 +999,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var linkTextAttributes: [String: Any]? {
+    var linkTextAttributes: [NSAttributedString.Key: Any]? {
         switch self {
             case .linkTextAttributes(let linkTextAttributes):
                 return linkTextAttributes
@@ -1159,7 +1159,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var decelerationRate: CGFloat? {
+    var decelerationRate: UIScrollView.DecelerationRate? {
         switch self {
             case .decelerationRate(let decelerationRate):
                 return decelerationRate
@@ -1743,7 +1743,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var progressViewStyle: UIProgressViewStyle? {
+    var progressViewStyle: UIProgressView.Style? {
         switch self {
             case .progressViewStyle(let progressViewStyle):
                 return progressViewStyle

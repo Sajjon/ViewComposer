@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIPageControl: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UIPageControl {
         return UIPageControl(frame: .zero)
     }

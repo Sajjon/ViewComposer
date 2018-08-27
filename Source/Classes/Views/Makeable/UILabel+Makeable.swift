@@ -9,7 +9,7 @@
 import Foundation
 
 extension UILabel: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UILabel {
         return UILabel(frame: .zero)
     }

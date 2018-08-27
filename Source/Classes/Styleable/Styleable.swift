@@ -9,13 +9,13 @@
 import Foundation
 
 public protocol Styleable: ExpressibleByArrayLiteral {
-    associatedtype Style: Attributed
-    associatedtype Element = Style.Attribute
-    func setup(with style: Style)
+    associatedtype StyleType: Attributed
+    associatedtype Element = StyleType.Attribute
+    func setup(with style: StyleType)
 }
 
 public extension Styleable {
-    func setup(with style: Style) {
+    func setup(with style: StyleType) {
         style.install(on: self)
     }
 }

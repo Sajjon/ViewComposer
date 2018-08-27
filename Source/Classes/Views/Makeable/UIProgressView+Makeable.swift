@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIProgressView: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UIProgressView {
         return UIProgressView(progressViewStyle: .default)
     }

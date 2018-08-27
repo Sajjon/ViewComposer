@@ -9,14 +9,14 @@
 import Foundation
 
 extension String {
-    func applyAttributes(_ attributes: [NSAttributedStringKey: AnyObject], toSubstring substring: String) -> NSMutableAttributedString {
+    func applyAttributes(_ attributes: [NSAttributedString.Key: AnyObject], toSubstring substring: String) -> NSMutableAttributedString {
         let wholeStringAttributed = NSMutableAttributedString(string: self)
         return wholeStringAttributed.applyAttributes(attributes, toSubstring: substring)
     }
 }
 
 extension NSMutableAttributedString {
-    func applyAttributes(_ attributes: [NSAttributedStringKey: Any], toSubstring substring: String) -> NSMutableAttributedString {
+    func applyAttributes(_ attributes: [NSAttributedString.Key: Any], toSubstring substring: String) -> NSMutableAttributedString {
         let range = (string as NSString).range(of: substring)
         self.beginEditing()
         self.addAttributes(attributes, range: range)

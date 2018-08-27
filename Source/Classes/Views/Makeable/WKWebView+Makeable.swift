@@ -10,7 +10,7 @@ import UIKit
 import WebKit
 
 extension WKWebView: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> WKWebView {
         return WKWebView(frame: .zero)
     }

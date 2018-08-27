@@ -9,7 +9,7 @@
 import Foundation
 
 extension UITextView: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UITextView {
         return UITextView(frame: .zero)
     }

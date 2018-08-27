@@ -9,7 +9,7 @@
 import Foundation
 
 extension UISwitch: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UISwitch {
         return UISwitch(frame: .zero)
     }

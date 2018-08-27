@@ -22,7 +22,7 @@ class MakeableTests: BaseXCTest {
     
     var style: ViewStyle { return makeStyle() }
     
-    func validateThatTypeIsMakeable<M: UIView>(_ type: M.Type) where M: Makeable, M.Style == ViewStyle {
+    func validateThatTypeIsMakeable<M: UIView>(_ type: M.Type) where M: Makeable, M.StyleType == ViewStyle {
         let isStackView = type == UIStackView.self
         let makeable = M.make(makeStyle(includeColor: !isStackView)) as! M
         

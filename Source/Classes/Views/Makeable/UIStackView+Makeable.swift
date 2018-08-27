@@ -9,12 +9,12 @@
 import Foundation
 
 extension UIStackView: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UIStackView {
         return UIStackView(frame: .zero)
     }
     
-    public func postMake(_ style: Style) {
+    public func postMake(_ style: StyleType) {
         setupArrangedSubviews(with: style)
     }
 }

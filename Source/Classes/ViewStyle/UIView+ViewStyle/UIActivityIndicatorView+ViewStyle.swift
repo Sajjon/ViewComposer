@@ -9,8 +9,8 @@
 import Foundation
 
 internal extension UIActivityIndicatorView {
-    func apply(_ style: ViewStyle) {
-        style.attributes.forEach {
+    func apply(_ viewStyle: ViewStyle) {
+        viewStyle.attributes.forEach {
             switch $0 {
             case .spin(let animating):
                 if animating {
@@ -20,8 +20,8 @@ internal extension UIActivityIndicatorView {
                 }
             case .hidesWhenStopped(let hides):
                 hidesWhenStopped = hides
-            case .spinnerStyle(let style):
-                activityIndicatorViewStyle = style
+            case .spinnerStyle(let spinnerStyle):
+                style = spinnerStyle
             case .spinnerScale(let scaleFactor):
                 scale(factor: scaleFactor)
             default:

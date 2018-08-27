@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIButton: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UIButton {
         return UIButton(type: .custom)
     }

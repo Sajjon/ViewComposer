@@ -9,7 +9,7 @@
 import Foundation
 
 extension UIWebView: Makeable {
-    public typealias Style = ViewStyle
+    public typealias StyleType = ViewStyle
     public static func createEmpty() -> UIWebView {
         return UIWebView(frame: .zero)
     }

@@ -152,7 +152,7 @@ public enum ViewAttribute {
     
     //MARK: - UITextView
     case selectedRange(NSRange)
-    case linkTextAttributes([String: Any]?)
+    case linkTextAttributes([NSAttributedString.Key: Any]?)
     case textContainerInset(UIEdgeInsets)
     
     //MARK: - ImageHolder
@@ -176,7 +176,7 @@ public enum ViewAttribute {
     case showsVerticalScrollIndicator(Bool)
     case scrollIndicatorInsets(UIEdgeInsets)
     case indicatorStyle(UIScrollView.IndicatorStyle)
-    case decelerationRate(CGFloat)
+    case decelerationRate(UIScrollView.DecelerationRate)
     case delaysContentTouches(Bool)
     case canCancelContentTouches(Bool)
     case minimumZoomScale(CGFloat)
@@ -260,7 +260,7 @@ public enum ViewAttribute {
     
     //MARK: - UISearchBar
     case prompt(String)
-    case searchBarStyle(UIBarStyle)
+    case searchBarStyle(UISearchBar.Style)
     
     //MARK: - UISegmentedControl
     case segments([SegmentContent])
