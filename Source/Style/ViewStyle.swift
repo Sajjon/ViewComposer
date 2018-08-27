@@ -16,7 +16,7 @@ public protocol AttributedStyleProtocol: StyleProtocol {
     associatedtype Attribute: BaseAttribute
 }
 
-public class ViewStyle<A: BaseAttribute>: AttributedStyleProtocol {
+open class ViewStyle<A: BaseAttribute>: AttributedStyleProtocol {
     public typealias Attribute = A
     public typealias ArrayLiteralElement = A
 

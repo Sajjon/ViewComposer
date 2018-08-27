@@ -44,7 +44,21 @@ public extension Styleable where Self.Style: AttributedStyleProtocol {
     typealias Attribute = Self.Style.Attribute
 }
 
-public extension Styleable where Self: Makeable {
+//public extension Styleable where Self: Makeable {
+//    init(arrayLiteral elements: Self.Attribute...) {
+//        self = Self.make(elements)
+//    }
+//}
+
+public protocol SubMakeable: Makeable, SubKlass {}
+
+public extension Makeable {
+    init(arrayLiteral elements: Self.Attribute...) {
+        self = Self.make(elements)
+    }
+}
+
+public extension Makeable where Self: SubMakeable {
     init(arrayLiteral elements: Self.Attribute...) {
         self = Self.make(elements)
     }
@@ -68,7 +82,7 @@ extension Makeable {
 }
 
 public protocol SubKlass: AnyObject {
-    associatedtype SuperKlassType
+    associatedtype SuperKlassType: Makeable
     func asSuper() -> SuperKlassType
 }
 

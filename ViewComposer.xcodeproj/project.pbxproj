@@ -39,11 +39,6 @@
 		482B41532091286800654FA7 /* Styleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B41332091286800654FA7 /* Styleable.swift */; };
 		482B621B20961B8A00E8E304 /* UITextView_TextHolder_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B621A20961B8A00E8E304 /* UITextView_TextHolder_Tests.swift */; };
 		482B621D20961B9900E8E304 /* UITextField_TextHolder_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 482B621C20961B9900E8E304 /* UITextField_TextHolder_Tests.swift */; };
-		482B621E20961CD400E8E304 /* UICollectionView+MakeableByProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48013B3820934A870080BB4F /* UICollectionView+MakeableByProxy.swift */; };
-		482B621F20961CD700E8E304 /* UITableView+MakeableByProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486A4F742095D5C90059ADAE /* UITableView+MakeableByProxy.swift */; };
-		482B622020961CDC00E8E304 /* CollectionViewStyleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48013B3B209353CF0080BB4F /* CollectionViewStyleTests.swift */; };
-		482B622120961CF000E8E304 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4868BEC920936A1000B9085D /* CollectionView.swift */; };
-		482B622220961CF200E8E304 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486A4F862095DB3A0059ADAE /* TableView.swift */; };
 		486A4F772095D5E60059ADAE /* TableViewStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486A4F762095D5E60059ADAE /* TableViewStyle.swift */; };
 		486A4F7A2095D64C0059ADAE /* TableViewAttribute.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486A4F792095D64C0059ADAE /* TableViewAttribute.swift */; };
 		486A4F7C2095D69E0059ADAE /* TableViewAttribute+Attributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 486A4F7B2095D69E0059ADAE /* TableViewAttribute+Attributes.swift */; };
@@ -1063,8 +1058,6 @@
 				482B41492091286800654FA7 /* LabelAttribute.swift in Sources */,
 				482B41452091286800654FA7 /* UILabel+Makeable.swift in Sources */,
 				482B41432091286800654FA7 /* Makeable.swift in Sources */,
-				482B622120961CF000E8E304 /* CollectionView.swift in Sources */,
-				482B621F20961CD700E8E304 /* UITableView+MakeableByProxy.swift in Sources */,
 				48F17C2D2091AEC400C070B2 /* MergeOperatorReturningStyle.swift in Sources */,
 				48013B462093549E0080BB4F /* CollectionViewAttribute+Names.swift in Sources */,
 				48DF4585209284BE00ED4326 /* TextViewAttribute+Names.swift in Sources */,
@@ -1075,14 +1068,12 @@
 				48F17C2C2091AAAA00C070B2 /* OperatorDeclaration.swift in Sources */,
 				48BAB506209334F000D5B03C /* FatalErrorUtil.swift in Sources */,
 				482B41472091286800654FA7 /* StackViewAttribute+Attributes.swift in Sources */,
-				482B622220961CF200E8E304 /* TableView.swift in Sources */,
 				48F76DDA2095E9B300BAEFFE /* TextHolder.swift in Sources */,
 				48DF458A2092852200ED4326 /* TextOwner.swift in Sources */,
 				482B414C2091286800654FA7 /* TextFieldAttribute+Attributes.swift in Sources */,
 				486A4F7A2095D64C0059ADAE /* TableViewAttribute.swift in Sources */,
 				482B414F2091286800654FA7 /* BaseAttributeProtocol.swift in Sources */,
 				482B41442091286800654FA7 /* UIStackView+Makeable.swift in Sources */,
-				482B621E20961CD400E8E304 /* UICollectionView+MakeableByProxy.swift in Sources */,
 				482B41462091286800654FA7 /* StackViewAttribute+Names.swift in Sources */,
 				48013B3F2093543A0080BB4F /* CollectionViewStyle.swift in Sources */,
 				48CC57692091A78C001EB1DB /* ConvenienceAttributes.swift in Sources */,
@@ -1117,7 +1108,6 @@
 				48BAB503209333D600D5B03C /* UIColor+Test.swift in Sources */,
 				482B621D20961B9900E8E304 /* UITextField_TextHolder_Tests.swift in Sources */,
 				48BAB502209333D000D5B03C /* TestUtils.swift in Sources */,
-				482B622020961CDC00E8E304 /* CollectionViewStyleTests.swift in Sources */,
 				48F76DDF2096004500BAEFFE /* UILabel_TextHolder_Tests.swift in Sources */,
 				482B621B20961B8A00E8E304 /* UITextView_TextHolder_Tests.swift in Sources */,
 				48F17C242091A93100C070B2 /* ViewStyleTests.swift in Sources */,
