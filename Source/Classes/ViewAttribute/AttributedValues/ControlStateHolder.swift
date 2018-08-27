@@ -60,7 +60,7 @@ internal extension UIButton {
         return normalTitle
     }
 
-    func setBackgroundColor(_ color: UIColor?, forState state: UIControlState) {
+    func setBackgroundColor(_ color: UIColor?, forState state: UIControl.State) {
         guard let color = color else { return }
         setBackgroundImage(imageWithColor(color), for: state)
     }

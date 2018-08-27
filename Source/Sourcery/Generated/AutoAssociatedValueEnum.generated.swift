@@ -543,7 +543,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var contentMode: UIViewContentMode? {
+    var contentMode: UIView.ContentMode? {
         switch self {
             case .contentMode(let contentMode):
                 return contentMode
@@ -927,7 +927,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var borderStyle: UITextBorderStyle? {
+    var borderStyle: UITextField.BorderStyle? {
         switch self {
             case .borderStyle(let borderStyle):
                 return borderStyle
@@ -951,7 +951,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var clearButtonMode: UITextFieldViewMode? {
+    var clearButtonMode: UITextField.ViewMode? {
         switch self {
             case .clearButtonMode(let clearButtonMode):
                 return clearButtonMode
@@ -967,7 +967,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var leftViewMode: UITextFieldViewMode? {
+    var leftViewMode: UITextField.ViewMode? {
         switch self {
             case .leftViewMode(let leftViewMode):
                 return leftViewMode
@@ -983,7 +983,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var rightViewMode: UITextFieldViewMode? {
+    var rightViewMode: UITextField.ViewMode? {
         switch self {
             case .rightViewMode(let rightViewMode):
                 return rightViewMode
@@ -1031,7 +1031,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var renderingMode: UIImageRenderingMode? {
+    var renderingMode: UIImage.RenderingMode? {
         switch self {
             case .renderingMode(let renderingMode):
                 return renderingMode
@@ -1151,7 +1151,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var indicatorStyle: UIScrollViewIndicatorStyle? {
+    var indicatorStyle: UIScrollView.IndicatorStyle? {
         switch self {
             case .indicatorStyle(let indicatorStyle):
                 return indicatorStyle
@@ -1223,7 +1223,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var keyboardDismissMode: UIScrollViewKeyboardDismissMode? {
+    var keyboardDismissMode: UIScrollView.KeyboardDismissMode? {
         switch self {
             case .keyboardDismissMode(let keyboardDismissMode):
                 return keyboardDismissMode
@@ -1239,7 +1239,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var contentVerticalAlignment: UIControlContentVerticalAlignment? {
+    var contentVerticalAlignment: UIControl.ContentVerticalAlignment? {
         switch self {
             case .contentVerticalAlignment(let contentVerticalAlignment):
                 return contentVerticalAlignment
@@ -1247,7 +1247,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var contentHorizontalAlignment: UIControlContentHorizontalAlignment? {
+    var contentHorizontalAlignment: UIControl.ContentHorizontalAlignment? {
         switch self {
             case .contentHorizontalAlignment(let contentHorizontalAlignment):
                 return contentHorizontalAlignment
@@ -1343,7 +1343,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var axis: UILayoutConstraintAxis? {
+    var axis: NSLayoutConstraint.Axis? {
         switch self {
             case .axis(let axis):
                 return axis
@@ -1351,7 +1351,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var distribution: UIStackViewDistribution? {
+    var distribution: UIStackView.Distribution? {
         switch self {
             case .distribution(let distribution):
                 return distribution
@@ -1359,7 +1359,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var alignment: UIStackViewAlignment? {
+    var alignment: UIStackView.Alignment? {
         switch self {
             case .alignment(let alignment):
                 return alignment
@@ -1495,7 +1495,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var separatorStyle: UITableViewCellSeparatorStyle? {
+    var separatorStyle: UITableViewCell.SeparatorStyle? {
         switch self {
             case .separatorStyle(let separatorStyle):
                 return separatorStyle
@@ -1631,7 +1631,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var searchBarStyle: UISearchBarStyle? {
+    var searchBarStyle: UISearchBar.Style? {
         switch self {
             case .searchBarStyle(let searchBarStyle):
                 return searchBarStyle
@@ -1639,7 +1639,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var segments: [Segment]? {
+    var segments: [SegmentContent]? {
         switch self {
             case .segments(let segments):
                 return segments
@@ -1727,7 +1727,7 @@ extension ViewAttribute: AssociatedValueEnumExtractor {
         }
     }
 
-    var spinnerStyle: UIActivityIndicatorViewStyle? {
+    var spinnerStyle: UIActivityIndicatorView.Style? {
         switch self {
             case .spinnerStyle(let spinnerStyle):
                 return spinnerStyle

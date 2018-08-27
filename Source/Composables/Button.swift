@@ -50,7 +50,7 @@ private extension Button {
 }
 
 private extension ViewStyle {
-    func state(with state: UIControlState) -> ControlStateStyle? {
+    func state(with state: UIControl.State) -> ControlStateStyle? {
         guard let states: [ControlStateStyle] = value(.states) else { return nil }
         return states.filter { $0.state == state }.first
     }

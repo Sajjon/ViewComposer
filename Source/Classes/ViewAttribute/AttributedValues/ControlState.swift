@@ -9,7 +9,7 @@
 import UIKit
 
 public class ControlStateStyle {
-    public var state: UIControlState { fatalError("Override me") }
+    public var state: UIControl.State { fatalError("Override me") }
     
     public var title: String?
     public var titleColor: UIColor?
@@ -52,36 +52,36 @@ extension ControlStateStyle {
 }
 
 public class Normal: ControlStateStyle {
-    public override var state: UIControlState { return .normal }
+    public override var state: UIControl.State { return .normal }
 }
 
 public class Highlighted: ControlStateStyle {
-    public override var state: UIControlState { return .highlighted }
+    public override var state: UIControl.State { return .highlighted }
 }
 
 public class Disabled: ControlStateStyle {
-    public override var state: UIControlState { return .disabled }
+    public override var state: UIControl.State { return .disabled }
 }
 
 public class Selected: ControlStateStyle {
-    public override var state: UIControlState { return .selected }
+    public override var state: UIControl.State { return .selected }
 }
 
 public class Focused: ControlStateStyle {
-    public override var state: UIControlState { return .focused }
+    public override var state: UIControl.State { return .focused }
 }
 
 public class Application: ControlStateStyle {
-    public override var state: UIControlState { return .application }
+    public override var state: UIControl.State { return .application }
 }
 
 public class Reserved: ControlStateStyle {
-    public override var state: UIControlState { return .reserved }
+    public override var state: UIControl.State { return .reserved }
 }
 
 extension ControlStateStyle: MergeableAttribute {
     public func merge(overwrittenBy other: ControlStateStyle) -> Self {
-        guard state == other.state else { fatalError("Not same UIControlState") }
+        guard state == other.state else { fatalError("Not same UIControl.State") }
         let merged = self
         merged.title = other.title ?? self.title
         merged.titleColor = other.titleColor ?? self.titleColor
@@ -91,7 +91,7 @@ extension ControlStateStyle: MergeableAttribute {
     }
 }
 
-extension UIControlState: Hashable {
+extension UIControl.State: Hashable {
     public var hashValue: Int { return rawValue.hashValue }
 }
 
@@ -108,10 +108,10 @@ extension Array where Element == ControlStateStyle {
         
         let concatenated: [ControlStateStyle] = self + other
         
-        let allTypes: [UIControlState] = concatenated.map { $0.state }
-        let duplicateOfDuplicates = allTypes.filter { (type: UIControlState) in allTypes.filter { $0 == type }.count > 1 }
+        let allTypes: [UIControl.State] = concatenated.map { $0.state }
+        let duplicateOfDuplicates = allTypes.filter { (type: UIControl.State) in allTypes.filter { $0 == type }.count > 1 }
         //swiftlint:disable:next syntactic_sugar
-        let duplicateTypes = Array<UIControlState>(Set<UIControlState>(duplicateOfDuplicates))
+        let duplicateTypes = Array<UIControl.State>(Set<UIControl.State>(duplicateOfDuplicates))
         
         var merged = [ControlStateStyle]()
         

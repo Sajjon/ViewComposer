@@ -8,14 +8,14 @@
 
 import Foundation
 
-public protocol TextInputting: class {
+public protocol TextInputting: AnyObject {
     var isEditable: Bool { get set } //used by `UITextView` but not by `UITextField`
     var clearsOnBeginEditing: Bool { get set } //used by `UITextField` but not by `UITextView`
     var clearsOnInsertion: Bool { get set }
     var inputView: UIView? { get set }
     var inputAccessoryView: UIView? { get set }
     var allowsEditingTextAttributes: Bool { get set }
-    var typingAttributesProxy: [String: Any]? { get set }
+    var typingAttributesProxy: [NSAttributedString.Key: Any]? { get set }
 }
 
 extension UITextField: TextInputting {
@@ -24,7 +24,7 @@ extension UITextField: TextInputting {
         set { /* ignored */}
     }
     
-    public var typingAttributesProxy: [String: Any]? {
+    public var typingAttributesProxy: [NSAttributedString.Key: Any]? {
         get { return typingAttributes }
         set { typingAttributes = newValue }
     }
@@ -36,7 +36,7 @@ extension UITextView: TextInputting {
         set { /* ignored */}
     }
     
-    public var typingAttributesProxy: [String: Any]? {
+    public var typingAttributesProxy: [NSAttributedString.Key: Any]? {
         get { return typingAttributes }
         set {
             guard let attributes = newValue else { typingAttributes = [:]; return }

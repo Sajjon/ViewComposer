@@ -1,9 +1,9 @@
 PODS:
-  - Sourcery (0.12.0)
-  - SwiftLint (0.25.1)
+  - Sourcery (0.13.1)
+  - SwiftLint (0.27.0)
 
 DEPENDENCIES:
-  - Sourcery (> 0.8)
+  - Sourcery (> 0.13)
   - SwiftLint
 
 SPEC REPOS:
@@ -12,9 +12,9 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  Sourcery: 10fa92cd8890864856ee3657ca460d597ebc064b
-  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+  Sourcery: 9ef51b8777516f204d82996441f293813158d0d7
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: 8daaa4726f3a6a7e2f4c5722cc88106bc62b1efa
+PODFILE CHECKSUM: 3efd584cd91ec5c848d21e4e9f1b6b1311dd129b
 
 COCOAPODS: 1.5.0

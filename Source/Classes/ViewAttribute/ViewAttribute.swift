@@ -77,7 +77,7 @@ public enum ViewAttribute {
     case verticalCompression(LayoutPriority)
     case horizontalHugging(LayoutPriority)
     case horizontalCompression(LayoutPriority)
-    case contentMode(UIViewContentMode)
+    case contentMode(UIView.ContentMode)
     case height(CGFloat)
     case width(CGFloat)
     case layoutMargins(all: CGFloat)
@@ -118,7 +118,7 @@ public enum ViewAttribute {
     case inputAccessoryView(UIView?)
     case allowsEditingTextAttributes(Bool)
     case dataDetectorTypes(UIDataDetectorTypes)
-    case typingAttributes([String: Any]?)
+    case typingAttributes([NSAttributedString.Key: Any]?)
     
     //MARK: - UILabel
     case numberOfLines(Int)
@@ -141,14 +141,14 @@ public enum ViewAttribute {
     case textContentType(UITextContentType)
     
     //MARK: UITextField
-    case borderStyle(UITextBorderStyle)
+    case borderStyle(UITextField.BorderStyle)
     case background(UIImage?)
     case disabledBackground(UIImage?)
-    case clearButtonMode(UITextFieldViewMode)
+    case clearButtonMode(UITextField.ViewMode)
     case leftView(UIView?)
-    case leftViewMode(UITextFieldViewMode)
+    case leftViewMode(UITextField.ViewMode)
     case rightView(UIView?)
-    case rightViewMode(UITextFieldViewMode)
+    case rightViewMode(UITextField.ViewMode)
     
     //MARK: - UITextView
     case selectedRange(NSRange)
@@ -158,7 +158,7 @@ public enum ViewAttribute {
     //MARK: - ImageHolder
     case image(UIImage?)
     case highlightedImage(UIImage?)
-    case renderingMode(UIImageRenderingMode)
+    case renderingMode(UIImage.RenderingMode)
     case animationImages([UIImage]?)
     case highlightedAnimationImages([UIImage]?)
     case animationRepeatCount(Int)
@@ -175,7 +175,7 @@ public enum ViewAttribute {
     case showsHorizontalScrollIndicator(Bool)
     case showsVerticalScrollIndicator(Bool)
     case scrollIndicatorInsets(UIEdgeInsets)
-    case indicatorStyle(UIScrollViewIndicatorStyle)
+    case indicatorStyle(UIScrollView.IndicatorStyle)
     case decelerationRate(CGFloat)
     case delaysContentTouches(Bool)
     case canCancelContentTouches(Bool)
@@ -184,12 +184,12 @@ public enum ViewAttribute {
     case zoomScale(CGFloat)
     case bouncesZoom(Bool)
     case scrollsToTop(Bool)
-    case keyboardDismissMode(UIScrollViewKeyboardDismissMode)
+    case keyboardDismissMode(UIScrollView.KeyboardDismissMode)
     
     //MARK: - UIControl
     case states([ControlStateStyle])
-    case contentVerticalAlignment(UIControlContentVerticalAlignment)
-    case contentHorizontalAlignment(UIControlContentHorizontalAlignment)
+    case contentVerticalAlignment(UIControl.ContentVerticalAlignment)
+    case contentHorizontalAlignment(UIControl.ContentHorizontalAlignment)
     case targets([Actor])
     public static func target(_ actor: Actor) -> ViewAttribute {
         return .targets([actor])
@@ -208,9 +208,9 @@ public enum ViewAttribute {
     case showsTouchWhenHighlighted(Bool)
     
     //MARK: - UIStackView
-    case axis(UILayoutConstraintAxis)
-    case distribution(UIStackViewDistribution)
-    case alignment(UIStackViewAlignment)
+    case axis(NSLayoutConstraint.Axis)
+    case distribution(UIStackView.Distribution)
+    case alignment(UIStackView.Alignment)
     case spacing(CGFloat)
     case margin(MarginExpressible)
     public static func horizontalMargin(_ horizontal: CGFloat) -> ViewAttribute {
@@ -239,7 +239,7 @@ public enum ViewAttribute {
     case sectionIndexBackgroundColor(UIColor)
     case sectionIndexColor(UIColor)
     case rowHeight(CGFloat)
-    case separatorStyle(UITableViewCellSeparatorStyle)
+    case separatorStyle(UITableViewCell.SeparatorStyle)
     case separatorColor(UIColor?)
     case separatorEffect(UIVisualEffect?)
     case separatorInset(UIEdgeInsets)
@@ -260,10 +260,10 @@ public enum ViewAttribute {
     
     //MARK: - UISearchBar
     case prompt(String)
-    case searchBarStyle(UISearchBarStyle)
+    case searchBarStyle(UIBarStyle)
     
     //MARK: - UISegmentedControl
-    case segments([Segment])
+    case segments([SegmentContent])
     
     //MARK: ThumbTintColorOwner (UISwitch and UISlider)
     case thumbTintColor(UIColor?)
@@ -284,11 +284,11 @@ public enum ViewAttribute {
     //MARK: - UIActivityIndicatorView
     case spin(Bool)
     case hidesWhenStopped(Bool)
-    case spinnerStyle(UIActivityIndicatorViewStyle)
+    case spinnerStyle(UIActivityIndicatorView.Style)
     case spinnerScale(CGFloat)
     
     //MARK: - UIProgressView
-    case progressViewStyle(UIProgressViewStyle)
+    case progressViewStyle(UIProgressView.Style)
     case progress(Float)
     case progressTintColor(UIColor?)
     case progressImage(UIImage?)

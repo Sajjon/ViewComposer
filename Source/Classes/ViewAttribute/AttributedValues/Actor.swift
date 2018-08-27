@@ -11,8 +11,8 @@ import Foundation
 public struct Actor {
     let target: NSObject
     let selector: Selector
-    let event: UIControlEvents
-    public init(_ target: NSObject, selector: Selector, event: UIControlEvents = .primaryActionTriggered) {
+    let event: UIControl.Event
+    public init(_ target: NSObject, selector: Selector, event: UIControl.Event = .primaryActionTriggered) {
         self.target = target
         self.selector = selector
         self.event = event
@@ -20,7 +20,7 @@ public struct Actor {
 }
 
 public extension NSObject {
-    func target(_ selector: Selector, event: UIControlEvents = .primaryActionTriggered) -> Actor {
+    func target(_ selector: Selector, event: UIControl.Event = .primaryActionTriggered) -> Actor {
         return Actor(self, selector: selector, event: event)
     }
 }

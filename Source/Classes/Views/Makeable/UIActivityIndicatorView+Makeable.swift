@@ -11,7 +11,7 @@ import Foundation
 extension UIActivityIndicatorView: Makeable {
     public typealias Style = ViewStyle
     public static func createEmpty() -> UIActivityIndicatorView {
-        let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
         activityIndicator.startAnimating()
         return activityIndicator
     }

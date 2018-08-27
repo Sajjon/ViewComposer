@@ -1,20 +1,31 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '10.0'
-use_frameworks!
 inhibit_all_warnings!
+use_frameworks!
+
+
+workspace 'ViewComposer.xcworkspace'
 
 def pods
   pod 'SwiftLint'
-  pod 'Sourcery', '> 0.8'
+  pod 'Sourcery', '> 0.13'
+end
+
+target 'Example' do
+    project 'Example/Example'
 end
 
 target 'ViewComposer' do
-  pods  
-end
+  project 'ViewComposer'
 
-target 'ViewComposerTests' do
-  pods  
+  pods
+
+  target 'ViewComposerTests' do
+    inherit! :search_paths
+  end
+
 end
+ 
 
 post_install do |installer|
     installer.pods_project.targets.each do |target|
